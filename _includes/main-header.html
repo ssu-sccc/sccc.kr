@@ -1,0 +1,67 @@
+<header class="main-header content-wrapper">
+
+  
+
+   <!-- Navigation -->
+  <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+      <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header page-scroll">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+              </button>
+              <a class="navbar-brand page-scroll" href="#page-top">SCCC Home</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="hidden">
+                      <a href="#page-top"></a>
+                  </li>
+                  <li>
+                      <a class="page-scroll" href="#services">SCCC</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll" href="#activity">Activity</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll" href="#portfolio">Portfolio</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll" href="#team">Team</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll" href="problem_crawler_for_SCCC_boj/src/sccc_solved_problem.html">Solved Problem</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll" href="https://www.acmicpc.net/group/543">BOJ Group</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll" href="#contact">Contact</a>
+                  </li>
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+  </nav>
+
+  <input type="checkbox" id="menu-checkbox" />
+
+  <nav class="center-wrapper nav-main">
+
+    <a class="blog-logo" href="{{ site.baseurl }}/">{{ site.title }}</a>
+
+    {% for my_page in site.pages %}
+      {% if my_page.active %}
+        <a href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+      {% endif %}
+    {% endfor %}
+
+    <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
+
+    <label for="menu-checkbox" class="toggle-button" data-open="☰" data-close="☰" onclick></label>
+  </nav>
+  
+</header>
