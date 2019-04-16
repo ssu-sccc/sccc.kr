@@ -25,8 +25,30 @@ github_username: ssu-sccc
 # Build settings
 markdown: kramdown
 theme: minima
+highlighter: rouge
+relative_permalinks: false
+permalink: /:categories/:title/
 plugins:
   - jekyll-feed
+
+# Posts settings
+future: true
+safe: false
+lsi: false
+excerpt_separator: "\n\n"
+
+
+compress_html:
+  comments: ["<!-- ", " -->"]
+  clippings: all
+  endings: all
+
+sass:
+  sass_dir: assets/_sass
+  style: compressed
+
+
+images: '/assets/images'
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
