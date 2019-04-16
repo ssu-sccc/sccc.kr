@@ -1,3 +1,11 @@
+(function() {
+  $('.button').click(function () {
+    console.log('asdfasdf');
+    $('#sidebar').sidebar('toggle');
+  });
+})();
+
+
 /*
 * Zoom Images, Get Date and Shadow
 * ========================================================================== */

@@ -7,15 +7,14 @@ layout: compress
   {% include head.html %}
 
   <body>
-    <div id="shadow"></div>
+    {% include main-header.html %}
+    <div class="pusher">
 
-      {% include main-header.html %}
+      <div class="home-wrapper">
+        {{ content }}
+      </div>
 
-    <div class="home-wrapper">
-      {{ content }}
+      {% include home-footer.html %}
     </div>
-
-    {% include home-footer.html %}
-
   </body>
 </html>
