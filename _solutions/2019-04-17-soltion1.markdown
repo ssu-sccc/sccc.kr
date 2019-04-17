@@ -1,0 +1,110 @@
+---
+layout: solution
+title:  "USACO January 2008 Silver 3: Telephone Lines"
+crawlertitle: "USACO January 2008 Silver 3: Telephone Lines"
+summary: "USACO January 2008 Silver 3: Telephone Lines 을 풀어봅니다."
+date:   2019-04-16 19:03:48 +0900
+categories: solutions
+tags: ['algorithm']
+author: wookjae
+---
+## 문제
+
+[USACO January 2008 Silver 3: Telephone Lines](https://www.acmicpc.net/problem/1800)  
+[BOJ 1800: 인터넷 설치](https://www.acmicpc.net/problem/1800)
+
+## 문제 요약
+
+N(1<=N<=1000)개의 노드와 P(1<=P<=10000)개의 간선으로 이루어진 weighted bidirected graph가 있다.  
+1번 노드에서 N번 노드까지의 어떤 경로를 잘 찾아야 한다.
+
+어떤 경로를 찾으면, 이 경로에서 K(0<=K<N)개 간선의 가중치를 0으로 만들 수 있다. 그러고 남은 간선들 중에서 이 경로에서 가중치가 가장 큰 간선이 있을 것인데, 우리는 이 가장 큰 간선의 가중치가 최소가 되도록 경로를 잘 골라야 한다.
+
+이때, 1~N을 잇는 경로에서, K개의 간선의 가중치를 0으로 만들고 난 뒤, 남은 간선들 중 가중치가 가장 큰 간선의 값을 최소가 되도록 경로를 잘 골랐을 때, 그 최소의 값은 얼마인가?
+
+## 풀이
+
+이런 그래프에서 무언가를 최소로 만들거나, 최대를 최소로 만드는 문제들 중 상당수의 풀이가 '이분 탐색'임을 기억하자. 이 문제 역시도 최대를 최소로 만드는 문제이고, 파라메트릭 서치로 해결할 수 있다.
+
+우리는 답으로 내놓을 어떤 가중치 값을 mid로 두고 그래프를 탐색할 것이다. 이 탐색하는 함수를 `bool go(int mid)`라고 하자.
+
+답으로 mid를 내놓는다는 것은, 가중치가 mid보다 큰 간선은 경로에 포함이 되지 않거나, 문제에 제시된 가중치를 0으로 만드는 작업을 거친 뒤 경로에 포함시킨다는 것을 의미한다.
+
+여기서 0-1 dijkstra를 이용할 수 있다.
+
+문제에서 주어진 기존의 그래프에서, 다음의 새로운 그래프(node u, node v, weight w)를 모델링하자:  
+1. (u, v, 0): u와 v 사이의 가중치가 mid보다 작거나 경우  
+2. (u, v, 1): u와 v 사이의 가중치가 mid보다 큰 경우
+
+풀어 쓰자면, 원래의 그래프를, 가중치를 0으로 만드는 작업을 수행해야 하는 간선은 가중치를 1로, 작업을 수행하지 않아도 되는 간선은 가중리를 0으로 두는 것이다.
+
+이렇게 새롭게 만든 그래프에서 `start = 1`, `end = N`으로 두고 다익스트라를 돌린다.
+
+이러면 1에서 N까지의 최단경로가 구해지게 되는데, 이 최단경로는 곧 가중치를 0으로 만드는 작업을 최소한으로 수행하는 경로이고, 이 최소의 작업 수가 주어진 작업 횟수보다 작거나 같으면 ok, 아니면 no.
+
+구현은 다익스트라와 이분탐색에 익숙하다면 쉬운 편에 속하며 코드는 아래와 같다.
+
+## 코드
+
+```cpp
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+#include <queue>
+using namespace std;
+
+struct edg {
+	int idx, dst;
+	bool operator <(edg a)const {
+		return dst > a.dst;
+	}
+};
+vector<edg> gph[1102];
+int n, m, k;
+int dst[1102];
+
+int go(int mid) {
+	fill(dst, dst + n + 1, 1e9);
+	dst[1] = 0;
+	priority_queue<edg> pq;
+	pq.push({ 1,0 });
+	while (!pq.empty()) {
+		edg now = pq.top(); pq.pop();
+		if (dst[now.idx] != now.dst) continue;
+		for (edg nxt : gph[now.idx]) {
+			if (dst[nxt.idx] > now.dst + (nxt.dst > mid)) {
+				dst[nxt.idx] = now.dst + (nxt.dst > mid);
+				pq.push({ nxt.idx, dst[nxt.idx] });
+			}
+		}
+	}
+	while (!pq.empty()) pq.pop();
+	return dst[n] <= k;
+}
+
+int main() {
+	scanf("%d %d %d", &n, &m, &k);
+	while (m--) {
+		int u, v, k;
+		scanf("%d %d %d", &u, &v, &k);
+		gph[u].push_back({ v,k });
+		gph[v].push_back({ u,k });
+	}
+
+	int lft = 0, rgt = 1e8;
+	int ans = -1;
+	while (lft <= rgt) {
+		int mid = (lft + rgt) / 2;
+		int res = go(mid);
+		if (res) {
+			rgt = mid - 1;
+			ans = mid;
+		}
+		else {
+			lft = mid + 1;
+		}
+	}
+	printf("%d\n", ans);
+	return 0;
+}
+```

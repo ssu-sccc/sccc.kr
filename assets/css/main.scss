@@ -16,4 +16,6 @@ $baseurl: "{{ site.baseurl }}";
   "syntax-highlighting"
 ;
 
-@import "home"
+@import "home";
+
+@import "solution";

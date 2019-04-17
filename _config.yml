@@ -37,6 +37,10 @@ safe: false
 lsi: false
 excerpt_separator: "\n\n"
 
+collections:
+  solutions:
+    output: true
+
 
 compress_html:
   comments: ["<!-- ", " -->"]
