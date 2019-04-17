@@ -20,16 +20,23 @@ permalink: /index.html
         <a class='btn btn-dark btn-lg' href='https://github.com/ssu-sccc'>깃헙 보러가기</a>
         </div>
     </header> {% endcomment %}
-    <h1 class="ui center aligned header">
-        SCCC
-    </h1>
+    <div class="main-header">
+        <h1 class="ui center aligned header">
+            SCCC
+        </h1>
+    </div>
 
     <!-- Services Section -->
     <section id="services">
         <h2 class="ui center aligned header">SCCC</h2>
         <h3 class="ui center aligned header">Soongsil Computing Contest Club</h3>
+        <div class="ui center aligned header">
+            <button class="ui button">
+                <a href="https://goo.gl/forms/OBFyTShMloo941763" target="_blank">가입신청</a>
+            </button>
+        </div>
         <div class="ui three column doubling stackable grid container">
-            <div class="column">
+            <div class="column" data-aos="fade-right">
                 <div class="ui segment">
                     <div class="ui medium image">
                         <img src={{ site.baseurl | append: "/assets/images/SSU.jpg" }} class="img-responsive">
@@ -38,7 +45,7 @@ permalink: /index.html
                     <p class="ui center aligned">숭실대학교 컴퓨터학부 소속 문제해결 소모임 입니다.</p>
                 </div>
             </div>
-            <div class="column">
+            <div class="column" data-aos="fade-up">
                 <div class="ui segment">
                     <div class="ui medium image">
                         <img src={{ site.baseurl | append: "/assets/images/icpc-logo.png" }} class="img-responsive">
@@ -47,7 +54,7 @@ permalink: /index.html
                     <p class="ui center aligned">문제해결을 공부하여 ACM-ICPC 등 여러 알고리즘 문제해결 대회를 준비합니다.</p>
                 </div>
             </div>
-            <div class="column">
+            <div class="column" data-aos="fade-left">
                 <div class="ui segment">
                     <div class="ui medium image">
                         <img src={{ site.baseurl | append: "/assets/images/sponsor-naverd2.png" }} class="img-responsive">
@@ -58,7 +65,7 @@ permalink: /index.html
             </div>
         </div>
         <h2 class="ui center aligned header">How we study</h2>
-        <div class="ui last container">
+        <div class="ui last container" data-aos="flip-up">
             <div class="ui four steps">
                 <div class="step">
                 <div class="content">
@@ -90,52 +97,34 @@ permalink: /index.html
 
     <!-- Portfolio Grid Section -->
     <section id="activity" class="bg-light-green">
+        <h2 class="ui center aligned header">Activity</h2>
+        <h3 class="ui center aligned header">2019년 SCCC의 활동소개</h3>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Activity</h2>
-                    <h3 class="section-subheading text-muted">2019년 SCCC의 활동소개</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#activityModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
+            <div class="ui three column doubling stackable grid container">
+                <div class="column" data-aos="fade-right">
+                    <div class="ui segment">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/activity/1.jpg" }} class="img-responsive" alt="">
                         </div>
-                        <img src={{ site.baseurl | append: "/assets/images/activity/1.jpg" }} class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
                         <h4>오늘의 문제</h4>
                         <p class="text-muted">매일 한 문제씩 풉니다.</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#activityModal2" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
+                <div class="column" data-aos="fade-right">
+                    <div class="ui segment">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/activity/2.jpg" }} class="img-responsive" alt="">
+                                
                         </div>
-                        <img src={{ site.baseurl | append: "/assets/images/activity/2.jpg" }} class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
                         <h4>겨울 스터디</h4>
                         <p class="text-muted">신입회원들과 함께 진행하였습니다.</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#activityModal3" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
+                <div class="column" data-aos="fade-right">
+                    <div class="ui segment">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/activity/3.jpg" }} class="img-responsive" alt="">
                         </div>
-                        <img src={{ site.baseurl | append: "/assets/images/activity/3.jpg" }} class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
                         <h4>001 자리 청소</h4>
                         <p class="text-muted">올해도 6자리입니다!</p>
                     </div>
@@ -146,162 +135,102 @@ permalink: /index.html
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio" class="bg-light-gray">
+        <h2 class="ui center aligned header">Portfolio</h2>
+        <h3 class="ui center aligned header">2019년 SCCC의 활동내역입니다.</h3>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">2019년 SCCC의 활동내역입니다.</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
+            <div class="ui three column doubling stackable grid container">
+                <div class="column" data-aos="fade-left">
+                    <div class="ui segment">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/portfolio/1.jpg" }} class="img-responsive" alt="">
                         </div>
-                        <img src={{ site.baseurl | append: "/assets/images/portfolio/1.jpg" }} class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
                         <h4>Round Conference</h4>
                         <p class="text-muted">17년 정기 회의</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
+                <div class="column" data-aos="fade-left">
+                    <div class="ui segment">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/portfolio/2.jpg" }} class="img-responsive" alt="">
                         </div>
-                        <img src={{ site.baseurl | append: "/assets/images/portfolio/2.jpg" }} class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
                         <h4>SCPC 본선</h4>
                         <p class="text-muted">SCCC 소속 5명 진출</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
+                <div class="column" data-aos="fade-left">
+                    <div class="ui segment">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/portfolio/5.jpg" }} class="img-responsive" alt="">
                         </div>
-                        <img src={{ site.baseurl | append: "/assets/images/portfolio/5.jpg" }} class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
                         <h4>ACM-ICPC 예선</h4>
                         <p class="text-muted">팀 Jaedaero_Noraboja!!!</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
+                <div class="column" data-aos="fade-left">
+                    <div class="ui segment">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/portfolio/7.jpg" }} class="img-responsive" alt="">
                         </div>
-                        <img src={{ site.baseurl | append: "/assets/images/portfolio/7.jpg" }} class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
                         <h4>교내대회 1등, ACM-ICPC 은상</h4>
                         <p class="text-muted">팀 Today_is_Youngjeong_birthday</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
+                <div class="column" data-aos="fade-left">
+                    <div class="ui segment">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/portfolio/9.jpg" }} class="img-responsive" alt="">
                         </div>
-                        <img src={{ site.baseurl | append: "/assets/images/portfolio/9.jpg" }} class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
                         <h4>새내기 프로그래밍 대회</h4>
                         <p class="text-muted">16년 11월 25일 정보관 101호</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
+                <div class="column" data-aos="fade-left">
+                    <div class="ui segment">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/portfolio/11.jpg" }} class="img-responsive" alt="">
                         </div>
-                        <img src={{ site.baseurl | append: "/assets/images/portfolio/11.jpg" }} class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
                         <h4>KAKAO CODE FESTIVAL 본선</h4>
                         <p class="text-muted">SCCC 소속 5명 진출</p>
                     </div>
                 </div>
-            		<div class="col-md-4 col-sm-6 portfolio-item">
-            		    <a href="#portfolioModal7" class="portfolio-link" data-toggle="modal">
-            			<div class="portfolio-hover">
-            			    <div class="portfolio-hover-content">
-            				<i class="fa fa-plus fa-3x"></i>
-            			    </div>
-            			</div>
-            			<img src="" class="img-responsive" alt="">
-            		    </a>
-            		    <div class="portfolio-caption">
-            			<h4>숭실대학교 프로그래밍 컨테스트</h4>
-            			<p class="text-muted">SCCC 주최,  NAVER D2 후원</p>
-            		    </div>
-            		</div>
-	        </div>
+                <div class="column" data-aos="fade-left">
+                    <div class="ui segment">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/portfolio/11.jpg" }} class="img-responsive" alt="">
+                        </div>
+                        <h4>숭실대학교 프로그래밍 컨테스트</h4>
+                        <p class="text-muted">SCCC 주최,  NAVER D2 후원</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Team Section -->
     <section id="team" class="bg-light-gray">
+        <h2 class="ui center aligned header">Graduated</h2>
+        <h3 class="ui center aligned header">졸업생 명단입니다.</h3>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Graduated</h2>
-                    <h3 class="section-subheading text-muted">졸업생 명단입니다.</h3>
-                </div>
-            </div>
         </div>
     </section>
 
 
     <!-- Contact Section -->
     <section id="contact">
+        <h2 class="ui center aligned header">Contact Us</h2>
+        <h3 class="ui center aligned header">저희에게 궁금하신 점이 있으신가요?</h3>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">저희에게 궁금하신 점이 있으신가요?</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form name="sentMessage" id="contactForm" novalidate>
-                        <div class="row">
-                            <div class="clearfix"></div>
-                            <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                  <button class="btn btn-xl">
-                                    <a class="facebook-link" href="https://www.facebook.com/SSUSCCC/">
-                                      페이스북으로 연락하기
-                                    </a>
-                                  </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            <div class="ui center aligned header">
+                <button class="ui button">
+                    <a class="facebook-link" href="https://www.facebook.com/SSUSCCC/">
+                        페이스북으로 연락하기
+                    </a>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Modals -->
-    <!-- Use the modals below to showcase details about your portfolio projects! -->
-
-    <!-- Activity Modal 1 -->
+    {% comment %} <!-- Activity Modal 1 -->
     <div class="portfolio-modal modal fade" id="activityModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -422,7 +351,7 @@ permalink: /index.html
                 </div>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>

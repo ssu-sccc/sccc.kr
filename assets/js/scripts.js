@@ -1,8 +1,10 @@
 (function() {
-  $('.button').click(function () {
+  $('#menu-toggle').click(function () {
     console.log('asdfasdf');
     $('#sidebar').sidebar('toggle');
   });
+  
+  AOS.init();
 })();
 
 
