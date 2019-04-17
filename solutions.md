@@ -16,7 +16,7 @@ You can find the source code for Jekyll at GitHub:
 
 {% for solution in site.solutions %}
   <article class="index-page solution">
-    <h2><a href="{{ solution.url }}">{{ solution.title }}</a></h2>
+    <h2><a href="{{ site.baseurl | append: solution.url }}">{{ solution.title }}</a></h2>
     {% if solution.lastmod %}
       <span class="date">{{ solution.lastmod | date: "%d-%m-%Y"  }}</span>
     {% else %}
