@@ -1,0 +1,104 @@
+.animation {
+    .falling-text-wrapper {
+        margin-top: -100px;
+        text-align: center;
+    }
+    .appearing-text-wrapper {
+        @media ( max-width: 768px ) {
+            margin-top: 410px;
+        }
+        @media ( min-width: 769px ) {
+            margin-top: 405px;
+        }
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .falling-text{
+        @media ( max-width: 768px ) {
+            font-size: 7rem;
+        }
+        @media ( min-width: 769px ) {
+            font-size: 14rem;
+        }
+        color: white;
+        display: inline-block;
+    }
+    .appearing-text{
+        @media ( max-width: 768px ) {
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+        @media ( min-width: 769px ) {
+            font-size: 2rem;
+            margin-right: 20px;
+        }
+        color: white;
+        display: inline-block;
+        &:last-child { margin-right: 0 !important; }
+    }
+    .button-down{
+        margin-top: 2rem !important;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        position: absolute;
+        z-index: 300;
+        top: 15px;
+        right: 20px;
+    }
+    .character{
+        margin: 0 auto;
+        position: absolute;
+        color: white;
+    }
+
+    .loader {
+        max-width: 3.6rem;
+        width: 100%;
+        height: auto;
+        stroke-linecap: round;
+    }
+
+    circle {
+        fill: none;
+        stroke-width: 7;
+        animation-name: preloader;
+        animation-duration: 3s;
+        animation-iteration-count: 7;
+        animation-timing-function: ease-in-out;
+        transform-origin: 170px 170px;
+        will-change: transform;
+
+        &:nth-of-type(1) {
+            stroke-dasharray: 550px;
+        }
+
+        &:nth-of-type(2) {
+            stroke-dasharray: 450px;
+        }
+
+        &:nth-of-type(3) {
+            stroke-dasharray: 350px;
+        }
+
+        &:nth-of-type(4) {
+            stroke-dasharray: 300px;
+        }
+
+        @for $i from 1 through 4 {
+            &:nth-of-type(#{$i}) {
+                animation-delay: -#{$i * 0.15}s;
+            }
+        }
+    }
+
+    @keyframes preloader {
+        50% {
+            transform: rotate(360deg);
+        }
+    }
+}

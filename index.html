@@ -20,18 +20,64 @@ permalink: /index.html
         <a class='btn btn-dark btn-lg' href='https://github.com/ssu-sccc'>깃헙 보러가기</a>
         </div>
     </header> {% endcomment %}
+    <div class="animation">
+        <div class="container">
+            <div class="character">
+                S
+            </div>
+            <svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+                <circle cx="170" cy="170" r="170" stroke="#4B82C4"/>
+                <circle cx="170" cy="170" r="140" stroke="#FFD619"/>
+                <circle cx="170" cy="170" r="115" stroke="#B22814"/>
+            </svg>
+        </div>
+    </div>
     <div class="main-header">
-        <h1 class="ui center aligned header">
-            SCCC
-        </h1>
+        <div class="animation">
+            <div class="falling-text-wrapper">
+                <div class="falling-text">
+                    S
+                </div>
+                <div class="falling-text">
+                    C
+                </div>
+                <div class="falling-text">
+                    C
+                </div>
+                <div class="falling-text">
+                    C
+                </div>
+            </div>
+            <div class="appearing-text-wrapper">
+                <div class="appearing-text">
+                    Soongsil
+                </div>
+                <div class="appearing-text">
+                    Computing
+                </div>
+                <div class="appearing-text">
+                    Contest
+                </div>
+                <div class="appearing-text">
+                    Club
+                </div>
+            </div>
+            <div class="ui center aligned header button-down">
+                <a href="#services">
+                    <button class="ui inverted button ">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- Services Section -->
     <section id="services">
-        <h2 class="ui center aligned header">SCCC</h2>
-        <h3 class="ui center aligned header">Soongsil Computing Contest Club</h3>
+        <h1 class="ui center aligned header shake-slow">SCCC</h2>
+        <h2 class="ui center aligned header">Soongsil Computing Contest Club</h3>
         <div class="ui center aligned header">
-            <button class="ui button">
+            <button class="ui button shake-little">
                 <a href="https://goo.gl/forms/OBFyTShMloo941763" target="_blank">가입신청</a>
             </button>
         </div>
@@ -70,25 +116,25 @@ permalink: /index.html
                 <div class="step">
                 <div class="content">
                     <div class="title">봄 스터디</div>
-                    <div class="description">Choose your shipping options</div>
+                    <div class="description">실력 별로 그룹을 나누어 진행합니다.</div>
                 </div>
                 </div>
-                <div class="active step">
+                <div class="step">
                 <div class="content">
                     <div class="title">여름 스터디</div>
-                    <div class="description">Enter billing information</div>
-                </div>
-                </div>
-                <div class="disabled step">
-                <div class="content">
-                    <div class="title">ACM-ICPC</div>
-                    <div class="description">Review your order details</div>
+                    <div class="description">팀 스터디, 전체 모의고사를 진행합니다.</div>
                 </div>
                 </div>
                 <div class="active step">
                 <div class="content">
+                    <div class="title">ACM-ICPC</div>
+                    <div class="description">두근두근 대망의 대회!</div>
+                </div>
+                </div>
+                <div class="step">
+                <div class="content">
                     <div class="title">겨울 스터디</div>
-                    <div class="description">Enter billing information</div>
+                    <div class="description">알고리즘 위주로 공부합니다.</div>
                 </div>
                 </div>
             </div>
@@ -166,7 +212,7 @@ permalink: /index.html
                         <p class="text-muted">팀 Jaedaero_Noraboja!!!</p>
                     </div>
                 </div>
-                <div class="column" data-aos="fade-left">
+                <div class="column" data-aos="fade-right">
                     <div class="ui segment">
                         <div class="ui medium image">
                             <img src={{ site.baseurl | append: "/assets/images/portfolio/7.jpg" }} class="img-responsive" alt="">
@@ -175,7 +221,7 @@ permalink: /index.html
                         <p class="text-muted">팀 Today_is_Youngjeong_birthday</p>
                     </div>
                 </div>
-                <div class="column" data-aos="fade-left">
+                <div class="column" data-aos="fade-right">
                     <div class="ui segment">
                         <div class="ui medium image">
                             <img src={{ site.baseurl | append: "/assets/images/portfolio/9.jpg" }} class="img-responsive" alt="">
@@ -184,7 +230,7 @@ permalink: /index.html
                         <p class="text-muted">16년 11월 25일 정보관 101호</p>
                     </div>
                 </div>
-                <div class="column" data-aos="fade-left">
+                <div class="column" data-aos="fade-right">
                     <div class="ui segment">
                         <div class="ui medium image">
                             <img src={{ site.baseurl | append: "/assets/images/portfolio/11.jpg" }} class="img-responsive" alt="">
@@ -209,23 +255,64 @@ permalink: /index.html
     <!-- Team Section -->
     <section id="team" class="bg-light-gray">
         <h2 class="ui center aligned header">Graduated</h2>
-        <h3 class="ui center aligned header">졸업생 명단입니다.</h3>
-        <div class="container">
+        <h3 class="ui center aligned header">졸업생 소식입니다.</h3>
+        <div class="ui one column doubling stackable grid container">
+            <div class="ui items">
+                <div class="item">
+                    <div class="ui small image">
+                        <img src={{ site.baseurl | append: "/assets/images/team/anonymous.png" }}>
+                    </div>
+                    <div class="content">
+                        <a class="header">@hyo123bin</a>
+                        <div class="meta">
+                            <span></span>
+                        </div>
+                        <div class="description">
+                            <p>
+                                SCCC에서 스터디하면서 졸업할 때까지 정말 즐거운 시간을 보냈어요!
+                            </p>
+                        </div>
+                        <div class="extra">
+                            <div class="ui label"><i class="globe icon"></i> 2017 ACM-ICPC 은상</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ui small image">
+                        <img src={{ site.baseurl | append: "/assets/images/team/anonymous.png" }}>
+                    </div>
+                    <div class="content">
+                        <a class="header">@sys7961r</a>
+                        <div class="meta">
+                            <span>Description</span>
+                        </div>
+                        <div class="description">
+                            <p>
+                                소모임 활동은 정말 재미있었어요! 회장으로 모임에 기여하는 것은 정말 특별한 경험이었습니다.
+                            </p>
+                        </div>
+                        <div class="extra">
+                            <div class="ui label"><i class="globe icon"></i>2016 ACM-ICPC 동상</div>
+                            <div class="ui label"><i class="globe icon"></i>2017 ACM-ICPC 은상</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
 
     <!-- Contact Section -->
-    <section id="contact">
+    <section id="contact" data-aos="fade-up">
         <h2 class="ui center aligned header">Contact Us</h2>
         <h3 class="ui center aligned header">저희에게 궁금하신 점이 있으신가요?</h3>
         <div class="container">
             <div class="ui center aligned header">
-                <button class="ui button">
-                    <a class="facebook-link" href="https://www.facebook.com/SSUSCCC/">
+                <a class="facebook-link" href="https://www.facebook.com/SSUSCCC/" target="_blank">
+                    <button class="ui button shake-little">
                         페이스북으로 연락하기
-                    </a>
-                </button>
+                    </button>
+                </a>
             </div>
         </div>
     </section>

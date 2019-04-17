@@ -5,6 +5,30 @@
   });
   
   AOS.init();
+
+  anime({
+    targets: '.falling-text',
+    translateY: 410,
+    rotate: {
+      value: 360,
+      duration: 1800,
+      // easing: 'easeInOutSine'
+    },
+    // easing: 'easeInOutExpo',
+    delay: anime.stagger(400)
+  });
+
+  anime({
+    targets: '.appearing-text',
+    translateX: 0,
+    scale: 1,
+    delay: function(el, i) { return i * 400 + 115; },
+    translateY: {
+      value: 15,
+      duration: 50
+    }
+  });
+
 })();
 
 

@@ -37,6 +37,10 @@ body {
     }
 }
 
+section {
+    padding: 30px 10px;
+}
+
 #sidebar {
     * {
         font-weight: 700 !important;
@@ -113,7 +117,7 @@ body {
         -moz-background-size: cover;
         background-size: cover;
         -o-background-size: cover;
-        height: calc(100vh - 50px);
+        height: calc(100vh);
     }
     /* About */
     .about,
