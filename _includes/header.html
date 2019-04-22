@@ -1,42 +1,28 @@
-<div class="ui left vertical menu sidebar">
-  <a class="item">
-    Item 1
-  </a>
-  <a class="item">
-    Item 2
-  </a>
-  <a class="item">
-    Item 3
-  </a>
-  <li>
-      <a class="item" href="#services">SCCC</a>
-  </li>
-  <li>
-      <a class="item" href="#activity">Activity</a>
-  </li>
-  <li>
-      <a class="item" href="#portfolio">Portfolio</a>
-  </li>
-  <li>
-      <a class="item" href="#team">Team</a>
-  </li>
-  <li>
-      <a class="item" href="problem_crawler_for_SCCC_boj/src/sccc_solved_problem.html">Solved Problem</a>
-  </li>
-  <li>
-      <a class="item" href="https://www.acmicpc.net/group/543">BOJ Group</a>
-  </li>
-  <li>
-      <a class="item" href="#contact">Contact</a>
-  </li>
-</div>
-<button type="button" class="ui black big right attached fixed button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-</button>
-{% comment %} {% for my_page in site.pages %}
-  {% if my_page.active %}
-    <li>
-      <a href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
-    </li>
-  {% endif %}
-{% endfor %} {% endcomment %}
+<div class="animation">
+        <div class="container">
+            <div class="character">
+                S
+            </div>
+            <svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+                <circle cx="170" cy="170" r="170" stroke="#4B82C4"/>
+                <circle cx="170" cy="170" r="140" stroke="#FFD619"/>
+                <circle cx="170" cy="170" r="115" stroke="#B22814"/>
+            </svg>
+        </div>
+    </div>
+    <div class="main-header">
+        <div>
+          <a href="/">
+            <div class="falling-text-wrapper">
+                <div class="not-falling-text">
+                    SCCC
+                </div>
+            </div>
+            <div class="appearing-text-wrapper">
+                <div class="not-appearing-text">
+                    Soongsil Computing Contest Club
+                </div>
+            </div>
+          </a>
+        </div>
+    </div>

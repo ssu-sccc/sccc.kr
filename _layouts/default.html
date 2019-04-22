@@ -7,14 +7,13 @@ layout: compress
   {% include head.html %}
 
   <body>
-    <div id="shadow"></div>
-
+    {% include sidebar.html %}
+    <div class="default-wrapper home-page ui contianer">
       {% include header.html %}
-      {% include aside.html %}
-
-    <main class="content-wrapper main-content">
-      {{ content }}
-    </main>
+      <main class="content-wrapper main-content">
+        {{ content }}
+      </main>
+    </div>
 
     {% include footer.html %}
 

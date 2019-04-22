@@ -1,4 +1,50 @@
+
 .solution {
-    max-width: 900px;
+    max-width: 860px;
     margin: 0 auto;
+}
+
+.author-wrapper {
+    text-align: left;
+}
+
+.algorithm-tags {
+    padding-bottom: 1em;
+}
+
+.default-wrapper {
+
+    .main-header {
+        display: table;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        // background: url($baseurl + '/assets/images/background1.jpg') no-repeat center center scroll;
+        background: #183442;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        height: calc(40vh);
+
+        .not-falling-text {
+            margin-top: 16vh;
+            font-size: 5.8em;
+            color: white;
+            text-align: center;
+        }
+
+        .not-appearing-text {
+            margin-top: 5vh;
+            font-size: 0.9em;
+            color: white;
+            text-align: center;
+        }
+    }
+
+    .solution-list {
+        text-align: right;
+        font-size: 1.2em;
+        margin-bottom: 1em;
+    }
 }

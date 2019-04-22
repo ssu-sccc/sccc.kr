@@ -1,7 +1,15 @@
 ---
-layout: home
+layout: default
 ---
 <article class="solution">
+  
+  {% if page.title != "Solutions" %}
+  <div class="solution-list">
+    <a href="{{ site.baseurl }}/solutions">
+      <i class="fa fa-list"></i> 솔루션 목록
+    </a>
+  </div>
+  {% endif %}
 
   <h1 class="post-title">{{ page.title }}</h1>
 
@@ -10,8 +18,15 @@ layout: home
 
     {% if page.author %}
       &nbsp;/&nbsp;
-      <span>{{ page.author }}</span>
+      <span>@{{ page.author }}</span>
     {% endif %}
+    <div class="algorithm-tags">
+    {% for tag in page.tags %}
+      <div class="ui label">
+        {{ tag | downcase }}
+      </div>
+    {% endfor %}
+    </div>
   </p>
 
   <div class="post-content">
@@ -33,5 +48,13 @@ layout: home
     {% endif %}
 
   </div>
+
+  {% if page.title != "Solutions" %}
+  <div class="solution-list">
+    <a href="{{ site.baseurl }}/solutions">
+      <i class="fa fa-list"></i> 솔루션 목록
+    </a>
+  </div>
+  {% endif %}
 
 </article>

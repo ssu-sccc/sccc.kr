@@ -139,7 +139,7 @@
     .content-wrapper {
         width: $content-wrapper-width;
         max-width: $article-max-width;
-        margin-left: $post-margin-left;
+        margin: 0 auto;
     }
     main {
         padding-top: 1em;

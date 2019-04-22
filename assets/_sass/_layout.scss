@@ -193,7 +193,14 @@ a {
 * Article
 * ========================================================================== */
 main {
-  padding-top: 3em;
+  @media ( max-width: 768px ) {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  @media ( min-width: 769px ) {
+    padding-top: 4em;
+    padding-bottom: 4em;
+  }
 }
 
 .index-page {
@@ -208,7 +215,7 @@ main {
 }
 
 article {
-  padding: 2em 1em;
+  padding: 1em 1em;
   img,
   embed,
   object,
@@ -239,10 +246,10 @@ article {
 }
 
 .post-meta {
-  padding-bottom: .5em;
+  padding-bottom: .2em;
   text-transform: uppercase;
   color: #b9b9b9;
-  font-size: 70%;
+  font-size: 85%;
   font-weight: bold;
   font-family: 'Roboto Condensed', sans-serif;
   a, a:hover, a:focus, a:visited {
@@ -283,8 +290,7 @@ article {
 .date {
   text-align: right;
   float: right;
-  color: #d4d4d4;
-  display: none;
+  color: #888888;
 }
 
 

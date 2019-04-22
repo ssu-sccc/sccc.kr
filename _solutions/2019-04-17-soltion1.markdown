@@ -5,7 +5,7 @@ crawlertitle: "USACO January 2008 Silver 3: Telephone Lines"
 summary: "USACO January 2008 Silver 3: Telephone Lines 을 풀어봅니다."
 date:   2019-04-16 19:03:48 +0900
 categories: solutions
-tags: ['algorithm']
+tags: ['graph', 'parametric search']
 author: wookjae
 ---
 ## 문제

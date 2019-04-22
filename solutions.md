@@ -1,18 +1,11 @@
 ---
-layout: home
+layout: solution
 title: Solutions
 permalink: /solutions/
 active: Soutions
 ---
 
-SCCC에서 해결한 문제들을 모아놓은 곳입니다. [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-[jekyll-organization]: https://github.com/jekyll
-
+SCCC에서 해결한 문제들의 솔루션을 모읍니다. 회원 누구나 pull-request를 날려서 추가할 수 있습니다.
 
 {% for solution in site.solutions %}
   <article class="index-page solution">
@@ -21,6 +14,11 @@ You can find the source code for Jekyll at GitHub:
       <span class="date">{{ solution.lastmod | date: "%d-%m-%Y"  }}</span>
     {% else %}
       <span class="date">{{ solution.date | date: "%d-%m-%Y"  }}</span>
+    {% endif %}
+    {% if solution.author %}
+      <div class="author-wrapper">
+        <span class="author">written by @{{ solution.author }}</span>
+      </div>
     {% endif %}
   </article>
 {% endfor %}
