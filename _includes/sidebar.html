@@ -4,11 +4,12 @@
             <img class="sidbar-logo" src={{ site.baseurl | append: "/assets/images/logos/sccc.png" }}>
         </a>
     </div>
-    <a class="item" href={{ site.baseurl | append: "#services"}}>Who we are</a>
-    <a class="item" href={{ site.baseurl | append: "#activity"}}>Activity</a>
-    <a class="item" href={{ site.baseurl | append: "#portfolio"}}>Portfolio</a>
-    <a class="item" href={{ site.baseurl | append: "#team"}}>Team</a>
-    <a class="item" href="https://www.acmicpc.net/group/543">BOJ Group</a>
+    <a class="item" href={{ site.url | append: "#services"}}>Who we are</a>
+    <a class="item" href={{ site.url | append: "#activity"}}>Activity</a>
+    <a class="item" href={{ site.url | append: "#portfolio"}}>Portfolio</a>
+    <a class="item" href={{ site.url | append: "#Graduated"}}>Graduated</a>
+    <a class="item" href={{ site.url | append: "/scon/2019"}}>2019 SCON</a>
+    <a class="item" href="https://www.acmicpc.net/group/543" target="_blank">BOJ Group</a>
     {% for my_page in site.pages %}
         {% if my_page.active %}
             <a class="item" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
