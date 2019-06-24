@@ -252,6 +252,34 @@ permalink: /index.html
         </div>
     </section>
 
+     <section id="solutions" class="bg-light-gray">
+        <h2 class="ui center aligned header">Solutions</h2>
+        <h3 class="ui center aligned header">SCCC가 푼 문제들의 풀이를 만나보세요!</h3>
+        <h3 class="ui center aligned header">회원 누구나 풀이 저장소에 기여할 수 있습니다</h3>
+        <div class="ui center aligned header">
+            <button class="ui button">
+                <a href="/solutions">더 보러가기</a>
+            </button>
+        </div>
+        <div class="container">
+            {% for solution in site.solutions limit:3 %}
+            <article class="index-page solution" data-aos="fade-up">
+                <h2><a href="{{ site.baseurl | append: solution.url }}">{{ solution.title }}</a></h2>
+                {% if solution.lastmod %}
+                <span class="date">{{ solution.lastmod | date: "%d-%m-%Y"  }}</span>
+                {% else %}
+                <span class="date">{{ solution.date | date: "%d-%m-%Y"  }}</span>
+                {% endif %}
+                {% if solution.author %}
+                <div class="author-wrapper">
+                    <span class="author">written by @{{ solution.author }}</span>
+                </div>
+                {% endif %}
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
     <!-- Team Section -->
     <section id="Graduated" class="bg-light-gray">
         <h2 class="ui center aligned header">Graduated</h2>
