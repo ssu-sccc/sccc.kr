@@ -22,4 +22,3 @@ SCCC에서 해결한 문제들의 솔루션을 모읍니다. 회원 누구나 pu
     {% endif %}
   </article>
 {% endfor %}
-
