@@ -1,7 +1,7 @@
 ---
 layout: solution
-title:  "14466. 소가 길을 건너간 이유 4"
-crawlertitle: "14466. 소가 길을 건너간 이유 4"
+title:  "14464. 소가 길을 건너간 이유 4"
+crawlertitle: "14464. 소가 길을 건너간 이유 4"
 summary: "BOJ 소가 길을 건너간 이유 4"
 date:   2019-06-30 00:00:00 +1800
 categories: solutions
@@ -10,7 +10,7 @@ author: chogahui05
 ---
 ## 문제
 
-[14466. 소가 길을 건너간 이유 4](https://www.acmicpc.net/problem/14466)  
+[14464. 소가 길을 건너간 이유 4](https://www.acmicpc.net/problem/14464)  
 
 ## 문제 요약
 
