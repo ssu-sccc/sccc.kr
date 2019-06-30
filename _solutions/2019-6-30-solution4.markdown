@@ -1,0 +1,123 @@
+---
+layout: solution
+title:  "14466. 소가 길을 건너간 이유 4"
+crawlertitle: "14466. 소가 길을 건너간 이유 4"
+summary: "BOJ 소가 길을 건너간 이유 4"
+date:   2019-06-30 00:00:00 +1800
+categories: solutions
+tags: ['greedy', 'sort']
+author: chogahui05
+---
+## 문제
+
+[14466. 소가 길을 건너간 이유 4](https://www.acmicpc.net/problem/14466)  
+
+## 문제 요약
+
+소는 A(i)초부터 B(i)초까지 길을 건널 수 있다.
+
+닭은 T(j)초에만 소를 도와줄 수 있다.
+
+소는 최대 한 마리의 닭에게만 도움을 받을 수 있고, 닭 역시 최대 한 마리의 소만 도와줄 수 있다.
+
+도움을 받을 수 있는 소가 최대 몇 마리인가?
+
+## 풀이
+
+먼저 닭이 도와줄 수 있는 시간을 오름차순으로 정렬하자.
+
+그리고 소가 도움을 받을 수 있는 시간을 [A(i),B(i)]로 표현할 수 있을 때, A(i)를 오름차순으로 정렬하자.
+
+닭이 도와줄 수 있는 시간을 T라고 하자. 그리고, 그 때 건널 수 있는 소들이 2마리가 있다고 해 보자.
+
+한 소는 [A(1), B(1)]이고 다른 한 소는 [A(2), B(2)]이다.
+
+그렇다면 A(1)<=T<=B(1)을 만족하고, A(2)<=T<=B(2)를 만족한다. 우리는 여기에서 어떤 소를 선택해야 할까?
+
+B(1)<B(2)라고 해 보자. 그 다음 닭이 도와줄 수 있는 시간을 T'이라고 한다면, T<=T'을 만족한다.
+
+만약에 소 [A(1), B(1)]을 선택했다고 해 보자. 그러면
+
+ T  ... B(1) B(1)+1 ... B(2) B(2)+1 ...
+-1  ...  -1     0   ...  0     0    ...
+
+시간 [T,B(1)]에 대해서, 건널 수 있는 소가 하나 줄어든다. 그런데, 소 [A(2), B(2)]를 선택했다면
+
+ T  ... B(1) B(1)+1 ... B(2) B(2)+1 ...
+-1  ...  -1     -1   ... -1     0   ...
+
+시간 [T,B(2)]에 대해서, 건널 수 있는 소가 하나 줄어든다. 
+
+시간 (B(1), B(2)]에 도와줄 수 있는 닭의 입장에서는, 소 1마리를 선택할 기회를 잃어버리게 되는 셈이다.
+
+따라서, 시간 T일 때 선택할 수 있는 후보해가 여러개 있다면, B(i)가 작은 소를 택하는 게 이득임을 알 수 있다.
+
+그러면 이것을 어떻게 구현할까? T가 들어온 경우에, position부터 A(i)<=T인 데이터를 모두 넣는다. 이 때 B(i)값을 넣어야 한다. 
+
+이는 코드의 #1에 구현되어 있다.
+
+다음에 B(i)<=T인 데이터를 자료구조에서 모두 뺀다. 이는 코드의 #2에 구현되어 있다.
+
+그 다음에, 현재 문제의 자료구조에 있는 것들 중 가장 작은 값을 가져 온다. 
+
+이는 후보해가 여러개 있다면 B(i)가 가장 작은 것을 택하는 것을 구현한 것이다. 이는 #3에 구현되어 있다.
+
+삽입, 삭제가 일어나고 우선 순위가 가장 빠른 것을 찾아야 하는 자료구조는 set, priority_queue 등이 있다.
+
+이 중에서 set을 이용하기 위해서는 B(i)값이 중복될 수 있으므로, multiset을 이용하는 게 좋다.
+
+
+## 코드
+
+```cpp
+//made by chogahui05
+#include <stdio.h>
+#include <algorithm>
+#include <set>
+using namespace std;
+struct Moo
+{
+    int s,e;
+};
+typedef struct Moo Moo;
+bool cmp(Moo a,Moo b);
+Moo arr[20000];
+int cc[20000];
+multiset <int> ss;
+int main(void)
+{
+    int n,m,p=0,ans=0; scanf("%d%d",&n,&m);
+    for(int i=0;i<n;i++)
+        scanf("%d",&(cc[i]));
+    for(int i=0;i<m;i++)
+        scanf("%d%d",&(arr[i].s),&(arr[i].e));
+    sort(arr,arr+m,cmp); sort(cc,cc+n);
+    for(int i=0;i<n;i++)
+    {
+        //일단 시작점이 cc[i]보다 작거나 같은 거 input -- #1
+        for(int ti=p;ti<m;ti++,p++)
+        {
+            if(arr[ti].s>cc[i])
+                break;
+            ss.insert(arr[ti].e);
+        }
+        //다음 끝점이 cc[i]보다 작은 거 out -- #2
+        while(!ss.empty())
+        {
+            if((*ss.begin())>=cc[i])
+                break;
+            ss.erase(ss.begin());
+        }
+        //#3
+        if(ss.size())
+        {
+            ss.erase(ss.begin()); ans++;
+        }
+    }
+    printf("%d\n",ans);
+}
+bool cmp(Moo a,Moo b)
+{
+    return a.s<b.s;
+}
+```
