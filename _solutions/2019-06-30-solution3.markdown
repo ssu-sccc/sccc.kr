@@ -1,0 +1,177 @@
+---
+layout: solution
+title:  "12858. Range GCD"
+crawlertitle: "12858. Range GCD"
+summary: "BOJ Range GCD"
+date:   2019-06-30 00:00:00 +0900
+categories: solutions
+tags: ['segment tree', 'gcd', 'number theory']
+author: cake_monotone
+---
+## 문제
+
+[12858. Range GCD](https://www.acmicpc.net/problem/12858)  
+
+## 문제 요약
+
+어떠한 배열이 주어진다!
+
+이 배열의 특정한 구간에 어떤 양수를 더하거나, 구간의 GCD를 구해 출력한다.
+
+## 풀이
+
+참 싫다. 특정 구간 안의 GCD를 구하는 것만 해도 힘들고 귀찮은데, 심지어 덧셈까지 마구마구 하라구 한다._.)
+
+우선 필요한 자료구조 및 알고리즘은 다음과 같다. 먼저 공부한 후 돌아오자.
+
+* 세그먼트 트리 with lazy propagation
+* 유클리드 호제법 (gcd 구할 때 쓰는 그것, 증명도 보고 오자!)
+
+당신은 위 자료구조, 알고리즘을 마스터했기 때문에, 구간내 GCD와 합을 자유롭게 구할 수 있다!
+
+자 이제 그럼 문제 해결을 위한 핵심적인 등식을 살펴보자.
+
+> gcd(a+d, b+d) = gcd(a+d, b-a)
+
+위 식을 이해하기 위해서는 먼저 다음과 같은 식을 이해해야한다.
+
+> gcd(a, b) = gcd(a, b-a) = gcd(b, a%b)
+
+유클리드 호제법 증명을 응용하면, 어렵지 않게 위 식을 바로 얻을 수 있다. 이를 더 확장시켜서 생각해보면
+
+> gcd(a+d, b+d, c+d, e+d ...) = gcd(a+d, a-b, b-c, c-e ... )
+> = gcd(a+d, gcd(a-b, b-c, c-e, ...)) 
+
+이렇게 식을 정리하면 무엇이 좋을까? 우선 이미 gcd한 구간을 업데이트하기가 어렵다는걸 생각해보자. 세그먼트 트리에서 미리 gcd 값을 계산해 저장해봤자, 더하기가 일어나는 순간 전부 수포로 돌아간다. 따라서 우리는 더하기와, GCD 연산을 분리할 필요가 있다.
+
+바로 그걸 가능하게 해주는 식이 위에 등장한 등식이다. a+d와 gcd(a-b, b-c...)를 따로 관리를 하다가, 출력이 필요할 때만 GCD 해주면 해결된다.
+
+이를 구현하는 방식은 여러가지가 있겠지만, 세그먼트 트리 노드의 첫번째 원소, 마지막 원소, gcd 값을 갱신하는 방법을 사용하였다.
+
+## 코드
+
+```cpp
+#include<bits/stdc++.h>
+
+using namespace std;
+using lint = long long int;
+
+const int MAX_N = 1e5;
+const int MAX_TREE_N = (1 << 18);
+static_assert(MAX_N <= MAX_TREE_N, "뾱");
+
+namespace gcd {
+	struct node {
+		lint gcd_val;
+		lint fir, last;
+		lint prop;
+	};
+	node tree[MAX_TREE_N*2];
+
+	void propagate(int nidx, int nl, int nr) {
+		if (tree[nidx].prop == 0)
+			return;
+
+		if (nl != nr) {
+			tree[nidx << 1].prop += tree[nidx].prop;
+			tree[nidx << 1 | 1].prop += tree[nidx].prop;
+		}
+
+		tree[nidx].fir += tree[nidx].prop;
+		tree[nidx].last += tree[nidx].prop;
+
+		tree[nidx].prop = 0;
+	}
+
+	node unite(node& a, node& b) {
+		node ret;
+		
+		ret.fir = a.fir;
+		ret.last = b.last;
+		ret.gcd_val = __gcd(a.gcd_val, b.gcd_val);
+		ret.gcd_val = __gcd(ret.gcd_val, abs(a.last-b.fir));
+		ret.prop = 0;
+
+		return ret;
+	}
+
+	void update(lint x, int l, int r, int nl = 0, int nr = MAX_TREE_N-1, int nidx = 1) {
+		propagate(nidx, nl, nr);
+
+		if (l <= nl && nr <= r) {
+			tree[nidx].prop += x;
+			propagate(nidx, nl, nr);
+			return;
+		}
+
+		if (r < nl || nr < l)
+			return;
+
+		int mid = (nl + nr) / 2;
+
+		update(x, l, r, nl, mid, nidx << 1);
+		update(x, l, r, mid+1, nr, nidx << 1 | 1);
+
+		tree[nidx] = unite(tree[nidx<<1], tree[nidx<<1|1]);
+
+		return;
+	}
+
+	bool query(int l, int r, node &ret, int nl = 0, int nr = MAX_TREE_N-1, int nidx = 1) {
+		if (r < nl || nr < l)
+			return false;
+
+		propagate(nidx, nl, nr);
+
+		if (l <= nl && nr <= r) {
+			ret = tree[nidx];
+			return true;
+		}
+
+		int mid = (nl + nr) / 2;
+		node resl, resr;
+		
+		bool ql = query(l, r, resl, nl, mid, nidx << 1);
+		bool qr = query(l, r, resr, mid+1, nr, nidx << 1 | 1);
+
+		if (ql && qr) 
+			ret = unite(resl, resr);
+		else if (ql)
+			ret = resl;
+		else if (qr)
+			ret = resr;
+		else
+			return false;
+
+		return true;
+	}
+};
+
+int main(void) {
+	ios_base::sync_with_stdio(false), cin.tie(NULL);
+	int N;	cin >> N;
+
+	for (int i = 0; i < N; i ++) {
+		lint val; cin >> val;
+		gcd::update(val, i, i);
+	}
+
+	int T;	cin >> T;
+
+	while (T --) {
+		lint val; int l, r;
+		cin >> val >> l >> r;
+		l --, r --;
+
+		if (val == 0) {
+			gcd::node res;
+			gcd::query(l, r, res);
+
+			cout << __gcd(res.fir, res.gcd_val) << '\n';
+		}
+		else {
+			gcd::update(val, l, r);
+		}
+	}
+}
+```
