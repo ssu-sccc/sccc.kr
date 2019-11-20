@@ -66,4 +66,5 @@ permalink: /awards/
 	<tr><td>2016(대전)</td><td>11-동상</td><td>BuzzerBeater</td><td>@sys7961</td><td>@choiking10</td><td>황O영(12)</td></tr>
 	<tr><td>2017(대전)</td><td>12-은상</td><td>Today_Is_YoungJeong_Birthday</td><td>@sys7961</td><td>@hyo123bin</td><td>@skdudn321</td></tr>
 	<tr><td>2018(서울)</td><td>13-특별상</td><td>Graduation Gazua!!!</td><td>@sys7961</td><td>@hyo123bin</td><td>@skdudn321</td></tr>
+	<tr><td>2019(서울)</td><td>12-특별상(PUBG)</td><td>bonin 1st sangsang-ham</td><td>@wookje</td><td>@edenooo</td><td>@cake_monotone</td></tr>
 </tbody></table>
