@@ -1,6 +1,6 @@
 ---
-layout: scon
-title: SCCC History
+layout: awards
+title: SCCC Awords History
 permalink: /awards/
 ---
 
