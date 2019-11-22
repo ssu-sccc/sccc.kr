@@ -1,5 +1,5 @@
 ---
-layout: scon
+layout: newbie
 title: 2019 NEWBIE
 permalink: /newbie/2019/
 ---
