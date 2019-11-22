@@ -75,14 +75,14 @@ permalink: /newbie/2019/
 위는 출제될 수 있는 문제의 도메인이며, 일부 유형이 출제되지 않을 수 있음  
 
 ### 출제진
-* 출제진 구성: 2019년도 신입회원 중 2019 ACM-ICPC 본선 진출자 및 수상자  
+* 출제진 구성: 2019년도 신입회원 중 2019 ACM-ICPC Seoul Regional 본선 진출자 및 수상자  
 * 출제 관리 및 문제 검수: 회장 권욱제  
   
   
 ---  
 
 ## 대회 환경
-* 기본 제공 IDE : Visual Studio 2017 Community, Eclipse (**이외의 IDE는 당일 직접 설치하여야 함**)
+* 기본 제공 IDE: Visual Studio 2017 Community, Eclipse (**이외의 IDE는 당일 직접 설치하여야 함**)
 * 사용가능 언어: **C/C++, Java**
 * 개인마다 대회 전용 계정이 지급
 * DomJudge의 채점 시스템을 사용함
@@ -100,8 +100,6 @@ permalink: /newbie/2019/
 * 대회 사이트 및 공식 Reference를 제외한 일체의 인터넷 사용 금지
   * [C/C++ Reference site](http://en.cppreference.com/w/)
   * [Java Api site](https://docs.oracle.com/javase/7/docs/api/)
-  * [Python 3.7.3 documentation](https://docs.python.org/3/)
-  
 * 컴퓨터에 프로그램 작성에 사용할 수 있는 함수, 라이브러리, 예제 코드를 미리 작성해 둔 경우 실격처리
 * 이동 가능한 저장매체(USB 등) 사용 금지
 * 자동으로 소스코드를 생성해주는 프로그래밍 도구(lex, yacc 등) 사용 금지
