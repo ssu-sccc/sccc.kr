@@ -1,6 +1,7 @@
 /*
 * Base Styles
 * ========================================================================== */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
 
 .center-wrapper {
     max-width: $break-point;
@@ -11,8 +12,11 @@
     display: none;
 }
 
+* {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
 body {
-    font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif' !important;
     width: 100%;
     height: 100%;
     background: #fdfdfd;
@@ -31,7 +35,6 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Roboto Condensed', sans-serif;
     font-weight: bold;
     a:link,
     a:hover,

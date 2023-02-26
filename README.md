@@ -1,6 +1,9 @@
-# sccc-homepage
-SCCC homepage with github page
+# sccc.kr
+SCCC homepage with github pages (jekyll)
 
-ssu-sccc.github.io 혹은 sccc.kr 로 접근하실 수 있습니다.
-
-메인 페이지와 솔루션 정리 페이지로 구성되어 있습니다.
+## Run in Local
+* Require Ruby 2.7 (3.0 is not supported)
+```bash
+bundle install
+bundle exec jekyll serve
+```

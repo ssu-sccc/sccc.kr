@@ -4,7 +4,7 @@ title: SCCC Awords History
 permalink: /awards/
 ---
 
-<h2> SCCC ACM-ICPC Awards</h2>
+<h2> SCCC ICPC Awards</h2>
 <table class="ui celled table">
 <thead>
 	<tr><th>대회년도</th><th>순 위</th><th>팀 명</th><th colspan="3">팀원</th></tr></thead><tbody>

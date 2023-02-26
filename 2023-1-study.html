@@ -1,0 +1,163 @@
+---
+layout: study
+title: 2023학년도 1학기 스터디
+permalink: /2023-1-study/
+---
+
+<div>
+	<h1 style="margin-top: 1rem;">
+		2023학년도 1학기 스터디
+	</h1>
+	<div style="margin: 1rem;">
+		이번 학기에는 2개의 스터디가 진행됩니다.
+	</div>
+	<div style="width: 100%; height: 1px; background: rgba(0, 0, 0, .1); margin: 2rem 0;"></div>
+	<div class="btn-group" style="font-size: 1.1rem; margin-bottom: 2rem;">
+		<button id="clang-btn" style="margin-right: .5rem;" class="active btn" type='button'>C언어 그룹</button>
+		<button id="class-btn" type='button' class="btn">클래스 그룹</button>
+	</div>
+	<div id="clang-type">
+		<h2>
+			C언어 그룹
+		</h2>
+		<ul>
+			<li>
+				개요
+				<ul>
+					<li>
+						<b>알고리즘 문제 풀이에 앞서, C언어 문법 학습을 목표로 하는 스터디 그룹입니다.</b>
+					</li>
+					<li>그룹 방식으로 4개의 그룹 운영</li>
+					<li>그룹당 강사 1명, 수강생 3~5명으로 총 4개의 그룹 운영</li>
+				</ul>
+			</li>
+			<li>
+				수강 대상
+				<ul>
+					<li>신입생 전형 가입자</li>
+				</ul>
+			</li>
+			<li>
+				일정
+				<ul>
+					<li>
+						(3-5주차) 3/16 ~ 4/5 : <a href="https://codeup.kr/problemsetsol.php?psid=23" target="_blank">CodeUp 기초 100제</a>
+					</li>
+					<li>
+						(6-8주차) 4/6 ~ 4/26 : 중간고사 기간
+					</li>
+					<li>
+						(9-10주차) 4/27 ~ 5/10 : 별 찍기, 배열 연습
+					</li>
+					<li>
+						(11-13주차) 5/11 ~ 5/31 : <a href="https://solved.ac/class/2e" target="_blank">solved.ac 클래스 2 Essential</a>
+					</li>
+					<li>
+						(여름방학) : 기초 알고리즘 강의 (온라인)
+					</li>
+				</ul>
+			</li>
+			<li>기초 100제 등 문제들은 미리 풀어오셔도 됩니다.</li>
+			<li>
+				C언어 스터디 개별 그룹 일정
+				<ul>
+					<li>컴퓨터학부 1학년 분반(가/나반 각각 2개) 시간표에 맞추어 정해졌습니다.</li>
+					<li>1. (가반) 화요일 오후 4시 30분 ~ 5시 30분</li>
+					<li>2. (가반) 금요일 오후 3시 ~ 4시</li>
+					<li>3. (나반) 수요일 오후 4시 30분 ~ 5시 30분</li>
+					<li>4. (나반) 목요일 오후 3시 ~ 4시</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id="class-type" style="display: none;">
+		<h2>
+			클래스 그룹
+		</h2>
+		<ul>
+			<li>
+				개요
+				<ul>
+					<li>
+						<b><a href="https://solved.ac" target="_blank">solved.ac</a>의 <a href="https://solved.ac/class" target="_blank">CLASS</a>를 취득하는 스터디 그룹입니다.</b>
+					</li>
+					<li>그룹 방식으로 4개의 그룹 운영</li>
+					<li>그룹당 강사 1명, 수강생 3~5명으로 총 4개의 그룹 운영</li>
+				</ul>
+			</li>
+			<li>
+				수강 대상
+				<ul>
+					<li><b>필수 사항</b> : DP, 분할 정복, 그리디, 최단 경로, MST의 개념을 알고 있는 사람</li>
+					<li>일반 전형 가입자</li>
+					<li>기존 부원</li>
+				</ul>
+			</li>
+			<li>
+				일정
+				<ul>
+					<li>
+						(3-4주차) 3/16 ~ 3/29 : <a href="https://solved.ac/class/3e" target="_blank">클래스 3 Essential</a>
+					</li>
+					<li>
+						(5, 9-10주차) 3/30 ~ 4/5, 4/27 ~ 5/10 : <a href="https://solved.ac/class/4e" target="_blank">클래스 4 Essential</a>
+					</li>
+					<li>
+						(11-13주차) 5/11 ~ 5/31 : <a href="https://solved.ac/class/5e" target="_blank">클래스 5 Essential</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				클래스 스터디 개별 그룹 일정
+				<ul>
+					<li>1. 월요일 오후 5시 ~ 6시</li>
+					<li>2. 수요일 오후 6시 ~ 7시</li>
+					<li>3. 목요일 오후 2시 ~ 3시</li>
+					<li>4. 금요일 오후 5시 ~ 6시</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<style>
+	.btn {
+		padding: .7rem 1rem;
+		transition: .2s;
+		color: black;
+	}
+
+	.btn.active {
+		background-color: rgba(0, 0, 0, 1);
+		color: white;
+	}
+</style>
+<script>
+	let clangBtn = document.getElementById('clang-btn');
+	let classBtn = document.getElementById('class-btn');
+
+	clangBtn.onclick = function (event) {
+		let clangType = document.getElementById("clang-type");
+		let classType = document.getElementById("class-type");
+
+		clangType.style.display = "block";
+		classType.style.display = "none";
+
+		clangBtn.classList.add("active");
+		classBtn.classList.remove("active");
+
+		event.preventDefault();
+	};
+	classBtn.onclick = function (event) {
+		let clangType = document.getElementById("clang-type");
+		let classType = document.getElementById("class-type");
+
+		clangType.style.display = "none";
+		classType.style.display = "block";
+
+		clangBtn.classList.remove("active");
+		classBtn.classList.add("active");
+
+		event.preventDefault();
+	};
+</script>
