@@ -1,0 +1,82 @@
+- name: 2022 ICPC Asia Seoul Regional Contest
+  type: ICPC
+  scoreboard: http://static.icpckorea.net/20221119/scoreboard/
+  awardlist: http://icpckorea.org/static/2022%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%83%9D%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EA%B2%BD%EC%8B%9C%EB%8C%80%ED%9A%8C_%EC%88%98%EC%83%81%EA%B2%B0%EA%B3%BC.pdf
+  interview: http://www.comtimes.kr/news/1116
+  team:
+    - name: NLP
+      rank: 5등
+      award: 은상
+      member: chansol, edenooo, jhnah917
+    - name: yangsungjun
+      rank: 34등
+      member: chongin12, egod1537, msphere
+    - name: graduate_sikyojo
+      rank: 45등
+      member: cake_monotone, kati, wookje
+
+- name: 2022 ICPC Asia Seoul Preliminary Contest
+  type: ICPC
+  scoreboard: http://static.icpckorea.net/2022/scoreboard_preliminary/
+  team:
+    - name: NLP
+      rank: 8등
+      award: △
+      member: chansol, edenooo, jhnah917
+    - name: JangHakGeumNyam
+      rank: 22등
+      member: kyo20111, lobo_prix
+    - name: yangsungjun
+      rank: 38등
+      award: △
+      member: chongin12, egod1537, msphere
+    - name: graduate_sikyojo
+      rank: 60등
+      award: △
+      member: cake_monotone, kati, wookje
+
+- name: 2022 UCPC 본선
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/828
+  team:
+    - name: 숭실사이버의대를다니고나의성공시대시작했다
+      rank: 12등
+      award: 5등상
+      member: kyo20111
+    - name: 저희 팀 이름 머함
+      rank: 21등
+      award: 특별상
+      member: chansol, edenooo, jhnah917
+
+- name: 2022 UCPC 예선
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/827
+  team:
+    - name: 숭실사이버의대를다니고나의성공시대시작됐다
+      rank: 14등
+      award: △
+      member: kyo20111
+    - name: 저희 팀 이름 머함
+      rank: 17등
+      award: △
+      member: chansol, edenooo, jhnah917
+
+- name: 2022 현대모비스 알고리즘 경진대회
+  type: Personal
+  team:
+    - name: edenooo
+      rank: 8등
+      award: 우수상
+    - name: jhnah917
+      rank: 23
+      award: 우수상
+
+- name: 2022 SCPC 본선
+  type: Personal
+  team:
+    - name: edenooo
+      rank: 특별상
+    - name: jhnah917
+      rank: 본선 진출
+    - name: kyo20111
+      rank: 본선 진출

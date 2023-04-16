@@ -1,0 +1,83 @@
+---
+layout: awards
+title: SCCC 수상 실적
+permalink: /awards/
+---
+
+<div id="award-btn-group" class="btn-group" style="font-size: 1.1rem; margin-bottom: 2rem;"></div>
+
+{% include award-table.html id='award-2022' award=site.data.award.2022 %}
+{% include award-table.html id='award-2021' award=site.data.award.2021 %}
+{% include award-table.html id='award-2020' award=site.data.award.2020 %}
+{% include award-table.html id='award-2019' award=site.data.award.2019 %}
+{% include award-table.html id='award-2018' award=site.data.award.2018 %}
+{% include award-table.html id='award-2017' award=site.data.award.2017 %}
+{% include award-table.html id='award-2016' award=site.data.award.2016 %}
+
+<div id=award-prev>
+  <h3>~ 2015 ICPC 성적</h3>
+  <table>
+    <tr> <th>대회</th> <th>#</th> <th>팀</th> <th>참가자</th> </tr>
+    {% for contest in site.data.award.prev %}
+        {% for team in contest.team %}
+          <tr>
+            {% if forloop.index == 1 %}
+              <th rowspan='{{ contest.count }}'>{{ contest.year }} {{ contest.site }}</th>
+            {% endif %}
+            <td> {{ team.rank }} {% if team.award %} ({{ team.award }}) {% endif %} </td>
+            <td>{{ team.name }}</td>
+            <td>{{ team.member }}</td>
+        </tr>
+        {% endfor %}
+    {% endfor %}
+  </table>
+</div>
+
+<style>
+    .btn {
+        padding: .7rem 1rem;
+        transition: .2s;
+        color: black;
+    }
+
+    .btn.active {
+        background-color: rgba(0, 0, 0, 1);
+        color: white;
+    }
+</style>
+
+<script>
+    const history_list = ['2022', '2021', '2020', '2019', '2018', '2017', '2016', 'prev'];
+    let btn_group = document.getElementById('award-btn-group');
+
+    let btn = [], div = [];
+
+    let inner_content = '';
+    for(let i=0; i<history_list.length; i++){
+        inner_content += `<button id="btn-${history_list[i]}" style="margin-right: .5rem;" class="btn" type="button">${history_list[i] == 'prev' ? '2015년 이전' : history_list[i] + '년'}</button>\n`;
+    }
+    btn_group.innerHTML = inner_content;
+
+    for(let i=0; i<history_list.length; i++){
+        btn.push(document.getElementById(`btn-${history_list[i]}`));
+        div.push(document.getElementById(`award-${history_list[i]}`));
+    }
+
+    for(let i=0; i<btn.length; i++){
+        btn[i].onclick = function(event){
+            let year = this.id.substr(this.id.length-4, 4);
+            for(let j=0; j<history_list.length; j++){
+                if(history_list[j] == year){
+                    btn[j].classList.add('active');
+                    div[j].style.display = 'block';
+                }
+                else{
+                    btn[j].classList.remove('active');
+                    div[j].style.display = 'none';
+                }
+            }
+            event.preventDefault();
+        }
+    }
+    btn[0].onclick();
+</script>

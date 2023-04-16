@@ -1,0 +1,38 @@
+- name: 2020 ICPC Asia Seoul Regional Contest
+  type: ICPC
+  scoreboard: http://static.icpckorea.net/2020/scoreboard_terpin/
+  awardlist: http://icpckorea.org/static/2020-%EC%88%98%EC%83%81%EC%9E%90-%EB%AA%85%EB%8B%A8-3.pdf
+  team:
+    - name: 181920
+      rank: 8등
+      award: 동상
+      member: aeren, edenooo, kyo20111
+    - name: DHOJJANG
+      rank: 32등
+      member: king7282
+
+- name: 2020 ICPC Asia Seoul Preliminary Contest
+  type: ICPC
+  scoreboard: http://icpckorea.org/2020/preliminary/scoreboard/dbda78f0e4/
+  team:
+    - name: 181920
+      rank: 7등
+      award: △
+      member: aeren, edenooo, kyo20111
+    - name: DHOJJANG
+      rank: 61등
+      award: △
+      member: king7282
+
+- name: 2020 SCPC 본선
+  type: Personal
+  team:
+    - name: edenooo
+      rank: 7등
+      award: 3등상
+    - name: aeren
+      rank: 23등
+      award: 5등상
+    - name: kyo20111
+      rank: 35등
+      award: 5등상

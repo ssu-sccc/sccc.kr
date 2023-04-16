@@ -1,0 +1,48 @@
+- name: 2019 ICPC Asia Seoul Regional Contest
+  type: ICPC
+  scoreboard: http://icpckorea.org/2019/regional/scoreboard/
+  team:
+    - name: bonin 1st sangsang-ham
+      rank: 21등
+      award: 특별상
+      member: cake_monotone, edenooo, wookje
+    - name: cake&fork
+      rank: 29등
+      member: hansc0320, king7282, tony9402
+    - name: Correct Answer!
+      rank: 63등
+      member: chongin12, he1fire, logeon0725
+
+- name: 2019 ICPC Asia Seoul Preliminary Contest
+  type: ICPC
+  scoreboard: http://icpckorea.org/2019/preliminary/scoreboard/
+  team:
+    - name: bonin 1st sangsang-ham
+      rank: 31등
+      award: △
+      member: cake_monotone, edenooo, wookje
+    - name: cake&fork
+      rank: 35등
+      award: △
+      member: hansc0320, king7282, tony9402
+    - name: Correct Answer!
+      rank: 59등
+      award: △
+      member: chongin12, he1fire, logeon0725
+
+- name: 2019 UCPC 본선
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/450
+  team:
+    - name: 내니까 믿으니까 개.잘.하.니.까
+      rank: 20등
+      member: cake_monotone, edenooo, wookje
+
+- name: 2019 UCPC 예선
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/449
+  team:
+    - name: 내니까 믿으니까 개.잘.하.니.까
+      rank: 23등
+      award: △
+      member: cake_monotone, edenooo, wookje

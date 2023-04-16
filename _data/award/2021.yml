@@ -1,0 +1,78 @@
+- name: 2021 ICPC Asia Seoul Regional Contest
+  type: ICPC
+  scoreboard: http://static.icpckorea.net/2021/scoreboard_regional/
+  awardlist: http://icpckorea.org/static/2021%EC%88%98%EC%83%81%EC%9E%90-%EB%AA%85%EB%8B%A8.pdf
+  interview: http://www.comtimes.kr/news/1096
+  team:
+    - name: LongestPathToWF
+      rank: 8등
+      award: 동상, WF 진출
+      member: aeren, edenooo, kyo20111
+    - name: AC-Complete
+      rank: 24등
+      member: enochjung, jhnah917, lobo_prix
+    - name: Nutella
+      rank: 35등
+      member: logeon0725, tony9402
+
+- name: 2021 ICPC Asia Seoul Preliminary Contest
+  type: ICPC
+  scoreboard: http://static.icpckorea.net/2021/scoreboard_preliminary/
+  team:
+    - name: LongestPathToWF
+      rank: 9등
+      award: △
+      member: aeren, edenooo, kyo20111
+    - name: AC-Complete
+      rank: 29등
+      award: △
+      member: enochjung, jhnah917, lobo_prix
+    - name: Nutella
+      rank: 44등
+      award: △
+      member: logeon0725, tony9402
+
+- name: 2021 UCPC 본선
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/670
+  awardlist: https://github.com/ucpcc/2021/blob/main/assets/UCPC_2021_result.pdf
+  team:
+    - name: longest path to victory
+      rank: 8등
+      award: 4등상
+      member: aeren, edenooo, kyo20111
+    - name: AC-complete
+      rank: 17등
+      award: 특별상
+      member: enochjung, jhnah917, lobo_prix
+
+- name: 2021 UCPC 예선
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/668
+  team:
+    - name: longest path to victory
+      rank: 8등
+      award: △
+      member: aeren, edenooo, kyo20111
+    - name: AC-complete
+      rank: 17등
+      award: △
+      member: enochjung, jhnah917, lobo_prix
+
+- name: 2021 SCPC 본선
+  type: Personal
+  team:
+    - name: kyo20111
+      rank: 2등
+      award: 2등상
+    - name: edenooo
+      rank: 22등
+      award: 5등상
+    - name: jhnah917
+      rank: 본선 진출
+
+- name: 2021 현대모비스 알고리즘 경진대회
+  type: Personal
+  team:
+    - name: jhnah917
+      rank: 5등상

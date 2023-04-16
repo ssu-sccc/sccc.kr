@@ -1,0 +1,308 @@
+- year: 2015
+  site: 대전
+  count: 1
+  team:
+    - name: Coding_Amolang
+      rank: 10
+      award: 동상
+      member: sys7961, 박O우(11), 김O빈(14)
+
+- year: 2014
+  site: 대전
+  count: 1
+  team:
+    - name: Snorlax
+      rank: 9
+      award: 동상
+      member: 조O석(08), 박O영(11), 황O영(12)
+
+- year: 2014
+  site: 방콕
+  count: 2
+  team:
+    - name: Snorlax
+      rank: 47
+      member: 조O석(08), 박O영(11), 황O영(12)
+    - name: LAST_VACATION
+      rank: 48
+      member: 박O진(07)
+
+- year: 2013
+  site: 대전
+  count: 3
+  team:
+    - name: 001_6 Jari_JooSeYo
+      rank: 11
+      award: 동상
+      member: 김O준(09), 박O준(11), 박O영(11)
+    - name: Ocean_Santevill
+      rank: 15
+      member: 김O선(08), 황O영(12), 이O우(12)
+    - name: MyGumi-ZZangZZangMEN
+      rank: 18
+      member: 김O학(11), Martian, 김O관(12)
+
+- year: 2013
+  site: 다낭
+  count: 4
+  team:
+    - name: Ocean_Santevill
+      rank: 37
+      member: 김O선(08), 황O영(12), 이O우(12)
+    - name: BiKiSo
+      member: 이O람(09)
+    - name: 001_6 Jari_JooSeYo
+      member: 김O준(09), 박O준(11), 박O영(11)
+    - name: MyGumi-ZZangZZangMEN
+      member: 김O학(11), Martian, 김O관(12)
+
+- year: 2012
+  site: 대전
+  count: 2
+  team:
+    - name: Mental_Overflow
+      rank: 8
+      award: 동상
+      member: 박O준(11), youngjeong_yu, 박O이(11)
+    - name: MyGumi-Masizzung
+      rank: 18
+      member: 김O학(11), Martian, 박O영(11)
+
+- year: 2012
+  site: 카오슝
+  count: 2
+  team:
+    - name: Mental_Overflow
+      rank: 44
+      member: 박O준(11), youngjeong_yu, 박O이(11)
+    - name: MyGumi-Masizzung
+      rank: Honorable Mention
+      member: 김O학(11), Martian, 박O영(11)
+
+- year: 2011
+  site: 대전
+  count: 2
+  team:
+    - name: 001_6 Jari JooSeYo
+      rank: 10
+      award: 동상
+      member: 이O영(06), 박O진(10), 박O준(11)
+    - name: Beauty & Beast Season 2
+      rank: 12
+      member: 김O선(08), 이O람(09), mincl
+
+- year: 2011
+  site: 마닐라
+  count: 3
+  team:
+    - name: 001_6 Jari JooSeYo
+      rank: 14
+      member: 이O영(06), 박O진(10), 박O준(11)
+    - name: Beauty & Beast Season 2
+      rank: 39
+      member: 김O선(08), 이O람(09), mincl
+    - name: PLAY
+      rank: Honorable Mention
+      member: 이O웅(07), 주O진(08)
+
+- year: 2010
+  site: 대전
+  count: 2
+  team:
+    - name: LAST_SCCC
+      rank: 15
+      member: 박O완(09), mincl, 박O진(10)
+    - name: BNJ_SCCC
+      rank: 17
+      member: 남O호(07), 박O진(07), 정O봉(07)
+
+- year: 2010
+  site: 카오슝
+  count: 1
+  team:
+    - name: LAST_SCCC
+      rank: Honorable Mention
+      member: 박O완(09), mincl, 박O진(10)
+
+- year: 2009
+  site: 서울
+  count: 3
+  team:
+    - name: SCCC.BM
+      rank: 8
+      award: 은상
+      member: 박O진(07), 임O의(07), 지O섭(08)
+    - name: SCCC.ssu.ac.kr
+      rank: 12
+      member: 구O철(02), 박O용(06), 조O석(08)
+    - name: Beauty&Beast
+      rank: 14
+      member: mincl
+
+- year: 2009
+  site: 푸켓
+  count: 2
+  team:
+    - name: SCCC.BM
+      rank: 13
+      member: 박O진(07), 임O의(07), 지O섭(08)
+    - name: SCCC.ssu.ac.kr
+      rank: 30
+      member: 구O철(02), 박O용(06), 조O석(08)
+
+- year: 2008
+  site: 서울
+  count: 2
+  team:
+    - name: BM[at]SCCC
+      rank: 10
+      award: 동상
+      member: 박O진(07), 임O의(07), 지O섭(08)
+    - name: Algoleader
+      rank: 25
+      member: 구O철(02), 송O환(08), 조O석(08)
+
+- year: 2008
+  site: 허페이
+  count: 2
+  team:
+    - name: BM[at]SCCC
+      rank: 10
+      award: 동상
+      member: 박O진(07), 임O의(07), 지O섭(08)
+    - name: Algoleader
+      rank: 15
+      member: 구O철(02), 송O환(08), 조O석(08)
+
+- year: 2007
+  site: 서울
+  count: 2
+  team:
+    - name: GUTS
+      rank: 16
+      member: 조O호(00), 한O석(00), 임O의(07)
+    - name: One Shot One Kill
+      rank: 33
+      member: 김O철(01), 고O환(04), 박O진(07)
+
+- year: 2007
+  site: 타이페이
+  count: 1
+  team:
+    - name: GUTS
+      rank: 14
+      member: 조O호(00), 한O석(00), 임O의(07)
+
+- year: 2006
+  site: 서울
+  count: 2
+  team:
+    - name: Jolly Jumpers
+      rank: 8
+      award: 은상
+      member: 김O훈(99), 송O욱(99), 문O미(04)
+    - name: YoMyBaby
+      rank: 15
+      member: 이O은(00), 조O호(00), 한O석(00)
+
+- year: 2006
+  site: 마닐라
+  count: 2
+  team:
+    - name: Jolly Jumpers
+      rank: 13
+      member: 김O훈(99), 송O욱(99), 문O미(04)
+    - name: YoMyBaby
+      rank: 21
+      member: 이O은(00), 조O호(00), 한O석(00)
+
+- year: 2006
+  site: 하노이
+  count: 1
+  team:
+    - name: Malignant Code
+      rank: Honorable Mention
+      member: 이O현(01), 고O환(04), 이O영(06)
+
+- year: 2005
+  site: 서울
+  count: 2
+  team:
+    - name: KANG
+      rank: 9
+      award: 동상
+      member: 김O희(01), 한O람(02), 방O주(03)
+    - name: unlimited
+      rank: 14
+      member: 윤O섭(98), 송O욱(99), 고O환(04)
+
+- year: 2005
+  site: 마닐라
+  count: 2
+  team:
+    - name: unlimited
+      rank: 21
+      member: 윤O섭(98), 송O욱(99), 고O환(04)
+    - name: KANG
+      rank: 26
+      member: 김O희(01), 한O람(02), 방O주(03)
+
+- year: 2004
+  site: 서울
+  count: 3
+  team:
+    - name: Dokebi bul
+      rank: 7
+      award: 은상
+      member: 성O준(99), 김O석(00), 김O희(01)
+    - name: Zenith
+      rank: 11
+      member: 윤O섭(98), 유O원(02), 한O람(02)
+    - name: Median
+      rank: 20
+      member: 윤O하(00), 이O라(01), OO슬
+
+- year: 2003
+  site: 서울
+  count: 2
+  team:
+    - name: MAWANG
+      rank: 8
+      award: 동상
+      member: 윤O섭(98), 김O희(01), 이O라(01)
+    - name: El Dorado
+      rank: 10
+      member: 성O원(98), 김O석(00), 김O철(01)
+
+- year: 2002
+  site: 대전
+  count: 2
+  team:
+    - name: D-Brain
+      rank: 15
+      member: 박O호(95), 남O윤(99), 이O라(01)
+    - name: balloon
+      rank: Honorable Mention
+      member: 안O원(96), 김O호(97), 박O호(99)
+
+- year: 2001
+  site: 대전
+  count: 2
+  team:
+    - name: balloon
+      rank: 10
+      award: 동상
+      member: 안O원(96), 김O호(97), 김O훈(99)
+    - name: needle
+      rank: Honorable Mention
+      member: 박O호(95), 설O수(96), 김O정(97)
+
+- year: 2000
+  site: 대전
+  count: 2
+  team:
+    - name: SOPT
+      rank: Honorable Mention
+    - name: TEAMNNR
+      rank: Honorable Mention
+      member: 허O수(97)

@@ -1,0 +1,35 @@
+<div id='{{ include.id }}'>
+
+{% for contest in include.award %}
+  <h3>{{ contest.name }}</h3>
+
+  <table>
+    <tr>
+      <th>#</th>
+      {% if contest.type == "ICPC" %} <th>팀</th> {% endif %}
+      <th>참가자</th>
+    </tr>
+    {% for team in contest.team %}
+      <tr>
+        <td> {{ team.rank }} {% if team.award %} ({{ team.award }}) {% endif %} </td>
+        <td>{{ team.name }}</td>
+        {% if contest.type == "ICPC" %} <td>{{ team.member }}</td> {% endif %}
+      </tr>
+    {% endfor %}
+  </table>
+
+  <ul>
+    {% if contest.scoreboard %}
+      <li><a href = "{{ contest.scoreboard }}">스코어보드</a></li>
+    {% endif %}
+    {% if contest.awardlist %}
+      <li><a href = "{{ contest.awardlist }}">수상자 명단</a></li>
+    {% endif %}
+    {% if contest.interview %}
+      <li><a href = "{{ contest.interview }}">인터뷰</a></li>
+    {% endif %}
+  </ul>
+
+{% endfor %}
+
+</div>
