@@ -1,0 +1,7 @@
+- name: Google Code Jam Farewell Round D
+  type: Personal
+  scoreboard: https://codingcompetitions.withgoogle.com/codejam/round/0000000000c95b95
+  team:
+    - name: aeren
+      rank: 44
+      award: 한국 2등

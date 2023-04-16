@@ -38,3 +38,41 @@
       award: 5등상
     - name: lobo_prix
       award: 본선 진출
+
+- name: 2020 UCPC 본선
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/524
+  team:
+    - name: solved.wa
+      rank: 25
+      member: aeren, edenooo, kyo20111
+    - name: 애기욱제쟝 공익 아니에얌-ㅅ-! 훈련소 갖다왔서얌!!
+      rank: 30
+      member: wookje
+    - name: cat > /dev/null
+      rank: 35
+      member: cake_monotone, enochjung, lobo_prix
+    - name: ㅡ틀ㅡ
+      rank: 54
+      member: king7282 skdudn321 sys7961
+
+- name: 2020 UCPC 예선
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/521
+  team:
+    - name: solved.wa
+      rank: 5
+      award: △
+      member: aeren, edenooo, kyo20111
+    - name: cat > /dev/null
+      rank: 14
+      award: △
+      member: cake_monotone, enochjung, lobo_prix
+    - name: 애기욱제쟝 공익 아니에얌-ㅅ-! 훈련소 갖다왔서얌!!
+      rank: 34
+      award: △
+      member: wookje
+    - name: ㅡ틀ㅡ
+      rank: 57
+      award: △
+      member: king7282 skdudn321 sys7961

@@ -14,6 +14,9 @@
     - name: graduate_sikyojo
       rank: 45
       member: cake_monotone, kati, wookje
+    - name: BeginnerNTree
+      award: 본선 진출
+      member: chorogchip, jms020820
 
 - name: 2022 ICPC Asia Seoul Preliminary Contest
   type: ICPC
@@ -25,6 +28,7 @@
       member: chansol, edenooo, jhnah917
     - name: JangHakGeumNyam
       rank: 22
+      award: 휴학생 팀
       member: greimul, kyo20111, lobo_prix
     - name: yangsungjun
       rank: 38
@@ -34,6 +38,10 @@
       rank: 60
       award: △
       member: cake_monotone, kati, wookje
+    - name: BeginnerNTree
+      rank: 103
+      award: △
+      member: chorogchip, jms020820
 
 - name: 2022 UCPC 본선
   type: ICPC
@@ -47,6 +55,9 @@
       rank: 21
       award: 현대 오토에버 특별상
       member: chansol, edenooo, jhnah917
+    - name: No Yeah
+      rank: 45
+      member: tony9402
 
 - name: 2022 UCPC 예선
   type: ICPC
@@ -60,6 +71,10 @@
       rank: 17
       award: △
       member: chansol, edenooo, jhnah917
+    - name: No Yeah
+      rank: 41
+      award: △
+      member: tony9402
 
 - name: 2022 현대모비스 알고리즘 경진대회
   type: Personal
@@ -82,3 +97,24 @@
       award: 본선 진출
     - name: lobo_prix
       award: 본선 진출
+
+- name: 2022 Meta Hacker Cup Round 3
+  type: Personal
+  scoreboard: https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/scoreboard
+  team:
+    - name: aeren
+      rank: 53
+      award: 한국 4등
+
+- name: 2022 Google Code Jam Round 3
+  type: Personal
+  scoreboard: https://codingcompetitions.withgoogle.com/codejam/round/00000000008779b4
+  team:
+    - name: edenooo
+      rank: 522
+      award: 한국 32등
+    - name: aeren
+      rank: 621
+      award: 한국 38등
+    - name: kyo20111
+      award: R3 진출

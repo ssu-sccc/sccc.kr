@@ -78,3 +78,30 @@
     - name: jhnah917
       rank: 
       award: 5등상
+
+- name: 2021 Google Code Jam Round 3
+  type: Personal
+  scoreboard: https://codingcompetitions.withgoogle.com/codejam/round/0000000000436142
+  team:
+    - name: aeren
+      rank: 101
+      award: 한국 9등
+    - name: edenooo
+      rank: 444
+      award: 한국 26등
+
+- name: 2021 Facebook Hacker Cup Round 3
+  type: Personal
+  scoreboard: https://www.facebook.com/codingcompetitions/hacker-cup/2021/round-3/scoreboard
+  team:
+    - name: edenooo
+      rank: 93
+      award: 한국 7등
+    - name: aeren
+      rank: 216
+      award: 한국 11등
+    - name: lobo_prix
+      rank: 372
+      award: 한국 13등
+    - name: kyo20111
+      award: R3 진출

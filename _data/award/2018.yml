@@ -36,3 +36,11 @@
   team:
     - name: sys7961
       rank: 49
+
+- name: 2018 Google Code Jam Round 3
+  type: Personal
+  scoreboard: https://codingcompetitions.withgoogle.com/codejam/round/0000000000007707
+  team:
+    - name: sys7961
+      rank: 305
+      award: 한국 16등
