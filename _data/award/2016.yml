@@ -30,3 +30,14 @@
     - name: sys7961
       rank: 25
       award: 5등상
+
+- name: 2016 ACM-ICPC Asia Nha Trang Regional Contest
+  type: ICPC
+  scoreboard: https://icpcvn.github.io/2016/regional/scoreboard.html
+  team:
+    - name: Team_10_deung
+      rank: 29
+      member: hyo123bin, king7282, 최O우(12)
+    - name: BuzzerBeater
+      rank: 30
+      member: choiking10, sys7961, 황O영(12)

@@ -4,7 +4,7 @@
   team:
     - name: bonin 1st sangsang-ham
       rank: 21
-      award: 특별상
+      award: PUBG 특별상
       member: cake_monotone, edenooo, wookje
     - name: cake&fork
       rank: 29
@@ -29,6 +29,14 @@
       rank: 59
       award: △
       member: chongin12, he1fire, logeon0725
+
+- name: 2019 ICPC Asia Yokohama Regional
+  type: ICPC
+  scoreboard: https://icpc.iisf.or.jp/2019-yokohama/regional-standings/
+  team:
+    - name: baby shark~ dururu~duru~
+      rank: 41
+      member: cake_monotone, edenooo, wookje
 
 - name: 2019 UCPC 본선
   type: ICPC
