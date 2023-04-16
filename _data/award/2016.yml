@@ -3,11 +3,11 @@
   scoreboard: http://icpckorea.org/2016/REGIONAL/scoreboard.html
   team:
     - name: BuzzerBeater
-      rank: 25등
+      rank: 25
       award: 동상
       member: choiking10, sys7961, 황O영(12)
     - name: Team_10_deung
-      rank: 51등
+      rank: 51
       member: hyo123bin, king7282, 최O우(12)
 
 - name: 2016 ACM-ICPC Asia Daejeon Preliminary Contest
@@ -16,11 +16,11 @@
   interview: http://www.comtimes.kr/news/828
   team:
     - name: BuzzerBeater
-      rank: 21등
+      rank: 21
       award: △
       member: choiking10, sys7961, 황O영(12)
     - name: Team_10_deung
-      rank: 36등
+      rank: 36
       award: △
       member: hyo123bin, king7282, 최O우(12)
 

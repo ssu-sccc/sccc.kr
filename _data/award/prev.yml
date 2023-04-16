@@ -76,7 +76,7 @@
       rank: 44
       member: 박O준(11), youngjeong_yu, 박O이(11)
     - name: MyGumi-Masizzung
-      rank: Honorable Mention
+      award: Honorable Mention
       member: 김O학(11), Martian, 박O영(11)
 
 - year: 2011
@@ -102,7 +102,7 @@
       rank: 39
       member: 김O선(08), 이O람(09), mincl
     - name: PLAY
-      rank: Honorable Mention
+      award: Honorable Mention
       member: 이O웅(07), 주O진(08)
 
 - year: 2010
@@ -121,7 +121,7 @@
   count: 1
   team:
     - name: LAST_SCCC
-      rank: Honorable Mention
+      award: Honorable Mention
       member: 박O완(09), mincl, 박O진(10)
 
 - year: 2009
@@ -221,7 +221,7 @@
   count: 1
   team:
     - name: Malignant Code
-      rank: Honorable Mention
+      award: Honorable Mention
       member: 이O현(01), 고O환(04), 이O영(06)
 
 - year: 2005
@@ -282,7 +282,7 @@
       rank: 15
       member: 박O호(95), 남O윤(99), 이O라(01)
     - name: balloon
-      rank: Honorable Mention
+      award: Honorable Mention
       member: 안O원(96), 김O호(97), 박O호(99)
 
 - year: 2001
@@ -294,7 +294,7 @@
       award: 동상
       member: 안O원(96), 김O호(97), 김O훈(99)
     - name: needle
-      rank: Honorable Mention
+      award: Honorable Mention
       member: 박O호(95), 설O수(96), 김O정(97)
 
 - year: 2000
@@ -302,7 +302,7 @@
   count: 2
   team:
     - name: SOPT
-      rank: Honorable Mention
+      award: Honorable Mention
     - name: TEAMNNR
-      rank: Honorable Mention
+      award: Honorable Mention
       member: 허O수(97)

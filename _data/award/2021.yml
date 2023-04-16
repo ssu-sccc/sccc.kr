@@ -5,14 +5,14 @@
   interview: http://www.comtimes.kr/news/1096
   team:
     - name: LongestPathToWF
-      rank: 8등
+      rank: 8
       award: 동상, WF 진출
       member: aeren, edenooo, kyo20111
     - name: AC-Complete
-      rank: 24등
+      rank: 24
       member: enochjung, jhnah917, lobo_prix
     - name: Nutella
-      rank: 35등
+      rank: 35
       member: logeon0725, tony9402
 
 - name: 2021 ICPC Asia Seoul Preliminary Contest
@@ -20,15 +20,15 @@
   scoreboard: http://static.icpckorea.net/2021/scoreboard_preliminary/
   team:
     - name: LongestPathToWF
-      rank: 9등
+      rank: 9
       award: △
       member: aeren, edenooo, kyo20111
     - name: AC-Complete
-      rank: 29등
+      rank: 29
       award: △
       member: enochjung, jhnah917, lobo_prix
     - name: Nutella
-      rank: 44등
+      rank: 44
       award: △
       member: logeon0725, tony9402
 
@@ -38,11 +38,11 @@
   awardlist: https://github.com/ucpcc/2021/blob/main/assets/UCPC_2021_result.pdf
   team:
     - name: longest path to victory
-      rank: 8등
+      rank: 8
       award: 4등상
       member: aeren, edenooo, kyo20111
     - name: AC-complete
-      rank: 17등
+      rank: 17
       award: 특별상
       member: enochjung, jhnah917, lobo_prix
 
@@ -51,11 +51,11 @@
   scoreboard: https://www.acmicpc.net/contest/spotboard/668
   team:
     - name: longest path to victory
-      rank: 8등
+      rank: 8
       award: △
       member: aeren, edenooo, kyo20111
     - name: AC-complete
-      rank: 17등
+      rank: 17
       award: △
       member: enochjung, jhnah917, lobo_prix
 
@@ -63,16 +63,18 @@
   type: Personal
   team:
     - name: kyo20111
-      rank: 2등
+      rank: 2
       award: 2등상
     - name: edenooo
-      rank: 22등
+      rank: 22
       award: 5등상
     - name: jhnah917
-      rank: 본선 진출
+      rank: 
+      award: 본선 진출
 
 - name: 2021 현대모비스 알고리즘 경진대회
   type: Personal
   team:
     - name: jhnah917
-      rank: 5등상
+      rank: 
+      award: 5등상

@@ -24,7 +24,13 @@ permalink: /awards/
             {% if forloop.index == 1 %}
               <th rowspan='{{ contest.count }}'>{{ contest.year }} {{ contest.site }}</th>
             {% endif %}
-            <td> {{ team.rank }} {% if team.award %} ({{ team.award }}) {% endif %} </td>
+            <td>
+              {% if team.rank %}
+                {{ team.rank }}등 {% if team.award %} ({{ team.award }}) {% endif %}
+              {% elsif team.award %}
+                {{ team.award }}
+              {% endif %}
+            </td>
             <td>{{ team.name }}</td>
             <td>{{ team.member }}</td>
         </tr>

@@ -5,14 +5,14 @@
   interview: http://www.comtimes.kr/news/1116
   team:
     - name: NLP
-      rank: 5등
+      rank: 5
       award: 은상
       member: chansol, edenooo, jhnah917
     - name: yangsungjun
-      rank: 34등
+      rank: 34
       member: chongin12, egod1537, msphere
     - name: graduate_sikyojo
-      rank: 45등
+      rank: 45
       member: cake_monotone, kati, wookje
 
 - name: 2022 ICPC Asia Seoul Preliminary Contest
@@ -20,18 +20,18 @@
   scoreboard: http://static.icpckorea.net/2022/scoreboard_preliminary/
   team:
     - name: NLP
-      rank: 8등
+      rank: 8
       award: △
       member: chansol, edenooo, jhnah917
     - name: JangHakGeumNyam
-      rank: 22등
+      rank: 22
       member: kyo20111, lobo_prix
     - name: yangsungjun
-      rank: 38등
+      rank: 38
       award: △
       member: chongin12, egod1537, msphere
     - name: graduate_sikyojo
-      rank: 60등
+      rank: 60
       award: △
       member: cake_monotone, kati, wookje
 
@@ -40,11 +40,11 @@
   scoreboard: https://www.acmicpc.net/contest/spotboard/828
   team:
     - name: 숭실사이버의대를다니고나의성공시대시작했다
-      rank: 12등
+      rank: 12
       award: 5등상
       member: kyo20111
     - name: 저희 팀 이름 머함
-      rank: 21등
+      rank: 21
       award: 특별상
       member: chansol, edenooo, jhnah917
 
@@ -53,11 +53,11 @@
   scoreboard: https://www.acmicpc.net/contest/spotboard/827
   team:
     - name: 숭실사이버의대를다니고나의성공시대시작됐다
-      rank: 14등
+      rank: 14
       award: △
       member: kyo20111
     - name: 저희 팀 이름 머함
-      rank: 17등
+      rank: 17
       award: △
       member: chansol, edenooo, jhnah917
 
@@ -65,7 +65,7 @@
   type: Personal
   team:
     - name: edenooo
-      rank: 8등
+      rank: 8
       award: 우수상
     - name: jhnah917
       rank: 23
@@ -75,8 +75,8 @@
   type: Personal
   team:
     - name: edenooo
-      rank: 특별상
+      award: 특별상
     - name: jhnah917
-      rank: 본선 진출
+      award: 본선 진출
     - name: kyo20111
-      rank: 본선 진출
+      award: 본선 진출

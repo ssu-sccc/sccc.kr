@@ -4,11 +4,11 @@
   interview: http://www.comtimes.kr/news/901
   team:
     - name: Today_Is_YoungJeong_Birthday
-      rank: 12등
+      rank: 12
       award: 은상
       member: hyo123bin, skdudn321, sys7961
     - name: where_is_the_09
-      rank: 79등
+      rank: 79
       member: 
 
 - name: 2017 ACM-ICPC Asia Daejeon Preliminary Contest
@@ -16,11 +16,11 @@
   scoreboard: http://icpckorea.org/2017/preliminary/scoreboard/
   team:
     - name: Today_Is_YoungJeong_Birthday
-      rank: 29등
+      rank: 29
       award: △
       member: hyo123bin, skdudn321, sys7961
     - name: where_is_the_09
-      rank: 62등
+      rank: 62
       award: △
       member: 
 
@@ -29,7 +29,7 @@
   scoreboard: http://t1.kakaocdn.net/codefestival/round-2-scoreboard/index.html
   team:
     - name: sys7961
-      rank: 18등
+      rank: 18
       award: 6등상
 
 - name: 2017 카카오 코드 페스티벌 예선
@@ -37,5 +37,5 @@
   scoreboard: http://t1.kakaocdn.net/codefestival/round-1-scoreboard/index.html
   team:
     - name: sys7961
-      rank: 4등
+      rank: 4
       award: △

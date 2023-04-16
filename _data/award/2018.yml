@@ -3,14 +3,14 @@
   scoreboard: http://icpckorea.org/2018/regional/scoreboard/
   team:
     - name: Graduation Gazua!!!
-      rank: 22등
+      rank: 22
       award: 특별상
       member: hyo123bin, skdudn321, sys7961
     - name: cat>/dev/null
-      rank: 46등
+      rank: 46
       member: cake_monotone, enochjung, lobo_prix
     - name: wookje_and_bros
-      rank: 65등
+      rank: 65
       member: chogahui05, wookje, 지O섭(08)
 
 - name: 2018 ACM-ICPC Asia Seoul Preliminary Contest
@@ -18,15 +18,15 @@
   scoreboard: http://icpckorea.org/2018/preliminary/scoreboard/
   team:
     - name: Graduation Gazua!!!
-      rank: 22등
+      rank: 22
       award: △
       member: hyo123bin, skdudn321, sys7961
     - name: cat>/dev/null
-      rank: 39등
+      rank: 39
       award: △
       member: cake_monotone, enochjung, lobo_prix
     - name: wookje_and_bros
-      rank: 46등
+      rank: 46
       award: △
       member: chogahui05, wookje, 지O섭(08)
 
@@ -35,4 +35,4 @@
   scoreboard: http://t1.kakaocdn.net/codefestival/2018-round-2-scoreboard/index.html
   team:
     - name: sys7961
-      rank: 49등
+      rank: 49
