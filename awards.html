@@ -6,6 +6,7 @@ permalink: /awards/
 
 <div id="award-btn-group" class="btn-group" style="font-size: 1.1rem; margin-bottom: 2rem;"></div>
 
+{% include award-table.html id='award-2023' award=site.data.award.2023 %}
 {% include award-table.html id='award-2022' award=site.data.award.2022 %}
 {% include award-table.html id='award-2021' award=site.data.award.2021 %}
 {% include award-table.html id='award-2020' award=site.data.award.2020 %}
@@ -53,8 +54,8 @@ permalink: /awards/
 </style>
 
 <script>
-    const history_list = ['2022', '2021', '2020', '2019', '2018', '2017', '2016', 'prev'];
-    const history_text = ['2022년', '2021년', '2020년', '2019년', '2018년', '2017년', '2016년', '2015년 이전'];
+    const history_list = ['2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', 'prev'];
+    const history_text = ['2023년', '2022년', '2021년', '2020년', '2019년', '2018년', '2017년', '2016년', '2015년 이전'];
     let btn_group = document.getElementById('award-btn-group');
 
     let btn = [], div = [];
