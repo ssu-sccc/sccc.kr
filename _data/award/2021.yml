@@ -45,6 +45,9 @@
       rank: 17
       award: 데브시스터즈 특별상
       member: enochjung, jhnah917, lobo_prix
+    - name: "#감성코딩"
+      rank: 28
+      member: cake_monotone, king7282, sys7961
 
 - name: 2021 UCPC 예선
   type: ICPC
@@ -58,6 +61,10 @@
       rank: 17
       award: △
       member: enochjung, jhnah917, lobo_prix
+    - name: "#감성코딩"
+      rank: 37
+      award: △
+      member: cake_monotone, king7282, sys7961
 
 - name: 2021 SCPC 본선
   type: Personal

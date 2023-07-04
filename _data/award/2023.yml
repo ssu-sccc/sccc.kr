@@ -1,3 +1,38 @@
+- name: 2023 UCPC 예선
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/1067
+  team:
+    - name: BOJ 20000 Solve
+      rank: 12
+      award: △
+      member: edenooo, jhnah917, kyo20111
+    - name: 문제가 맛있어지는 주문
+      rank: 17
+      award: △
+      member: tony9402
+    - name: barami bundang
+      rank: 45
+      award: △
+      member: chansol, lobo_prix, wookje
+    - name: 선린인터넷고등학교의명예를드높이기위해출전했다
+      rank: 62
+      member: chongin12
+    - name: 그게 보여요
+      rank: 110
+      member: he1fire
+    - name: 플레 문제도 풀레
+      rank: 119
+      member: i_am_commang, rkaskan506, sangwon090
+    - name: 아 이거 어떻게 풀더라
+      rank: 122
+      member: gsmin2020, ngchaneok, nsc_777
+    - name: NHS
+      rank: 166
+      member: jnary
+    - name: g-man
+      rank: 176
+      member: eric2057, jhw0406, tldnjs0821
+
 - name: Google Code Jam Farewell Round D
   type: Personal
   scoreboard: https://codingcompetitions.withgoogle.com/codejam/round/0000000000c95b95
