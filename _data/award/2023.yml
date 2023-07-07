@@ -1,3 +1,27 @@
+- name: 2023 ICPC World Finals
+  type: ICPC
+  team:
+    - name: LongestPathToWF
+      award: 21/22 WF 진출
+      member: aeren, edenooo, kyo20111
+    - name: NLP
+      award: 22/23 WF 진출
+      member: chansol, edenooo, jhnah917
+
+- name: 2023 현대모비스 알고리즘 경진대회
+  type: Personal
+  team:
+    - name: kyo20111
+      rank: 6
+      award: 우수상
+    - name: edenooo
+      rank: 7
+      award: 우수상
+    - name: chansol
+      award: 본선 진출
+    - name: egod1537
+      award: 본선 진출
+
 - name: 2023 UCPC 예선
   type: ICPC
   scoreboard: https://www.acmicpc.net/contest/spotboard/1067
