@@ -22,9 +22,9 @@
     - name: egod1537
       award: 본선 진출
 
-- name: 2023 UCPC 예선
+- name: 2023 UCPC 본선
   type: ICPC
-  scoreboard: https://www.acmicpc.net/contest/spotboard/1067
+  scoreboard: https://www.acmicpc.net/contest/spotboard/1069
   team:
     - name: BOJ 20000 Solve
       rank: 10
