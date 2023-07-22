@@ -27,6 +27,23 @@
   scoreboard: https://www.acmicpc.net/contest/spotboard/1067
   team:
     - name: BOJ 20000 Solve
+      rank: 10
+      award: 4등상
+      member: edenooo, jhnah917, kyo20111
+    - name: 문제가 맛있어지는 주문
+      rank: 30
+      award: UCPC 특별상
+      member: tony9402
+    - name: barami bundang
+      rank: 35
+      award: 현대 오토에버 특별상
+      member: chansol, lobo_prix, wookje
+
+- name: 2023 UCPC 예선
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/1067
+  team:
+    - name: BOJ 20000 Solve
       rank: 12
       award: △
       member: edenooo, jhnah917, kyo20111
