@@ -38,6 +38,9 @@
       rank: 35
       award: 현대 오토에버 특별상
       member: chansol, lobo_prix, wookje
+    - name: ""
+      award: 문제 출제
+      member: egod1537
 
 - name: 2023 UCPC 예선
   type: ICPC
@@ -81,3 +84,43 @@
     - name: aeren
       rank: 44
       award: 한국 2등
+
+- name: 2023 SCON
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/998
+  team:
+    - name: 스콘빨리먹기대회우승팀
+      rank: 1
+      award: 대상
+      member: chongin12, egod1537, lobo_prix
+    - name: Newjeans HeapBoy
+      rank: 2
+      award: 금상
+      member: he1fire, i_am_commang, rkaskan506
+    - name: jaebal_jongang
+      rank: 4
+      award: 은상
+      member: chorogchip, komoe
+    - name: 한재훈졸업해라
+      rank: 5
+      award: 은상
+      member: eyiuta1
+    - name: 어색한 사이
+      rank: 6
+      award: 동상
+      member: jhw0406, tldnjs0821
+    - name: 수십팔.
+      rank: 7
+      award: 동상
+      member: gsmin2020, ngchaneok, nsc_777
+    - name: 엉망진창
+      rank: 10
+      award: 장려상
+      member: lur100
+    - name: 스콘 다 씹어먹을거누
+      rank: 11
+      award: 장려상
+      member: eden0821, jyi_0226, mio2003
+    - name: ""
+      award: 문제 출제
+      member: chansol, edenooo, jhnah917, kyo20111

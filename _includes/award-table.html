@@ -18,7 +18,11 @@
             {{ team.award }}
           {% endif %}
         </td>
-        <td>{{ team.name }}</td>
+        <td>
+          {% if team.name %}
+            {{ team.name }}
+          {% endif %}
+        </td>
         {% if contest.type == "ICPC" %} <td>{{ team.member }}</td> {% endif %}
       </tr>
     {% endfor %}
