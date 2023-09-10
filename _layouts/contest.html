@@ -1,0 +1,21 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+
+  {% include head.html %}
+
+  <body>
+    {% include sidebar.html %}
+    <div class="default-wrapper home-page ui contianer">
+      {% include contest-header.html %}
+      <main class="content-wrapper main-content">
+        {{ content }}
+      </main>
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+</html>

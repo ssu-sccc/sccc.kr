@@ -21,6 +21,7 @@
       award: 본선 진출
     - name: egod1537
       award: 본선 진출
+      
 
 - name: 2023 UCPC 본선
   type: ICPC
@@ -77,6 +78,34 @@
       rank: 176
       member: eric2057, jhw0406, tldnjs0821
 
+- name: 2023 SCPC
+  type: Personal
+  team:
+    - name: edenooo
+      rank: 
+      award: 본선 진출
+    - name: jhnah917
+      rank: 
+      award: 본선 진출
+    - name: kyo20111
+      rank: 
+      award: 본선 진출
+    - name: lobo_prix
+      rank: 
+      award: 본선 진출
+    - name: chansol
+      rank: 
+      award: 2차 예선 진출
+    - name: m4ushold
+      rank: 
+      award: 2차 예선 진출
+    - name: ngchaneok
+      rank: 
+      award: 2차 예선 진출
+    - name: sangwon090
+      rank: 
+      award: 2차 예선 진출
+
 - name: Google Code Jam Farewell Round D
   type: Personal
   scoreboard: https://codingcompetitions.withgoogle.com/codejam/round/0000000000c95b95
@@ -113,6 +142,10 @@
       rank: 7
       award: 동상
       member: gsmin2020, ngchaneok, nsc_777
+    - name: 스콘먹다체함
+      rank: 8
+      award: 동상
+      member: esahn01
     - name: 엉망진창
       rank: 10
       award: 장려상
@@ -121,6 +154,27 @@
       rank: 11
       award: 장려상
       member: eden0821, jyi_0226, mio2003
+    - name: 당당글미
+      rank: 14
+      award: 장려상
+      member: dkprk11
+    - name: 백준이 최고다
+      rank: 18
+      member: nano_1343
+    - name: ENT3
+      rank: 19
+      award: 현대모비스 특별상
+      member: jws0041
+    - name: 노포인터
+      rank: 21
+      member: jakepro657
+    - name: 아무거나 주세요
+      rank: 25
+      award: 컴퓨터학부 특별상
+      member: ysj9074
+    - name: 느슨해진 세상에 긴장감을 주는 알고립즘
+      rank: 33
+      member: hsun18
     - name: ""
       award: 문제 출제
       member: chansol, edenooo, jhnah917, kyo20111
