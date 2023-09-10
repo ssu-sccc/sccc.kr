@@ -7,7 +7,10 @@ permalink: /recruit/
 
 SCCC 신입 부원 모집 공고입니다.
 
-| 안내 페이지                      | 지원 기간               | 모집 전형              |
-| -------------------------------- | ----------------------- | ---------------------- |
-| [2023년 2학기](/recruit/2023/2/) | 2023.08.13 ~ 2023.08.20 | 일반 전형              |
-| [2023년 1학기](/recruit/2023/1/) | 2023.02.26 ~ 2023.03.04 | 일반 전형, 신입생 전형 |
+| 안내 페이지                                                  | 지원 기간               | 특이 사항                                                    |
+| ------------------------------------------------------------ | ----------------------- | ------------------------------------------------------------ |
+| [2023년 2학기](/recruit/2023/2/)                             | 2023.08.13 ~ 2023.08.20 | [면접 문제](https://www.acmicpc.net/workbook/view/16808)     |
+| [2023년 1학기](/recruit/2023/1/)                             | 2023.02.26 ~ 2023.03.04 | 신입생 전형 따로 운영, 면접 문제 비공개                      |
+| [2022년 2학기](https://docs.google.com/document/d/1Mmilw2Qeo9-lCW2-U0esuSNvaSKpNiCFdVQiDa6isJc/edit?usp=sharing) | 2022.08.29 ~ 2023.09.04 | [면접 문제 및 풀이](https://drive.google.com/file/d/1ZHw79-1WCLb8SnLJ-nRsT8J45QFxX4ZB/view?usp=sharing) |
+| [2022년 1학기](https://docs.google.com/document/d/1tPbyjBZKGe7XCYD0m4xFxl6XGr9gZWmviiFqsMHMPi4/edit?usp=sharing) | 2022.03.03 ~ 2022.03.15 |                                                              |
+
