@@ -1,0 +1,110 @@
+---
+layout: study
+title: 2022학년도 2학기 스터디
+permalink: /study/2022/2/
+---
+
+<div>
+	<h1 style="margin-top: 1rem;">
+		2022학년도 2학기 스터디
+	</h1>
+	<div style="margin: 1rem;">
+		이번 학기에는 1개의 비대면 스터디가 진행됩니다.
+	</div>
+	<div style="width: 100%; height: 1px; background: rgba(0, 0, 0, .1); margin: 2rem 0;"></div>
+	<div class="btn-group" style="font-size: 1.1rem; margin-bottom: 2rem;">
+		<button id="22-2-advance-lecture-btn" style="margin-right: .5rem;" class="active btn" type='button'>고급 알고리즘 강의 (Part 1)</button>
+	</div>
+	<div id="22-2-advance-lecture-view">
+		<h2>개요</h2>
+		<ul>
+			<li>
+				진행자
+				<ul>
+					<li>컴퓨터학부 21학번 나정휘</li>
+				</ul>
+			</li>
+			<li>
+				스터디 내용
+				<ul>
+					<li>어렵지만 모두가 알고 있는 웰노운 알고리즘</li>
+				</ul>
+			</li>
+			<li>
+				권장 대상
+				<ul>
+					<li>ICPC 서울 리저널 참가자</li>
+				</ul>
+			</li>
+			<li>
+				선수 조건
+				<ul>
+					<li>2022 봄 초급 스터디 전체 범위</li>
+					<li>추가로 필요한 내용은 매 차시 슬라이드에서 언급</li>
+				</ul>
+			</li>
+			<li>
+				시간 및 장소
+				<ul>
+					<li>10월 첫째 주 ~ ICPC 서울 리저널 전까지</li>
+					<li>Zoom으로 진행</li>
+				</ul>
+			</li>
+			<li>
+				상세 정보
+				<ul>
+					<li><a href="https://github.com/justiceHui/SSU-SCCC-Study/tree/master/2022-autumn-adv">바로가기</a></li>
+				</ul>
+			</li>
+		</ul>
+
+		<h2>일정</h2>
+		<table>
+			<tr> <th>차시</th> <th>날짜</th> <th>주제</th> </tr>
+			<tr> <td>1차시</td> <td>22.10.05</td> <td>Hashing, KMP</td> </tr>
+			<tr> <td>2차시</td> <td>22.10.10</td> <td>Suffix Array, LCP Array</td> </tr>
+			<tr> <td>3차시</td> <td>22.10.13</td> <td>Heavy Light Decomposition</td> </tr>
+			<tr> <td>4차시</td> <td>22.10.31</td> <td>CCW, Line Segment Intersection, Point in Polygon Test, Convex Hull</td> </tr>
+			<tr> <td>5차시</td> <td>22.11.02</td> <td>Rotating Calipers, Closest Pair, Tangent Line of Convex Polygon</td> </tr>
+			<tr> <td>6차시</td> <td>22.11.09</td> <td>Centroid Decomposition</td> </tr>
+		</table>
+	</div>
+</div>
+
+<style>
+	.btn {
+		padding: .7rem 1rem;
+		transition: .2s;
+		color: black;
+	}
+
+	.btn.active {
+		background-color: rgba(0, 0, 0, 1);
+		color: white;
+	}
+</style>
+<script>
+	let class_list = ['22-2-advance-lecture'];
+	let btn = [], view = [];
+
+	for(let i=0; i<class_list.length; i++){
+		btn.push(document.getElementById(class_list[i] + '-btn'));
+		view.push(document.getElementById(class_list[i] + '-view'));
+	}
+
+	for(let i=0; i<class_list.length; i++){
+		btn[i].onclick = function (event) {
+			for(let j=0; j<class_list.length; j++) {
+				if(i === j){
+					btn[j].classList.add('active');
+					view[j].style.display = 'block';
+				}
+				else{
+					btn[j].classList.remove('active');
+					view[j].style.display = 'none';
+				}
+			}
+			event.preventDefault();
+		};
+	}
+</script>

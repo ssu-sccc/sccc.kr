@@ -1,0 +1,117 @@
+---
+layout: study
+title: 2022학년도 1학기 스터디
+permalink: /study/2022/1/
+---
+
+<div>
+	<h1 style="margin-top: 1rem;">
+		2022학년도 1학기 스터디
+	</h1>
+	<div style="margin: 1rem;">
+		이번 학기에는 1개의 비대면 스터디가 진행됩니다.
+	</div>
+	<div style="width: 100%; height: 1px; background: rgba(0, 0, 0, .1); margin: 2rem 0;"></div>
+	<div class="btn-group" style="font-size: 1.1rem; margin-bottom: 2rem;">
+		<button id="22-1-basic-lecture-btn" style="margin-right: .5rem;" class="active btn" type='button'>초급 알고리즘 강의</button>
+	</div>
+	<div id="23-summer-off-basic-lecture-view">
+		<h2>개요</h2>
+		<ul>
+			<li>
+				진행자
+				<ul>
+					<li>컴퓨터학부 21학번 나정휘</li>
+				</ul>
+			</li>
+			<li>
+				스터디 내용
+				<ul>
+					<li>PS(Problem Solving)에서 사용하는 기초적인 개념과 실제 문제에 적용하는 방법</li>
+				</ul>
+			</li>
+			<li>
+				권장 대상
+				<ul>
+					<li>PS를 처음 접해보는 사람</li>
+					<li>문제를 풀어본 경험이 적은 사람</li>
+					<li>알고리즘 공부를 했지만 기초적인 내용을 잘 응용하지 못하는 사람</li>
+				</ul>
+			</li>
+			<li>
+				선수 조건
+				<ul>
+					<li>C/C++ 문법</li>
+				</ul>
+			</li>
+			<li>
+				시간 및 장소
+				<ul>
+					<li>5월 첫째 주 ~ 6월 첫째 주 수요일/토요일 저녁 7시</li>
+					<li>Zoom으로 진행</li>
+					<li>1시간 * 10회, 총 10시간</li>
+				</ul>
+			</li>
+			<li>
+				상세 정보
+				<ul>
+					<li><a href="https://github.com/justiceHui/SSU-SCCC-Study/tree/master/2022-spring-basic">바로가기</a></li>
+				</ul>
+			</li>
+		</ul>
+
+		<h2>일정</h2>
+		<table>
+			<tr> <th>차시</th> <th>날짜</th> <th>주제</th> </tr>
+			<tr> <td>1차시</td> <td>22.05.04</td> <td>시간 복잡도, 정렬 알고리즘, 이분 탐색</td> </tr>
+			<tr> <td>2차시</td> <td>22.05.07</td> <td>완전탐색 (재귀함수, 순열, 비트마스크)</td> </tr>
+			<tr> <td>3차시</td> <td>22.05.11</td> <td>기초 정수론</td> </tr>
+			<tr> <td>4차시</td> <td>22.05.14</td> <td>동적 계획법</td> </tr>
+			<tr> <td>5차시</td> <td>22.05.18</td> <td>수학적 귀납법, 분할 정복</td> </tr>
+			<tr> <td>6차시</td> <td>22.05.25</td> <td>자료구조 1 (스택, 큐, 덱)</td> </tr>
+			<tr> <td>7차시</td> <td>22.05.28</td> <td>그래프 이론 1 (그래프의 표현법, DFS, BFS, 위상 정렬)</td> </tr>
+			<tr> <td>8차시</td> <td>22.06.01</td> <td>그리디</td> </tr>
+			<tr> <td>9차시</td> <td>22.06.04</td> <td>자료구조 2 (서로소 집합, 힙)</td> </tr>
+			<tr> <td>10차시</td> <td>slide only</td> <td>그래프 이론 2 (최단 경로, 최소 신장 트리)</td> </tr>
+			<tr> <td>마무리</td> <td>slide only</td> <td>알고리즘 공부 자료 / 공부 방법</td> </tr>
+		</table>
+	</div>
+</div>
+
+<style>
+	.btn {
+		padding: .7rem 1rem;
+		transition: .2s;
+		color: black;
+	}
+
+	.btn.active {
+		background-color: rgba(0, 0, 0, 1);
+		color: white;
+	}
+</style>
+<script>
+	let class_list = ['22-1-basic-lecture'];
+	let btn = [], view = [];
+
+	for(let i=0; i<class_list.length; i++){
+		btn.push(document.getElementById(class_list[i] + '-btn'));
+		view.push(document.getElementById(class_list[i] + '-view'));
+	}
+
+	for(let i=0; i<class_list.length; i++){
+		btn[i].onclick = function (event) {
+			for(let j=0; j<class_list.length; j++) {
+				if(i === j){
+					btn[j].classList.add('active');
+					view[j].style.display = 'block';
+				}
+				else{
+					btn[j].classList.remove('active');
+					view[j].style.display = 'none';
+				}
+			}
+			event.preventDefault();
+		};
+	}
+</script>
