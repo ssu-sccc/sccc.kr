@@ -31,27 +31,27 @@ permalink: /icpc-guide/
 ICPC 대회 참가를 희망하는 모든 학생은 [icpc.global](https://icpc.global)에 가입해야 합니다. 가입하신 분들은 개인정보를 갱신해야 하니 (2)로 이동해서 안내를 따라주시면 됩니다.
 
 먼저 사이트 우측 상단에 있는 **SIGN UP** 버튼을 클릭한 다음, 이메일과 비밀번호를 입력해 회원가입을 진행합니다.
-![](/assets/images/icpc-guide/01-1.PNG)
+<img src="/assets/images/icpc-guide/01-1.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 입력하신 이메일로 발송된 코드를 입력하시면
-![](/assets/images/icpc-guide/01-2.PNG)
+<img src="/assets/images/icpc-guide/01-2.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 회원 가입이 정상적으로 진행되어서 로그인을 할 수 있습니다.
-![](/assets/images/icpc-guide/01-3.PNG)
+<img src="/assets/images/icpc-guide/01-3.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 로그인을 한 다음 이름, 거주지, 소속 학교 등을 입력하면 회원 가입 과정을 완료할 수 있습니다. 학교 이름은 Soongsil을 입력하면 학교를 선택할 수 있는 버튼이 나옵니다.
-![](/assets/images/icpc-guide/01-4.PNG)
+<img src="/assets/images/icpc-guide/01-4.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 ## 2. (팀원 모두) 개인 정보 입력
 
 회원 가입을 완료한 후에 로그인하면 다음과 같은 화면을 볼 수 있습니다. 우측 상단에 있는 이메일(or 이름)을 클릭한 다음 Profile을 클릭합니다.
-![](/assets/images/icpc-guide/02-1.PNG)
+<img src="/assets/images/icpc-guide/02-1.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 *이 붙어있는 모든 항목을 채운 다음 **SAVE** 버튼을 클릭하면 됩니다. 가끔씩 저장이 제대로 되지 않는 경우가 있으니, 저장한 다음 새로고침을 해서 정상적으로 저장되었는지 확인해 주시길 바랍니다.
-![](/assets/images/icpc-guide/02-2.PNG)
+<img src="/assets/images/icpc-guide/02-2.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 이런 식으로 채우면 됩니다. School/Institution은 *이 붙어있진 않지만 입력해야 합니다. Company와 Special Needs는 .만 입력해도 됩니다.
-![](/assets/images/icpc-guide/02-3.PNG)
+<img src="/assets/images/icpc-guide/02-3.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 ## 3. (팀장) 대회 신청
 
@@ -71,26 +71,26 @@ ICPC 대회 참가를 희망하는 모든 학생은 [icpc.global](https://icpc.g
 
 <!-- @TODO select year 수정하기 -->
 로그인하면 나오는 Dashboard 화면에서 대회 연도가 2023-2024인지 확인하고 **CREATE TEAM** 버튼을 누릅니다.
-![](/assets/images/icpc-guide/03-1.PNG)
+<img src="/assets/images/icpc-guide/03-1.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 <!-- @TODO 혹시 리전 색깔 바뀌면 수정하기 -->
 보라색으로 표시되어 있는 아시아 태평양 지역을 클릭합니다.
-![](/assets/images/icpc-guide/03-2.PNG)
+<img src="/assets/images/icpc-guide/03-2.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 The 2023 ICPC Asia Seoul Regional Contest > The 2023 ICPC Asia Korea National First Round Programming Contest > Asia Seoul National First Round Programming Contest를 선택합니다.
-![](/assets/images/icpc-guide/03-3.PNG)
+<img src="/assets/images/icpc-guide/03-3.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 소속이 Soongsil University로 되어 있는지 확인한 다음 팀 이름과 팀원을 작성합니다. 팀원은 이름을 입력하고 잠시 기다리면 선택할 수 있는 버튼이 나옵니다. 마지막으로 **REGISTER TEAM(S)** 버튼을 클릭하면 됩니다.
-![](/assets/images/icpc-guide/03-4.PNG)
+<img src="/assets/images/icpc-guide/03-4.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 ## 4. 추가 개인정보 업데이트
 
 **작년에 참가하셨던 분들도 추가 항목이 생겼을 수 있으니 다시 한번 확인해 주시길 바랍니다.**
 
 팀 등록이 완료되어서 PENDING 상태가 된 이후에 다시 프로필에 들어가면 다음과 같은 새로운 탭 3개를 볼 수 있습니다. (PASSPORT & VISA는 무시하세요.)
-![](/assets/images/icpc-guide/04-1.PNG)
-![](/assets/images/icpc-guide/04-2.PNG)
-![](/assets/images/icpc-guide/04-3.PNG)
+<img src="/assets/images/icpc-guide/04-1.PNG" width="60%" style="display: block; margin: 0 auto;"><br>
+<img src="/assets/images/icpc-guide/04-2.PNG" width="60%" style="display: block; margin: 0 auto;"><br>
+<img src="/assets/images/icpc-guide/04-3.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 DEGREE INFO, CONTACT INFO, EXTRA FIELDS를 제가 채운 것과 비슷한 형식으로 모두 채워주시면 됩니다. 전화번호는 본인의 휴대폰 번호가 010-1234-5678이면 +82-10-1234-5678 형태로 적어야 합니다. Home airport code는 ICN(인천공항)을 입력하면 됩니다.
 
