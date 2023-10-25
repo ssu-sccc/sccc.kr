@@ -1,15 +1,68 @@
-- name: 2023 ICPC World Finals
+- name: 2022 ICPC World Finals
   type: ICPC
   team:
     - name: LongestPathToWF
-      award: 21/22 WF 진출
+      award: WF 진출
       member: aeren, edenooo, kyo20111
+
+- name: 2023 ICPC World Finals
+  type: ICPC
+  team:
     - name: NLP
-      award: 22/23 WF 진출
+      award: WF 진출
       member: chansol, jhnah917, lobo_prix
+
+- name: 2023 ICPC Asia Seoul Preliminary Contest
+  type: ICPC
+  scoreboard: http://static.icpckorea.net/2023/first_round/scoreboard/
+  team:
+    - name: PS akgwi
+      rank: 3
+      award: △
+      member: edenooo, jhnah917, kyo20111
+    - name: wookje.dance
+      rank: 43
+      award: △
+      member: chansol, lobo_prix, wookje
+    - name: ZeckDang
+      rank: 72
+      award: 휴학생 팀
+      member: m4ushold, marshmallow, w8385
+    - name: happihappi
+      rank: 73
+      award: △
+      member: chorogchip, egod1537, jhs030526
+    - name: iosLover
+      rank: 88
+      member: chongin12
+    - name: Bitween
+      rank: 111
+      member: jnary
+    - name: 23logC
+      rank: 116
+      member: he1fire, i_am_commang, rkaskan506
+    - name: osos
+      rank: 118
+      member: eyiuta1
+    - name: F COLLECTER
+      rank: 131
+      member: jhg1ww, third1234
+    - name: NohLeeKim
+      rank: 141
+      member: kitty1463, relilous, youngjin_noh
+    - name: ThreeP
+      rank: 144
+      member: gsmin2020, ngchaneok, nsc_777
+    - name: ANG
+      rank: 145
+      member: 04beomyun, ext32
+    - name: CCS192023
+      rank: 148
+      member: alstj3363, chleee
 
 - name: 2023 현대모비스 알고리즘 경진대회
   type: Personal
+  awardlist: https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FEnn6T%2Fbtsn8qH11DN%2FKoPzyHtD7gGMeOoZKaneEk%2Fimg.png
   team:
     - name: kyo20111
       rank: 6
@@ -21,7 +74,6 @@
       award: 본선 진출
     - name: egod1537
       award: 본선 진출
-      
 
 - name: 2023 UCPC 본선
   type: ICPC
