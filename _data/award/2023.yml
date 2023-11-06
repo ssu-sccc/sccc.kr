@@ -166,6 +166,23 @@
       rank: 44
       award: 한국 2등
 
+- name: 2023 Meta Hacker Cup Round 3
+  type: Personal
+  scoreboard: https://www.facebook.com/codingcompetitions/hacker-cup/2023/round-3/scoreboard
+  team:
+    - name: aeren
+      rank: 81
+      award: 한국 5등
+    - name: edenooo
+      rank: 123
+      award: 한국 6등
+    - name: jhnah917
+      rank: 290
+      award: 한국 9등
+    - name: lobo_prix
+      rank: 329
+      award: 한국 11등
+
 - name: 2023 SCON
   type: ICPC
   scoreboard: https://www.acmicpc.net/contest/spotboard/998
