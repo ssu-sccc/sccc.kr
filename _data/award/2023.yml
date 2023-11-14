@@ -212,9 +212,9 @@
       award: 금상
       member: he1fire, i_am_commang, rkaskan506
     - name: jaebal_jongang
-      rank: 4
+      rank: 3
       award: 은상
-      member: chorogchip, komoe
+      member: chorogchip, ext32
     - name: 한재훈졸업해라
       rank: 5
       award: 은상
@@ -257,7 +257,7 @@
       rank: 25
       award: 컴퓨터학부 특별상
       member: ysj9074
-    - name: 느슨해진 세상에 긴장감을 주는 알고립즘
+    - name: 느슨해진 세상에 긴장감을 주는 알고리즘
       rank: 33
       member: hsun18
     - name: ""
@@ -265,4 +265,4 @@
       member: chansol, edenooo, jhnah917, kyo20111
     - name: ""
       award: 현장 스태프
-      member: 9ada, eric2057, m4ushold, nam14785, pts0414, rudeore0928, you08045
+      member: 9ada, eric2057, m4ushold, nam14785,<br>pts0414, rudeore0928, you08045
