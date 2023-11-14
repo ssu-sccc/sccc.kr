@@ -12,6 +12,19 @@
       award: WF 진출
       member: chansol, jhnah917, lobo_prix
 
+- name: 2023 ICPC Asia Seoul Regional Contest
+  type: ICPC
+  team:
+    - name: PS akgwi
+      award: 본선 진출
+      member: edenooo, jhnah917, kyo20111
+    - name: wookje.dance
+      award: 본선 진출
+      member: chansol, lobo_prix, wookje
+    - name: happihappi
+      award: 본선 진출
+      member: chorogchip, egod1537, jhs030526
+
 - name: 2023 ICPC Asia Seoul Preliminary Contest
   type: ICPC
   scoreboard: http://static.icpckorea.net/2023/first_round/scoreboard/
@@ -129,6 +142,9 @@
     - name: g-man
       rank: 176
       member: eric2057, jhw0406, tldnjs0821
+    - name: ""
+      award: 문제 검수
+      member: egod1537
 
 - name: 2023 SCPC
   type: Personal
@@ -247,3 +263,6 @@
     - name: ""
       award: 문제 출제
       member: chansol, edenooo, jhnah917, kyo20111
+    - name: ""
+      award: 현장 스태프
+      member: 9ada, eric2057, m4ushold, nam14785, pts0414, rudeore0928, you08045
