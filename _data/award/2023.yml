@@ -16,14 +16,18 @@
   type: ICPC
   team:
     - name: PS akgwi
-      award: 본선 진출
+      rank: 5
+      award: 은상
       member: edenooo, jhnah917, kyo20111
-    - name: wookje.dance
-      award: 본선 진출
-      member: chansol, lobo_prix, wookje
     - name: happihappi
-      award: 본선 진출
+      award: 25
       member: chorogchip, egod1537, jhs030526
+    - name: wookje.dance
+      rank: 48
+      member: chansol, lobo_prix, wookje
+    - name: ""
+      award: 현장 스태프
+      member: rkddbswn0, w8385
 
 - name: 2023 ICPC Asia Seoul Preliminary Contest
   type: ICPC
