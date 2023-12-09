@@ -29,8 +29,8 @@
   </table>
 
   <ul>
-    {% if contest.advance %}
-      <li>△: {{ contest.advance }} 진출</li>
+    {% if contest.advance_important %}
+      <li>△: <b>{{ contest.advance_important }}</b> 진출</li>
     {% endif %}
     {% if contest.scoreboard %}
       <li><a href = "{{ contest.scoreboard }}">스코어보드</a></li>
@@ -40,6 +40,9 @@
     {% endif %}
     {% if contest.interview %}
       <li><a href = "{{ contest.interview }}">인터뷰</a></li>
+    {% endif %}
+    {% if contest.advance %}
+      <li>△: {{ contest.advance }} 진출</li>
     {% endif %}
   </ul>
 

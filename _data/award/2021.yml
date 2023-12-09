@@ -1,6 +1,6 @@
 - name: 2021 ICPC Asia Seoul Regional Contest
   type: ICPC
-  advance: <b>2022 ICPC World Finals</b>
+  advance_important: 2022 ICPC World Finals
   scoreboard: http://static.icpckorea.net/2021/scoreboard_regional/
   awardlist: http://icpckorea.org/static/2021%EC%88%98%EC%83%81%EC%9E%90-%EB%AA%85%EB%8B%A8.pdf
   interview: http://www.comtimes.kr/news/1096
