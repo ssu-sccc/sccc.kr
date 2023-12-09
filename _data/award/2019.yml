@@ -15,6 +15,7 @@
 
 - name: 2019 ICPC Asia Seoul Preliminary Contest
   type: ICPC
+  advance: 2019 ICPC Asia Seoul Regional Contest
   scoreboard: http://icpckorea.org/2019/preliminary/scoreboard/
   team:
     - name: bonin 1st sangsang-ham
@@ -48,6 +49,7 @@
 
 - name: 2019 UCPC 예선
   type: ICPC
+  advance: 2019 UCPC 본선
   scoreboard: https://www.acmicpc.net/contest/spotboard/449
   team:
     - name: 내니까 믿으니까 개.잘.하.니.까

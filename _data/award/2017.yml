@@ -13,6 +13,7 @@
 
 - name: 2017 ACM-ICPC Asia Daejeon Preliminary Contest
   type: ICPC
+  advance: 2017 ACM-ICPC Asia Daejeon Regional Contest
   scoreboard: http://icpckorea.org/2017/preliminary/scoreboard/
   team:
     - name: Today_Is_YoungJeong_Birthday
@@ -34,6 +35,7 @@
 
 - name: 2017 카카오 코드 페스티벌 예선
   type: Personal
+  advance: 2017 카카오 코드 페스티벌 본선
   scoreboard: http://t1.kakaocdn.net/codefestival/round-1-scoreboard/index.html
   team:
     - name: sys7961

@@ -12,6 +12,7 @@
 
 - name: 2016 ACM-ICPC Asia Daejeon Preliminary Contest
   type: ICPC
+  advance: 2016 ACM-ICPC Asia Daejeon Regional Contest
   scoreboard: http://icpckorea.org/2016/ONLINE/scoreboard/
   interview: http://www.comtimes.kr/news/828
   team:

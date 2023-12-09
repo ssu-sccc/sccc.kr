@@ -1,12 +1,13 @@
 - name: 2021 ICPC Asia Seoul Regional Contest
   type: ICPC
+  advance: <b>2022 ICPC World Finals</b>
   scoreboard: http://static.icpckorea.net/2021/scoreboard_regional/
   awardlist: http://icpckorea.org/static/2021%EC%88%98%EC%83%81%EC%9E%90-%EB%AA%85%EB%8B%A8.pdf
   interview: http://www.comtimes.kr/news/1096
   team:
     - name: LongestPathToWF
       rank: 8
-      award: 동상, WF 진출
+      award: 동상, △
       member: aeren, edenooo, kyo20111
     - name: AC-Complete
       rank: 24
@@ -17,6 +18,7 @@
 
 - name: 2021 ICPC Asia Seoul Preliminary Contest
   type: ICPC
+  advance: 2021 ICPC Asia Seoul Regional Contest
   scoreboard: http://static.icpckorea.net/2021/scoreboard_preliminary/
   team:
     - name: LongestPathToWF
@@ -51,6 +53,7 @@
 
 - name: 2021 UCPC 예선
   type: ICPC
+  advance: 2021 UCPC 본선
   scoreboard: https://www.acmicpc.net/contest/spotboard/668
   team:
     - name: longest path to victory

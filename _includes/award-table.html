@@ -29,6 +29,9 @@
   </table>
 
   <ul>
+    {% if contest.advance %}
+      <li>△: {{ contest.advance }} 진출</li>
+    {% endif %}
     {% if contest.scoreboard %}
       <li><a href = "{{ contest.scoreboard }}">스코어보드</a></li>
     {% endif %}

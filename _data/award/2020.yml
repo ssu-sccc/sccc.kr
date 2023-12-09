@@ -13,6 +13,7 @@
 
 - name: 2020 ICPC Asia Seoul Preliminary Contest
   type: ICPC
+  advance: 2020 ICPC Asia Seoul Regional Contest
   scoreboard: http://icpckorea.org/2020/preliminary/scoreboard/dbda78f0e4/
   team:
     - name: 181920
@@ -58,6 +59,7 @@
 
 - name: 2020 UCPC 예선
   type: ICPC
+  advance: 2020 UCPC 본선
   scoreboard: https://www.acmicpc.net/contest/spotboard/521
   team:
     - name: solved.wa

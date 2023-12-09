@@ -3,8 +3,13 @@
   list:
 
 - name: silver
-  count: 5
+  count: 6
   list:
+    - year: 2023
+      site: 서울
+      team-rank: 5
+      univ-rank: 4
+      korea-univ-rank: 3
     - year: 2022
       site: 서울
       team-rank: 5
