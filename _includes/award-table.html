@@ -38,6 +38,9 @@
     {% if contest.awardlist %}
       <li><a href = "{{ contest.awardlist }}">수상자 명단</a></li>
     {% endif %}
+    {% if contest.teamlist %}
+      <li><a href = "{{ contest.teamlist }}">참가 팀 목록</a></li>
+    {% endif %}
     {% if contest.interview %}
       <li><a href = "{{ contest.interview }}">인터뷰</a></li>
     {% endif %}

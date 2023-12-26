@@ -1,0 +1,27 @@
+- name: 2022 ICPC World Finals
+  type: ICPC
+  teamlist: https://icpc.global/worldfinals/teams
+  team:
+    - name: LongestPathToWF
+      award: WF 진출
+      member: aeren, edenooo, kyo20111
+
+- name: 2023 ICPC World Finals
+  type: ICPC
+  teamlist: https://icpc.global/worldfinals/teams
+  team:
+    - name: NLP
+      award: WF 진출
+      member: chansol, jhnah917, lobo_prix
+
+- name: 2024 ICPC Asia Pacific Championship
+  type: ICPC
+  advance_important: 2024 ICPC World Finals
+  teamlist: http://139.59.249.46/teams/
+  team:
+    - name: PS akgwi
+      award: 플레이오프 진출
+      member: edenooo, jhnah917, kyo20111
+    - name: happihappi
+      award: 플레이오프 진출
+      member: chorogchip, egod1537, jhs030526

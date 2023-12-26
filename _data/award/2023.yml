@@ -14,14 +14,17 @@
 
 - name: 2023 ICPC Asia Seoul Regional Contest
   type: ICPC
+  advance_important: 2024 ICPC Asia Pacific Championship
   scoreboard: http://static.icpckorea.net/2023/regional/scoreboard/
+  awardlist: http://static.icpckorea.net/2023/2023_award_result.pdf
   team:
     - name: PS akgwi
       rank: 5
-      award: 은상
+      award: 은상, △
       member: edenooo, jhnah917, kyo20111
     - name: happihappi
       rank: 25
+      award: △
       member: chorogchip, egod1537, jhs030526
     - name: wookje.dance
       rank: 48
