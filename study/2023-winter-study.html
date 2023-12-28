@@ -1,0 +1,142 @@
+---
+layout: study
+title: 2023학년도 겨울방학 스터디
+permalink: /study/2023/winter/
+---
+
+<div>
+	<h1 style="margin-top: 1rem;">
+		2023학년도 겨울방학 스터디
+	</h1>
+	<div style="margin: 1rem;">
+		이번 겨울방학에는 2개의 대면 스터디가 진행됩니다.
+	</div>
+	<div style="width: 100%; height: 1px; background: rgba(0, 0, 0, .1); margin: 2rem 0;"></div>
+	<div class="btn-group" style="font-size: 1.1rem; margin-bottom: 2rem;">
+		<button id="23-winter-basic-intermediate-lecture-btn" style="margin-right: .5rem;" class="active btn" type='button'>초급 알고리즘 강의</button>
+		<button id="23-winter-crypto-lecture-btn" style="margin-right: .5rem;" type='button' class="btn">암호학 강의</button>
+	</div>
+	<div id="23-winter-basic-lecture-view">
+		<h2>개요</h2>
+		<ul>
+			<li>
+				진행자
+				<ul>
+					<li>소프트웨어학부 18학번 박근형</li>
+				</ul>
+			</li>
+			<li>
+				스터디 내용
+				<ul>
+					<li>
+						PS(Problem Solving)에 사용하는 기초적인 개념과 실제 문제에 적용하는 방법
+						<ul>
+							<li>solved.ac CLASS 4+@ 이하의 기초 알고리즘</li>
+							<li>C++ 구현시 자잘한 팁</li>
+							<li>Python으로 도망치는 타이밍</li>
+						</ul>
+					</li>
+					<li>PS&CP 사이트 이용시 알쓸신잡</li>
+				</ul>
+			</li>
+			<li>
+				권장 대상
+				<ul>
+					<li>초급 스터디에서 다루는 내용을 모두 아는 사람</li>
+				</ul>
+			</li>
+			<li>
+				시간 및 장소
+				<ul>
+					<li>1월 첫째 주 ~ 2월 셋째 주 화요일 15:00 ~ 17:00</li>
+					<li>학교에서 오프라인으로 진행</li>
+				</ul>
+			</li>
+		</ul>
+
+		<h2>일정</h2>
+		<table>
+			<tr> <th>차시</th> <th>날짜</th> <th>주제</th> </tr>
+			<tr> <td>1차시</td> <td>24.01.02</td> <td>OT, 자료구조 1 | PS의 효능, 환경 구축, 배열, 벡터, 스택</td> </tr>
+			<tr> <td>2차시</td> <td>24.01.09</td> <td>자료구조 2 | 큐, 덱, 집합, 맵</td> </tr>
+			<tr> <td>3차시</td> <td>24.01.16</td> <td>완전 탐색, 정렬, 이분 탐색</td> </tr>
+			<tr> <td>4차시</td> <td>24.01.23</td> <td>재귀 함수, 동적 계획법</td> </tr>
+			<tr> <td>5차시</td> <td>24.01.30</td> <td>분할 정복, 그리디 기법</td> </tr>
+			<tr> <td>6차시</td> <td>24.02.06</td> <td>그래프 이론 | 그래프 탐색, 최단 경로, 서로소 집합</td> </tr>
+			<tr> <td>7차시</td> <td>24.02.13</td> <td>정수론 | 거듭제곱, 소수 판정, 유클리드 호제법</td> </tr>
+			<tr> <td>8차시</td> <td>24.02.20</td> <td>마무리</td> </tr>
+		</table>
+	</div>
+	<div id="23-winter-crypto-lecture-view" style="display: none;">
+		<h2>개요</h2>
+		<ul>
+			<li>
+				진행자
+				<ul>
+					<li>소프트웨어학부 21학번 진민성</li>
+				</ul>
+			</li>
+			<li>
+				스터디 내용
+				<ul>
+					<li>기초적인 암호학 알고리즘</li>
+				</ul>
+			</li>
+			<li>
+				시간 및 장소
+				<ul>
+					<li>12월 다섯째 주 ~ 1월 넷째 주 화요일 17:00 ~ 19:00</li>
+					<li>학교에서 오프라인으로 진행</li>
+				</ul>
+			</li>
+		</ul>
+
+		<h2>일정</h2>
+		<table>
+			<tr> <th>차시</th> <th>날짜</th> <th>주제</th> </tr>
+			<tr> <td>1차시</td> <td>23.12.28</td> <td>고전 암호</td> </tr>
+			<tr> <td>2차시</td> <td>24.01.04</td> <td>정수론 1</td> </tr>
+			<tr> <td>3차시</td> <td>24.01.11</td> <td>정수론 2</td> </tr>
+			<tr> <td>4차시</td> <td>24.01.18</td> <td>RSA</td> </tr>
+			<tr> <td>5차시</td> <td>24.01.25</td> <td>PS with Crypto</td> </tr>
+		</table>
+	</div>
+</div>
+
+<style>
+	.btn {
+		padding: .7rem 1rem;
+		transition: .2s;
+		color: black;
+	}
+
+	.btn.active {
+		background-color: rgba(0, 0, 0, 1);
+		color: white;
+	}
+</style>
+<script>
+	let class_list = ['23-winter-basic-lecture', '23-winter-crypto-lecture'];
+	let btn = [], view = [];
+
+	for(let i=0; i<class_list.length; i++){
+		btn.push(document.getElementById(class_list[i] + '-btn'));
+		view.push(document.getElementById(class_list[i] + '-view'));
+	}
+
+	for(let i=0; i<class_list.length; i++){
+		btn[i].onclick = function (event) {
+			for(let j=0; j<class_list.length; j++) {
+				if(i === j){
+					btn[j].classList.add('active');
+					view[j].style.display = 'block';
+				}
+				else{
+					btn[j].classList.remove('active');
+					view[j].style.display = 'none';
+				}
+			}
+			event.preventDefault();
+		};
+	}
+</script>
