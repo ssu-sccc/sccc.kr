@@ -17,7 +17,7 @@
 - name: 2024 ICPC Asia Pacific Championship
   type: ICPC
   advance_important: 2024 ICPC World Finals
-  teamlist: http://139.59.249.46/teams/
+  teamlist: https://icpc.asia/teams/
   team:
     - name: PS akgwi
       award: 플레이오프 진출
@@ -25,3 +25,18 @@
     - name: happihappi
       award: 플레이오프 진출
       member: chorogchip, egod1537, jhs030526
+
+- name: Hello, BOJ 2024!(전대프연 겨울 대회)
+  type: Personal
+  scoreboard: https://www.acmicpc.net/contest/board/1229
+  team:
+    - name: edenooo
+      rank: 12
+      award: 5등상
+    - name: aeren
+      rank: 18
+      award: FuriosaAI 특별상
+    - name: chorogchip
+      award: 본선 진출
+    - name: jhnah917, kyo20111
+      award: 문제 출제/검수

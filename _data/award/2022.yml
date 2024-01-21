@@ -101,6 +101,17 @@
     - name: lobo_prix
       award: 본선 진출
 
+- name: Hello, BOJ 2022!(전대프연 겨울 대회)
+  type: Personal
+  scoreboard: https://www.acmicpc.net/contest/board/753
+  team:
+    - name: aeren
+      rank: 14
+    - name: chongin12
+      rank: 55
+    - name: jhnah917, kyo20111
+      award: 문제 출제/검수
+
 - name: 2022 Meta Hacker Cup Round 3
   type: Personal
   scoreboard: https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/scoreboard
