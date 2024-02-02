@@ -1,3 +1,17 @@
+- name: worldfinals
+  count: 2
+  list:
+    - year: 2023
+      site: Luxor, Egypt
+    - year: 2022
+      site: Luxor, Egypt
+
+- name: asiapacific
+  count: 1
+  list:
+    - year: 2024
+      site: Hanoi, Vietnam
+
 - name: gold
   count: 0
   list:
