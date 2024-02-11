@@ -97,17 +97,30 @@ The 2023 ICPC Asia Seoul Regional Contest > The 2023 ICPC Asia Korea National Fi
 <img src="/assets/images/icpc-guide/04-2.PNG" width="60%" style="display: block; margin: 0 auto;"><br>
 <img src="/assets/images/icpc-guide/04-3.PNG" width="60%" style="display: block; margin: 0 auto;">
 
-DEGREE INFO, CONTACT INFO, EXTRA FIELDS를 제가 채운 것과 비슷한 형식으로 모두 채워주시면 됩니다. 전화번호는 본인의 휴대폰 번호가 010-1234-5678이면 +82-10-1234-5678 형태로 적어야 합니다. Home airport code는 ICN(인천공항)을 입력하면 됩니다.
+DEGREE INFO, CONTACT INFO, EXTRA FIELDS를 위 사진과 비슷한 형식으로 모두 채워주시면 됩니다. EXTRA FIELDS가 없는 경우에는 채우지 않아도 됩니다. 전화번호는 본인의 휴대폰 번호가 010-1234-5678이면 +82-10-1234-5678 형태로 적어야 합니다. Home airport code는 ICN(인천공항)을 입력하면 됩니다.
 
 ## 5. Accept 될 때까지 기다리기
 PENDING이 ACCEPTED로 바뀔 때까지 기다리면 됩니다. 입력하지 않은 필드가 있는 경우에는 icpc.global 에 가입한 메일로 연락이 올 수 있으니 메일을 자주 확인해 주시길 바랍니다.
 
 PENDING이 ACCEPTED로 바뀌면 등록이 완료된 것입니다.
 
-## 5. FUN 시스템 신청
+## 6. FUN 시스템 신청
 
 **SCCC에서 일괄 참가 신청을 했더라도, FUN 시스템에서는 팀장이 직접 신청해야 합니다.**
 
 추가 예정...
 
+## 대회 팁
+
 ICPC 서울 지역 대회는 보다 많은 대학교의 참여를 위하여, 각 대학별로 본선 진출의 커트라인을 다르게 정합니다. 본선 진출을 결정하는 여러 규칙 중 1/2룰이라고 부르는 규칙이 대표적인데, 각 대학별로 예선 참가 팀 수의 절반 이하만 본선에 진출할 수 있습니다. 예를 들어 숭실대학교에서 예선에 11팀이 진출한 경우 본선에는 최대 5팀만 진출할 수 있습니다. 숭실대학교 팀들의 본선 진출을 위해 주변 지인들에게 대회 참여를 독려해 주시길 바랍니다.
+
+ICPC는 미리 인쇄된 A4 단면 25페이지 이하의 문서(팀노트)를 대회 중에 사용할 수 있습니다. 주로 외우기 어렵거나 실수하기 쉬운 알고리즘 구현이나 수학 공식을 적어 갑니다. 아래 링크를 참고하시길 바랍니다. ☆ 개수는 난이도를 의미합니다.
+
+* ☆ [https://github.com/justiceHui/icpc-teamnote-for-newbie](https://github.com/justiceHui/icpc-teamnote-for-newbie)
+* ☆☆☆ [https://github.com/justiceHui/icpc-teamnote](https://github.com/justiceHui/icpc-teamnote)
+* ☆☆ [https://github.com/green5555/Teamnote-archive](https://github.com/green5555/Teamnote-archive)
+* ☆☆ [https://github.com/ntopia/icpc-teamnote](https://github.com/ntopia/icpc-teamnote)
+* ☆☆☆ [https://zigui.tistory.com/5](https://zigui.tistory.com/5)
+* ☆☆☆ [https://github.com/kth-competitive-programming/kactl/blob/main/kactl.pdf](https://github.com/kth-competitive-programming/kactl/blob/main/kactl.pdf)
+
+일반적으로 ICPC 본선 등 대회장에서 오프라인으로 진행하는 대회의 경우, 팀노트와 개인 키보드 같은 대회장에 들고 갈 물품은 예비소집 때 제출해야 합니다. 까먹지 말고 꼭 예비소집에 가져가시길 바랍니다. 종이로 된 영어사전을 지참할 수 있는 대회도 있습니다. 영어사전 사용 가능 여부가 대회 안내 페이지에 나와있지 않은 경우에는 대회 본부에 메일로 문의한 뒤 가져가는 것을 권장합니다.

@@ -77,45 +77,38 @@ permalink: /index.html
         <h1 class="ui center aligned header">SCCC</h1>
         <h2 class="ui center aligned header">Soongsil Computing Contest Club</h2>
         <div class="ui center aligned header">
-            <button class="ui button shake-little">
-                <a href="/contest/">SCON 안내</a>
-            </button>
-            <button class="ui button shake-little">
-                <a href="/recruit/">신입 부원 모집 안내</a>
-            </button>
-            <button class="ui button shake-little">
-                <a href="/study/">스터디 진행 안내</a>
-            </button>
-            <button class="ui button shake-little">
-                <a href="/awards/">SCCC 수상 실적</a>
-            </button>
+            <button class="ui button shake-little" onclick="location.href='/recruit/'">신입 부원 모집</button>
+            <button class="ui button shake-little" onclick="location.href='/study/'">스터디 목록</button>
+            <button class="ui button shake-little" onclick="location.href='/awards/'">SCCC 수상 실적</button>
+            <button class="ui button shake-little" onclick="location.href='/contest/'">SCON 안내</button>
+            <button class="ui button shake-little" onclick="location.href='/icpc-guide/'">ICPC 신청 가이드</button>
         </div>
         <div class="ui three column doubling stackable grid container">
             <div class="column" data-aos="fade-right">
                 <div class="ui segment" style="display: flex; flex-direction: column; align-items: center;">
                     <div class="ui medium image">
-                        <img src={{ site.baseurl | append: "/assets/images/SSU.jpg" }} class="img-responsive">
+                        <img src={{ site.baseurl | append: "/assets/images/logos/ssu-resize.png" }} class="img-responsive">
                     </div>
                     <h4 class="ui center aligned">Soongsil University</h4>
-                    <p class="ui center aligned">숭실대학교 컴퓨터학부 소속 문제해결 소모임 입니다.</p>
+                    <p class="ui center aligned">숭실대학교 컴퓨터학부 소속 문제해결 소모임입니다.</p>
                 </div>
             </div>
             <div class="column" data-aos="fade-up">
                 <div class="ui segment" style="display: flex; flex-direction: column; align-items: center;">
                     <div class="ui medium image">
-                        <img src={{ site.baseurl | append: "/assets/images/icpc-logo.png" }} class="img-responsive">
+                        <img src={{ site.baseurl | append: "/assets/images/logos/icpc-resize.png" }} class="img-responsive">
                     </div>
                     <h4 class="ui center aligned">Problem Solving</h4>
-                    <p class="ui center aligned">문제해결을 공부하여 ICPC 등 여러 알고리즘 문제해결 대회를 준비합니다.</p>
+                    <p class="ui center aligned">자료구조, 알고리즘, 문제해결기법을 공부하여 ICPC 등 여러 프로그래밍 대회를 준비합니다.</p>
                 </div>
             </div>
             <div class="column" data-aos="fade-left">
                 <div class="ui segment">
                     <div class="ui medium image">
-                        <img src={{ site.baseurl | append: "/assets/images/sponsor-hyundaimobis_CI.jpg" }} class="img-responsive">
+                        <img src={{ site.baseurl | append: "/assets/images/logos/mobis-resize.png" }} class="img-responsive">
                     </div>
                     <h4 class="ui center aligned">현대모비스 우수SW동아리</h4>
-                    <p class="ui center aligned">저희는 현대모비스 우수 SW동아리로 지원받아 활동하고 있습니다.</p>
+                    <p class="ui center aligned">현대모비스 우수 SW동아리로 지원받아 활동하고 있습니다.</p>
                 </div>
             </div>
         </div>
@@ -153,264 +146,143 @@ permalink: /index.html
     <!-- Portfolio Grid Section -->
     <section id="activity" class="bg-light-green">
         <h2 class="ui center aligned header">Activity</h2>
-        <h3 class="ui center aligned header">2019년 SCCC의 활동소개</h3>
+        <h3 class="ui center aligned header">2023년 SCCC 활동 소개</h3>
         <div class="container">
             <div class="ui three column doubling stackable grid container">
                 <div class="column" data-aos="fade-right">
                     <div class="ui segment center aligned">
                         <div class="ui medium image">
-                            <img src={{ site.baseurl | append: "/assets/images/activity/1.jpg" }} class="img-responsive" alt="">
+                            <img src={{ site.baseurl | append: "/assets/images/2023-activity/scon.jpg" }} class="img-responsive" alt="">
                         </div>
-                        <h4>오늘의 문제</h4>
-                        <p class="text-muted">매일 한 문제씩 풉니다.</p>
+                        <h4>숭실대학교 프로그래밍 대회(2023 SCON) 개최</h4>
+                        <p class="text-muted">교내 프로그래밍 대회를 개최합니다. (<a href="https://github.com/ssu-sccc/2023scon">문제&풀이</a>)</p>
                     </div>
                 </div>
                 <div class="column" data-aos="fade-right">
                     <div class="ui segment center aligned">
                         <div class="ui medium image">
-                            <img src={{ site.baseurl | append: "/assets/images/activity/2.jpg" }} class="img-responsive" alt="">
+                            <img src={{ site.baseurl | append: "/assets/images/2023-activity/weekly-ps.png" }} class="img-responsive" alt="">
 
                         </div>
-                        <h4>겨울 스터디</h4>
-                        <p class="text-muted">신입회원들과 함께 진행하였습니다.</p>
+                        <h4>주간 연습</h4>
+                        <p class="text-muted">매주 문제를 풀고 토론합니다. (<a href="https://github.com/justiceHui/SSU-SCCC-Study/tree/master/2023-spring-problem-solving">문제 모음</a>)</p>
                     </div>
                 </div>
                 <div class="column" data-aos="fade-right">
                     <div class="ui segment center aligned">
                         <div class="ui medium image">
-                            <img src={{ site.baseurl | append: "/assets/images/activity/3.jpg" }} class="img-responsive" alt="">
+                            <img src={{ site.baseurl | append: "/assets/images/2023-activity/internal-contest.jpg" }} class="img-responsive" alt="">
                         </div>
-                        <h4>001 자리 청소</h4>
-                        <p class="text-muted">올해도 6자리입니다!</p>
+                        <h4>SCCC 내전</h4>
+                        <p class="text-muted">상품을 걸고 내부 대회를 진행합니다. (<a href="https://github.com/justiceHui/SSU-SCCC-Study/tree/master/2023-autumn-contest">문제 모음</a>)</p>
+                    </div>
+                </div>
+                <div class="column" data-aos="fade-right">
+                    <div class="ui segment center aligned">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/2023-activity/icpc-prem.png" }} class="img-responsive" alt="">
+                        </div>
+                        <h4>2023 ICPC 예선</h4>
+                        <p class="text-muted">서울대학교, 카이스트, 그리고 숭실대학교</p>
+                    </div>
+                </div>
+                <div class="column" data-aos="fade-right">
+                    <div class="ui segment center aligned">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/2023-activity/icpc-seoul-regional.jpg" }} class="img-responsive" alt="">
+                        </div>
+                        <h4>2023 ICPC Asia Seoul Regional Contest</h4>
+                        <p class="text-muted">PS akgwi팀 은상(4등) 수상</p>
+                    </div>
+                </div>
+                <div class="column" data-aos="fade-right">
+                    <div class="ui segment center aligned">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/2023-activity/ucpc-final.jpg" }} class="img-responsive" alt="">
+                        </div>
+                        <h4>2023 UCPC 본선</h4>
+                        <p class="text-muted">문제 출제, 4등상, 특별상*2</p>
+                    </div>
+                </div>
+                <div class="column" data-aos="fade-right">
+                    <div class="ui segment center aligned">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/2023-activity/mobis.png" }} class="img-responsive" alt="">
+                        </div>
+                        <h4>2023 현대모비스 알고리즘 경진대회</h4>
+                        <p class="text-muted">우수상(6등, 7등) 수상</p>
+                    </div>
+                </div>
+                <div class="column" data-aos="fade-right">
+                    <div class="ui segment center aligned">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/2023-activity/hello-boj.jpg" }} class="img-responsive" alt="">
+                        </div>
+                        <h4>Hello, BOJ 2024!</h4>
+                        <p class="text-muted">문제 출제, 5등상, 특별상 수상</p>
+                    </div>
+                </div>
+                <div class="column" data-aos="fade-right">
+                    <div class="ui segment center aligned">
+                        <div class="ui medium image">
+                            <img src={{ site.baseurl | append: "/assets/images/2023-activity/scpc-logo.jpg" }} class="img-responsive" alt="">
+                        </div>
+                        <h4>2023 삼성전자 대학생 프로그래밍 경진대회</h4>
+                        <p class="text-muted">SCCC 소속 4명 진출</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Grid Section -->
-    <section id="portfolio" class="bg-light-gray">
-        <h2 class="ui center aligned header">Portfolio</h2>
-        <h3 class="ui center aligned header">2019년 SCCC의 활동내역입니다.</h3>
-        <div class="container">
-            <div class="ui three column doubling stackable grid container">
-                <div class="column" data-aos="fade-right">
-                    <div class="ui segment center aligned">
-                        <div class="ui medium image">
-                            <img src={{ site.baseurl | append: "/assets/images/portfolio/1.jpg" }} class="img-responsive" alt="">
-                        </div>
-                        <h4>Round Conference</h4>
-                        <p class="text-muted">17년 정기 회의</p>
-                    </div>
-                </div>
-                <div class="column" data-aos="fade-right">
-                    <div class="ui segment center aligned">
-                        <div class="ui medium image">
-                            <img src={{ site.baseurl | append: "/assets/images/portfolio/2.jpg" }} class="img-responsive" alt="">
-                        </div>
-                        <h4>SCPC 본선</h4>
-                        <p class="text-muted">SCCC 소속 5명 진출</p>
-                    </div>
-                </div>
-                <div class="column" data-aos="fade-right">
-                    <div class="ui segment center aligned">
-                        <div class="ui medium image">
-                            <img src={{ site.baseurl | append: "/assets/images/portfolio/5.jpg" }} class="img-responsive" alt="">
-                        </div>
-                        <h4>ICPC 예선</h4>
-                        <p class="text-muted">팀 Jaedaero_Noraboja!!!</p>
-                    </div>
-                </div>
-                <div class="column" data-aos="fade-right">
-                    <div class="ui segment center aligned">
-                        <div class="ui medium image">
-                            <img src={{ site.baseurl | append: "/assets/images/portfolio/7.jpg" }} class="img-responsive" alt="">
-                        </div>
-                        <h4>교내대회 1등, ACM-ICPC 은상</h4>
-                        <p class="text-muted">팀 Today_is_Youngjeong_birthday</p>
-                    </div>
-                </div>
-                <div class="column" data-aos="fade-right">
-                    <div class="ui segment center aligned">
-                        <div class="ui medium image">
-                            <img src={{ site.baseurl | append: "/assets/images/portfolio/9.jpg" }} class="img-responsive" alt="">
-                        </div>
-                        <h4>새내기 프로그래밍 대회</h4>
-                        <p class="text-muted">16년 11월 25일 정보관 101호</p>
-                    </div>
-                </div>
-                <div class="column" data-aos="fade-right">
-                    <div class="ui segment center aligned">
-                        <div class="ui medium image">
-                            <img src={{ site.baseurl | append: "/assets/images/portfolio/11.jpg" }} class="img-responsive" alt="">
-                        </div>
-                        <h4>KAKAO CODE FESTIVAL 본선</h4>
-                        <p class="text-muted">SCCC 소속 5명 진출</p>
-                    </div>
-                </div>
-                <div class="column" data-aos="fade-right">
-                    <div class="ui segment center aligned">
-                        <div class="ui medium image">
-                            <img src={{ site.baseurl | append: "/assets/images/portfolio/11.jpg" }} class="img-responsive" alt="">
-                        </div>
-                        <h4>숭실대학교 프로그래밍 컨테스트</h4>
-                        <p class="text-muted">SCCC 주최,  NAVER D2 후원</p>
-                    </div>
-                </div>
-                <div class="column" data-aos="fade-right">
-                    <div class="ui segment center aligned">
-                        <div class="ui medium image">
-                            <img src={{ site.baseurl | append: "/assets/images/portfolio/soongohan.jpg" }} class="img-responsive" alt="">
-                        </div>
-                        <h4>숭고한 연합 알고리즘 캠프</h4>
-                        <p class="text-muted">숭실대 SCCC, 한양대 ALOHA, 고려대 ALPS, 고려대 AlKor 연합 캠프. 19.08.05 ~ 19.08.11, 140명 참여</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-     <section id="solutions" class="bg-light-gray">
-        <h2 class="ui center aligned header">Solutions</h2>
-        <h3 class="ui center aligned header">SCCC가 푼 문제들의 풀이를 만나보세요!</h3>
-        <h3 class="ui center aligned header">회원 누구나 풀이 저장소에 기여할 수 있습니다</h3>
-        <div class="ui center aligned header">
-            <button class="ui button">
-                <a href="/solutions">더 보러가기</a>
-            </button>
-        </div>
-        <div class="container">
-            {% for solution in site.solutions limit:3 %}
-            <article class="index-page solution" data-aos="fade-up">
-                <h2><a href="{{ site.baseurl | append: solution.url }}">{{ solution.title }}</a></h2>
-                {% if solution.lastmod %}
-                <span class="date">{{ solution.lastmod | date: "%d-%m-%Y"  }}</span>
-                {% else %}
-                <span class="date">{{ solution.date | date: "%d-%m-%Y"  }}</span>
-                {% endif %}
-                {% if solution.author %}
-                <div class="author-wrapper">
-                    <span class="author">written by @{{ solution.author }}</span>
-                </div>
-                {% endif %}
-            </article>
-            {% endfor %}
         </div>
     </section>
 
     <!-- Team Section -->
-    <section id="Graduated" class="bg-light-gray">
+    <section id="_Graduated" class="bg-light-gray">
         <h2 class="ui center aligned header">Graduated</h2>
         <h3 class="ui center aligned header">졸업생 소식입니다.</h3>
         <div class="ui one column doubling stackable grid container">
             <div class="ui items">
+                {% for user in site.data.graduated %}
                 <div class="item">
                     <div class="ui small image">
                         <img src={{ site.baseurl | append: "/assets/images/team/anonymous.png" }}>
                     </div>
                     <div class="content">
-                        <a class="header">@hyo123bin</a>
-                        <div class="meta">
-                            <span></span>
-                        </div>
-                        <div class="description">
-                            <p>
-                                "SCCC에서 스터디하면서 졸업할 때까지 정말 즐거운 시간을 보냈어요!"
-                            </p>
-                        </div>
+                        <a class="header">@{{user.name}}</a>
+                        <div class="description"><p>"{{user.comment}}"</p></div>
                         <div class="extra">
-                            <div class="ui label"><i class="trophy icon"></i>2017 ACM-ICPC 은상</div>
-                            <div class="ui label"><i class="smile icon"></i>2017 스터디 디렉터</div>
-                            <div class="ui label"><i class="user icon"></i>2018 회장</div>
-                            <div class="ui label"><i class="star icon"></i>BOJ 랭커</div>
+                            {% if user.award %}
+                            {% for item in user.award %}
+                            <div class="ui label"><i class="{{item.icon}} icon"></i>{{item.title}}</div>
+                            {% endfor %}
+                            <br>
+                            {% endif %}
+
+                            {% if user.role %}
+                            {% for item in user.role %}
+                            <div class="ui label"><i class="{{item.icon}} icon"></i>{{item.title}}</div>
+                            {% endfor %}
+                            <br>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="ui small image">
-                        <img src={{ site.baseurl | append: "/assets/images/team/anonymous.png" }}>
-                    </div>
-                    <div class="content">
-                        <a class="header">@sys7961</a>
-                        <div class="description">
-                            <p>
-                                "소모임 활동은 정말 재미있었어요! 회장으로 모임에 기여하는 것은 정말 특별한 경험이었습니다."
-                            </p>
-                        </div>
-                        <div class="extra">
-                            <div class="ui label"><i class="smile icon"></i>2016 스터디 디렉터</div>
-                            <div class="ui label"><i class="user icon"></i>2015 회장</div>
-                            <div class="ui label"><i class="trophy icon"></i>2016 ACM-ICPC 동상</div>
-                            <div class="ui label"><i class="trophy icon"></i>2017 ACM-ICPC 은상</div>
-                            <div class="ui label"><i class="star icon"></i>BOJ 랭커</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ui small image">
-                        <img src={{ site.baseurl | append: "/assets/images/team/anonymous.png" }}>
-                    </div>
-                    <div class="content">
-                        <a class="header">@skdudn321</a>
-                        <div class="description">
-                            <p>
-                                "대학원.. stay..."
-                            </p>
-                        </div>
-                        <div class="extra">
-                            <div class="ui label"><i class="trophy icon"></i>2016 ACM-ICPC 동상</div>
-                            <div class="ui label"><i class="trophy icon"></i>2017 ACM-ICPC 은상</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ui small image">
-                        <img src={{ site.baseurl | append: "/assets/images/team/anonymous.png" }}>
-                    </div>
-                    <div class="content">
-                        <a class="header">@youngjeong_yu</a>
-                        <div class="description">
-                            <p>
-                                "함께해서 더러웠고 홈커밍때 보자"
-                            </p>
-                        </div>
-                        <div class="extra">
-                            <div class="ui label"><i class="user icon"></i>2017 회장</div>
-                            <div class="ui label"><i class="trophy icon"></i>2012 ACM-ICPC 동상</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ui small image">
-                        <img src={{ site.baseurl | append: "/assets/images/team/anonymous.png" }}>
-                    </div>
-                    <div class="content">
-                        <a class="header">@chogahui05</a>
-                        <div class="description">
-                            <p>
-                                짧은 시간동안 배운 것이 많았습니다. 제가 제일 잘한 일 중 하나는 sccc에 가입해서 활동한 것이였습니다.
-                            </p>
-                        </div>
-                        <div class="extra">
-                            <div class="ui label"><i class="star icon"></i>BOJ 랭커</div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
-        <h2 class="ui center aligned header">SCCC 운영진을 모집 중입니다</h2>
+
+        <h2 class="ui center aligned header">SCCC 운영진을 모집하고 있습니다.</h2>
         <div class="ui last container" data-aos="flip-up">
             <div class="ui three steps">
                 <div class="step">
                 <div class="content">
                     <div class="title">소통</div>
-                    <div class="description">Slack + Bot / KakaoTalk / Google Drive 와 같은 도구로 커뮤니티를 운영합니다. </div>
+                    <div class="description">Slack + Bot / KakaoTalk / Google Drive 와 같은 도구로 커뮤니티를 운영합니다.</div>
                 </div>
                 </div>
                 <div class="step">
                 <div class="content">
                     <div class="title">오픈소스</div>
-                    <div class="description">github으로 홈페이지, 알고리즘 관련 자료를 관리합니다. 네이버 D2 활동도 합니다.</div>
+                    <div class="description">GitHub를 이용해 홈페이지와 스터디 자료를 관리합니다.</div>
                 </div>
                 </div>
                 <div class="step">
@@ -438,129 +310,6 @@ permalink: /index.html
             </div>
         </div>
     </section>
-
-    {% comment %} <!-- Activity Modal 1 -->
-    <div class="portfolio-modal modal fade" id="activityModal1" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h2>오늘의 문제</h2>
-                                <p class="item-intro text-muted">매일 한 문제씩!</p>
-                                <img class="img-responsive img-centered" src={{ site.baseurl | append: "/assets/images/activity/today's_problem.jpg" }} alt="">
-                                <p>2016년부터 시작한 스터디로, 1학기 중에 진행합니다. 문제를 월화수목금 5일동안 소모임의 모든 사람들이 출제하고, 일주일에 한번 모여서 풀이를 공유합니다. BOJ의 연습기능을 이용하여 진행되며 매일 출제자가 새로운 문제를 업로드하는 식으로 진행됩니다.</p>
-                                <p>
-                                    <strong><a href="https://www.acmicpc.net/group/543">BOJ그룹 링크</a></strong>
-                                </p>
-                                <ul class="list-inline">
-                                    <li>시간 : 매주 수요일 7시 30분</li>
-                                    <li>장소 : 정보과학관 301호</li>
-                                    <li>주최 : SCCC2017</li>
-                                </ul>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Activity</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Activity Modal 2 -->
-    <div class="portfolio-modal modal fade" id="activityModal2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <h2>겨울 스터디</h2>
-                                <p class="item-intro text-muted">겨울방학동안 문제해결 스터디를 진행하였습니다.</p>
-                                <img class="img-responsive img-centered" src={{ site.baseurl | append: "/assets/images/activity/2.jpg" }} alt="">
-                                <p>겨울 스터디는 신입 회원들과 함께 진행되었습니다. 스터디는 Div1, Div2로 나눠서 진행되었는데요, Div1은 작년 활동 멤버 기준으로 코드포스를 풀었고 Div2는 새로 알고리즘을 공부하는 회원들이 스터디 진행자의 도움을 받아 문제를 풀었습니다. 신입 회원들은 기본적인 자료구조부터 기초 알고리즘 문제까지 풀었습니다.</p>
-                                <p>스터디는 역시 <a href="https://acmicpc.net">BOJ</a>에서 진행되었습니다.</p>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Activity</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Activity Modal 3 -->
-    <div class="portfolio-modal modal fade" id="activityModal3" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h2>001 자리 청소</h2>
-                                <p class="item-intro text-muted">001 자리를 이사하고 청소하였습니다!</p>
-                                <img class="img-responsive img-centered" src={{ site.baseurl | append: "/assets/images/activity/clean001.jpg" }} alt="">
-                                <p>매년 001 자리 분배가 이뤄지는데요, 저희 SCCC는 2014년부터 계속해서 6자리를 차지하고 있습니다. 올해의 자리는 TMAX 창의실 입구 기준으로 안쪽의 왼쪽 2번째 파티션에 위치하고 있습니다.</p>
-                                <p>자리에 불편한 점이나 필요한 물품은 회장에게 바로바로 건의해주세요~</p>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Activity</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Activity Modal 4 -->
-    <div class="portfolio-modal modal fade" id="activityModal4" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="close-modal" data-dismiss="modal">
-                    <div class="lr">
-                        <div class="rl">
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2">
-                            <div class="modal-body">
-                                <!-- Project Details Go Here -->
-                                <h2>문제짱</h2>
-                                <p class="item-intro text-muted">매월 가장 문제를 가장 많이 푼 사람!</p>
-                                <img class="img-responsive img-centered" src={{ site.baseurl | append: "/assets/images/activity/jjang.jpg" }} alt="">
-                                <p>매월 BOJ에서 가장 문제를 많이 푼 사람을 그달의 문제짱으로 선정합니다.</p>
-                                <p>수상자는 영구적으로 기록되며 뱃지가 수여됩니다.</p>
-                                <p>2017년 1월의 문제짱 : <a href="https://www.acmicpc.net/user/dongyun98">16한동윤</a> 247문제</p>
-                                <p>2017년 2월의 문제짱 : <a href="https://www.acmicpc.net/user/jms100300">16조민석</a> 72문제</p>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Activity</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> {% endcomment %}
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>

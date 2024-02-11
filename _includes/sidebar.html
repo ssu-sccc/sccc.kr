@@ -4,20 +4,12 @@
             <img class="sidbar-logo" src={{ site.baseurl | append: "/assets/images/logos/sccc.png" }}>
         </a>
     </div>
-    <a class="item" href={{ site.url | append: "#services"}}>Who we are</a>
-    <a class="item" href={{ site.url | append: "#activity"}}>Activity</a>
-    <a class="item" href={{ site.url | append: "#portfolio"}}>Portfolio</a>
-    <a class="item" href={{ site.url | append: "#Graduated"}}>Graduated</a>
-    <a class="item" href={{ site.url | append: "/awards"}}>Awards</a>
-    <a class="item" href="https://www.acmicpc.net/group/543" target="_blank">BOJ Group</a>
-    <a class="item" href={{ site.url | append: "/contest/"}}>SCON</a>
+    <a class="item" href={{ site.url }}>메인 화면</a>
+    <a class="item" href={{ site.url | append: "/awards"}}>수상 실적</a>
     <a class="item" href={{ site.url | append: "/recruit/"}}>신입 부원 모집</a>
     <a class="item" href={{ site.url | append: "/study/"}}>스터디</a>
-    {% for my_page in site.pages %}
-        {% if my_page.active %}
-            <a class="item" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
-        {% endif %}
-    {% endfor %}
+    <a class="item" href={{ site.url | append: "/contest/"}}>대회 개최</a>
+    <a class="item" href="https://www.acmicpc.net/group/543" target="_blank">BOJ 그룹</a>
     <a class="item" href={{ site.baseurl | append: "#contact"}}>Contact</a>
 </div>
 <button id="menu-toggle" type="button" class="ui black big fixed button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
