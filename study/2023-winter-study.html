@@ -9,12 +9,13 @@ permalink: /study/2023/winter/
 		2023학년도 겨울방학 스터디
 	</h1>
 	<div style="margin: 1rem;">
-		이번 겨울방학에는 2개의 대면 스터디가 진행됩니다.
+		이번 겨울방학에는 3개의 대면 스터디가 진행됩니다.
 	</div>
 	<div style="width: 100%; height: 1px; background: rgba(0, 0, 0, .1); margin: 2rem 0;"></div>
 	<div class="btn-group" style="font-size: 1.1rem; margin-bottom: 2rem;">
 		<button id="23-winter-basic-lecture-btn" style="margin-right: .5rem;" class="active btn" type='button'>초급 알고리즘 강의</button>
 		<button id="23-winter-crypto-lecture-btn" style="margin-right: .5rem;" type='button' class="btn">암호학 강의</button>
+		<button id="23-winter-omakase-lecture-btn" style="margin-right: .5rem;" type='button' class="btn">겨울 세미나</button>
 	</div>
 	<div id="23-winter-basic-lecture-view">
 		<h2>개요</h2>
@@ -103,6 +104,46 @@ permalink: /study/2023/winter/
 			<tr> <td>5차시</td> <td>24.01.25</td> <td>PS with Crypto</td> </tr>
 		</table>
 	</div>
+	<div id="23-winter-omakase-lecture-view" style="display: none;">
+		<h2>개요</h2>
+		<ul>
+			<li>
+				진행자
+				<ul>
+					<li>컴퓨터학부 21학번 나정휘</li>
+				</ul>
+			</li>
+			<li>
+				스터디 내용
+				<ul>
+					<li>내가 가르치고 싶은 것</li>
+					<li>solvedac 기준 실버 ~ 루비 사이의 개념</li>
+				</ul>
+			</li>
+			<li>
+				시간 및 장소
+				<ul>
+					<li>매주 월요일 19:30 ~ 21:30, 온라인</li>
+				</ul>
+			</li>
+			<li>
+				상세 정보
+				<ul>
+					<li><a href="https://github.com/justiceHui/SSU-SCCC-Study/tree/master/2023-winter-omakase">바로가기</a></li>
+				</ul>
+			</li>
+		</ul>
+
+		<h2>일정</h2>
+		<table>
+			<tr> <th>차시</th> <th>날짜</th> <th>주제</th> </tr>
+			<tr> <td>1차시</td> <td>24.01.29</td> <td>분할 상환 분석(amortized analysis), 동적 배열(dynamic array)</td> </tr>
+			<tr> <td>2차시</td> <td>24.02.05</td> <td>유니온 파인드 200% 활용하기</td> </tr>
+			<tr> <td>3차시</td> <td>24.02.12</td> <td>다양한 경우의 수 세기 (카탈란 수, 스털링 수, 분할 수, 교란 순열)</td> </tr>
+			<tr> <td>4차시</td> <td>24.02.16</td> <td>제곱근 분할 (sqrt decomposition)</td> </tr>
+			<tr> <td>5차시</td> <td>24.02.19</td> <td>랜덤으로 문제 풀기</td> </tr>
+		</table>
+	</div>
 </div>
 
 <style>
@@ -118,7 +159,7 @@ permalink: /study/2023/winter/
 	}
 </style>
 <script>
-	let class_list = ['23-winter-basic-lecture', '23-winter-crypto-lecture'];
+	let class_list = ['23-winter-basic-lecture', '23-winter-crypto-lecture', '23-winter-omakase-lecture'];
 	let btn = [], view = [];
 
 	for(let i=0; i<class_list.length; i++){
