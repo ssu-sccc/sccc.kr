@@ -16,6 +16,16 @@
     - title: BOJ 랭커
       icon: star
 
+- name: aeren
+  comment: ""
+  award:
+    - title: 2020 ICPC 동상
+      icon: trophy
+    - title: 2021 ICPC 동상
+      icon: trophy
+    - title: 2022 ICPC WF
+      icon: trophy
+
 - name: lobo_prix
   comment: SCCC에서 훌륭한 멤버들과 알고리즘을 공부하고 경쟁할 수 있어서 좋았습니다.
   award:
