@@ -1,6 +1,8 @@
 - name: worldfinals
   count: 2
   list:
+    - year: 2024
+      site: Astana, Kazakhstan
     - year: 2023
       site: Luxor, Egypt
     - year: 2022
@@ -11,6 +13,9 @@
   list:
     - year: 2024
       site: Hanoi, Vietnam
+      team-rank: 5
+      univ-rank: 5
+      award: Silver
 
 - name: gold
   count: 0
@@ -20,32 +25,32 @@
   count: 6
   list:
     - year: 2023
-      site: 서울
+      site: Seoul
       team-rank: 5
       univ-rank: 4
       korea-univ-rank: 3
     - year: 2022
-      site: 서울
+      site: Seoul
       team-rank: 5
       univ-rank: 3
       korea-univ-rank: 3
     - year: 2017
-      site: 대전
+      site: Daejeon
       team-rank: 12
       univ-rank: 7
       korea-univ-rank: 5
     - year: 2009
-      site: 서울
+      site: Seoul
       team-rank: 11
       univ-rank: 8
       korea-univ-rank: 5
     - year: 2006
-      site: 서울
+      site: Seoul
       team-rank: 11
       univ-rank: 8
       korea-univ-rank: 5
     - year: 2005
-      site: 서울
+      site: Seoul
       team-rank: 15
       univ-rank: 9
       korea-univ-rank: 6
@@ -54,61 +59,61 @@
   count: 12
   list:
     - year: 2021
-      site: 서울
+      site: Seoul
       team-rank: 8
       univ-rank: 3
       korea-univ-rank: 3
     - year: 2020
-      site: 서울
+      site: Seoul
       team-rank: 8
       univ-rank: 4
       korea-univ-rank: 4
     - year: 2016
-      site: 대전
+      site: Daejeon
       team-rank: 25
       univ-rank: 11
       korea-univ-rank: 8
     - year: 2015
-      site: 대전
+      site: Daejeon
       team-rank: 24
       univ-rank: 14
       korea-univ-rank: 10
     - year: 2014
-      site: 대전
+      site: Daejeon
       team-rank: 23
       univ-rank: 13
       korea-univ-rank: 9
     - year: 2013
-      site: 대전
+      site: Daejeon
       team-rank: 23
       univ-rank: 11
       korea-univ-rank: 8
     - year: 2012
-      site: 대전
+      site: Daejeon
       team-rank: 19
       univ-rank: 8
       korea-univ-rank: 7
     - year: 2011
-      site: 대전
+      site: Daejeon
       team-rank: 21
       univ-rank: 10
       korea-univ-rank: 9
     - year: 2008
-      site: 서울
+      site: Seoul
       team-rank: 13
       univ-rank: 10
       korea-univ-rank: 6
     - year: 2005
-      site: 서울
+      site: Seoul
       team-rank: 15
       univ-rank: 9
       korea-univ-rank: 6
     - year: 2003
-      site: 서울
+      site: Seoul
       team-rank: 15
       univ-rank: 8
       korea-univ-rank: 6
     - year: 2001
-      site: 대전
+      site: Taejon
       team-rank: 
       univ-rank: 10
