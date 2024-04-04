@@ -9,13 +9,14 @@ permalink: /study/2024/1/
         2024학년도 1학기 스터디
     </h1>
     <div style="margin: 1rem;">
-        이번 학기에는 3개의 대면 스터디가 진행됩니다.
+        이번 학기에는 4개의 대면 스터디가 진행됩니다.
     </div>
     <div style="width: 100%; height: 1px; background: rgba(0, 0, 0, .1); margin: 2rem 0;"></div>
     <div class="btn-group" style="font-size: 1.1rem; margin-bottom: 2rem;">
         <button id="24-1-c-lecture-btn" style="margin-right: .5rem;" class="active btn" type='button'>C언어 강의</button>
         <button id="24-1-basic-lecture-btn" style="margin-right: .5rem;" type='button' class="btn">기초 알고리즘 강의</button>
         <button id="24-1-basic-group-btn" style="margin-right: .5rem;" type='button' class="btn">기초 알고리즘 그룹 스터디</button>
+        <button id="24-1-logical-circuit-mid-btn" style="margin-right: .5rem;" type='button' class="btn">논리회로 (중간) 스터디</button>
     </div>
     <div id="24-1-c-lecture-view">
         <h2>개요</h2>
@@ -165,6 +166,53 @@ permalink: /study/2024/1/
             </li>
         </ul>
     </div>
+    <div id="24-1-logical-circuit-mid-view" style="display: none;">
+        <h2>개요</h2>
+        <ul>
+            <li>
+                진행자
+                <ul>
+                    <li>컴퓨터학부 22학번 박찬솔</li>
+                </ul>
+            </li>
+            <li>
+                스터디 내용
+                <ul>
+                    <li>논리회로의 이론을 학습하고 문제 풀이를 연습한다.</li>
+                </ul>
+            </li>
+            <li>
+                권장 대상
+                <ul>
+                    <li>논리회로설계및실험(전공-컴퓨터) 또는 디지털공학(전공-IT융합/전공-전자공학) 과목 시험을 준비하는 학생</li>
+                </ul>
+            </li>
+            <li>
+                선수 조건
+                <ul>
+                    <li>2024-1학기에 논리회로 혹은 그와 유사한 과목을 수강하고 있는 학생</li>
+                </ul>
+            </li>
+            <li>
+                시간 및 장소
+                <ul>
+                    <li>6주차/8주차 수요일 19:30 ~ 20:20, 수요일 20:30 ~ 21:20, 금요일 18:00 ~ 20:00</li>
+                    <li><b>기존 기초 알고리즘 강의 스터디 시간에 진행합니다.</b></li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>일정</h2>
+        <table>
+            <tr> <th>차시</th> <th>날짜</th> <th>주제</th> </tr>
+            <tr> <td>1차시</td> <td>6주차(수) - 2024.04.10</td> <td>Minimize Expression By Boolean Algebra</td> </tr>
+            <tr> <td>2차시</td> <td>6주차(수) - 2024.04.10</td> <td>Truth Table, Canonical Form</td> </tr>
+            <tr> <td>3차시</td> <td>6주차(금) - 2024.04.12</td> <td>Karnaugh Map</td> </tr>
+            <tr> <td>4차시</td> <td>8주차(수) - 2024.04.24</td> <td>Combinational Logic 1 (Mux, DeMux)</td> </tr>
+            <tr> <td>5차시</td> <td>8주차(수) - 2024.04.24</td> <td>Combinational Logic 2 (Adder)</td> </tr>
+            <tr> <td>6차시</td> <td>8주차(금) - 2024.04.26</td> <td>Midterm Review</td> </tr>
+        </table>
+    </div>
 </div>
 
 <style>
@@ -180,7 +228,7 @@ permalink: /study/2024/1/
     }
 </style>
 <script>
-    let class_list = ['24-1-c-lecture', '24-1-basic-lecture', '24-1-basic-group'];
+    let class_list = ['24-1-c-lecture', '24-1-basic-lecture', '24-1-basic-group', '24-1-logical-circuit-mid'];
     let btn = [], view = [];
 
     for(let i=0; i<class_list.length; i++){
