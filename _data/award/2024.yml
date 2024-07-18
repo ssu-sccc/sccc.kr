@@ -39,6 +39,27 @@
       rank: 60
       member: chorogchip, egod1537, jhs030526
 
+- name: 2024 UCPC 예선
+  type: ICPC
+  advance: 2024 UCPC 본선
+  scoreboard: https://www.acmicpc.net/contest/spotboard/1310
+  team:
+    - name: 브론즈를풀면서300년모르는사이에레벨MAX가되었습니다
+      rank: 9
+      award: △
+      member: kyo20111
+    - name: moruii
+      rank: 17
+      award: △
+      member: jhnah917
+    - name: 이를 욱젱
+      rank: 42
+      award: △
+      member: wookje
+    - name: ""
+      award: 문제 출제
+      member: chansol
+
 - name: Hello, BOJ 2024!(전대프연 겨울 대회)
   type: Personal
   scoreboard: https://www.acmicpc.net/contest/board/1229
