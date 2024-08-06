@@ -33,11 +33,26 @@
   team:
     - name: PS akgwi
       rank: 5
-      award: 은상, △
+      award: Silver Medal, △
       member: edenooo, jhnah917, kyo20111
     - name: happihappi
       rank: 60
       member: chorogchip, egod1537, jhs030526
+
+- name: 2024 UCPC 본선
+  type: ICPC
+  scoreboard: https://www.acmicpc.net/contest/spotboard/1316
+  team:
+    - name: 브론즈를풀면서300년모르는사이에레벨MAX가되었습니다
+      rank: 9
+      award: 4등상
+      member: kyo20111
+    - name: moruii
+      rank: 20
+      member: jhnah917
+    - name: 이를 욱젱
+      rank: 34
+      member: wookje
 
 - name: 2024 UCPC 예선
   type: ICPC
