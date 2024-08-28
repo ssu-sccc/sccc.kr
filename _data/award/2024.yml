@@ -1,5 +1,6 @@
 - name: 2024 ICPC World Finals (Astana, Kazakhstan)
   type: ICPC
+  teamlist: https://icpc.global/worldfinals/teams
   team:
     - name: PS akgwi
       award: WF 진출
@@ -75,13 +76,13 @@
       award: △
       member: wookje
     - name: ""
-      award: 문제 출제
+      award: 문제 출제/검수
       member: chansol
 
 - name: 2024 SCPC
   type: Personal
   team:
-    - chansol: jhnah917
+    - name: chansol
       rank: 
       award: 본선 진출
     - name: jhnah917
@@ -94,8 +95,6 @@
 - name: 2024 현대모비스 알고리즘 경진대회
   type: Personal
   team:
-    - name: aeren
-      award: 우수상
     - name: jhnah917
       award: 본선 진출
     - name: kyo20111
@@ -103,7 +102,6 @@
 
 - name: 2024 LGCPC 예선
   type: Personal
-  advance: 2024 LGCPC 본선
   scoreboard: https://www.acmicpc.net/contest/board/1329
   team:
     - name: jhnah917, kyo20111
