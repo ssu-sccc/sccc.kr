@@ -53,6 +53,9 @@
     - name: 이를 욱젱
       rank: 34
       member: wookje
+    - name: ""
+      award: 문제 검수
+      member: chansol
 
 - name: 2024 UCPC 예선
   type: ICPC
@@ -74,6 +77,42 @@
     - name: ""
       award: 문제 출제
       member: chansol
+
+- name: 2024 SCPC
+  type: Personal
+  team:
+    - chansol: jhnah917
+      rank: 
+      award: 본선 진출
+    - name: jhnah917
+      rank: 
+      award: 본선 진출
+    - name: kyo20111
+      rank: 
+      award: 본선 진출
+
+- name: 2024 현대모비스 알고리즘 경진대회
+  type: Personal
+  team:
+    - name: aeren
+      award: 우수상
+    - name: jhnah917
+      award: 본선 진출
+    - name: kyo20111
+      award: 본선 진출
+
+- name: 2024 LGCPC 예선
+  type: Personal
+  advance: 2024 LGCPC 본선
+  scoreboard: https://www.acmicpc.net/contest/board/1329
+  team:
+    - name: jhnah917, kyo20111
+      award: 문제 출제/검수
+    - name: chansol
+      rank: 73
+    - name: w8385
+      rank: 75
+  
 
 - name: Hello, BOJ 2024!(전대프연 겨울 대회)
   type: Personal
