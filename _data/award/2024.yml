@@ -82,10 +82,10 @@
 - name: 2024 SCPC
   type: Personal
   team:
-    - name: chansol
-      rank: 
-      award: 본선 진출
     - name: jhnah917
+      rank: 
+      award: 5등상
+    - name: chansol
       rank: 
       award: 본선 진출
     - name: kyo20111
@@ -100,6 +100,15 @@
     - name: kyo20111
       award: 본선 진출
 
+- name: 2024 LGCPC 본선
+  type: Personal
+  scoreboard: https://www.acmicpc.net/contest/board/1330
+  team:
+    - name: kyo20111
+      award: 문제 출제/검수
+    - name: jhnah917
+      award: 문제 검수
+
 - name: 2024 LGCPC 예선
   type: Personal
   scoreboard: https://www.acmicpc.net/contest/board/1329
@@ -110,7 +119,6 @@
       rank: 73
     - name: w8385
       rank: 75
-  
 
 - name: Hello, BOJ 2024!(전대프연 겨울 대회)
   type: Personal

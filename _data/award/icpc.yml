@@ -1,5 +1,5 @@
 - name: worldfinals
-  count: 2
+  count: 3
   list:
     - year: 2024
       site: Astana, Kazakhstan
