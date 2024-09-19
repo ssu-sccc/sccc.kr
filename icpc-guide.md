@@ -75,14 +75,14 @@ ICPC 대회 참가를 희망하는 모든 학생은 [icpc.global](https://icpc.g
 **참가자 계정이 아닌 지도 교수 계정으로 진행해야 합니다!!!**
 
 <!-- @TODO select year 수정하기 -->
-로그인하면 나오는 Dashboard 화면에서 대회 연도가 2023-2024인지 확인하고 **CREATE TEAM** 버튼을 누릅니다.
+로그인하면 나오는 Dashboard 화면에서 대회 연도가 2024-2025인지 확인하고 **CREATE TEAM** 버튼을 누릅니다.
 <img src="/assets/images/icpc-guide/03-1.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 <!-- @TODO 혹시 리전 색깔 바뀌면 수정하기 -->
 보라색으로 표시되어 있는 아시아 태평양 지역을 클릭합니다.
 <img src="/assets/images/icpc-guide/03-2.PNG" width="60%" style="display: block; margin: 0 auto;">
 
-The 2023 ICPC Asia Seoul Regional Contest > The 2023 ICPC Asia Korea National First Round Programming Contest > Asia Seoul National First Round Programming Contest를 선택합니다.
+The 2024 ICPC Asia Seoul Regional Contest > The 2024 ICPC Asia Korea National First Round Programming Contest > Asia Seoul National First Round Programming Contest를 선택합니다.
 <img src="/assets/images/icpc-guide/03-3.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 소속이 Soongsil University로 되어 있는지 확인한 다음 팀 이름과 팀원을 작성합니다. 팀원은 이름을 입력하고 잠시 기다리면 선택할 수 있는 버튼이 나옵니다. 마지막으로 **REGISTER TEAM(S)** 버튼을 클릭하면 됩니다.
