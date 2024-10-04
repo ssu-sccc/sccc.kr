@@ -1,9 +1,11 @@
 - name: 2024 ICPC World Finals (Astana, Kazakhstan)
   type: ICPC
   teamlist: https://icpc.global/worldfinals/teams
+  scoreboard: https://scoreboard.icpc.global/2024/scoreboard/
   team:
     - name: PS akgwi
-      award: WF 진출
+      award: 24
+      award: High Honor
       member: edenooo, jhnah917, kyo20111
 
 - name: 2023 ICPC World Finals (Luxor, Egypt)
@@ -24,6 +26,7 @@
   team:
     - name: LongestPathToWF
       rank: 13
+      award: High Honor
       member: aeren, edenooo, kyo20111
 
 - name: 2024 ICPC Asia Pacific Championship (Hanoi, Vietnam)
@@ -83,7 +86,7 @@
   type: Personal
   team:
     - name: jhnah917
-      rank: 
+      rank: 31
       award: 5등상
     - name: chansol
       rank: 
