@@ -1,0 +1,211 @@
+{
+    "title": "240928 ICPC Mock Contest",
+    "systemName": "DOMjudge",
+    "systemVersion": "",
+    "problems": [
+        {
+            "id": 4,
+            "title": "Attention to the Meeting",
+            "name": "A",
+            "color": ""
+        },
+        {
+            "id": 5,
+            "title": "Bacon Number",
+            "name": "B",
+            "color": ""
+        },
+        {
+            "id": 6,
+            "title": "Couple of BipBop",
+            "name": "C",
+            "color": ""
+        },
+        {
+            "id": 7,
+            "title": "Decrease the Boss Strength",
+            "name": "D",
+            "color": ""
+        },
+        {
+            "id": 8,
+            "title": "Enigma of the Jewelry Case",
+            "name": "E",
+            "color": ""
+        },
+        {
+            "id": 9,
+            "title": "Fractions are better when continued",
+            "name": "F",
+            "color": ""
+        },
+        {
+            "id": 10,
+            "title": "Geography of Rivers",
+            "name": "G",
+            "color": ""
+        },
+        {
+            "id": 11,
+            "title": "Harmonics with Interference",
+            "name": "H",
+            "color": ""
+        },
+        {
+            "id": 12,
+            "title": "Ingredients that may Harm You",
+            "name": "I",
+            "color": ""
+        },
+        {
+            "id": 13,
+            "title": "Journey through Colors",
+            "name": "J",
+            "color": ""
+        },
+        {
+            "id": 14,
+            "title": "Karamell",
+            "name": "K",
+            "color": ""
+        },
+        {
+            "id": 15,
+            "title": "Lecographically Maximum",
+            "name": "L",
+            "color": ""
+        }
+    ],
+    "teams": [
+        {
+            "id": 4,
+            "name": "migu",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 5,
+            "name": "Zasuk",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 6,
+            "name": "BaekJoonSik",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 7,
+            "name": "T3T",
+            "group": "Unofficial"
+        },
+        {
+            "id": 8,
+            "name": "WMW",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 9,
+            "name": "Jup_Jup",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 10,
+            "name": "JJJ",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 11,
+            "name": "Y4E MiK0",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 12,
+            "name": "HBD_minuk",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 13,
+            "name": "GNU is Not Unix",
+            "group": "Unofficial"
+        },
+        {
+            "id": 14,
+            "name": "조성율",
+            "group": "Unofficial"
+        },
+        {
+            "id": 15,
+            "name": "RealShrimp",
+            "group": "Unofficial"
+        },
+        {
+            "id": 16,
+            "name": "Wrong Answer",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 17,
+            "name": "OverflowSquad",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 18,
+            "name": "go2forchar",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 19,
+            "name": "I_hate_wa",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 20,
+            "name": "CyclicTree",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 21,
+            "name": "Team_RAM",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 22,
+            "name": "Death Spiral",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 23,
+            "name": "MSGA",
+            "group": "Unofficial"
+        },
+        {
+            "id": 24,
+            "name": "printf_hello_world",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 25,
+            "name": "박선영",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 26,
+            "name": "sevoneleven",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 28,
+            "name": "ChickenMoo",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 29,
+            "name": "pakkiyatou",
+            "group": "Unofficial"
+        },
+        {
+            "id": 30,
+            "name": "kyo20111",
+            "group": "Unofficial"
+        }
+    ]
+}

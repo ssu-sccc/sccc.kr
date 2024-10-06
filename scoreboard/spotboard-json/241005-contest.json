@@ -1,0 +1,136 @@
+{
+    "title": "241005 ICPC Mock Contest",
+    "systemName": "DOMjudge",
+    "systemVersion": "",
+    "problems": [
+        {
+            "id": 16,
+            "title": "Animal Farm",
+            "name": "A",
+            "color": ""
+        },
+        {
+            "id": 17,
+            "title": "Business Magic",
+            "name": "B",
+            "color": ""
+        },
+        {
+            "id": 18,
+            "title": "Cards",
+            "name": "C",
+            "color": ""
+        },
+        {
+            "id": 19,
+            "title": "Disbursement on Quarantine Policy",
+            "name": "D",
+            "color": ""
+        },
+        {
+            "id": 20,
+            "title": "Efficient Slabstones Rearrangement",
+            "name": "E",
+            "color": ""
+        },
+        {
+            "id": 22,
+            "title": "Fibonacci Lucky Numbers",
+            "name": "F",
+            "color": ""
+        },
+        {
+            "id": 23,
+            "title": "Game of Rounding",
+            "name": "G",
+            "color": ""
+        },
+        {
+            "id": 24,
+            "title": "Harmonious Passage of Magicians",
+            "name": "H",
+            "color": ""
+        },
+        {
+            "id": 25,
+            "title": "In Search of the Lost Array",
+            "name": "I",
+            "color": ""
+        },
+        {
+            "id": 26,
+            "title": "Just Round Down",
+            "name": "J",
+            "color": ""
+        },
+        {
+            "id": 27,
+            "title": "Kingdom's Development Plan",
+            "name": "K",
+            "color": ""
+        },
+        {
+            "id": 28,
+            "title": "Lexicopolis",
+            "name": "L",
+            "color": ""
+        }
+    ],
+    "teams": [
+        {
+            "id": 31,
+            "name": "Y4E MIK0",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 32,
+            "name": "go2forchar",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 33,
+            "name": "Zasuk",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 34,
+            "name": "sevoneleven",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 35,
+            "name": "wall_E",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 36,
+            "name": "wmw",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 37,
+            "name": "JupJup",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 38,
+            "name": "Jooddaebus",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 39,
+            "name": "Team_RAM",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 40,
+            "name": "CyclicTree",
+            "group": "Soongsil University"
+        },
+        {
+            "id": 41,
+            "name": "슝슝",
+            "group": "Soongsil University"
+        }
+    ]
+}
