@@ -43,6 +43,85 @@
       rank: 60
       member: chorogchip, egod1537, jhs030526
 
+- name: 2024 ICPC Asia Taichung Regional Contest
+  type: ICPC
+  scoreboard: https://hpc.asia.edu.tw/icpc2024/final-scoreboard/
+  team:
+    - name: wmw
+      rank: 35
+      award: Bronze Award
+      member: jms020820, m4ushold, w8385
+
+- name: 2024 ICPC Asia Seoul Regional Contest
+  type: ICPC
+  scoreboard: http://static.icpckorea.net/2024/regional/scoreboard/
+  team:
+    - name: wmw
+      rank: 58
+      member: jms020820, m4ushold, w8385
+    - name: DancingWookje
+      rank: 61
+      member: chansol, moonlit, wookje
+    - name: ""
+      award: 현장 스태프
+      member: mingnei, qwerty1120, rkaskan506, rla777
+
+- name: 2024 ICPC Asia Seoul Preliminary Contest
+  type: ICPC
+  advance: 2024 ICPC Asia Seoul Regional Contest
+  scoreboard: http://static.icpckorea.net/2024/first_round/scoreboard_10282200/
+  team:
+    - name: DancingWookje
+      rank: 41
+      award: △
+      member: chansol, moonlit, wookje
+    - name: wmw
+      rank: 44
+      award: △
+      member: jms020820, m4ushold, w8385
+    - name: kimmingyu
+      rank: 68
+      member: chorogchip, egod1537, tomong02
+    - name: WrongAnswer
+      rank: 82
+      member: chhc0505, yuris
+    - name: Zasuk
+      rank: 102
+      member: chleee, dkprk11, rkaskan506
+    - name: GNUisNotUnix
+      rank: 111
+      member: devgeon
+    - name: TeamRAM
+      rank: 113
+      member: dlxorjsw, rwvrwvrwv
+    - name: migu
+      rank: 114
+      member: ext32, qwerty1120, rla777
+    - name: DanPungNaMu
+      rank: 121
+      member: chongin12
+    - name: DeathSpiral
+      rank: 132
+      member: alskdjfhg005, roger428, relilous
+    - name: MSGA
+      rank: 135
+      member: lur100
+    - name: Y4EMIK0
+      rank: 136
+      member: todo
+    - name: tourArrayList
+      rank: 150
+      member: eric2057, ngchaneok, nsc_777
+    - name: HBDminuk
+      rank: 153
+      member: cobaltsea12, jihooo7, kdm1258
+    - name: JOSEONGYUL
+      rank: 155
+      member: msde76
+    - name: ParkSeonYeong
+      rank: 174
+      member: hssik508, janely24, pency57
+
 - name: 2024 UCPC 본선
   type: ICPC
   scoreboard: https://www.acmicpc.net/contest/spotboard/1316
