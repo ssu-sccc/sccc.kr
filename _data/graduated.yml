@@ -1,7 +1,7 @@
 - name: jhnah917
   comment: "문제 푸세요."
   award:
-    - title: 2022 ICPC 동상
+    - title: 2022 ICPC 은상
       icon: trophy
     - title: 2023 ICPC 은상
       icon: trophy
@@ -51,6 +51,8 @@
     - title: 2024 ICPC APAC 은상
       icon: trophy
     - title: 2022 ICPC WF
+      icon: trophy
+    - title: 2024 ICPC WF
       icon: trophy
     - title: BOJ 랭커
       icon: star
