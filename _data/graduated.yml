@@ -1,6 +1,6 @@
 - name: jhnah917
   comment: "문제 푸세요."
-  awards:
+  award:
     - title: 2022 ICPC 동상
       icon: trophy
     - title: 2023 ICPC 은상
@@ -21,7 +21,7 @@
 
 - name: kyo20111
   comment: ""
-  awards:
+  award:
     - title: 2020 ICPC 동상
       icon: trophy
     - title: 2021 ICPC 동상
