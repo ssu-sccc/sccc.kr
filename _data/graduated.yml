@@ -1,3 +1,42 @@
+- name: jhnah917
+  comment: "문제 푸세요."
+  awards:
+    - title: 2022 ICPC 동상
+      icon: trophy
+    - title: 2023 ICPC 은상
+      icon: trophy
+    - title: 2024 ICPC APAC 은상
+      icon: trophy
+    - title: 2023 ICPC WF
+      icon: trophy
+    - title: 2024 ICPC WF
+      icon: trophy
+    - title: BOJ 랭커
+      icon: star
+  role:
+    - title: 2022-2023 회장
+      icon: user
+    - title: 2022-2024 스터디 디렉터
+      icon: smile
+
+- name: kyo20111
+  comment: ""
+  awards:
+    - title: 2020 ICPC 동상
+      icon: trophy
+    - title: 2021 ICPC 동상
+      icon: trophy
+    - title: 2023 ICPC 은상
+      icon: trophy
+    - title: 2024 ICPC APAC 은상
+      icon: trophy
+    - title: 2022 ICPC WF
+      icon: trophy
+    - title: 2024 ICPC WF
+      icon: trophy
+    - title: BOJ 랭커
+      icon: star
+
 - name: edenooo
   comment: 대학원
   award:
@@ -9,9 +48,9 @@
       icon: trophy
     - title: 2023 ICPC 은상
       icon: trophy
-    - title: 2022 ICPC WF
+    - title: 2024 ICPC APAC 은상
       icon: trophy
-    - title: 2024 ICPC APAC Championship
+    - title: 2022 ICPC WF
       icon: trophy
     - title: BOJ 랭커
       icon: star
