@@ -32,8 +32,8 @@
 - name: 2024 ICPC Asia Pacific Championship (Hanoi, Vietnam)
   type: ICPC
   advance_important: 2024 ICPC World Finals
-  teamlist: https://icpc.asia/teams/
-  scoreboard: https://icpcasia.firebaseapp.com/standings/
+  teamlist: https://icpc.iisf.or.jp/asia-pacific/candidate-teams-for-icpc-asia-championship-2023-24/
+  scoreboard: https://icpc.iisf.or.jp/past-icpc/championship2024/standings.html
   team:
     - name: PS akgwi
       rank: 5
