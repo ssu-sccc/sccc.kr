@@ -10,7 +10,7 @@ permalink: /icpc-guide/
 
 <!-- @TODO 연도/일정/장소 수정하기 -->
 2025 ICPC 서울 지역 대회 일정은 다음과 같습니다.
-* 참가 신청: 9/8(월) ~ 9/19(금)
+* 참가 신청: 9/8(월) 09:00 ~ 9/23(화) 17:00
 * 예선 예비소집: 10/10(금), 시간은 추후 공지 예정
 * 예선 대회: 10/11(토) 14:00 ~ 17:00 (3시간)
 * 본선 예비소집: 11/21(금), 시간은 추후 공지 예정
@@ -21,9 +21,9 @@ permalink: /icpc-guide/
 <!-- @TODO 매년 공지 링크 수정하기 -->
 대회 참가 신청 안내 페이지(ICPC): [https://icpckorea.org/archives/3262](https://icpckorea.org/archives/3262)
 
-추가로, 숭실대학교 IT대학 소속 학생으로만 구성된 팀은 **2025년도 숭실대학교 IT대학생 프로그래밍 경진대회**에 따른 장학금을 받을 수 있습니다. 9월 19일부터 아래 링크(FUN 시스템)에서 신청할 수 있습니다.
+추가로, 숭실대학교 IT대학 소속 학생으로만 구성된 팀은 **2025년도 숭실대학교 IT대학생 프로그래밍 경진대회**에 따른 장학금을 받을 수 있습니다. 9월 10일 17시 부터 아래 링크(슈패스)에서 신청할 수 있습니다.
 
-FUN 시스템: [TBD](https://fun.ssu.ac.kr/ko/program/all/view/4328)
+슈패스: [신청하기](https://path.ssu.ac.kr/ptfol/imng/icmpNsbjtPgm/findIcmpNsbjtPgmInfo.do?encSddpbSeq=28bc2032b4cd04082284ead106c6c88d&paginationInfo.currentPageNo=1)
 
 등록 과정이 여러 단계로 구성되어 있습니다. 각 단계마다 필요한 정보를 입력하지 않았거나 사이트 오류 등의 이유로 입력한 정보가 저장되지 않아 accept되지 않고 pending으로 남아있는 경우가 자주 발생하니, 여유를 두고 미리 신청을 시작해 주시길 바랍니다.
 
@@ -60,7 +60,7 @@ ICPC 대회 참가를 희망하는 모든 학생은 [icpc.global](https://icpc.g
 ## 3. (팀장) 대회 신청
 
 <!-- @TODO 일괄 신청 규칙 바뀌면 수정하기 -->
-2024년에는 아래 세 가지 조건을 모두 만족하는 팀은 SCCC 회장이 지도 교수를 구해서 한 번에 신청합니다. 단, icpc.global 에서의 신청만 대신 하는 것이므로, FUN 시스템에서는 팀장이 직접 신청해야 합니다.
+2025년에는 아래 세 가지 조건을 모두 만족하는 팀은 SCCC 회장이 지도 교수를 구해서 한 번에 신청합니다. 단, icpc.global 에서의 신청만 대신 하는 것이므로, 슈패스에서는 팀장이 직접 신청해야 합니다.
 
 1. 컴퓨터학부 학생이면서 SCCC 소속인 학생 1명 이상
 2. 컴퓨터학부 학생 2명 이상
@@ -83,7 +83,7 @@ ICPC 대회 참가를 희망하는 모든 학생은 [icpc.global](https://icpc.g
 보라색으로 표시되어 있는 아시아 태평양 지역을 클릭합니다.
 <img src="/assets/images/icpc-guide/03-2.PNG" width="60%" style="display: block; margin: 0 auto;">
 
-The 2024 ICPC Asia Seoul Regional Contest > The 2024 ICPC Asia Korea National First Round Programming Contest > Asia Seoul National First Round Programming Contest를 선택합니다.
+The 2025 ICPC Asia Seoul Regional Contest > The 2025 ICPC Asia Korea National First Round Programming Contest > Asia Seoul National First Round Programming Contest를 선택합니다.
 <img src="/assets/images/icpc-guide/03-3.PNG" width="60%" style="display: block; margin: 0 auto;">
 
 소속이 Soongsil University로 되어 있는지 확인한 다음 팀 이름과 팀원을 작성합니다. 팀원은 이름을 입력하고 잠시 기다리면 선택할 수 있는 버튼이 나옵니다. 마지막으로 **REGISTER TEAM(S)** 버튼을 클릭하면 됩니다.
@@ -112,11 +112,14 @@ PENDING이 ACCEPTED로 바뀌면 등록이 완료된 것입니다.
 <!-- @TODO 매년 공지 링크 수정하기 -->
 대회 참가 신청 안내 페이지([https://icpckorea.org/archives/3262](https://icpckorea.org/archives/3262))의 안내에 따라 서약서를 작성해서 제출해야 합니다.
 
-## 7. FUN 시스템 신청
+## 7. 슈패스(ssupath) 신청
 
-**SCCC에서 일괄 참가 신청을 했더라도, FUN 시스템에서는 팀장이 직접 신청해야 합니다.**
+**SCCC에서 일괄 참가 신청을 했더라도, 슈패스(ssupath)에서는 팀장이 직접 신청해야 합니다.**
+숭실대학교 IT대학 프로그래밍대회는 ICPC 온라인 예선을 겸하여 개최됩니다. 
+ICPC 성적으로 교내 장학금을 받기 위해서는 슈패스에서 신청해야 합니다.
 
-추가 예정...
+슈패스: [신청하기](https://path.ssu.ac.kr/ptfol/imng/icmpNsbjtPgm/findIcmpNsbjtPgmInfo.do?encSddpbSeq=28bc2032b4cd04082284ead106c6c88d&paginationInfo.currentPageNo=1)
+
 
 ## 대회 팁
 
