@@ -1,0 +1,68 @@
+- name: 2025 ICPC Asia Taichung Regional Contest
+  type: ICPC
+  scoreboard: https://taichung2025.icpc.tw/
+  advance_important: 2025 ICPC Asia Pacific Championship
+  team:
+    - name: MWM
+      rank: 26
+      award: Silver Award, △
+      member: chleee, jms020820, m4ushold
+
+- name: 2025 ICPC Asia Seoul Regional Contest
+  type: ICPC
+  scoreboard: http://static.icpckorea.net/2025/regional/scoreboard/
+  team:
+    - name: NaNiGaSuKi
+      rank: 41
+      member: logeon0725, moonlit, Rose
+    - name: ""
+      award: 출제
+      member: jhnah917
+
+- name: 2025 ICPC Asia Seoul Preliminary Contest
+  type: ICPC
+  advance: 2025 ICPC Asia Seoul Regional Contest
+  scoreboard: http://static.icpckorea.net/2025/preliminary/scoreboard/
+  team:
+    - name: NaNiGaSuKi
+      rank: 38
+      award: △
+      member: logeon0725, moonlit, Rose
+    - name: MWM
+      rank: 57
+      member: chleee, jms020820, m4ushold
+
+- name: 2025 SCPC
+  type: Personal
+  team:
+    - name: jms020820
+      rank: 
+      award: 본선 진출
+
+- name: Hello, BOJ 2025!
+  type: Personal
+  scoreboard: https://www.acmicpc.net/contest/spotboard/1447
+  team:
+    - name: edenooo
+      rank: 23
+    - name: jms020820
+      rank: 46
+    - name: m4ushold
+      rank: 49
+    - name: jhnah917, kyo20111
+      award: 문제 출제/검수
+
+- name: Good Bye, BOJ 2025!
+  type: Personal
+  scoreboard: https://www.acmicpc.net/contest/spotboard/1633
+  team:
+    - name: edenooo
+      rank: 32
+    - name: jms020820
+      rank: 37
+    - name: m4ushold
+      rank: 61
+    - name: dohyonne
+      rank: 62
+    - name: jhnah917, kyo20111
+      award: 문제 출제/검수
