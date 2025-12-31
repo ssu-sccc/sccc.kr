@@ -1,0 +1,114 @@
+---
+layout: study
+title: 2025학년도 겨울방학 스터디
+permalink: /study/2025/winter/
+---
+
+<div>
+	<h1 style="margin-top: 1rem;">
+		2025학년도 겨울방학 스터디
+	</h1>
+	<div style="margin: 1rem;">
+		이번 겨울방학에는 1개의 비대면 스터디가 진행됩니다.
+	</div>
+	<div style="width: 100%; height: 1px; background: rgba(0, 0, 0, .1); margin: 2rem 0;"></div>
+	<div class="btn-group" style="font-size: 1.1rem; margin-bottom: 2rem;">
+		<button id="25-winter-intermediate-lecture-btn" style="margin-right: .5rem;" class="active btn" type='button'>중급 알고리즘 강의</button>
+	</div>
+	<div id="25-winter-intermediate-lecture-view">
+		<h2>개요</h2>
+		<ul>
+			<li>
+				진행자
+				<ul>
+					<li>글로벌미디어학부 23학번 권은규</li>
+					<li>소프트웨어학부 21학번 진민성</li>
+				</ul>
+			</li>
+			<li>
+				스터디 내용
+				<ul>
+					<li>중급 알고리즘 및 문제 풀이</li>
+				</ul>
+			</li>
+			<li>
+				권장 대상
+				<ul>
+					<li>기초 알고리즘 강의에서 다루는 모든 내용을 아는 사람</li>
+					<li>ICPC 본선 진출 이상을 목표로 하는 사람</li>
+				</ul>
+			</li>
+			<li>
+				선수 조건
+				<ul>
+					<li>고등학교 수학: 2015 개정 공통 수학, 수학 I, 수학 II</li>
+					<li>
+						자료구조/알고리즘: 기초 알고리즘 강의에서 다루는 모든 내용
+						<ul>
+							<li>완전탐색, DP, 그리디, 분할 정복</li>
+							<li>연결 리스트, 스택, 큐, 덱, 힙, 이진 탐색 트리, 서로소 집합</li>
+							<li>DFS, BFS, 위상 정렬, 최단 경로, 최소 스패닝 트리</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>
+				시간 및 장소
+				<ul>
+					<li>매주 수요일 19시</li>
+					<li>온라인으로 진행</li>
+				</ul>
+			</li>
+		</ul>
+
+		<h2>일정</h2>
+		<table>
+			<tr> <th>주차</th> <th>날짜</th> <th>주제</th> </tr>
+			<tr> <td>1주차</td> <td>01/07</td> <td>세그먼트 트리</td> </tr>
+			<tr> <td>2주차</td> <td>01/14</td> <td>동적 계획법의 응용</td> </tr>
+			<tr> <td>3주차</td> <td>01/21</td> <td>오일러 투어 테크닉, 최소 공통 조상, 희소 배열</td> </tr>
+			<tr> <td>4주차</td> <td>01/28</td> <td>강한 연결 요소, 2-SAT</td> </tr>
+			<tr> <td>5주차</td> <td>02/04</td> <td>정수론</td> </tr>
+			<tr> <td>6주차</td> <td>02/11</td> <td>문자열 알고리즘</td> </tr>
+			<tr> <td>7주차</td> <td>02/18</td> <td>기하 알고리즘</td> </tr>
+		</table>
+	</div>
+</div>
+
+<style>
+	.btn {
+		padding: .7rem 1rem;
+		transition: .2s;
+		color: black;
+	}
+
+	.btn.active {
+		background-color: rgba(0, 0, 0, 1);
+		color: white;
+	}
+</style>
+<script>
+	let class_list = ['25-winter-intermediate-lecture'];
+	let btn = [], view = [];
+
+	for(let i=0; i<class_list.length; i++){
+		btn.push(document.getElementById(class_list[i] + '-btn'));
+		view.push(document.getElementById(class_list[i] + '-view'));
+	}
+
+	for(let i=0; i<class_list.length; i++){
+		btn[i].onclick = function (event) {
+			for(let j=0; j<class_list.length; j++) {
+				if(i === j){
+					btn[j].classList.add('active');
+					view[j].style.display = 'block';
+				}
+				else{
+					btn[j].classList.remove('active');
+					view[j].style.display = 'none';
+				}
+			}
+			event.preventDefault();
+		};
+	}
+</script>
