@@ -9,13 +9,15 @@ permalink: /study/2026/2/
         2026학년도 2학기 스터디
     </h1>
     <div style="margin: 1rem;">
-        이번 학기에는 0개의 대면 스터디가 진행됩니다.
+        이번 학기에는 3개의 대면 스터디가 진행됩니다.
     </div>
     <div style="width: 100%; height: 1px; background: rgba(0, 0, 0, .1); margin: 2rem 0;"></div>
     <div class="btn-group" style="font-size: 1.1rem; margin-bottom: 2rem;">
-        <button id="26-2-basic-btn" style="margin-right: .5rem;" class="btn" type='button'>초급 알고리즘 강의</button>
+        <button id="26-2-basic-btn" style="margin-right: .5rem;" class="active btn" type='button'>초급 알고리즘 강의</button>
         <button id="26-2-intermediate-btn" style="margin-right: .5rem;" class="btn" type='button'>중급 알고리즘 강의</button>
+        <button id="26-2-hard-btn" style="margin-right: .5rem;" class="btn" type='button'>고급 알고리즘 강의</button>
     </div>
+    <div id="26-2-basic-view">
     <div id="26-2-basic-view" style="display: none;">
         <h2>개요</h2>
         <ul>
@@ -50,7 +52,7 @@ permalink: /study/2026/2/
             <li>
                 시간 및 장소
                 <ul>
-                    <li>1학기 3~5주차, 9~13주차 목요일 17:00 ~ 19:00</li>
+                    <li>2학기 3~5주차, 9~13주차 목요일 17:00 ~ 19:00</li>
                     <li>시험 기간(6~8주차, 14~16주차) 및 공휴일 휴강</li>
                     <li>장소 : 정보과학관</li>
                 </ul>
@@ -62,7 +64,7 @@ permalink: /study/2026/2/
             <tr> <th>차시</th> <th>날짜</th> <th>주제</th> </tr>
             <tr> <td>1차시</td> <td>26.09.17(목)</td> <td>OT : PS를 위한 C++, 재귀, 백트래킹</td> </tr>
             <tr> <td>2차시</td> <td>26.09.24(목)</td> <td>알고리즘 기초 : 시간 복잡도, 정렬, 투 포인터, 매개변수 탐색, 이분 탐색, 분할 정복</td> </tr>
-            <tr> <td>3차시</td> <td>26.10.01(목)</td> <td>정수론 기초: GCD와 LCD, 소인수 분해, 에라토스테네스의 체, 유클리드 호제법, 거듭제곱</td> </tr>
+            <tr> <td>3차시</td> <td>26.10.01(목)</td> <td>정수론 기초: GCD와 LCM, 소인수 분해, 에라토스테네스의 체, 유클리드 호제법, 거듭제곱</td> </tr>
             <tr> <td colspan="3">중간고사 시간(6~8주차)</td> </tr>
             <tr> <td>4차시</td> <td>26.10.29(목)</td> <td>동적 계획법</td></tr>
             <tr> <td>5차시</td> <td>26.11.05(목)</td> <td>그리디, 자료구조 : 스택, 큐, 덱</td></tr>
@@ -78,44 +80,29 @@ permalink: /study/2026/2/
             <li>
                 진행자
                 <ul>
-                    <li>컴퓨터학부 21학번 김서윤</li>
+                    <li>컴퓨터학부 22학번 조문성</li>
                 </ul>
             </li>
             <li>
                 스터디 내용
                 <ul>
-                    <li>중급 알고리즘 및 문제 풀이 (2024-2학기와 다른 내용으로 진행됩니다.)</li>
+                    <li>중급 알고리즘 </li>
                 </ul>
             </li>
             <li>
                 권장 대상
                 <ul>
-                    <li>알고리즘 공부를 했지만 기초적인 내용을 잘 응용하지 못하는 사람</li>
+                    <li>기초 알고리즘을 모두 학습한 사람</li>
+                    <li>코테를 넘어 대회 필수 알고리즘을 학습학고 싶은사람</li>
                     <li>프로그래밍 대회 참가를 희망하는 사람</li>
-                </ul>
-            </li>
-            <li>
-                선수 조건(<b>볼드체</b>는 필수)
-                <ul>
-                    <li>C언어 문법: <b>입출력</b>, <b>조건문</b>, <b>반복문</b>, <b>배열</b>, <b>함수</b></li>
-                    <li>고등학교 수학: <b>2015 개정 공통 수학</b>, <b>수학 I</b>, <b>수학 II</b>, <b>확률과 통계</b>, 미적분, 기하</li>
-                    <li>대학교 수학: 선형대수학, 정수론</li>
-                    <li>
-                        자료구조/알고리즘: 기초 알고리즘 강의에서 다루는 모든 내용, 중급 알고리즘 강의에서 다루는 일부 내용
-                        <ul>
-                            <li><b>완전탐색</b>, <b>누적 합</b>, <b>DP</b>, <b>그리디</b>, <b>분할 정복</b>, <b>이분 탐색</b>, <b>투 포인터</b></li>
-                            <li>연결 리스트, 스택, 큐, <b>덱</b>, <b>우선순위 큐</b>, 이진 탐색 트리, <b>서로소 집합</b></li>
-                            <li><b>DFS</b>, <b>BFS</b>, <b>위상 정렬</b>, <b>최단 경로</b>, <b>최소 스패닝 트리</b></li>
-                            <li>게임 이론, 비둘기집의 원리, KMP 알고리즘, 세그먼트 트리, 컨벡스 헐, 이분 매칭</li>
-                        </ul>
-                    </li>
                 </ul>
             </li>
             <li>
                 시간 및 장소
                 <ul>
-                    <li>2학기 3~5주차, 9~13주차 목요일 19:00 ~ 21:00</li>
-                    <li>시험 기간(6~8주차, 14~16주차) 휴강</li>
+                    <li>2학기 3~5주차, 8~13주차</li>
+                    <li>시험 기간(6~7주차, 14~16주차) 휴강</li>
+                    <li>장소 : 정보과학관 </li>   
                 </ul>
             </li>
         </ul>
@@ -123,15 +110,64 @@ permalink: /study/2026/2/
         <h2>일정</h2>
         <table>
             <tr> <th>차시</th> <th>날짜</th> <th>주제</th> </tr>
-            <tr> <td>1차시</td> <td>26.03.20(목)</td> <td> OT(수업 내용 및 방식 소개) </td> </tr>
-            <tr> <td>2차시</td> <td>24.03.27(목)</td> <td> 시간복잡도 예측하기 </td> </tr>
-            <tr> <td>3차시</td> <td>24.04.03(목)</td> <td> 결정론적 문제로 바꾸기 </td> </tr>
-            <tr> <td colspan="3">중간고사 시간(6~8주차)</td> </tr>
-            <tr> <td>4차시</td> <td>26.05.01(목)</td> <td> 작은 문제에서부터 생각하기 </td> </tr>
-            <tr> <td>5차시</td> <td>26.05.08(목)</td> <td> 큰 문제에서부터 생각하기 </td> </tr>
-            <tr> <td>6차시</td> <td>26.05.15(목)</td> <td> 기준점 바꾸기 </td> </tr>
-            <tr> <td>7차시</td> <td>26.05.22(목)</td> <td> 수식 분해 및 재구성 </td> </tr>
-            <tr> <td>8차시</td> <td>26.05.29(목)</td> <td> 자유 연습 </td> </tr>
+            <tr> <td>1차시</td> <td>26.09.15(화)</td> <td> bit dp, tree dp, dp 역추적 </td> </tr>
+            <tr> <td>2차시</td> <td>26.09.22(화)</td> <td> 세그먼트 트리, 희소배열, LCA </td> </tr>
+            <tr> <td>3차시</td> <td>26.09.29(화)</td> <td> KMP, trie, hashing </td> </tr>
+            <tr> <td colspan="3">중간고사 시간(6~7주차)</td> </tr>
+            <tr> <td>4차시</td> <td>26.10.20(화)</td> <td> SCC, 2-sat, BCC </td> </tr>
+            <tr> <td>5차시</td> <td>26.10.27(화)</td> <td> 기하학, 컨벡스헐, 가장 먼/가까운 두 점</td> </tr>
+            <tr> <td>6차시</td> <td>26.11.03(화)</td> <td> 페르마 소정리, 확장 유클리드 정리, 중국인의 나머지 정리 </td> </tr>
+            <tr> <td>7차시</td> <td>26.11.10(화)</td> <td> 레이지 세그먼트 트리, 오일러 투어 테크닉 </td> </tr>
+            <tr> <td>8차시</td> <td>26.11.17(화)</td> <td> small to large 테크닉, 오프라인 쿼리 </td> </tr>
+            <tr> <td>9차시</td> <td>26.11.24(화)</td> <td> 제곱근 분할법, Mo's 알고리즘 </td> </tr>
+            <tr> <td colspan="3">기말고사 시간(14~16주차)</td> </tr>
+        </table>
+    </div>
+    <div id="26-2-hard-view" style="display: none;">
+        <h2>개요</h2>
+        <ul>
+            <li>
+                진행자
+                <ul>
+                    <li>컴퓨터학부 22학번 조문성</li>
+                </ul>
+            </li>
+            <li>
+                스터디 내용
+                <ul>
+                    <li>고급 알고리즘 </li>
+                </ul>
+            </li>
+            <li>
+                권장 대상
+                <ul>
+                    <li>중급 알고리즘을 모두 학습한 사람</li>
+                    <li>프로그래밍 대회 참가를 희망하는 사람</li>
+                    <li>대회 최전선 알고리즘을 학습하고 싶은 사람</li>
+                </ul>
+            </li>
+            <li>
+                시간 및 장소
+                <ul>
+                    <li>2학기 3~5주차, 8~13주차 월요일 18:00 ~ 20:00</li>
+                    <li>시험 기간(6~7주차, 14~16주차) 휴강</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>일정</h2>
+        <table>
+            <tr> <th>차시</th> <th>날짜</th> <th>주제</th> </tr>
+            <tr> <td>1차시</td> <td>26.09.14(월)</td> <td> Aho-Corasick, Suffix Array, LCP </td> </tr>
+            <tr> <td>2차시</td> <td>26.09.21(월)</td> <td> Persistent Segment Tree, Dynamic Segment Tree </td> </tr>
+            <tr> <td>3차시</td> <td>26.09.28(월)</td> <td> Heavy-Light Decomposition </td> </tr>
+            <tr> <td colspan="3">중간고사 시간(6~7주차)</td> </tr>
+            <tr> <td>4차시</td> <td>26.10.19(월)</td> <td> DSU rollback, Offline Dynamic Connectivity </td> </tr>
+            <tr> <td>5차시</td> <td>26.10.26(월)</td> <td> D&C DP Optimization, Cartesian Tree </td> </tr>
+            <tr> <td>6차시</td> <td>26.11.02(월)</td> <td> Convex Hull Trick, Li Chao Tree </td> </tr>
+            <tr> <td>7차시</td> <td>26.11.09(월)</td> <td> Centroid Decomposition </td> </tr>
+            <tr> <td>8차시</td> <td>26.11.16(월)</td> <td> Tree Optimization </td> </tr>
+            <tr> <td>9차시</td> <td>26.11.23(월)</td> <td> FFT, NTT, convolution </td> </tr>
             <tr> <td colspan="3">기말고사 시간(14~16주차)</td> </tr>
         </table>
     </div>
@@ -150,7 +186,7 @@ permalink: /study/2026/2/
     }
 </style>
 <script>
-    let class_list = ['26-2-basic', '26-2-intermediate'];
+    let class_list = ['26-2-basic', '26-2-intermediate', '26-2-hard'];
     let btn = [], view = [];
 
     for(let i=0; i<class_list.length; i++){
