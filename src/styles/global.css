@@ -98,12 +98,6 @@ img {
   letter-spacing: -0.02em;
 }
 
-.wordmark img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
 .desktop-nav {
   display: flex;
   align-items: center;
@@ -359,11 +353,13 @@ img {
 }
 
 .feature--scon {
-  min-height: 920px;
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 0.7fr);
+  min-height: 760px;
+  display: flex;
   align-items: center;
-  gap: clamp(50px, 10vw, 150px);
+}
+
+.scon-copy {
+  max-width: 900px;
 }
 
 .scon-copy p:not(.eyebrow) {
@@ -373,31 +369,6 @@ img {
   font-size: 19px;
   line-height: 1.7;
   word-break: keep-all;
-}
-
-.poster-stage {
-  position: relative;
-  justify-self: center;
-  width: min(100%, 460px);
-  padding: 5%;
-}
-
-.poster-stage::before {
-  content: "";
-  position: absolute;
-  inset: 9% 0 0;
-  border-radius: 50%;
-  background: #a2d7ff;
-  filter: blur(90px);
-  opacity: 0.2;
-}
-
-.poster-stage img {
-  position: relative;
-  width: 100%;
-  border-radius: 3px;
-  box-shadow: 0 48px 100px rgba(0, 0, 0, 0.52);
-  transform: rotate(2.5deg);
 }
 
 .statement {
@@ -713,12 +684,6 @@ img {
 
   .feature--scon {
     min-height: auto;
-    grid-template-columns: 1fr;
-  }
-
-  .poster-stage {
-    margin-top: 30px;
-    width: min(86%, 430px);
   }
 
   .statement {
