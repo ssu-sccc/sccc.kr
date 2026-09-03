@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const activities = [
+  { image: '/assets/images/2023-activity/scon.jpg', title: '숭실대학교 프로그래밍 대회 개최', text: 'SCCC가 직접 문제를 만들고 SCON을 운영합니다.', href: 'https://github.com/ssu-sccc/2023scon' },
+  { image: '/assets/images/2023-activity/weekly-ps.png', title: '주간 연습', text: '매주 문제를 풀고 서로의 접근과 풀이를 토론합니다.', href: 'https://github.com/justiceHui/SSU-SCCC-Study/tree/master/2023-spring-problem-solving' },
+  { image: '/assets/images/2023-activity/internal-contest.jpg', title: 'SCCC 내전', text: '상품을 걸고 구성원끼리 내부 대회를 진행합니다.', href: 'https://github.com/justiceHui/SSU-SCCC-Study/tree/master/2023-autumn-contest' },
+  { image: '/assets/images/2023-activity/icpc-prem.png', title: 'ICPC 예선', text: '서울대학교, KAIST, 그리고 숭실대학교.' },
+  { image: '/assets/images/2023-activity/icpc-seoul-regional.jpg', title: 'ICPC Seoul Regional', text: '2023년 PS akgwi 팀 은상, 전체 4등.' },
+  { image: '/assets/images/2023-activity/ucpc-final.jpg', title: 'UCPC 본선', text: '문제 출제와 함께 4등상 및 특별상 2회 수상.' },
+  { image: '/assets/images/2023-activity/mobis.png', title: '현대모비스 알고리즘 경진대회', text: '2023년 우수상, 전체 6등과 7등.' },
+  { image: '/assets/images/2023-activity/hello-boj.jpg', title: 'Hello, BOJ!', text: '문제 출제, 5등상과 특별상 수상.' },
+  { image: '/assets/images/2023-activity/scpc-logo.jpg', title: 'SCPC', text: '삼성전자 대학생 프로그래밍 경진대회 본선 진출.' }
+];
+---
+
+<BaseLayout
+  title="SCCC — Soongsil Computing Contest Club"
+  description="문제를 깊이 이해하고, 함께 더 멀리 나아가는 숭실대학교 문제해결 소모임 SCCC입니다."
+  theme="dark"
+>
+  <section class="home-hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-copy reveal">
+      <p class="eyebrow">Soongsil Computing Contest Club</p>
+      <h1>문제를 푸는 사람들.<br /><span>함께, 더 멀리.</span></h1>
+      <p class="hero-description">
+        알고리즘을 공부하고 대회를 준비하며,<br class="mobile-hide" />
+        서로의 성장을 오래 이어가는 숭실대학교 SCCC입니다.
+      </p>
+      <div class="hero-actions">
+        <a class="button button--primary" href="/study/2026/2/">2026-2 스터디 보기</a>
+        <a class="text-link" href="/about/">SCCC 알아보기 <span>›</span></a>
+      </div>
+    </div>
+    <div class="hero-mark" aria-hidden="true">
+      <span>S</span><span>C</span><span>C</span><span>C</span>
+    </div>
+  </section>
+
+  <section class="feature feature--study surface-light">
+    <div class="section-heading reveal">
+      <p class="eyebrow eyebrow--blue">2026년 2학기</p>
+      <h2>지금, 세 개의 깊이로<br />알고리즘을 공부합니다.</h2>
+    </div>
+    <div class="study-levels reveal">
+      <article>
+        <span class="level-number">01</span>
+        <h3>초급 알고리즘</h3>
+        <p>PS의 기초 개념부터 실제 문제에 적용하는 방법까지.</p>
+      </article>
+      <article>
+        <span class="level-number">02</span>
+        <h3>중급 알고리즘</h3>
+        <p>대회에서 필요한 핵심 알고리즘과 문제해결 전략.</p>
+      </article>
+      <article>
+        <span class="level-number">03</span>
+        <h3>고급 알고리즘</h3>
+        <p>복잡한 자료구조와 최적화 기법을 다루는 심화 과정.</p>
+      </article>
+    </div>
+    <a class="text-link text-link--blue reveal" href="/study/2026/2/">전체 일정과 커리큘럼 <span>›</span></a>
+  </section>
+
+  <section class="feature feature--scon surface-ink">
+    <div class="scon-copy reveal">
+      <p class="eyebrow">2026 SCON</p>
+      <h2>우리가 만드는<br />프로그래밍 대회.</h2>
+      <p>문제를 만드는 일부터 대회 운영과 해설까지. SCON은 SCCC가 매년 직접 개최하는 숭실대학교 프로그래밍 대회입니다.</p>
+      <a class="text-link" href="/scon/2026/">2026 SCON 살펴보기 <span>›</span></a>
+    </div>
+    <div class="poster-stage reveal">
+      <img src="/assets/images/2026scon.png" alt="2026 SCON 포스터" width="900" height="1273" />
+    </div>
+  </section>
+
+  <section class="statement surface-light">
+    <p class="eyebrow eyebrow--blue reveal">What we do</p>
+    <h2 class="reveal">풀고, 설명하고,<br />함께 성장합니다.</h2>
+    <div class="statement-grid reveal">
+      <p>매주 문제를 풀고 토론합니다.</p>
+      <p>ICPC를 비롯한 프로그래밍 대회를 준비합니다.</p>
+      <p>후배를 위한 스터디와 교내 대회를 직접 만듭니다.</p>
+    </div>
+  </section>
+
+  <section class="activity-showcase">
+    <div class="activity-showcase__heading reveal">
+      <p class="eyebrow eyebrow--blue">Activity archive</p>
+      <h2>대회에서, 강의실에서,<br />계속 문제를 풉니다.</h2>
+      <p>2023년 SCCC 활동 기록</p>
+    </div>
+    <div class="activity-gallery">
+      {activities.map((activity, index) => (
+        <article class:list={["activity-card", index === 0 && "activity-card--wide", "reveal"]}>
+          <img src={activity.image} alt="" loading="lazy" decoding="async" />
+          <div>
+            <h3>{activity.title}</h3>
+            <p>{activity.text}</p>
+            {activity.href && <a href={activity.href} target="_blank" rel="noreferrer" aria-label={`${activity.title} 자료 보기`}>↗</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="affiliations">
+    <p>Soongsil University · Problem Solving · HYUNDAI MOBIS Outstanding SW Club</p>
+    <div>
+      <img src="/assets/images/logos/ssu-resize.png" alt="숭실대학교" />
+      <img src="/assets/images/logos/icpc-resize.png" alt="ICPC" />
+      <img src="/assets/images/logos/mobis-resize.png" alt="현대모비스" />
+    </div>
+  </section>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  </script>
+</BaseLayout>

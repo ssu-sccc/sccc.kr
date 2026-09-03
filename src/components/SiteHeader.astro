@@ -1,0 +1,59 @@
+---
+const { currentPath = '/' } = Astro.props;
+
+const navItems = [
+  { href: '/study/', label: '스터디' },
+  { href: '/recruit/', label: '모집' },
+  { href: '/contest/', label: '대회' },
+  { href: '/awards/', label: '수상' },
+  { href: '/about/', label: '소개' }
+];
+
+const isCurrent = (href) => href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+---
+
+<header class="site-header" data-site-header>
+  <div class="site-header__inner">
+    <a class="wordmark" href="/" aria-label="SCCC 홈">
+      <img src="/assets/images/logos/sccc.png" alt="" width="34" height="34" />
+      <span>SCCC</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="주요 메뉴">
+      {navItems.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <a class="header-cta" href="https://www.acmicpc.net/group/543" target="_blank" rel="noreferrer">
+      BOJ 그룹
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
+    </a>
+
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="메뉴 열기">
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <nav id="mobile-menu" class="mobile-nav" aria-label="모바일 메뉴" hidden>
+    {navItems.map((item) => (
+      <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+    ))}
+    <a href="https://www.acmicpc.net/group/543" target="_blank" rel="noreferrer">BOJ 그룹 ↗</a>
+  </nav>
+</header>
+
+<script>
+  const header = document.querySelector('[data-site-header]');
+  const button = header?.querySelector('.menu-button');
+  const menu = header?.querySelector('.mobile-nav');
+
+  button?.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!open));
+    button.setAttribute('aria-label', open ? '메뉴 열기' : '메뉴 닫기');
+    if (menu instanceof HTMLElement) menu.hidden = open;
+  });
+</script>

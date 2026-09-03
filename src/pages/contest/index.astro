@@ -1,0 +1,29 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { getIndexRows } from '../../lib/content';
+
+const rows = getIndexRows('content/contest/index.md');
+---
+
+<ContentLayout title="프로그래밍 대회" description="SCCC가 개최하고 참여한 프로그래밍 대회 기록입니다." section="SCCC" sectionHref="/">
+  <section class="contest-feature">
+    <div>
+      <span class="contest-feature__year">2026</span>
+      <h2>SCON</h2>
+      <p>문제 출제부터 운영, 해설까지 SCCC가 직접 만드는 숭실대학교 프로그래밍 대회.</p>
+      <a class="text-link text-link--blue" href="/scon/2026/">2026 SCON 보기 <span>›</span></a>
+    </div>
+    <img src="/assets/images/2026scon.png" alt="2026 SCON 포스터" />
+  </section>
+  <h2 class="archive-title">대회 기록</h2>
+  <div class="contest-table-wrap">
+    <table class="contest-archive">
+      <thead><tr><th>일시</th><th>대회</th><th>문제</th><th>풀이</th><th>결과</th></tr></thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr>{row.cells.map((cell) => <td set:html={cell} />)}</tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</ContentLayout>

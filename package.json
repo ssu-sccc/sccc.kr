@@ -1,0 +1,19 @@
+{
+  "name": "sccc-kr",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "verify": "node scripts/verify-build.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.13.5",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.1.0",
+    "yaml": "^2.8.1"
+  }
+}

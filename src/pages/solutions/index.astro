@@ -1,0 +1,25 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { getSolutions } from '../../lib/content';
+
+const solutions = getSolutions();
+---
+
+<ContentLayout title="솔루션" description="SCCC 구성원이 작성한 알고리즘 문제 풀이를 모았습니다." section="SCCC" sectionHref="/">
+  <p class="archive-lead">SCCC에서 해결한 문제들의 풀이입니다. 회원 누구나 Pull Request로 새로운 풀이를 추가할 수 있습니다.</p>
+  <div class="solution-list-modern">
+    {solutions.map((solution) => (
+      <a href={solution.route}>
+        <div>
+          <span>{solution.data.tags?.join(' · ')}</span>
+          <h2>{solution.title}</h2>
+        </div>
+        <div class="solution-list-modern__meta">
+          <span>@{solution.data.author}</span>
+          <span>{new Date(solution.data.date).toLocaleDateString('ko-KR')}</span>
+          <b aria-hidden="true">↗</b>
+        </div>
+      </a>
+    ))}
+  </div>
+</ContentLayout>
