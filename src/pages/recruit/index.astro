@@ -2,7 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import { getIndexRows } from '../../lib/content';
 
-const rows = getIndexRows('content/recruit/index.md');
+const rows = getIndexRows('content/recruit/index.md').slice(1);
 ---
 
 <ContentLayout title="신입 부원 모집" description="SCCC의 학기별 신입 부원 모집 공고와 지원 기록입니다." section="SCCC" sectionHref="/">
@@ -10,9 +10,9 @@ const rows = getIndexRows('content/recruit/index.md');
   <div class="recruit-current">
     <div>
       <span>최근 모집</span>
-      <h2>2026학년도<br />1학기 신입 부원</h2>
+      <h2>2026학년도<br />2학기 신입 부원</h2>
     </div>
-    <a class="button button--primary" href="/recruit/2026/1/">모집 공고 보기</a>
+    <a class="button button--primary" href="/recruit/2026/2/">모집 공고 보기</a>
   </div>
   <h2 class="archive-title">지난 모집</h2>
   <div class="archive-list archive-list--compact">
