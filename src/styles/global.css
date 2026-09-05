@@ -657,6 +657,49 @@ img {
   padding-bottom: 72px;
 }
 
+.footer-contact {
+  margin-bottom: 64px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid #25282d;
+}
+
+.footer-contact h2 {
+  margin: 0 0 32px;
+  color: #f5f5f7;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.footer-contact address {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 72px;
+  font-style: normal;
+}
+
+.footer-contact a {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.footer-contact a > span {
+  color: #a1a1a6;
+  font-size: 14px;
+}
+
+.footer-contact strong {
+  color: #f5f5f7;
+  font-size: clamp(17px, 2vw, 24px);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.footer-contact a:hover strong {
+  color: #79b7ff;
+}
+
 .footer-wordmark {
   font-size: 26px;
   font-weight: 700;
