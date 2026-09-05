@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAwardYears, readYaml } from '../../lib/content';
+
+const years = getAwardYears();
+const previous = readYaml<any[]>('content/data/award/prev.yml') || [];
+const icpc = readYaml<any[]>('content/data/award/icpc.yml') || [];
+const stats = Object.fromEntries(icpc.map((item) => [item.name, item.count]));
+---
+
+<BaseLayout title="수상 실적" description="ICPC를 비롯한 국내외 프로그래밍 대회에서 SCCC 구성원이 거둔 성과입니다.">
+  <header class="awards-hero">
+    <p class="eyebrow eyebrow--blue">SCCC Awards</p>
+    <h1>더 깊이 고민한<br />시간의 기록.</h1>
+    <div class="award-stats">
+      <div><strong>{stats.worldfinals || 0}</strong><span>ICPC World Finals</span></div>
+      <div><strong>{stats.silver || 0}</strong><span>ICPC Regional Silver</span></div>
+      <div><strong>{stats.bronze || 0}</strong><span>ICPC Regional Bronze</span></div>
+    </div>
+  </header>
+
+  <section class="awards-content">
+    <nav class="year-tabs" aria-label="수상 연도">
+      {years.map(({ year }, index) => <button class:list={[index === 0 && 'active']} data-award-year={year}>{year}</button>)}
+      <button data-award-year="previous">2015 이전</button>
+    </nav>
+
+    {years.map(({ year, contests }, yearIndex) => (
+      <div class="award-year" data-award-panel={year} hidden={yearIndex !== 0}>
+        <h2>{year}</h2>
+        <div class="award-contests">
+          {contests.map((contest) => (
+            <article class="award-contest">
+              <div class="award-contest__heading">
+                <span>{contest.type === 'ICPC' ? 'ICPC' : 'Competition'}</span>
+                <h3>{contest.name}</h3>
+              </div>
+              <div class="award-table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>성적</th><th>{contest.type === 'ICPC' ? '팀' : '참가자'}</th>{contest.type === 'ICPC' && <th>구성원</th>}</tr>
+                  </thead>
+                  <tbody>
+                    {(contest.team || []).map((team) => (
+                      <tr>
+                        <td>{team.rank ? `${team.rank}등${team.award ? ` · ${team.award}` : ''}` : team.award || '—'}</td>
+                        <td>{team.name || '—'}</td>
+                        {contest.type === 'ICPC' && <td>{team.member || '—'}</td>}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div class="award-links">
+                {contest.scoreboard && <a href={contest.scoreboard} target="_blank" rel="noreferrer">스코어보드 ↗</a>}
+                {contest.awardlist && <a href={contest.awardlist} target="_blank" rel="noreferrer">수상자 명단 ↗</a>}
+                {contest.teamlist && <a href={contest.teamlist} target="_blank" rel="noreferrer">참가 팀 목록 ↗</a>}
+                {contest.interview && <a href={contest.interview} target="_blank" rel="noreferrer">인터뷰 ↗</a>}
+                {contest.advance_important && <span>△ {contest.advance_important} 진출</span>}
+                {!contest.advance_important && contest.advance && <span>△ {contest.advance} 진출</span>}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <div class="award-year" data-award-panel="previous" hidden>
+      <h2>2015년 이전</h2>
+      <div class="award-contests">
+        {previous.map((contest) => (
+          <article class="award-contest">
+            <div class="award-contest__heading"><span>ICPC</span><h3>{contest.year} {contest.site}</h3></div>
+            <div class="award-table-wrap">
+              <table><thead><tr><th>성적</th><th>팀</th><th>구성원</th></tr></thead><tbody>
+                {(contest.team || []).map((team) => <tr><td>{team.rank ? `${team.rank}등${team.award ? ` · ${team.award}` : ''}` : team.award || '—'}</td><td>{team.name}</td><td>{team.member}</td></tr>)}
+              </tbody></table>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const tabs = Array.from(document.querySelectorAll('[data-award-year]'));
+    const panels = Array.from(document.querySelectorAll('[data-award-panel]'));
+    tabs.forEach((tab) => tab.addEventListener('click', () => {
+      const year = tab.getAttribute('data-award-year');
+      tabs.forEach((item) => item.classList.toggle('active', item === tab));
+      panels.forEach((panel) => { panel.hidden = panel.getAttribute('data-award-panel') !== year; });
+    }));
+  </script>
+</BaseLayout>

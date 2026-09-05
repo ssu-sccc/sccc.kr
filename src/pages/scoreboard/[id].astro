@@ -1,0 +1,7 @@
+---
+export function getStaticPaths() {
+  return ['231015', '240928', '241005', '250503'].map((id) => ({ params: { id } }));
+}
+const { id } = Astro.params;
+return Astro.redirect(`/scoreboard/${id}.html`, 301);
+---

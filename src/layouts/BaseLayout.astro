@@ -1,0 +1,52 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  theme?: 'light' | 'dark';
+}
+
+const {
+  title = 'SCCC — Soongsil Computing Contest Club',
+  description = '숭실대학교 컴퓨터학부 문제해결 소모임 SCCC입니다.',
+  image,
+  theme = 'light'
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const pageTitle = title.startsWith('SCCC') ? title : `${title} — SCCC`;
+---
+
+<!doctype html>
+<html lang="ko" data-theme={theme}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={theme === 'dark' ? '#05070a' : '#ffffff'} />
+    <meta name="naver-site-verification" content="8c72b94136c7d4f2e7e07ce9f8307cbf10ca62a5" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/assets/images/favicon.ico" sizes="any" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SCCC" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+    <SiteHeader currentPath={Astro.url.pathname} />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

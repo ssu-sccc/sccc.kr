@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLeadershipTable, readYaml } from '../../lib/content';
+
+const graduates = readYaml<any[]>('content/data/graduated.yml') || [];
+const leadership = getLeadershipTable();
+---
+
+<BaseLayout title="SCCC 소개" description="숭실대학교 컴퓨터학부 문제해결 소모임 SCCC를 소개합니다.">
+  <header class="about-hero">
+    <p class="eyebrow eyebrow--blue">About SCCC</p>
+    <h1>좋은 문제를 오래 고민하고,<br />좋은 동료와 함께 풉니다.</h1>
+    <p>자료구조와 알고리즘, 문제해결기법을 공부하고 ICPC를 비롯한 프로그래밍 대회를 준비하는 숭실대학교 컴퓨터학부 소모임입니다.</p>
+  </header>
+
+  <section class="about-principles">
+    <article><span>01</span><h2>Study</h2><p>학기와 방학마다 수준별 스터디를 열고 서로의 풀이를 나눕니다.</p></article>
+    <article><span>02</span><h2>Compete</h2><p>교내외 프로그래밍 대회에 참가하고 팀으로 더 큰 무대에 도전합니다.</p></article>
+    <article><span>03</span><h2>Contribute</h2><p>SCON을 개최하고 후배를 위한 강의와 문제를 직접 만듭니다.</p></article>
+  </section>
+
+  <section class="graduates-section">
+    <div class="graduates-heading"><p class="eyebrow eyebrow--blue">Alumni</p><h2>함께 성장한 사람들.</h2></div>
+    <div class="graduate-list">
+      {graduates.map((person) => (
+        <article>
+          <a href={`https://www.acmicpc.net/user/${person.name}`} target="_blank" rel="noreferrer">@{person.name} ↗</a>
+          {person.comment && <p>“{person.comment}”</p>}
+          <div>{[...(person.award || []), ...(person.role || [])].map((item) => <span>{item.title}</span>)}</div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="leadership-section">
+    <div><p class="eyebrow eyebrow--blue">Since 2001</p><h2>역대 운영진</h2><p>2021년 이전의 기록은 일부 정보가 누락되어 있을 수 있습니다.</p></div>
+    <div class="leadership-table legacy-content" set:html={leadership} />
+  </section>
+</BaseLayout>

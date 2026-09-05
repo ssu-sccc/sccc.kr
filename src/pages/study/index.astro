@@ -1,0 +1,19 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { getIndexRows } from '../../lib/content';
+
+const rows = getIndexRows('content/study/index.md');
+---
+
+<ContentLayout title="스터디" description="SCCC의 학기·방학별 알고리즘 스터디 기록입니다." section="SCCC" sectionHref="/">
+  <p class="archive-lead">기초 문법부터 대회 수준의 알고리즘까지. 구성원이 서로 가르치고 함께 문제를 풀며 만든 스터디 기록입니다.</p>
+  <div class="archive-list">
+    {rows.map((row, index) => (
+      <article class:list={["archive-row", index === 0 && "archive-row--latest"]}>
+        <div class="archive-row__label" set:html={row.cells[0]} />
+        <div class="archive-row__detail" set:html={row.cells[1]} />
+        <span class="archive-row__arrow" aria-hidden="true">↗</span>
+      </article>
+    ))}
+  </div>
+</ContentLayout>

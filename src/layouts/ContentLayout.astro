@@ -1,0 +1,57 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  section?: string;
+  sectionHref?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description = `${title} 안내`,
+  section = 'SCCC',
+  sectionHref = '/',
+  image
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <header class="page-hero">
+    <div class="page-hero__inner">
+      <a href={sectionHref}>{section}</a>
+      <h1>{title}</h1>
+    </div>
+  </header>
+  <div class="content-shell">
+    <article class="legacy-content">
+      <slot />
+    </article>
+  </div>
+
+  <script>
+    document.querySelectorAll('.legacy-content .btn-group').forEach((group) => {
+      const buttons = Array.from(group.querySelectorAll('button[id$="-btn"]'));
+      const article = group.closest('.legacy-content');
+      const panels = article ? Array.from(article.querySelectorAll('[data-tab-panel]')) : [];
+      if (!buttons.length || !panels.length) return;
+
+      const activate = (button) => {
+        const targetId = button.id.replace(/-btn$/, '-view');
+        buttons.forEach((item) => {
+          const active = item === button;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-selected', String(active));
+        });
+        panels.forEach((panel) => {
+          panel.hidden = panel.id !== targetId;
+        });
+      };
+
+      buttons.forEach((button) => button.addEventListener('click', () => activate(button)));
+      activate(buttons.find((button) => button.classList.contains('active')) || buttons[0]);
+    });
+  </script>
+</BaseLayout>

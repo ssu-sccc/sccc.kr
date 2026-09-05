@@ -1,0 +1,46 @@
+---
+import ContentLayout from '../layouts/ContentLayout.astro';
+import { getLegacyPages, getSolutions } from '../lib/content';
+
+export function getStaticPaths() {
+  const legacy = getLegacyPages().map((page) => ({
+    params: { route: page.route.replace(/^\//, '').replace(/\/$/, '') },
+    props: { page }
+  }));
+  const solutions = getSolutions().map((page) => ({
+    params: { route: page.route.replace(/^\//, '').replace(/\/$/, '') },
+    props: { page }
+  }));
+  return [...legacy, ...solutions];
+}
+
+const { page } = Astro.props;
+const sectionMap = {
+  study: ['스터디', '/study/'],
+  recruit: ['신입 부원 모집', '/recruit/'],
+  scon: ['프로그래밍 대회', '/contest/'],
+  contest: ['프로그래밍 대회', '/contest/'],
+  newbie: ['프로그래밍 대회', '/contest/'],
+  solution: ['솔루션', '/solutions/'],
+  default: ['SCCC', '/']
+};
+const [section, sectionHref] = sectionMap[page.layout] || sectionMap.default;
+const imageMatch = page.html.match(/<img[^>]+src=["']([^"']+)["']/i);
+---
+
+<ContentLayout
+  title={page.title}
+  description={page.description}
+  section={section}
+  sectionHref={sectionHref}
+  image={imageMatch?.[1]}
+>
+  {page.layout === 'solution' && (
+    <div class="solution-meta">
+      <span>{page.data.author ? `@${page.data.author}` : 'SCCC'}</span>
+      <span>{page.data.date ? new Date(page.data.date).toLocaleDateString('ko-KR') : ''}</span>
+      <span>{Array.isArray(page.data.tags) ? page.data.tags.join(' · ') : ''}</span>
+    </div>
+  )}
+  <Fragment set:html={page.html} />
+</ContentLayout>
