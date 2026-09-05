@@ -492,6 +492,19 @@ img {
   gap: 60px;
 }
 
+.statement-intro {
+  max-width: 740px;
+  margin: 32px 0 0;
+  color: var(--muted);
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.statement + .feature--study {
+  background: var(--paper);
+}
+
 .statement-grid p {
   margin: 0;
   padding-top: 22px;
