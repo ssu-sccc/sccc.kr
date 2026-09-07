@@ -43,9 +43,9 @@ const stats = Object.fromEntries(icpc.map((item) => [item.name, item.count]));
                   <tbody>
                     {(contest.team || []).map((team) => (
                       <tr>
-                        <td>{team.rank ? `${team.rank}등${team.award ? ` · ${team.award}` : ''}` : team.award || '—'}</td>
-                        <td>{team.name || '—'}</td>
-                        {contest.type === 'ICPC' && <td>{team.member || '—'}</td>}
+                        <td><span class="award-cell-label" aria-hidden="true">성적</span><span>{team.rank ? `${team.rank}등${team.award ? ` · ${team.award}` : ''}` : team.award || '—'}</span></td>
+                        <td><span class="award-cell-label" aria-hidden="true">{contest.type === 'ICPC' ? '팀' : '참가자'}</span><span>{team.name || '—'}</span></td>
+                        {contest.type === 'ICPC' && <td><span class="award-cell-label" aria-hidden="true">구성원</span><span>{team.member || '—'}</span></td>}
                       </tr>
                     ))}
                   </tbody>
@@ -73,7 +73,11 @@ const stats = Object.fromEntries(icpc.map((item) => [item.name, item.count]));
             <div class="award-contest__heading"><span>ICPC</span><h3>{contest.year} {contest.site}</h3></div>
             <div class="award-table-wrap">
               <table><thead><tr><th>성적</th><th>팀</th><th>구성원</th></tr></thead><tbody>
-                {(contest.team || []).map((team) => <tr><td>{team.rank ? `${team.rank}등${team.award ? ` · ${team.award}` : ''}` : team.award || '—'}</td><td>{team.name}</td><td>{team.member}</td></tr>)}
+                {(contest.team || []).map((team) => <tr>
+                  <td><span class="award-cell-label" aria-hidden="true">성적</span><span>{team.rank ? `${team.rank}등${team.award ? ` · ${team.award}` : ''}` : team.award || '—'}</span></td>
+                  <td><span class="award-cell-label" aria-hidden="true">팀</span><span>{team.name || '—'}</span></td>
+                  <td><span class="award-cell-label" aria-hidden="true">구성원</span><span>{team.member || '—'}</span></td>
+                </tr>)}
               </tbody></table>
             </div>
           </article>

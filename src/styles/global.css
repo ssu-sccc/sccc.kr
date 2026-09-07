@@ -1595,10 +1595,12 @@ img {
 
 .award-contests {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
 }
 
 .award-contest {
+  min-width: 0;
   padding: 40px;
   border: 1px solid #e1e2e5;
   border-radius: 22px;
@@ -1617,10 +1619,63 @@ img {
   margin: 8px 0 30px;
   font-size: clamp(22px, 3vw, 32px);
   letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
 }
 
 .award-contest table {
   min-width: 620px;
+}
+
+.award-cell-label {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .award-contest table {
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  .award-contest thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .award-contest tbody,
+  .award-contest tr {
+    display: block;
+  }
+
+  .award-contest tbody tr {
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .award-contest td {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: 12px;
+    padding: 5px 0;
+    border: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .award-cell-label {
+    display: block;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .award-links > * {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
 }
 
 .award-links {
