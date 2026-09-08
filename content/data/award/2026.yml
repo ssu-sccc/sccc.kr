@@ -1,0 +1,7 @@
+- name: 2026 ICPC Asia Pacific Championship
+  type: ICPC
+  scoreboard: https://icpc.iisf.or.jp/past-icpc/championship2026/standings.html
+  team:
+    - name: MWM
+      award: Honorable Mention
+      member: chleee, jms020820, m4ushold
