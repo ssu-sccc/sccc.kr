@@ -17,7 +17,8 @@
 
 - name: 2026 NYPC 예선
   type: ICPC
-  scoreboard: https://new.nypc.co.kr/ko/rank/2026/master/finals?page=1
+  scoreboard: https://new.nypc.co.kr/ko/rank/2026/master/qualification?page=1
+  advance: 2026 NYPC 본선
   team:
     - name: 따뜻한밥상
       rank: 5
@@ -52,6 +53,7 @@
 - name: 2026 UCPC 예선
   type: ICPC
   scoreboard: https://static.ucpc.me/archive/ucpc/ucpc-2026/qualifier/scoreboard/
+  advance: 2026 UCPC 본선
   team:
     - name: 벌레캠프의 DP재판
       rank: 40
