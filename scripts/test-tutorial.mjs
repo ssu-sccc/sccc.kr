@@ -38,6 +38,22 @@ test('Suffix arrays, inverse ranks, Kasai and every RMQ agree with brute force',
   }
 });
 
+test('Suffix lecture tables and changed-neighbor Kasai example', () => {
+  const d = suffixData('banana');
+  assert.deepEqual(d.sa,[5,3,1,0,4,2]);
+  assert.deepEqual(d.rank,[3,2,5,1,4,0]);
+  assert.deepEqual(d.lcp,[0,1,3,0,0,2]);
+  assert.deepEqual(d.stages.map(s=>s.width),[1,2,4]);
+  assert.deepEqual(d.kasai.map(s=>s.seed),[0,0,2,1,0,0]);
+  const changed = suffixData('aabaa');
+  assert.deepEqual(changed.sa,[4,3,0,1,2]);
+  assert.equal(changed.kasai[0].j,3);
+  assert.equal(changed.kasai[0].h,2);
+  assert.equal(changed.kasai[1].j,0);
+  assert.equal(changed.kasai[1].seed,1);
+  assert.equal(changed.kasai[1].h,1);
+});
+
 test('AC failures are longest proper suffixes; completed transitions preserve invariant', () => {
   for (const patterns of [['he','she','his','hers'], ['a','aa','aaa'], ['ab','bab','bc','bca','c','caa'], ['a','a','ab']]) {
     const ac = buildAC(patterns);

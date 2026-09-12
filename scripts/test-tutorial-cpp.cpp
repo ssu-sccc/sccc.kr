@@ -2,9 +2,11 @@
 #include "../src/lib/tutorial/cpp/aho-search.cpp"
 #include "../src/lib/tutorial/cpp/suffix-array.cpp"
 #include "../src/lib/tutorial/cpp/kasai.cpp"
+#include "../src/lib/tutorial/cpp/suffix-query.cpp"
 #include <cassert>
 #include <iostream>
 #include <tuple>
+#include <set>
 
 int main() {
     vector<string> texts = {"", "banana", "mississippi", "ushers", "zzzz", "she#hers", "aAaa", "he she", "#"};
@@ -16,17 +18,57 @@ int main() {
         }
     }
     for (const auto& s : texts) {
+        SuffixIndex index(s);
         auto sa = suffix_array(s), expected = sa;
         sort(expected.begin(), expected.end(), [&](int a, int b) {
             return s.substr(a) < s.substr(b);
         });
         assert(sa == expected);
         auto lcp = lcp_array(s, sa);
+        assert(index.sa == sa && index.lcp == lcp);
         for (int r = 1; r < (int)sa.size(); ++r) {
             int h = 0, i = sa[r-1], j = sa[r];
             while (i+h < (int)s.size() && j+h < (int)s.size() && s[i+h] == s[j+h]) ++h;
             assert(lcp[r] == h);
         }
+        int n = (int)s.size();
+        for (int i=0;i<n;++i) for(int j=0;j<n;++j) {
+            int h=0;
+            while(i+h<n && j+h<n && s[i+h]==s[j+h]) ++h;
+            assert(index.lcp_suffix(i,j)==h);
+        }
+        for(int l=0;l<n;++l) for(int r=l+1;r<=n;++r)
+            assert(index.rmq.query(l,r)==*min_element(lcp.begin()+l,lcp.begin()+r));
+        set<string> unique;
+        for(int a=0;a<=n;++a) for(int b=a;b<=n;++b) {
+            if(a<b) unique.insert(s.substr(a,b-a));
+            for(int c=0;c<=n;++c) for(int d=c;d<=n;++d) {
+                int raw=s.substr(a,b-a).compare(s.substr(c,d-c));
+                assert(index.compare_substrings(a,b,c,d)==(raw>0)-(raw<0));
+            }
+        }
+        long long distinct=1LL*n*(n+1)/2;
+        for(int h:lcp) distinct-=h;
+        assert(distinct==(long long)unique.size());
+        vector<string> patterns(unique.begin(),unique.end());
+        patterns.insert(patterns.end(),{"z","zzzzzzzzzzzz","ana","aa","#","A"});
+        for(const auto& p:patterns) {
+            auto [l,r]=index.pattern_range(p);
+            int lo=0,hi=0;
+            while(lo<n && s.substr(sa[lo],p.size())<p) ++lo;
+            hi=lo;
+            while(hi<n && s.substr(sa[hi],p.size())==p) ++hi;
+            assert(l==lo && r==hi);
+        }
+        bool rejected=false;
+        try { index.pattern_range(""); } catch(const invalid_argument&) { rejected=true; }
+        assert(rejected);
+        rejected=false;
+        try { index.lcp_suffix(n,0); } catch(const out_of_range&) { rejected=true; }
+        assert(rejected);
+        rejected=false;
+        try { index.rmq.query(0,0); } catch(const out_of_range&) { rejected=true; }
+        assert(rejected);
     }
     for (const vector<string>& patterns : vector<vector<string>>{
         {"he","she","his","hers"}, {"a","aa","aaa"}, {"a","a","ab"}, {"ab","bab","bc","bca","c","caa"}, {}}) {
@@ -54,5 +96,5 @@ int main() {
         catch (const invalid_argument&) { rejected = true; }
         assert(rejected);
     }
-    cout << "C++17: SA, LCP, AC output and counts passed on " << texts.size() << " texts; invalid patterns rejected\n";
+    cout << "C++17: SA, LCP, all suffix/substring/RMQ queries, search, distinct substrings, AC outputs/counts passed on " << texts.size() << " texts; invalid inputs rejected\n";
 }
