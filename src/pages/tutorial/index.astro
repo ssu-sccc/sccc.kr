@@ -4,10 +4,10 @@ import '../../styles/tutorial.css';
 ---
 <BaseLayout title="Tutorial" description="직접 움직여 이해하는 SCCC 알고리즘 튜토리얼. 아호-코라식과 Suffix Array · LCP를 단계별 시각화로 배웁니다.">
   <div class="tutorial"><div class="t-shell">
-    <header class="t-hero"><p class="t-kicker">SCCC / TUTORIAL</p><h1>알고리즘을,<br />눈으로 이해하다.</h1><p>문자 하나가 만드는 상태 변화부터 배열 사이의 관계까지.<br />직접 움직여 보고, 그 이유를 짚어봅니다.</p><div class="t-meta"><span>문자열 알고리즘</span><span>단계별 재생 · 입력 실험 · 엄밀한 정의</span></div></header>
+    <header class="t-hero"><p class="t-kicker">SCCC / TUTORIAL</p><h1>문자열 알고리즘</h1><p>문자열 알고리즘의 정의, 구현, 정당성 증명과 복잡도 분석.<br />단계별 시각화로 상태와 배열의 변화를 확인한다.</p><div class="t-meta"><span>문자열 알고리즘</span><span>단계별 재생 · 입력 실험 · 엄밀한 정의</span></div></header>
     <div class="t-catalog">
-      <a class="t-card" href="/tutorial/aho-corasick/"><small>01 / MULTIPLE PATTERN MATCHING</small><div class="t-cover" aria-label="she의 접미사 he도 함께 매칭"><span>she</span><span>fail → he</span></div><h2>아호-코라식</h2><p>여러 패턴, 한 번의 탐색.<br />Trie에서 failure tree까지 상태를 따라갑니다.</p><small>Trie · Failure Link · Output · 등장 횟수 ↗</small></a>
-      <a class="t-card" href="/tutorial/suffix-array-lcp/"><small>02 / SUFFIX ORDER & COMMON PREFIX</small><div class="t-cover" aria-label="banana의 접미사 정렬 예시"><span>a</span><span>ana</span><span>anana</span></div><h2>Suffix Array · LCP</h2><p>접미사를 정렬하면 보이는 구조.<br />Doubling, Kasai, RMQ를 하나로 연결합니다.</p><small>SA · Rank · LCP · RMQ ↗</small></a>
+      <a class="t-card" href="/tutorial/aho-corasick/"><small>01 / MULTIPLE PATTERN MATCHING</small><div class="t-cover" aria-label="she의 접미사 he도 함께 매칭"><span>she</span><span>fail → he</span></div><h2>아호-코라식</h2><p>다중 패턴 매칭 알고리즘.<br />Trie, failure link, output link와 failure tree의 구성 및 활용.</p><small>Trie · Failure Link · Output · 등장 횟수 ↗</small></a>
+      <a class="t-card" href="/tutorial/suffix-array-lcp/"><small>02 / SUFFIX ORDER & COMMON PREFIX</small><div class="t-cover" aria-label="banana의 접미사 정렬 예시"><span>a</span><span>ana</span><span>anana</span></div><h2>Suffix Array · LCP</h2><p>접미사 배열과 공통 접두사 배열.<br />Doubling, Kasai 알고리즘과 RMQ 질의의 원리 및 구현.</p><small>SA · Rank · LCP · RMQ ↗</small></a>
     </div>
   </div></div>
 </BaseLayout>

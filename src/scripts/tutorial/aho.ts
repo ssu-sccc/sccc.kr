@@ -57,8 +57,8 @@ if (root) {
     if (!retain) selected = active;
     const visible = mode === 'trie' ? step : ac.nodes.length - 1;
     let note = '';
-    if (mode === 'trie') note = step === 0 ? 'root는 빈 문자열 ε입니다. 다음을 눌러 패턴의 접두사 노드를 삽입하세요.' : `새 접두사 ${label(step)} 삽입. 부모 ${label(ac.nodes[step].parent)}와 실제 Trie 간선으로 연결됩니다.${ac.nodes[step].terminal.length ? ' 패턴이 끝나므로 terminal입니다.' : ''}`;
-    else if (mode === 'failure') note = active === 0 ? 'fail[root] = root. BFS는 얕은 노드부터 진행합니다.' : `BFS ${step}: fail[${label(active)}] = ${label(ac.nodes[active].fail)}. 처리 순서: ${ac.bfs.slice(0, step + 1).map(label).join(' → ')}`;
+    if (mode === 'trie') note = step === 0 ? 'root는 빈 문자열 ε이다. 다음을 눌러 패턴의 접두사 노드를 삽입.' : `새 접두사 ${label(step)} 삽입. 부모 ${label(ac.nodes[step].parent)}와 실제 Trie 간선으로 연결된다.${ac.nodes[step].terminal.length ? ' 패턴이 끝나므로 terminal이다.' : ''}`;
+    else if (mode === 'failure') note = active === 0 ? 'fail[root] = root. BFS는 얕은 노드부터 진행한다.' : `BFS ${step}: fail[${label(active)}] = ${label(ac.nodes[active].fail)}. 처리 순서: ${ac.bfs.slice(0, step + 1).map(label).join(' → ')}`;
     else note = mode === 'count' ? counts[step].note : snapshot.note;
     get('[data-status]').textContent = note;
     get('.t-legend').innerHTML = mode === 'count' ? '<span>실선: fail[v]를 부모로 둔 트리</span><b>초록 숫자: 현재 누적 횟수</b><span>파랑: 선택 상태</span>' : '<span>실선: Trie 간선</span><em>점선: 선택 상태의 failure link</em><b>초록 테두리: terminal</b><span>파랑: 선택 상태</span>';
@@ -67,7 +67,7 @@ if (root) {
     get('[data-nodes]').innerHTML = ac.nodes.slice(0, visible + 1).map((_: unknown, i: number) => `<button type="button" data-node="${i}" aria-pressed="${i === selected}">${label(i)}</button>`).join('');
     detail();
     get('[data-result-title]').textContent = mode === 'count' ? (step === counts.length - 1 ? '누적 완료 · 패턴별 총 등장 횟수' : '누적 진행 중 · 패턴 끝 노드의 현재 값') : '발견한 패턴 · [시작, 끝]';
-    get('[data-results]').innerHTML = mode === 'count' ? ac.patterns.map((p: string, id: number) => `<span class="t-pill">${p}: ${counts[step].counts[ac.ends[id]]}회</span>`).join('') : (snapshot?.matches.length ? snapshot.matches.map((m: any) => `<span class="t-pill">${m.pattern} [${m.start}, ${m.end}]</span>`).join('') : '<span class="t-number">아직 출력된 매칭이 없습니다.</span>');
+    get('[data-results]').innerHTML = mode === 'count' ? ac.patterns.map((p: string, id: number) => `<span class="t-pill">${p}: ${counts[step].counts[ac.ends[id]]}회</span>`).join('') : (snapshot?.matches.length ? snapshot.matches.map((m: any) => `<span class="t-pill">${m.pattern} [${m.start}, ${m.end}]</span>`).join('') : '<span class="t-number">아직 출력된 매칭이 없다.</span>');
     get('[data-transition]').closest('.t-query')!.toggleAttribute('hidden', mode === 'count');
   }
   const playback = player(root, length, render);
@@ -88,7 +88,7 @@ if (root) {
   get('[data-transition]').onchange = detail;
   get<HTMLFormElement>('[data-ac-form]').onsubmit = e => {
     e.preventDefault(); const form = new FormData(e.currentTarget as HTMLFormElement), nextText = String(form.get('text'));
-    if (!/^[a-z]{1,32}$/.test(nextText)) { get('[data-error]').textContent = '본문은 영문 소문자 1–32자로 입력하세요.'; return; }
+    if (!/^[a-z]{1,32}$/.test(nextText)) { get('[data-error]').textContent = '본문은 영문 소문자 1–32자로 입력 필요.'; return; }
     text = nextText; ac = buildAC(presets[String(form.get('patterns')) as keyof typeof presets]); get('[data-error]').textContent = ''; init();
   };
   init();

@@ -1,0 +1,37 @@
+---
+import { buildAC, traceAC } from '../../lib/tutorial/algorithms.mjs';
+const ac = buildAC(['he', 'she', 'his', 'hers']);
+const matches = traceAC(ac, 'ushers').at(-1).matches;
+const positions = [[350,35],[180,120],[85,215],[510,120],[510,215],[510,310],[285,215],[285,310],[85,310],[85,405]];
+---
+<section id="problem" class="t-section">
+  <span class="t-number">00 / PROBLEM & NOTATION</span><h2>0. 무엇을 구하는 알고리즘인가</h2>
+  <p>패턴 목록 <code>P₀, …, Pₖ₋₁</code>과 본문 <code>T</code>가 주어진다. 각 패턴이 본문의 어느 구간과 같은지 모두 찾는 것이 목표이다. 이 페이지는 <strong>빈 패턴을 제외</strong>하고, 겹치는 등장과 같은 문자열을 가진 서로 다른 패턴 ID를 모두 센다.</p>
+  <p class="t-formula">매칭 (id, l, r) ⇔ T[l…r] = Pᵢᵈ<br />0 ≤ l ≤ r &lt; N, r − l + 1 = |Pᵢᵈ|</p>
+  <p>아래 예제에서 <code>she</code>와 <code>he</code>는 같은 위치 3에서 끝난다. 하나를 발견했다고 다른 하나를 버리면 안 된다. <code>hers</code>는 두 구간과 겹치지만 별개의 정답이다.</p>
+  <figure class="ac-figure"><figcaption>그림 1. 본문과 모든 정답 구간 · 양 끝 포함</figcaption>
+    <div class="ac-alignment" role="img" aria-label="ushers에서 she는 1부터 3, he는 2부터 3, hers는 2부터 5에 등장">
+      <div class="ac-string-row"><span>위치</span>{[...Array(6)].map((_, i) => <small>{i}</small>)}</div>
+      <div class="ac-string-row"><span>본문 T</span>{[...'ushers'].map(c => <b>{c}</b>)}</div>
+      {matches.map(m => <div class="ac-string-row"><span>{m.pattern}<small>[{m.start}, {m.end}]</small></span>{[...'ushers'].map((c,i) => <b class:list={{'ac-hit':i>=m.start && i<=m.end}}>{i>=m.start && i<=m.end ? c : '·'}</b>)}</div>)}
+    </div>
+  </figure>
+  <h3>접두사, 접미사, 부분 문자열</h3>
+  <div class="t-columns"><div><p><strong>접두사(prefix)</strong>: 앞에서 연속으로 취한 문자열. <code>hers</code>의 접두사는 <code>ε, h, he, her, hers</code>.</p><p><strong>접미사(suffix)</strong>: 뒤에서 연속으로 취한 문자열. <code>hers</code>의 접미사는 <code>hers, ers, rs, s, ε</code>.</p></div><div><p><strong>proper suffix</strong>: 자기 자신보다 짧은 접미사. 여기서는 빈 문자열 ε도 포함한다.</p><p><strong>부분 문자열(substring)</strong>: 임의의 연속 구간. <code>er</code>는 부분 문자열이지만 접두사도 접미사도 아니다. 문자를 건너뛰는 부분 수열과 구별한다.</p></div></div>
+  <h3>왜 패턴별 탐색을 합치는가</h3>
+  <p>K개의 패턴을 따로 탐색하면 본문을 K번 읽게 된다. KMP를 각각 적용해도 총 <code>O(M + KN)</code>이다. 아호-코라식은 패턴들의 공통 접두사를 Trie로 합치고, 이미 읽은 본문의 유효한 접미사를 실패 링크로 재사용한다. 고정 크기 알파벳에서는 전처리와 전체 출력이 <code>O(M + N + Z)</code>이다. M은 패턴 길이의 합, N은 본문 길이, Z는 실제 출력 개수이다.</p>
+  <p class="t-note">필요한 배경은 문자열의 인덱스, 배열, 트리, 큐이다. BFS는 큐에서 먼저 들어온 노드를 먼저 꺼내 자식을 뒤에 넣는 순회이며, 트리에서 깊이가 작은 노드를 먼저 방문한다. KMP를 몰라도 아래 정의와 증명만으로 읽을 수 있다.</p>
+</section>
+<section class="t-section" aria-labelledby="ac-trie-title">
+  <span class="t-number">READING THE TRIE</span><h2 id="ac-trie-title">공유하는 것은 문자열 전체가 아니라 접두사</h2>
+  <p><code>he</code>를 넣으면 ε → h → he가 생긴다. <code>hers</code>를 넣을 때 ε → h → he는 재사용하고, her와 hers만 새로 만든다. 같은 노드에서 같은 문자로 나가는 간선은 하나뿐이다. 노드 이름은 설명용 문자열이며, 구현에서는 정수 번호만 저장한다.</p>
+  <figure class="ac-figure"><figcaption>그림 2. he / she / his / hers의 Trie · 초록색 이중 원은 패턴의 끝</figcaption><div class="t-overflow" tabindex="0" aria-label="전체 Trie 도식, 작은 화면에서 가로 스크롤">
+    <svg class="ac-static-trie" viewBox="0 0 620 450" role="img" aria-label="root 아래 h와 s, h 아래 he와 hi, he 아래 her와 hers, hi 아래 his, s 아래 sh와 she">
+      {ac.nodes.slice(1).map((n,i) => {const v=i+1; const [x,y]=positions[v]; const [px,py]=positions[n.parent]; return <g><path d={`M${px},${py+20} L${x},${y-22}`} /><text x={(px+x)/2+12} y={(py+y)/2}>{n.prefix.at(-1)}</text></g>})}
+      {ac.nodes.map((n,i) => <g class:list={{'ac-terminal':n.terminal.length>0}}><circle cx={positions[i][0]} cy={positions[i][1]} r="24" />{n.terminal.length>0 && <circle class="ac-terminal-ring" cx={positions[i][0]} cy={positions[i][1]} r="29" />}<text x={positions[i][0]} y={positions[i][1]}>{n.prefix || 'ε'}</text></g>)}
+    </svg></div></figure>
+  <p><strong>terminal은 “패턴의 끝”이지 “자식이 없는 노드”가 아니다.</strong> <code>he</code>는 자식 her가 있지만 terminal이다. 반대로 <code>her</code>는 유효한 접두사이지만 등록된 패턴이 아니므로 terminal이 아니다.</p>
+  <h3>현재 상태는 지금까지 읽은 본문 전체가 아니다</h3>
+  <p><code>ushe</code>를 읽은 뒤 그 접미사 중 Trie에 있는 것은 <code>she, he, ε</code>이다. 가장 긴 <code>she</code>만 현재 상태로 보관한다. 더 짧은 후보 he는 실패 링크로 복원할 수 있다. 따라서 후보 집합 전체를 매 문자마다 따로 저장할 필요가 없다.</p>
+  <p class="t-formula">읽은 본문: u · [s h e]<br />현재 상태: she &nbsp; → 실패 후보: he &nbsp; → ε</p>
+</section>

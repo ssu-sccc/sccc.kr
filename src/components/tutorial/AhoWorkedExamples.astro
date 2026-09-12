@@ -1,0 +1,38 @@
+---
+import { buildAC, traceAC, countAC } from '../../lib/tutorial/algorithms.mjs';
+interface Props { part: 'failure' | 'output' }
+const {part} = Astro.props;
+const ac = buildAC(['he','she','his','hers']);
+const name = (v: number) => v === -1 ? '없음' : ac.nodes[v].prefix || 'ε';
+const trace = traceAC(ac, 'ushers');
+const overlap = buildAC(['a','aa','aaa']);
+const counts = countAC(overlap, traceAC(overlap,'aaaa').at(-1).visits);
+---
+{part === 'failure' ? <>
+  <h3>실패 후보를 직접 지워 보기</h3>
+  <div class="ac-candidates"><div><strong>she의 proper suffix</strong><p><mark>he · Trie에 있음 → 채택</mark><br /><del>e · Trie에 없음</del><br />ε · 더 짧음</p></div><div><strong>hers의 proper suffix</strong><p><del>ers · Trie에 없음</del><br /><del>rs · Trie에 없음</del><br /><mark>s · Trie에 있음 → 채택</mark><br />ε · 더 짧음</p></div></div>
+  <p>실패 링크는 Trie의 부모가 아니다. <code>she</code>의 부모 <code>sh</code>는 마지막 문자를 뺀 <em>접두사</em>이고, 실패 링크 <code>he</code>는 앞부분을 버린 <em>접미사</em>이다. 실패한 뒤에도 이미 읽은 본문의 끝과 일치해야 하므로 접미사가 필요하다.</p>
+  <h3>BFS 계산표: 먼저 아는 값으로 다음 값을 구한다</h3>
+  <p>아래 순서는 같은 깊이에서 h 가지를 s 가지보다 먼저 처리한 경우이다. 같은 깊이의 순서가 달라도 최종 링크는 같다. 예를 들어 sh의 부모는 s이고 <code>fail[s]=ε</code>이므로 <code>fail[sh]=go[ε][h]=h</code>. 다음으로 <code>fail[she]=go[h][e]=he</code>를 얻는다.</p>
+  <div class="t-overflow" tabindex="0" aria-label="BFS 계산표 가로 스크롤"><table class="t-table"><caption>실제 알고리즘으로 계산한 노드별 링크</caption><thead><tr><th>순서</th><th>상태</th><th>부모</th><th>마지막 문자</th><th>fail</th><th>out</th></tr></thead><tbody>{ac.bfs.map((v,i) => <tr><td>{i}</td><td>{name(v)}</td><td>{v ? name(ac.nodes[v].parent) : '—'}</td><td>{ac.nodes[v].prefix.at(-1) || '—'}</td><td>{name(ac.nodes[v].fail)}</td><td>{name(ac.nodes[v].out)}</td></tr>)}</tbody></table></div>
+  <h3>한 번의 go가 실제로 생략하는 과정</h3>
+  <figure class="ac-figure"><figcaption>그림 3. ushe까지 읽은 뒤, 아직 읽지 않은 r 처리</figcaption><ol class="ac-transition"><li><code>she</code><span>r 간선 없음</span></li><li><code>he</code><span>실패 이동 · r은 아직 그대로</span></li><li><code>her</code><span>r 간선 이동 · 여기서 r 소비</span></li></ol><p><code>go[she][r] = her</code>. 두 번의 상태 이동을 전이표 조회 한 번으로 압축한 것이다.</p></figure>
+  <p>ε에서도 간선이 없으면 ε에서 해당 문자를 소비한다. 예제의 첫 문자 u가 그렇다. 실패 이동 중에는 문자를 소비하거나 출력하지 않는다. 문자를 최종 처리한 상태에서만 그 종료 위치의 결과를 보고한다.</p>
+  <div class="t-overflow" tabindex="0" aria-label="실제 간선과 완성 전이 비교"><table class="t-table"><caption>상태 she에서의 next와 go</caption><thead><tr><th>문자</th><th>next[she]</th><th>go[she]</th></tr></thead><tbody>{['e','h','i','r','s','u'].map(c => <tr><td>{c}</td><td>없음</td><td>{name(ac.nodes[5].go[c] ?? 0)}</td></tr>)}</tbody></table></div>
+  <h3>본문 한 글자마다 검산하기</h3>
+  <div class="t-overflow" tabindex="0" aria-label="ushers 전체 탐색표"><table class="t-table"><caption>ushers의 모든 전이 · 실패 이동 행은 문자를 소비하지 않음</caption><thead><tr><th>위치 / 문자</th><th>종류</th><th>이동</th><th>새 매칭</th></tr></thead><tbody>{trace.slice(1).map(s => <tr><td>{s.kind==='fail' ? s.pos+1 : s.pos} / {s.c}</td><td>{s.kind==='fail'?'실패 · 미소비':'소비'}</td><td>{name(s.from)} → {name(s.v)}</td><td>{s.kind==='read' ? s.matches.filter(m=>m.end===s.pos).map(m=>`${m.pattern} [${m.start},${m.end}]`).join(', ') || '없음' : '출력 안 함'}</td></tr>)}</tbody></table></div>
+</> : <>
+  <h3>세 종류의 링크를 구별한다</h3>
+  <div class="t-overflow" tabindex="0" aria-label="부모와 실패 링크와 출력 링크 비교"><table class="t-table"><thead><tr><th>관계</th><th>의미</th><th>she 예제</th><th>his 예제</th></tr></thead><tbody><tr><td>Trie 부모</td><td>마지막 문자 제거</td><td>sh</td><td>hi</td></tr><tr><td>fail</td><td>최장 proper suffix 상태</td><td>he</td><td>s</td></tr><tr><td>out</td><td>가장 가까운 terminal 실패 조상</td><td>he</td><td>없음</td></tr></tbody></table></div>
+  <p><code>his</code>의 fail은 s이지만 s는 terminal이 아니다. s의 실패 조상 ε도 terminal이 아니므로 out은 없다. out은 실제 상태 전이에 쓰는 링크가 아니라, <strong>이미 결정된 종료 위치에서 추가 정답을 열거하는 링크</strong>이다.</p>
+  <p class="t-formula">out[v] = fail[v]가 terminal이면 fail[v], 아니면 out[fail[v]]<br />out[root] = −1</p>
+  <p>위치 3의 상태 she에서는 자기 terminal의 she를 출력하고, out을 따라 he를 출력한다. ID별 구간은 각각 <code>[3−3+1,3]=[1,3]</code>, <code>[3−2+1,3]=[2,3]</code>이다. 종료 위치 순서로 출력되며, 같은 종료 위치에서는 긴 패턴부터 짧은 패턴 순서이다.</p>
+  <h3>횟수만 필요하다면 출력 자체를 만들지 않는다</h3>
+  <p>패턴 <code>a, aa, aaa</code>, 본문 <code>aaaa</code>를 보자. 네 문자를 읽은 상태는 차례로 <code>a, aa, aaa, aaa</code>. 직접 도착 횟수는 <code>1, 1, 2</code>이지만 정답 횟수는 아니다. aaa 상태에 도착한 순간 aa와 a도 동시에 끝나기 때문이다.</p>
+  <figure class="ac-figure"><figcaption>그림 4. Failure Tree · 자식의 값을 실패 부모에게 더한다</figcaption><div class="ac-count-chain"><span><b>aaa</b><small>직접 2 → 누적 2</small></span><i>+2 →</i><span><b>aa</b><small>직접 1 → 누적 3</small></span><i>+3 →</i><span><b>a</b><small>직접 1 → 누적 4</small></span></div><p>그림의 화살표는 failure link 방향이다. 트리의 root는 ε이며 a의 실패 부모 ε는 생략했다. 이 예제에서는 Trie와 failure tree가 모두 사슬이지만 일반적으로 둘의 모양은 다르다.</p></figure>
+  <div class="t-overflow" tabindex="0" aria-label="실패 트리 누적 단계"><table class="t-table"><caption>계산된 누적값 · ε 누적은 패턴 결과에 영향 없음</caption><thead><tr><th>단계</th><th>cnt[a]</th><th>cnt[aa]</th><th>cnt[aaa]</th></tr></thead><tbody>{counts.map((s,i)=><tr><td>{i===0?'직접 방문 횟수':`${overlap.nodes[s.v].prefix} → ${overlap.nodes[s.to].prefix || 'ε'}`}</td>{overlap.ends.map(v=><td>{s.counts[v]}</td>)}</tr>)}</tbody></table></div>
+  <p>aa를 a에 먼저 더하고 나중에 aaa를 aa에 더하면, aaa에서 온 값이 a까지 전달되지 않는다. 따라서 <strong>자손 → 조상</strong> 순서가 필수이다. Trie 깊이의 역순이면 모든 실패 간선에서도 자식이 부모보다 먼저 처리된다.</p>
+  <h3>Failure Tree를 질의 자료구조로 사용하는 이유</h3>
+  <p>각 상태 v의 방문은 그 실패 조상 패턴들에 영향을 준다. 따라서 패턴 u의 횟수는 failure-tree 서브트리 방문 합이다. DFS 진입 번호를 붙이고 퇴장 시각을 배타적 끝으로 두면 u의 서브트리는 연속 구간 <code>[tin[u], tout[u])</code>이 된다. v 방문을 tin[v]의 점 갱신으로, u의 횟수를 그 구간 합으로 바꾸어 Fenwick tree 등으로 처리할 수 있다.</p>
+  <p><strong>구간이 연속인 이유:</strong> DFS는 한 자식의 서브트리를 끝까지 방문한 후 다음 자식으로 넘어간다. u 진입부터 u 퇴장 전까지 정확히 u의 자손만 방문하므로 다른 노드가 그 구간에 끼지 않는다. 아래 구현은 더 단순한 전체 본문 일괄 누적 방식을 사용한다.</p>
+</>}

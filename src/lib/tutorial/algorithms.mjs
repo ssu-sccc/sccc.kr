@@ -42,13 +42,13 @@ export function traceAC(ac, text) {
   const { nodes, patterns } = ac;
   let v = 0;
   const matches = [], visits = nodes.map(() => 0);
-  const steps = [{ kind: 'start', v: 0, from: 0, pos: -1, c: '', matches: [], visits: [...visits], note: 'root에서 시작합니다. 아직 읽은 문자는 없습니다.' }];
+  const steps = [{ kind: 'start', v: 0, from: 0, pos: -1, c: '', matches: [], visits: [...visits], note: 'root에서 시작한다. 아직 읽은 문자는 없다.' }];
   const snapshot = (kind, from, pos, c, note) => steps.push({ kind, v, from, pos, c, matches: [...matches], visits: [...visits], note });
   for (let i = 0; i < text.length; i++) {
     const c = text[i];
     while (v && nodes[v].next[c] === undefined) {
       const from = v; v = nodes[v].fail;
-      snapshot('fail', from, i - 1, c, `문자 ${c}를 아직 소비하지 않습니다. ${nodes[from].prefix} → ${nodes[v].prefix || 'root'}: failure link로 이동합니다.`);
+      snapshot('fail', from, i - 1, c, `문자 ${c}를 아직 소비하지 않는다. ${nodes[from].prefix} → ${nodes[v].prefix || 'root'}: failure link로 이동한다.`);
     }
     const from = v;
     v = nodes[v].next[c] ?? 0;
@@ -56,18 +56,18 @@ export function traceAC(ac, text) {
     for (let u = v; u !== -1; u = nodes[u].out) {
       for (const id of nodes[u].terminal) matches.push({ id, pattern: patterns[id], start: i - patterns[id].length + 1, end: i });
     }
-    snapshot('read', from, i, c, `T[${i}] = ${c} 소비. 상태는 ${nodes[v].prefix || 'root'}. terminal과 output link의 패턴을 보고합니다.`);
+    snapshot('read', from, i, c, `T[${i}] = ${c} 소비. 상태는 ${nodes[v].prefix || 'root'}. terminal과 output link의 패턴을 보고한다.`);
   }
   return steps;
 }
 
 export function countAC(ac, visits) {
   const counts = [...visits];
-  const steps = [{ v: 0, to: 0, counts: [...counts], note: '본문을 읽은 직후 각 상태에 도착한 횟수입니다. 아직 failure ancestor에는 더하지 않았습니다.' }];
+  const steps = [{ v: 0, to: 0, counts: [...counts], note: '본문을 읽은 직후 각 상태에 도착한 횟수이다. 아직 failure ancestor에는 더하지 않았다.' }];
   for (const v of ac.bfs.slice(1).reverse()) {
     const to = ac.nodes[v].fail;
     counts[to] += counts[v];
-    steps.push({ v, to, counts: [...counts], note: `${ac.nodes[v].prefix}의 ${counts[v]}회를 ${ac.nodes[to].prefix || 'root'}에 더합니다. cnt[fail[v]] += cnt[v].` });
+    steps.push({ v, to, counts: [...counts], note: `${ac.nodes[v].prefix}의 ${counts[v]}회를 ${ac.nodes[to].prefix || 'root'}에 더한다. cnt[fail[v]] += cnt[v].` });
   }
   return steps;
 }

@@ -9,6 +9,24 @@ function binaryStrings(max) {
   return all;
 }
 
+test('Lecture examples: exact positions, non-consuming failure, and reverse accumulation', () => {
+  const ac = buildAC(['he','she','his','hers']);
+  const steps = traceAC(ac, 'ushers');
+  assert.deepEqual(steps.at(-1).matches.map(({pattern,start,end})=>[pattern,start,end]), [
+    ['she',1,3], ['he',2,3], ['hers',2,5],
+  ]);
+  const failure = steps.find(s=>s.kind==='fail');
+  assert.equal(ac.nodes[failure.from].prefix,'she');
+  assert.equal(ac.nodes[failure.v].prefix,'he');
+  assert.equal(failure.pos,3);
+  assert.equal(failure.c,'r');
+  const overlap = buildAC(['a','aa','aaa']);
+  const scan = traceAC(overlap,'aaaa').at(-1);
+  assert.equal(scan.matches.length,9);
+  const counts = countAC(overlap,scan.visits);
+  assert.deepEqual(counts.map(s=>overlap.ends.map(v=>s.counts[v])), [[1,1,2],[1,3,2],[4,3,2],[4,3,2]]);
+});
+
 test('Suffix arrays, inverse ranks, Kasai and every RMQ agree with brute force', () => {
   for (const s of [...binaryStrings(7), 'banana', 'mississippi', 'zyxwvuts', 'abcdefghijklmnopqr']) {
     const d = suffixData(s), expected = Array.from({ length: s.length }, (_, i) => i).sort((a, b) => s.slice(a) < s.slice(b) ? -1 : 1);

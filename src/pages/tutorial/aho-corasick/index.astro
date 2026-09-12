@@ -2,54 +2,33 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Playback from '../../../components/tutorial/Playback.astro';
 import '../../../styles/tutorial.css';
-const buildCode = `// next: 실제 Trie 간선, go: 완성된 automaton 전이
-fail[root] = root;
-for (c : alphabet) {
-  if (next[root][c] exists) {
-    u = next[root][c];
-    go[root][c] = u; fail[u] = root; queue.push(u);
-  } else go[root][c] = root;
-}
-while (!queue.empty()) {
-  v = queue.pop(); // FIFO
-  out[v] = terminal[fail[v]] ? fail[v] : out[fail[v]];
-  for (c : alphabet) {
-    if (next[v][c] exists) {
-      u = next[v][c];
-      go[v][c] = u; fail[u] = go[fail[v]][c];
-      queue.push(u);
-    } else go[v][c] = go[fail[v]][c];
-  }
-}`;
-const scanCode = `v = root;
-for (i = 0; i < T.size(); ++i) {
-  v = go[v][T[i]];
-  ++cnt[v];
-  report(terminal[v], i); // 시작 위치 = i - 패턴 길이 + 1
-  for (u = out[v]; u != NONE; u = out[u])
-    report(terminal[u], i);
-}
-// 횟수만 필요하면 report 루프는 생략한다.
-for (v : reverse(bfs_order_without_root))
-  cnt[fail[v]] += cnt[v];
-// 패턴 p의 횟수 = cnt[end_node[p]]`;
+import CppCode from '../../../components/tutorial/CppCode.astro';
+import AhoFoundations from '../../../components/tutorial/AhoFoundations.astro';
+import AhoWorkedExamples from '../../../components/tutorial/AhoWorkedExamples.astro';
+import AhoPractice from '../../../components/tutorial/AhoPractice.astro';
+import AhoProofs from '../../../components/tutorial/AhoProofs.astro';
+import buildCode from '../../../lib/tutorial/cpp/aho-build.cpp?raw';
+import scanCode from '../../../lib/tutorial/cpp/aho-search.cpp?raw';
 ---
 <BaseLayout title="아호-코라식 | Tutorial" description="Trie, failure link, output link와 failure tree를 직접 움직이며 이해하는 아호-코라식 튜토리얼.">
 <div class="tutorial"><div class="t-shell">
-  <header class="t-hero"><a class="t-kicker" href="/tutorial/">TUTORIAL / 01</a><h1>아호-코라식</h1><p>여러 패턴을 한 번에 찾는 방법.<br />맞지 않는 순간에도, 이미 읽은 문자를 활용합니다.</p><div class="t-meta"><span>Aho–Corasick</span><span>선수 지식: Trie · KMP · BFS</span><span>모든 위치는 0-index</span></div></header>
-  <nav class="t-contents" aria-label="이 페이지 목차"><a href="#idea">핵심 아이디어</a><a href="#experiment">직접 실행</a><a href="#failure">실패 링크</a><a href="#output">출력과 횟수</a><a href="#implementation">구현 체크</a></nav>
-  <section id="idea" class="t-section"><span class="t-number">01 / IDEA</span><h2>공통 접두사는 공유하고,<br />유효한 접미사는 남깁니다.</h2><div class="t-columns"><div><h3>Trie = 패턴의 접두사 집합</h3><p>패턴들을 하나의 Trie에 삽입합니다. 노드 <code>v</code>는 root부터의 문자열 <code>str(v)</code>를 의미합니다. 패턴이 끝나는 노드에는 해당 패턴의 ID를 저장합니다. 같은 패턴을 여러 번 등록한다면 ID도 여러 개일 수 있습니다.</p></div><div><h3>Failure = 다시 시작할 가장 좋은 상태</h3><p>KMP가 한 패턴의 접두사를 재사용하듯, 아호-코라식은 모든 패턴의 접두사를 재사용합니다. 본문을 뒤로 돌리지 않고, 현재 상태만 더 짧은 접미사로 바꿉니다.</p></div></div><p class="t-formula">상태의 불변식: 읽은 본문의 suffix 중 Trie에 있는 가장 긴 prefix</p></section>
-  <section id="experiment" class="t-section"><span class="t-number">02 / INTERACTIVE LAB</span><h2>한 글자씩, 상태를 따라가 보세요.</h2><p class="t-lead">기본 예제는 <code>he, she, his, hers</code>와 <code>ushers</code>입니다. <code>she</code>에 도착하면 <code>he</code>도 발견되고, 다음 <code>r</code>은 실패 링크를 거쳐 처리됩니다.</p>
+  <header class="t-hero"><a class="t-kicker" href="/tutorial/">TUTORIAL / 01</a><h1>아호-코라식</h1><p>Trie 기반의 다중 패턴 문자열 탐색.<br />실패 링크 구성, 매칭 출력, 패턴별 등장 횟수 계산.</p><div class="t-meta"><span>Aho–Corasick</span><span>기초 정의부터 정당성 증명까지</span><span>모든 위치는 0-index</span></div></header>
+  <nav class="t-contents" aria-label="이 페이지 목차"><a href="#problem">문제와 기초</a><a href="#idea">핵심 아이디어</a><a href="#experiment">직접 실행</a><a href="#failure">실패 링크</a><a href="#output">출력과 횟수</a><a href="#implementation">구현 체크</a><a href="#proofs">정당성 증명</a><a href="#practice">실행과 확인 문제</a></nav>
+  <AhoFoundations />
+  <section id="idea" class="t-section"><span class="t-number">01 / IDEA</span><h2>1. Trie와 오토마톤의 상태</h2><div class="t-columns"><div><h3>Trie = 패턴의 접두사 집합</h3><p>패턴들을 하나의 Trie에 삽입한다. 노드 <code>v</code>는 root부터의 문자열 <code>str(v)</code>를 의미한다. 패턴이 끝나는 노드에는 해당 패턴의 ID를 저장한다. 같은 패턴을 여러 번 등록한다면 ID도 여러 개일 수 있다.</p></div><div><h3>Failure link의 역할</h3><p>KMP가 한 패턴의 접두사를 재사용하듯, 아호-코라식은 모든 패턴의 접두사를 재사용한다. 본문을 뒤로 돌리지 않고, 현재 상태만 더 짧은 접미사로 바꾼다.</p></div></div><p class="t-formula">상태의 불변식: 읽은 본문의 suffix 중 Trie에 있는 가장 긴 prefix</p></section>
+  <section id="experiment" class="t-section"><span class="t-number">02 / VISUALIZATION</span><h2>2. 구성 및 탐색 시각화</h2><p class="t-lead">기본 예제는 <code>he, she, his, hers</code>와 <code>ushers</code>이다. <code>she</code>에 도착하면 <code>he</code>도 발견되고, 다음 <code>r</code>은 실패 링크를 거쳐 처리된다.</p>
     <div class="t-lab" data-ac-lab>
-      <div class="t-lab-head"><div><h3>Pattern matching machine</h3><span class="t-number">단계를 넘기거나 자동 재생하세요.</span></div><form class="t-form" data-ac-form><label>패턴 예제<select name="patterns"><option value="classic">he / she / his / hers</option><option value="overlap">a / aa / aaa</option><option value="branch">ab / bab / bc / bca / c / caa</option></select></label><label>본문 · 소문자 1–32자<input name="text" value="ushers" maxlength="32" pattern="[a-z]{1,32}" required autocomplete="off" spellcheck="false" /></label><button type="submit">적용</button></form></div>
+      <div class="t-lab-head"><div><h3>Pattern matching machine</h3><span class="t-number">단계별 상태 확인 및 자동 재생</span></div><form class="t-form" data-ac-form><label>패턴 예제<select name="patterns"><option value="classic">he / she / his / hers</option><option value="overlap">a / aa / aaa</option><option value="branch">ab / bab / bc / bca / c / caa</option></select></label><label>본문 · 소문자 1–32자<input name="text" value="ushers" maxlength="32" pattern="[a-z]{1,32}" required autocomplete="off" spellcheck="false" /></label><button type="submit">적용</button></form></div>
       <div class="t-modes" aria-label="학습 단계"><button data-mode="trie" aria-pressed="false">1. Trie</button><button data-mode="failure" aria-pressed="false">2. Failure BFS</button><button data-mode="scan" aria-pressed="true">3. 본문 탐색</button><button data-mode="count" aria-pressed="false">4. Failure Tree</button></div>
-      <div class="t-lab-body"><p class="t-error" data-error role="alert"></p><div data-text class="t-chars" aria-label="본문과 인덱스"></div><div data-status class="t-status" role="status" aria-live="polite"></div><div class="t-graph-scroll" tabindex="0" aria-label="상태 그래프. 작은 화면에서는 가로로 스크롤할 수 있습니다."><svg data-graph class="t-graph" viewBox="0 0 800 380" role="img" aria-label="Trie 및 failure link 시각화"></svg></div><div class="t-legend"><span>실선: Trie 간선</span><em>점선: 선택 상태의 failure link</em><b>초록 테두리: terminal</b><span>파랑: 현재 상태</span></div><p class="t-number">상태를 선택하면 실패 링크와 출력을 살펴볼 수 있습니다. 탐색 진행 위치는 바뀌지 않습니다.</p><div data-nodes class="t-node-select" aria-label="상태 선택"></div><dl data-details class="t-details"></dl><div class="t-query"><label>전이 문자<select data-transition aria-label="전이 문자"></select></label><p data-transition-info></p></div><h3 data-result-title>발견한 패턴 · [시작, 끝]</h3><div data-results class="t-result"></div></div>
+      <div class="t-lab-body"><p class="t-error" data-error role="alert"></p><div data-text class="t-chars" aria-label="본문과 인덱스"></div><div data-status class="t-status" role="status" aria-live="polite"></div><div class="t-graph-scroll" tabindex="0" aria-label="상태 그래프. 작은 화면에서 가로 스크롤 가능."><svg data-graph class="t-graph" viewBox="0 0 800 380" role="img" aria-label="Trie 및 failure link 시각화"></svg></div><div class="t-legend"><span>실선: Trie 간선</span><em>점선: 선택 상태의 failure link</em><b>초록 테두리: terminal</b><span>파랑: 현재 상태</span></div><p class="t-number">상태 선택 시 실패 링크와 출력 정보 표시. 탐색 진행 위치는 유지.</p><div data-nodes class="t-node-select" aria-label="상태 선택"></div><dl data-details class="t-details"></dl><div class="t-query"><label>전이 문자<select data-transition aria-label="전이 문자"></select></label><p data-transition-info></p></div><h3 data-result-title>발견한 패턴 · [시작, 끝]</h3><div data-results class="t-result"></div></div>
       <Playback />
-    </div><p class="t-number">그래프 안의 ε는 root입니다. 시각화는 학습용으로 상태와 결과의 사본을 저장합니다. 화면 렌더링·스냅샷 비용은 아래 알고리즘 복잡도에 포함하지 않습니다.</p><noscript><p class="t-note">단계별 시각화에는 JavaScript가 필요합니다. 아래 설명과 의사 코드는 그대로 읽을 수 있습니다.</p></noscript>
+    </div><p class="t-number">그래프 안의 ε는 root이다. 시각화는 학습용으로 상태와 결과의 사본을 저장한다. 화면 렌더링·스냅샷 비용은 아래 알고리즘 복잡도에 포함하지 않는다.</p><noscript><p class="t-note">단계별 시각화에는 JavaScript가 필요하다. 설명과 C++ 구현은 JavaScript 없이도 열람 가능.</p></noscript>
   </section>
-  <section id="failure" class="t-section"><span class="t-number">03 / FAILURE LINK</span><h2>더 짧게, 그러나 가장 길게.</h2><p><code>fail[v]</code>는 <code>str(v)</code>의 <strong>자기 자신을 제외한 접미사(proper suffix)</strong> 중, Trie에 존재하는 가장 긴 접두사의 노드입니다. 없으면 root(빈 문자열)로 갑니다.</p><p class="t-formula">she → he → ε &nbsp; / &nbsp; hers → s → ε</p><div class="t-columns"><div><h3>왜 BFS인가요?</h3><p>root의 자식들은 실패 링크가 root입니다. 그 이후 실제 간선 <code>v —c→ u</code>에 대해 <code>fail[u] = go[fail[v]][c]</code>로 계산합니다. 실패 링크는 더 얕은 깊이를 가리키므로 BFS에서는 필요한 전이가 먼저 완성돼 있습니다.</p><p>root 자신은 <code>fail[root] = root</code>. root의 자식을 일반 점화식으로 처리하면 자기 자신을 가리킬 수 있으므로 따로 초기화합니다.</p></div><div><h3>next와 go는 다릅니다.</h3><p><code>next[v][c]</code>는 실제 Trie 간선이라 없을 수 있습니다. <code>go[v][c]</code>는 실패 이동까지 포함한 최종 전이입니다. 간선이 없으면 <code>go[fail[v]][c]</code>를 사용하고, root에서도 없으면 root에 머뭅니다.</p><p>탐색 시각화는 원리를 보여주려고 실패 이동을 분리합니다. 완성된 전이표에서는 이 여러 단계를 조회 한 번으로 처리합니다.</p></div></div><pre class="t-code"><code>{buildCode}</code></pre><p class="t-note">의사 코드의 <code>terminal[v]</code>는 패턴 ID 목록입니다. <code>out[root] = NONE</code>으로 시작하며 빈 패턴은 허용하지 않습니다.</p></section>
-  <section id="output" class="t-section"><span class="t-number">04 / OUTPUT & FAILURE TREE</span><h2>도착한 상태만 보면 놓칩니다.</h2><p><code>she</code> 상태는 <code>she</code>의 terminal이지만, 실패 조상인 <code>he</code>도 같은 위치에서 끝납니다. 현재 노드의 terminal ID뿐 아니라 실패 조상들의 terminal ID도 처리해야 합니다.</p><div class="t-columns"><div><h3>존재 여부 / 모든 위치</h3><p>존재 여부만 필요하면 BFS 순서로 <code>has[v] |= has[fail[v]]</code>를 전파합니다. 모든 매칭 위치는 <strong>가장 가까운 terminal 실패 조상</strong>을 가리키는 output link로 찾습니다. terminal만 방문하므로 출력 비용을 결과 수에 비례시킬 수 있습니다.</p><p>매 문자마다 실패 조상을 전부 순회하거나 terminal 목록을 통째로 복사하면 시간·메모리가 불필요하게 커질 수 있습니다.</p></div><div><h3>패턴별 등장 횟수</h3><p><code>fail[v]</code>를 부모로 두면 failure tree가 됩니다(root의 자기 루프는 제외). 탐색 중 도착한 상태의 <code>cnt[v]</code>만 올린 뒤, <strong>BFS 역순</strong>으로 <code>cnt[fail[v]] += cnt[v]</code>를 수행합니다.</p><p>각 패턴의 끝 노드에 모인 값이 그 패턴의 등장 횟수입니다. 겹치는 등장도 셉니다. 트리의 서브트리 구간을 이용하면 오프라인 질의로도 확장할 수 있습니다.</p></div></div><pre class="t-code"><code>{scanCode}</code></pre></section>
-  <section id="implementation" class="t-section"><span class="t-number">05 / COMPLEXITY & CHECKLIST</span><h2>복잡도에는 전제가 있습니다.</h2><p><code>M</code> = 패턴 길이의 합, <code>N</code> = 본문 길이, <code>V ≤ M + 1</code> = 노드 수, <code>σ</code> = 알파벳 크기, <code>Z</code> = 출력할 매칭 수.</p><p class="t-formula">완성된 전이 배열: 구성 O(M + Vσ), 메모리 O(Vσ + 패턴 수)<br />탐색 + output link 출력: O(N + Z)<br />고정 크기 알파벳에서는 전체 O(M + N + Z)</p><p>횟수만 계산하면 출력 없이 탐색과 역순 누적을 <code>O(N + V + 패턴 수)</code>에 수행합니다. 큰 알파벳에서 맵을 쓰면 공간을 줄일 수 있지만, 조회·구성 비용은 자료구조와 전이 계산 방식에 따라 달라집니다. 위의 선형 시간 표기를 무조건 그대로 적용하지 않습니다.</p><ul><li>실제 간선과 완성된 전이를 구별합니다.</li><li>root 실패 링크와 빈 패턴의 처리 규칙을 정합니다.</li><li>존재 여부, 위치, 횟수 중 목적에 맞는 output 처리를 고릅니다.</li><li>실패 링크는 BFS, 횟수 누적은 BFS 역순으로 처리합니다.</li><li>매칭 구간은 양 끝을 포함한 <code>[i − |p| + 1, i]</code>입니다.</li></ul><ol class="t-flow"><li>패턴 삽입</li><li>Trie 생성</li><li>BFS 실패 링크</li><li>전이 완성</li><li>본문 순회</li><li>매칭 처리</li></ol></section>
+  <section id="failure" class="t-section"><span class="t-number">03 / FAILURE LINK</span><h2>3. Failure link의 정의와 구성</h2><p><code>fail[v]</code>는 <code>str(v)</code>의 <strong>자기 자신을 제외한 접미사(proper suffix)</strong> 중, Trie에 존재하는 가장 긴 접두사의 노드이다. 없으면 root(빈 문자열)로 간다.</p><p class="t-formula">she → he → ε &nbsp; / &nbsp; hers → s → ε</p><div class="t-columns"><div><h3>BFS 순서와 점화식</h3><p>root의 자식들은 실패 링크가 root이다. 그 이후 실제 간선 <code>v —c→ u</code>에 대해 <code>fail[u] = go[fail[v]][c]</code>로 계산한다. 실패 링크는 더 얕은 깊이를 가리키므로 BFS에서는 필요한 전이가 먼저 완성돼 있다.</p><p>root 자신은 <code>fail[root] = root</code>. root의 자식을 일반 점화식으로 처리하면 자기 자신을 가리킬 수 있으므로 따로 초기화한다.</p></div><div><h3>실제 간선 next와 전이 함수 go</h3><p><code>next[v][c]</code>는 실제 Trie 간선이라 없을 수 있다. <code>go[v][c]</code>는 실패 이동까지 포함한 최종 전이이다. 간선이 없으면 <code>go[fail[v]][c]</code>를 사용하고, root에서도 없으면 root에 머문다.</p><p>탐색 시각화는 전이 과정을 구분하기 위해 실패 이동을 분리한다. 완성된 전이표에서는 이 여러 단계를 조회 한 번으로 처리한다.</p></div></div><AhoWorkedExamples part="failure" /><CppCode code={buildCode} filename="aho-build.cpp" /><p class="t-note">C++17 구현. <code>t[v].terminal</code>은 패턴 ID 목록, <code>out = −1</code>은 output link가 없다는 뜻이다. 패턴은 a–z의 비어 있지 않은 문자열로 제한한다. 같은 패턴을 중복 삽입하면 ID별로 각각 출력한다.</p></section>
+  <section id="output" class="t-section"><span class="t-number">04 / OUTPUT & FAILURE TREE</span><h2>4. Output 처리와 Failure Tree</h2><p><code>she</code> 상태는 <code>she</code>의 terminal이지만, 실패 조상인 <code>he</code>도 같은 위치에서 끝난다. 현재 노드의 terminal ID뿐 아니라 실패 조상들의 terminal ID도 처리해야 한다.</p><div class="t-columns"><div><h3>존재 여부 / 모든 위치</h3><p>존재 여부만 필요하면 BFS 순서로 <code>has[v] |= has[fail[v]]</code>를 전파한다. 모든 매칭 위치는 <strong>가장 가까운 terminal 실패 조상</strong>을 가리키는 output link로 찾는다. terminal만 방문하므로 출력 비용을 결과 수에 비례시킬 수 있다.</p><p>매 문자마다 실패 조상을 전부 순회하거나 terminal 목록을 통째로 복사하면 시간·메모리가 불필요하게 커질 수 있다.</p></div><div><h3>패턴별 등장 횟수</h3><p><code>fail[v]</code>를 부모로 두면 failure tree가 된다(root의 자기 루프는 제외). 탐색 중 도착한 상태의 <code>cnt[v]</code>만 증가시킨 뒤, <strong>BFS 역순</strong>으로 <code>cnt[fail[v]] += cnt[v]</code>를 수행한다.</p><p>각 패턴의 끝 노드에 모인 값이 그 패턴의 등장 횟수이다. 겹치는 등장도 센다. 트리의 서브트리 구간을 이용하면 오프라인 질의로도 확장할 수 있다.</p></div></div><AhoWorkedExamples part="output" /><CppCode code={scanCode} filename="aho-search.cpp" /></section>
+  <section id="implementation" class="t-section"><span class="t-number">05 / COMPLEXITY & CHECKLIST</span><h2>5. 복잡도와 구현 조건</h2><p><code>M</code> = 패턴 길이의 합, <code>N</code> = 본문 길이, <code>V ≤ M + 1</code> = 노드 수, <code>σ</code> = 알파벳 크기, <code>Z</code> = 출력할 매칭 수.</p><p class="t-formula">완성된 전이 배열: 구성 O(M + Vσ), 메모리 O(Vσ + 패턴 수)<br />탐색 + output link 출력: O(N + Z)<br />고정 크기 알파벳에서는 전체 O(M + N + Z)</p><p>횟수만 계산하면 출력 없이 탐색과 역순 누적을 <code>O(N + V + 패턴 수)</code>에 수행한다. 큰 알파벳에서 맵을 쓰면 공간을 줄일 수 있지만, 조회·구성 비용은 자료구조와 전이 계산 방식에 따라 달라진다. 위의 선형 시간 표기를 무조건 그대로 적용하지 않는다.</p><ul><li>실제 간선과 완성된 전이를 구별한다.</li><li>root 실패 링크와 빈 패턴의 처리 규칙을 정한다.</li><li>존재 여부, 위치, 횟수 중 목적에 맞는 output 처리를 선택한다.</li><li>실패 링크는 BFS, 횟수 누적은 BFS 역순으로 처리한다.</li><li>매칭 구간은 양 끝을 포함한 <code>[i − |p| + 1, i]</code>이다.</li></ul><ol class="t-flow"><li>패턴 삽입</li><li>Trie 생성</li><li>BFS 실패 링크</li><li>전이 완성</li><li>본문 순회</li><li>매칭 처리</li></ol></section>
+  <AhoProofs />
+  <AhoPractice />
   <footer class="t-sources">더 읽기: <a href="https://doi.org/10.1145/360825.360855" target="_blank" rel="noreferrer">Aho & Corasick, Efficient String Matching (1975)</a><p><a href="/tutorial/suffix-array-lcp/">다음 튜토리얼: Suffix Array · LCP →</a></p></footer>
 </div></div>
 <script>import '../../../scripts/tutorial/aho';</script>
