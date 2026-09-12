@@ -6,6 +6,24 @@
       award: Honorable Mention
       member: chleee, jms020820, m4ushold
 
+- name: 2026 NYPC 본선
+  type: ICPC
+  scoreboard: https://new.nypc.co.kr/ko/rank/2026/master/finals?page=1
+  team:
+    - name: 따뜻한밥상
+      rank: 4
+      award: 은상
+      member: keyboardsmunji, molla12
+
+- name: 2026 NYPC 예선
+  type: ICPC
+  scoreboard: https://new.nypc.co.kr/ko/rank/2026/master/finals?page=1
+  team:
+    - name: 따뜻한밥상
+      rank: 5
+      award: △
+      member: keyboardsmunji, molla12
+
 - name: 2026 SCPC
   type: Personal
   team:
@@ -21,3 +39,31 @@
     - name: jnary
       rank:
       award: 본선 진출
+
+- name: 2026 UCPC 본선
+  type: ICPC
+  scoreboard: https://static.ucpc.me/archive/ucpc/ucpc-2026/final/scoreboard/
+  team:
+    - name: 벌레캠프의 DP재판
+      rank: 56
+      award: UCPC 특별상
+      member: m4ushold
+
+- name: 2026 UCPC 예선
+  type: ICPC
+  scoreboard: https://static.ucpc.me/archive/ucpc/ucpc-2026/qualifier/scoreboard/
+  team:
+    - name: 벌레캠프의 DP재판
+      rank: 40
+      award: △
+      member: m4ushold
+    - name: LLM한테 따잇
+      rank: 64
+      member: jms020820
+    - name: 지하수
+      rank: 79
+      member: jnary
+    - name: 팀원에 최애 하나씩 박아
+      rank: 100
+      member: chleee, dkprk11, moonlit
+
