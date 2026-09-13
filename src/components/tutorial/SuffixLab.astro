@@ -1,0 +1,15 @@
+---
+import Playback from "./Playback.astro";
+---
+  <section id="experiment" class="t-section"><span class="t-number">VISUAL LAB / 정의와 불변식 확인</span><h2>8. SA · LCP 구성 및 질의 시각화</h2><p class="t-lead"><code>banana</code>의 SA는 <code>[5, 3, 1, 0, 4, 2]</code>, LCP는 <code>[0, 1, 3, 0, 0, 2]</code>이다. <code>aaaaaa</code>를 넣으면 반복이 많은 경우도 살펴볼 수 있다.</p>
+    <div class="t-lab" data-sa-lab>
+      <div class="t-lab-head"><div><h3>Suffix laboratory</h3><span class="t-number">파랑: 첫 블록 · 초록: 둘째 블록 / 재사용</span></div><form data-sa-form class="t-form"><label>문자열 · 소문자 1–18자<input name="text" value="banana" minlength="1" maxlength="18" pattern="[a-z]{1,18}" required autocomplete="off" spellcheck="false" /></label><button type="submit">적용</button></form></div>
+      <div class="t-modes" aria-label="학습 단계"><button data-mode="sort" aria-pressed="true">1. Doubling</button><button data-mode="kasai" aria-pressed="false">2. Kasai · LCP</button><button data-mode="query" aria-pressed="false">3. RMQ 질의</button></div>
+      <div class="t-lab-body"><p data-error class="t-error" role="alert"></p><div data-text class="t-chars" aria-label="문자열과 인덱스"></div><div data-status class="t-status" role="status" aria-live="polite"></div><div data-reason class="t-reason" aria-label="현재 단계의 근거"></div>
+        <div data-sort-panel><div class="t-inspect"><label>두 블록을 확인할 시작 위치<select data-inspect-suffix></select></label></div><div class="t-number">시작 i / 접미사 / 비교 키 / 새 rank</div><div data-sort class="t-sort" aria-label="현재 단계의 접미사 순서"></div><p class="t-number">같은 키는 같은 rank를 받는다. 화면에서 동률은 시작 인덱스순으로 표시하며, 아직 전체 접미사 순서가 확정된 것은 아니다.</p></div>
+        <div data-kasai-panel hidden><div class="t-legend"><b>초록: 재사용한 길이</b><span>파랑: 추가로 일치한 문자</span><span>밑줄: 불일치 또는 문자열 끝</span></div><div data-compare class="t-compare"></div><dl data-kasai-detail class="t-details"></dl></div>
+        <div data-query-panel hidden><div class="t-query"><label>첫 번째 접미사 시작 i<select data-query-i></select></label><label>두 번째 접미사 시작 j<select data-query-j></select></label><div>LCP = <strong data-answer class="t-metric"></strong></div></div><div data-query-compare class="t-compare"></div><ol data-query-chain class="t-rmq-path" aria-label="접미사 사이의 LCP 연결"></ol><p data-range class="t-formula"></p></div>
+        <div data-table-panel hidden><h3>SA · rank · LCP</h3><div class="t-overflow"><table class="t-table"><thead><tr><th>순위 r</th><th>SA[r]</th><th>접미사</th><th>LCP[r]</th></tr></thead><tbody data-array-table></tbody></table></div><p class="t-number">LCP[r] = lcp(S[SA[r−1]…], S[SA[r]…]). LCP[0] = 0.</p></div>
+      </div><Playback />
+    </div><noscript><p class="t-note">단계별 시각화에는 JavaScript가 필요하다. 설명과 C++ 구현은 JavaScript 없이도 열람 가능.</p></noscript>
+  </section>

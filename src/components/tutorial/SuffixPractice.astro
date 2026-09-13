@@ -4,7 +4,7 @@ import queries from '../../lib/tutorial/cpp/suffix-query.cpp?raw';
 import example from '../../lib/tutorial/cpp/suffix-example.cpp?raw';
 ---
 <section id="practice" class="t-section t-proofs">
-  <span class="t-number">08 / IMPLEMENTATION & SELF CHECK</span><h2>8. 질의 구현, 실행 예제, 반례</h2>
+  <span class="t-number">09 / IMPLEMENTATION & SELF CHECK</span><h2>9. 질의 구현, 실행 예제, 반례</h2>
   <h3>SA와 LCP를 실제 질의 함수로 연결하기</h3>
   <p>아래 코드는 앞의 suffix_array와 lcp_array를 사용한다. SparseMin은 반열린 구간의 최솟값을 구하고, SuffixIndex는 문자열과 SA·rank·LCP·RMQ를 함께 보관한다. RMQ의 빈 구간과 범위를 벗어난 위치는 예외로 거절한다.</p>
   <CppCode code={queries} filename="suffix-query.cpp" />

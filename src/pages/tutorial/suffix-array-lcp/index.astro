@@ -1,41 +1,52 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import TutorialBreadcrumbs from '../../../components/tutorial/TutorialBreadcrumbs.astro';
-import Playback from '../../../components/tutorial/Playback.astro';
-import '../../../styles/tutorial.css';
-import CppCode from '../../../components/tutorial/CppCode.astro';
 import SuffixFoundations from '../../../components/tutorial/SuffixFoundations.astro';
 import SuffixWorkedExamples from '../../../components/tutorial/SuffixWorkedExamples.astro';
 import SuffixPractice from '../../../components/tutorial/SuffixPractice.astro';
 import SuffixProofs from '../../../components/tutorial/SuffixProofs.astro';
+import SuffixLab from '../../../components/tutorial/SuffixLab.astro';
+import CppCode from '../../../components/tutorial/CppCode.astro';
 import doubling from '../../../lib/tutorial/cpp/suffix-array.cpp?raw';
 import kasaiCode from '../../../lib/tutorial/cpp/kasai.cpp?raw';
+import '../../../styles/tutorial.css';
 ---
-<BaseLayout title="Suffix Array · LCP | Tutorial" description="접미사 배열, Doubling, Kasai 알고리즘과 RMQ를 단계별 애니메이션으로 연결하는 SCCC 튜토리얼.">
+<BaseLayout title="Suffix Array · LCP | Tutorial" description="문자열 인덱싱의 동기와 직관에서 출발하여 Doubling, Kasai, RMQ와 활용을 개념별 정의·증명으로 전개하는 강의.">
 <div class="tutorial"><div class="t-shell">
-  <header class="t-hero"><TutorialBreadcrumbs slug="suffix-array-lcp" /><h1>Suffix Array · LCP</h1><p>Suffix Array와 LCP Array의 정의 및 구성.<br />접미사 비교, RMQ 질의와 부분 문자열 문제에 대한 활용.</p><div class="t-meta"><span>기초 정의부터 정당성 증명까지</span><span>0-index · sentinel 없는 예제</span></div></header>
-  <nav class="t-contents" aria-label="이 페이지 목차"><a href="#problem">문제와 기초</a><a href="#suffix">Suffix와 SA</a><a href="#experiment">직접 실행</a><a href="#doubling">Doubling</a><a href="#kasai">Kasai</a><a href="#rmq">RMQ와 활용</a><a href="#checks">구현 체크</a><a href="#proofs">정당성 증명</a><a href="#practice">구현과 확인 문제</a></nav>
-  <SuffixFoundations />
-  <section id="suffix" class="t-section"><span class="t-number">01 / DEFINITIONS</span><h2>1. Suffix Array와 Rank Array</h2><div class="t-columns"><div><h3>Suffix ≠ Substring</h3><p>접미사(suffix) <code>S[i…N)</code>는 i부터 <strong>문자열 끝까지</strong>이다. 부분 문자열(substring) <code>S[l…r)</code>는 중간에서 끝나도 된다. <code>banana</code>에서 <code>ana</code>는 접미사이기도 하지만 <code>ban</code>은 부분 문자열일 뿐이다.</p><p>길이 N인 문자열의 비어 있지 않은 접미사는 N개이다. 접미사 자체를 모두 복사하면 총 길이가 이차식이 되므로, 실제 SA에는 시작 인덱스만 저장한다.</p></div><div><h3>SA와 rank는 서로 역함수</h3><p><code>SA[r]</code>는 사전순 r번째 접미사의 시작 위치이다. <code>rank[i]</code>는 i에서 시작한 접미사의 사전순 순위이다. 정렬이 끝난 이후에는 각 접미사가 서로 다른 rank를 갖는다.</p><p class="t-formula">SA[rank[i]] = i<br />rank[SA[r]] = r</p></div></div></section>
-  <section id="experiment" class="t-section"><span class="t-number">02 / VISUALIZATION</span><h2>2. SA · LCP 구성 및 질의 시각화</h2><p class="t-lead"><code>banana</code>의 SA는 <code>[5, 3, 1, 0, 4, 2]</code>, LCP는 <code>[0, 1, 3, 0, 0, 2]</code>이다. <code>aaaaaa</code>를 넣으면 반복이 많은 경우도 살펴볼 수 있다.</p>
-    <div class="t-lab" data-sa-lab>
-      <div class="t-lab-head"><div><h3>Suffix laboratory</h3><span class="t-number">강조된 prefix와 정렬 키 비교</span></div><form data-sa-form class="t-form"><label>문자열 · 소문자 1–18자<input name="text" value="banana" minlength="1" maxlength="18" pattern="[a-z]{1,18}" required autocomplete="off" spellcheck="false" /></label><button type="submit">적용</button></form></div>
-      <div class="t-modes" aria-label="학습 단계"><button data-mode="sort" aria-pressed="true">1. Doubling</button><button data-mode="kasai" aria-pressed="false">2. Kasai · LCP</button><button data-mode="query" aria-pressed="false">3. RMQ 질의</button></div>
-      <div class="t-lab-body"><p data-error class="t-error" role="alert"></p><div data-text class="t-chars" aria-label="문자열과 인덱스"></div><div data-status class="t-status" role="status" aria-live="polite"></div>
-        <div data-sort-panel><div class="t-number">시작 i / 접미사 / 비교 키 / 새 rank</div><div data-sort class="t-sort" aria-label="현재 단계의 접미사 순서"></div><p class="t-number">같은 키는 같은 rank를 받는다. 화면에서 동률은 시작 인덱스순으로 표시하며, 아직 전체 접미사 순서가 확정된 것은 아니다.</p></div>
-        <div data-kasai-panel hidden><div class="t-legend"><b>초록: 재사용한 길이</b><span>파랑: 추가로 일치한 문자</span><span>밑줄: 불일치 또는 문자열 끝</span></div><div data-compare class="t-compare"></div><dl data-kasai-detail class="t-details"></dl></div>
-        <div data-query-panel hidden><div class="t-query"><label>첫 번째 접미사 시작 i<select data-query-i></select></label><label>두 번째 접미사 시작 j<select data-query-j></select></label><div>LCP = <strong data-answer class="t-metric"></strong></div></div><div data-query-compare class="t-compare"></div><p data-range class="t-formula"></p></div>
-        <div data-table-panel hidden><h3>SA · rank · LCP</h3><div class="t-overflow"><table class="t-table"><thead><tr><th>순위 r</th><th>SA[r]</th><th>접미사</th><th>LCP[r]</th></tr></thead><tbody data-array-table></tbody></table></div><p class="t-number">LCP[r] = lcp(S[SA[r−1]…], S[SA[r]…]). LCP[0] = 0.</p></div>
-      </div><Playback />
-    </div><noscript><p class="t-note">단계별 시각화에는 JavaScript가 필요하다. 설명과 C++ 구현은 JavaScript 없이도 열람 가능.</p></noscript>
-  </section>
-  <section id="doubling" class="t-section"><span class="t-number">03 / PREFIX DOUBLING</span><h2>3. Doubling을 이용한 SA 구성</h2><p>먼저 첫 문자로 rank를 매긴다. 앞 k글자의 순위가 있으면, 앞 2k글자는 <code>(rank[i], rank[i+k])</code>라는 두 정수로 비교할 수 있다. 범위를 벗어난 뒷부분의 rank는 −1로 두어, 짧은 접미사가 먼저 오게 한다.</p><p class="t-formula">k = 1 → 2 → 4 → 8 → …<br />key(i) = (rank[i], rank[i+k] 또는 −1)</p><p>각 단계에서 쌍을 정렬하고, 같은 쌍에는 같은 새 rank를 준다. 이때의 rank는 아직 <strong>prefix의 동치류 번호</strong>이다. 모든 rank가 달라지면 전체 접미사의 순서가 확정돼 종료할 수 있다.</p><SuffixWorkedExamples part="doubling" /><CppCode code={doubling} filename="suffix-array.cpp" /><div class="t-columns"><div><h3>비교 정렬: O(N log² N)</h3><p>단계는 O(log N)번, 정수 쌍의 비교 정렬은 단계당 O(N log N)이다. 이 튜토리얼의 정렬 계산도 비교 정렬을 사용한다.</p></div><div><h3>Counting Sort: O(N log N)</h3><p>rank 범위가 O(N)이므로 두 키를 안정적인 radix/counting sort로 정렬하면 단계당 O(N)이 된다. SA-IS는 정수 알파벳 등 적절한 전제하에 O(N) 구성이 가능하지만, 여기서는 Doubling을 다룬다.</p></div></div></section>
-  <section id="kasai" class="t-section"><span class="t-number">04 / LONGEST COMMON PREFIX</span><h2>4. Kasai 알고리즘의 LCP 재사용</h2><p>이 페이지는 <code>LCP[r]</code>를 <strong>정렬상 바로 이전 접미사와의 공통 접두사 길이</strong>로 정의한다. <code>LCP[0] = 0</code>이다. 다른 자료에서 다음 접미사와 비교하는 정의를 쓰면 질의 범위도 한 칸 달라진다.</p><p class="t-formula">LCP[r] = lcp(S[SA[r−1]…], S[SA[r]…]) &nbsp; (r &gt; 0)</p><p>Kasai는 SA 순서가 아니라 <strong>본문의 시작 위치 i = 0, 1, …</strong> 순으로 순회한다. 현재 위치에서 공통 접두사 길이가 h였다면, 첫 문자를 제거한 다음 위치에서는 적어도 <code>max(h−1, 0)</code>만큼 재사용할 수 있다(사전순 첫 접미사는 예외로 0).</p><p>이전 비교 상대도 첫 문자를 제거하면 같은 h−1글자를 공유하며 여전히 사전순 앞에 있다. 다음 접미사의 바로 이전 이웃은 그 사이에 있으므로 해당 공통 접두사를 유지한다. 이것이 재사용의 근거이다.</p><SuffixWorkedExamples part="kasai" /><CppCode code={kasaiCode} filename="kasai.cpp" /><p class="t-note">일반 반복에서 h는 최대 1만큼 줄며, rank=0에서는 별도로 0으로 초기화한다. 전체 증가량은 O(N)이다. 각 i에서의 마지막 실패 비교까지 합쳐 LCP 구성은 O(N) 시간·O(N) 추가 공간이다. 시각화용 문자열 복사와 화면 렌더링 비용은 알고리즘 복잡도에서 제외한다.</p></section>
-  <section id="rmq" class="t-section"><span class="t-number">05 / RMQ & APPLICATIONS</span><h2>5. 두 접미사의 LCP와 RMQ</h2><p><code>a = rank[i], b = rank[j]</code>라 하고 a &lt; b가 되게 순서를 바꾼다. 사전순으로 이어진 모든 이웃이 공통으로 유지하는 길이는 인접 LCP들의 최솟값이다.</p><p class="t-formula">i ≠ j: lcp(S[i…], S[j…]) = min(LCP[a+1…b])<br />i = j: lcp(S[i…], S[i…]) = N − i</p><p>예를 들어 <code>banana</code>에서 i=1(<code>anana</code>), j=3(<code>ana</code>)이면 rank는 2와 1이다. 답은 <code>LCP[2] = 3</code>. 실험 화면에서 두 시작 위치를 바꾸면 실제 RMQ 구간과 최솟값이 표시된다.</p><div class="t-columns"><div><h3>RMQ 자료구조별 복잡도</h3><p>Sparse Table은 O(N log N) 전처리·공간으로 O(1) 최솟값 질의를 지원한다. Segment Tree는 O(N) 구성·공간, O(log N) 질의이다. 화면에서는 짧은 예제를 직접 순회하여 최솟값을 강조한다.</p></div><div><h3>부분 문자열의 사전순 비교</h3><p>먼저 두 시작 위치의 LCP를 구하고, 각 구간 길이로 제한한다. 한 구간이 끝나면 짧은 쪽이 먼저이고, 아니면 최초로 다른 문자를 비교한다. 전체 접미사 비교는 rank의 대소만으로 가능하다.</p></div></div><SuffixWorkedExamples part="rmq" /><h3>대표 활용</h3><div class="t-columns"><div><p class="t-formula">서로 다른 부분 문자열 수<br />= N(N+1)/2 − Σ LCP[r]</p><p>정렬된 각 접미사는 자신의 길이에서 이전 접미사와 겹치는 LCP 길이를 뺀 만큼 새로운 부분 문자열을 제공한다. <code>banana</code>는 21 − 6 = <strong>15개</strong>이다.</p></div><div><p class="t-formula">가장 긴 반복 부분 문자열 길이<br />= max LCP[r]</p><p>겹치는 등장을 허용한 경우이다. <code>banana</code>에서는 <code>ana</code>, 길이 3이다. 겹침 금지 조건이 있다면 시작 위치 간 거리도 따로 확인해야 한다.</p></div></div><p>패턴 검색은 SA에서 이분 탐색할 수 있으며 단순 구현은 길이 P인 패턴에 대해 O(P log N)이다. 여러 문자열의 공통 부분 문자열은 서로 다른 구분자로 이어 붙인 뒤 원본 문자열 소속을 추적한다. 반복 구조 탐색도 인접 LCP와 구간의 관계를 활용한다.</p></section>
-  <section id="checks" class="t-section"><span class="t-number">06 / IMPLEMENTATION CHECKLIST</span><h2>6. 구현 조건과 인덱스 규칙</h2><ul><li>이 예제는 0-index이며 빈 접미사를 포함하지 않는다.</li><li>−1은 rank 쌍에서 사용하는 범위 밖 표식이다. 문자열에 붙인 sentinel과 다르다.</li><li>Sentinel을 붙이는 구현은 입력에 없는 문자 중 모든 문자보다 작은 하나를 사용하고, 그 접미사와 결과 인덱스를 일관되게 처리한다.</li><li>여러 문자열을 합칠 때는 경계를 넘는 매칭을 막을 구분자가 필요하다.</li><li>SA와 rank의 역함수 관계, LCP의 이전/다음 이웃 정의를 섞지 않는다.</li><li>동일한 접미사끼리의 질의는 N−i로 별도 처리한다.</li></ul><ol class="t-flow"><li>문자열 입력</li><li>SA 구성</li><li>rank 구성</li><li>LCP 구성</li><li>RMQ 전처리</li><li>비교·검색·부분 문자열</li></ol></section>
-  <SuffixProofs />
-  <SuffixPractice />
-  <footer class="t-sources">더 읽기: <a href="https://www.ime.usp.br/~cris/aulas/19_1_6957/KasaiLAAP2001-LCP.pdf" target="_blank" rel="noreferrer">Kasai et al., Linear-Time Longest-Common-Prefix Computation (2001)</a><p><a href="/tutorial/category/string/">문자열 튜토리얼 목록으로 돌아가기 →</a></p></footer>
-</div></div>
-<script>import '../../../scripts/tutorial/suffix';</script>
+<header class="t-hero"><TutorialBreadcrumbs slug="suffix-array-lcp" /><h1>Suffix Array · LCP</h1><p>문자열을 정렬된 인덱스로 바꾸기.<br />접미사 순위에서 공통 접두사 질의까지.</p><div class="t-meta"><span>동기 → 직관 → 정의 → 증명 → 활용</span><span>0-index · 빈 접미사 제외 · 반열린 문자열 구간</span></div></header>
+<nav class="t-contents" aria-label="이 페이지 목차"><a href="#problem">동기와 직관</a><a href="#suffix">SA 정의</a><a href="#doubling">Doubling</a><a href="#kasai">LCP와 Kasai</a><a href="#rmq">RMQ</a><a href="#applications">개수와 반복</a><a href="#search">비교와 검색</a><a href="#generalized">여러 문자열</a><a href="#experiment">시각화</a><a href="#practice">구현과 반례</a></nav>
+<SuffixFoundations />
+<section id="suffix" class="t-section"><span class="t-number">01 / DEFINITION → PROOF</span><h2>1. 두 좌표계: 원문 위치와 사전순 순위</h2>
+<p class="t-intuition"><strong>직관.</strong> 정렬된 책장의 칸 번호와 책에 붙은 원래 번호는 다르다. SA는 칸에서 원래 번호로, rank는 원래 번호에서 칸으로 이동한다.</p>
+<div class="t-definition"><h3>정의 1 · 접미사 배열과 역배열</h3><p>전순서가 주어진 유한 알파벳 Σ 위의 문자열 S∈Σ*, N=|S|를 둔다. Sᵢ=S[i…N), 0≤i&lt;N이다. 빈 접미사는 제외한다. SA는 0,…,N−1의 순열 중 S[SA[0]…] &lt; … &lt; S[SA[N−1]…]를 만족하는 유일한 순열이다. 서로 다른 접미사는 길이가 달라 같을 수 없으므로 순서가 유일하다. rank[SA[r]]=r로 정의한다.</p><p class="t-formula">SA: 순위 r → 시작 위치 i<br />rank: 시작 위치 i → 순위 r</p></div>
+<p class="t-note">비용 분석은 문자 비교, 배열 접근, 인덱스 산술을 O(1)로 세는 RAM 모델을 따른다. 정수에는 위치와 길이를 담을 충분한 비트가 있다고 가정하며, 실제 C++의 입력 범위는 마지막 절에 명시한다.</p><SuffixProofs ids={[1]} /><p class="t-consequence"><strong>활용.</strong> 전체 접미사의 대소는 rank 비교 한 번으로 결정된다. 길이가 제한된 부분 문자열끼리는 이 결론을 그대로 사용할 수 없다.</p></section>
+<section id="doubling" class="t-section"><span class="t-number">02 / INTUITION → DEFINITION → PROOF</span><h2>2. Doubling: 긴 비교를 두 정수 비교로 바꾸기</h2>
+<p class="t-intuition"><strong>직관.</strong> 앞 k글자의 순서를 이미 알면 앞 2k글자는 길이 k인 블록 두 개로 비교할 수 있다. 첫 블록이 같을 때만 둘째 블록을 비교한다.</p>
+<div class="t-definition"><h3>정의 2 · 중간 동치류 Rₖ</h3><p>Wₖ(i)=S[i…min(i+k,N)). Rₖ는 Wₖ의 동치와 순서를 보존하는 정수 번호이다. Rₖ(i)=Rₖ(j) ⇔ Wₖ(i)=Wₖ(j), Rₖ(i)&lt;Rₖ(j) ⇔ Wₖ(i)&lt;Wₖ(j). 아직 동률이 가능한 Rₖ와 최종 역배열 rank는 다르다.</p><p class="t-formula">keyₖ(i) = (Rₖ(i), i+k&lt;N이면 Rₖ(i+k), 아니면 −1)<br />같은 키에는 같은 새 번호, 다른 키에는 증가한 새 번호</p></div>
+<SuffixProofs ids={[2]} /><a class="t-lab-jump" data-lab-mode="sort" href="#experiment">두 블록 정렬 직접 확인 →</a>
+<aside class="t-local-proof"><h3>따름정리 2.1 · 구성 비용</h3><p>비교 길이는 두 배씩 증가하여 O(log N)단계 후 N 이상이다. 각 키 비교는 O(1)이므로 비교 정렬은 단계당 O(N log N), 전체 O(N log²N)이다. SA와 두 rank 배열은 O(N) 공간을 사용한다(N≥2). 키 범위를 O(N)으로 압축하고 두 번의 안정 counting sort를 쓰면 단계당 O(N), 전체 O(N log N)이다. 이는 아래 비교 정렬 코드와 다른 구현 선택이다. ∎</p></aside>
+<SuffixWorkedExamples part="doubling" /><CppCode code={doubling} filename="suffix-array.cpp" /></section>
+<section id="kasai" class="t-section"><span class="t-number">03 / DEFINITION → LEMMA → ALGORITHM</span><h2>3. LCP: 재사용 가능한 일치 정보</h2>
+<p class="t-intuition"><strong>직관.</strong> 긴 문자열 두 개가 h글자 일치하면 첫 글자를 지워도 h−1글자는 남는다. 어려운 점은 다음 접미사의 비교 상대가 바뀔 수 있다는 것이다. 그 사이의 문자열도 같은 접두사를 공유한다는 보조정리가 이 간극을 메운다.</p>
+<div class="t-definition"><h3>정의 3 · 공통 접두사와 LCP 배열</h3><p>lcp(A,B)=max&#123;ℓ : 0≤ℓ≤min(|A|,|B|), A[0…ℓ)=B[0…ℓ)&#125;. 최댓값은 유한하고 0이 후보이므로 존재한다. LCP[0]=0, r&gt;0에서 LCP[r]=lcp(S[SA[r−1]…],S[SA[r]…])이다. 이 페이지는 이전 이웃 기준이며 다음 이웃 기준 정의와 인덱스를 섞지 않는다.</p></div>
+<SuffixProofs ids={[3]} />
+<div class="t-definition"><h3>Kasai의 반복 규칙</h3><p>원문 순서 i=0,…,N−1로 순회한다. r=rank[i]&gt;0이면 j=SA[r−1]과 비교한다. 이전 반복에서 가져온 하한 h에서 시작하여 일치하는 동안 증가시키고 LCP[r]에 저장한다. 다음 반복을 위해 h=max(h−1,0)으로 둔다. r=0이면 LCP[0]=0, h=0이다.</p></div>
+<SuffixProofs ids={[4]} /><a class="t-lab-jump" data-lab-mode="kasai" href="#experiment">재사용 구간 직접 확인 →</a><p class="t-consequence"><strong>구현상의 결론.</strong> j는 매번 SA에서 다시 찾는다. 재사용하는 것은 비교 상대의 번호가 아니라 일치 길이의 하한이다.</p>
+<SuffixProofs ids={[5]} /><SuffixWorkedExamples part="kasai" /><CppCode code={kasaiCode} filename="kasai.cpp" /></section>
+<section id="rmq" class="t-section"><span class="t-number">04 / INTUITION → DEFINITION → PROOF</span><h2>4. 두 접미사의 LCP를 구간 최솟값으로</h2>
+<p class="t-intuition"><strong>직관.</strong> 정렬된 접미사를 길로, 이웃 LCP를 연결 간선의 길이로 생각한다. 양 끝이 공통으로 유지할 수 있는 길이는 그 사이에서 가장 짧은 이웃 LCP이다.</p>
+<div class="t-definition"><h3>정의 4 · RMQ 환원</h3><p>i≠j에 대해 a=min(rank[i],rank[j]), b=max(rank[i],rank[j]). 배열 A의 RMQ(l,r)는 반열린 구간 A[l…r)의 최솟값이며 l&lt;r일 때만 정의한다.</p><p class="t-formula">lcp(Sᵢ,Sⱼ)=RMQ<sub>LCP</sub>(a+1,b+1)<br />i=j이면 N−i, 빈 구간에 RMQ를 호출하지 않음</p></div>
+<SuffixProofs ids={[6]} /><a class="t-lab-jump" data-lab-mode="query" href="#experiment">두 접미사를 골라 RMQ 확인 →</a><SuffixWorkedExamples part="rmq" />
+<SuffixProofs ids={[7]} /><p class="t-consequence"><strong>활용.</strong> Sparse Table 전처리 후 임의의 접미사 LCP는 O(1). 화면은 짧은 예제의 값을 직접 순회해서 강조하며, 실제 질의 코드는 마지막 절에 제시한다.</p></section>
+<section id="applications" class="t-section"><span class="t-number">05 / APPLICATION → PROOF → EXAMPLE</span><h2>5. 서로 다른 부분 문자열과 최장 반복</h2><p class="t-intuition"><strong>직관.</strong> 모든 부분 문자열은 어떤 접미사의 접두사이다. 정렬된 접미사를 순서대로 보면서 이전에 등장한 접두사만 빼면 중복을 제거할 수 있다.</p>
+<div class="t-definition"><p>비어 있지 않은 서로 다른 문자열 값을 센다. 반복은 서로 다른 시작 위치 두 곳 이상의 등장이며, 구간 겹침을 허용한다.</p><p class="t-formula">서로 다른 부분 문자열 수 = N(N+1)/2 − Σᵣ LCP[r]<br />최장 반복 부분 문자열 길이 = maxᵣ LCP[r] (N=0이면 0)</p></div>
+<SuffixProofs ids={[8]} /><SuffixWorkedExamples part="substrings" /></section>
+<section id="search" class="t-section"><span class="t-number">06 / APPLICATION → PROOF</span><h2>6. 구간 비교와 패턴 검색</h2><p class="t-intuition"><strong>직관.</strong> 공통 접두사만 건너뛰면 구간 비교는 첫 불일치 문자에서 끝난다. 패턴 검색은 같은 접두사를 가진 접미사들이 모인 연속 구간을 찾는 문제이다.</p>
+<div class="t-definition"><p>두 유효 구간 S[l₁…r₁), S[l₂…r₂)의 길이를 ℓ₁,ℓ₂라 한다. 공통 길이는 min(lcp(S[l₁…],S[l₂…]),ℓ₁,ℓ₂). 빈 구간은 접미사 질의 전에 길이로 처리한다. 비어 있지 않은 패턴 p의 검색 결과는 p를 접두사로 갖는 접미사들의 SA 순위 구간 [left,right)이다.</p></div>
+<SuffixProofs ids={[9]} /><SuffixWorkedExamples part="search" /></section>
+<section id="generalized" class="t-section"><span class="t-number">07 / GENERALIZATION → PROOF</span><h2>7. 여러 문자열로 확장</h2><p class="t-intuition"><strong>직관.</strong> 각 접미사에 원본 소속을 붙인다. 서로 다른 소속의 접미사들이 공유하는 접두사는 두 원문에 모두 등장한다.</p><div class="t-definition"><p>원문마다 고유하며 원래 알파벳에 없는 구분자를 뒤에 붙여 연결한다. 원본 문자에서 시작한 접미사만 후보로 삼는다. 목표는 모든 대상 원문에 적어도 한 번 등장하는 가장 긴 부분 문자열이며, 어떤 원문이 비어 있으면 답은 0이다.</p></div>
+<SuffixProofs ids={[10]} /><p class="t-note">세 원문 이상에서는 모든 소속이 들어 있는 SA 구간이 필요하다. 서로 다른 두 소속만 확인하면 “모든 원문”이라는 조건이 누락된다. SA-IS와 동적 문자열 인덱싱은 이 강의의 구현·증명 범위가 아니다.</p></section>
+<SuffixLab /><SuffixPractice />
+<footer class="t-sources"><p>원전: <a href="https://www.ime.usp.br/~cris/aulas/19_1_6957/KasaiLAAP2001-LCP.pdf" target="_blank" rel="noreferrer">Kasai et al. (2001), Linear-Time Longest-Common-Prefix Computation in Suffix Arrays and Its Applications, CPM, 181–192</a>. 증명은 이 강의의 이전 이웃·0-index 규약으로 서술한다. 예제 검산은 일반 입력에 대한 증명을 대신하지 않는다.</p><p><a href="/tutorial/category/string/">문자열 튜토리얼 목록으로 돌아가기 →</a></p></footer>
+</div></div><script>import '../../../scripts/tutorial/suffix';</script>
 </BaseLayout>

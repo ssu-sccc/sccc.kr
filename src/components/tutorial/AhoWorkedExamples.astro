@@ -1,6 +1,6 @@
 ---
 import { buildAC, traceAC, countAC } from '../../lib/tutorial/algorithms.mjs';
-interface Props { part: 'failure' | 'output' }
+interface Props { part: 'failure' | 'output' | 'count' }
 const {part} = Astro.props;
 const ac = buildAC(['he','she','his','hers']);
 const name = (v: number) => v === -1 ? '없음' : ac.nodes[v].prefix || 'ε';
@@ -21,12 +21,13 @@ const counts = countAC(overlap, traceAC(overlap,'aaaa').at(-1).visits);
   <div class="t-overflow" tabindex="0" aria-label="실제 간선과 완성 전이 비교"><table class="t-table"><caption>상태 she에서의 next와 go</caption><thead><tr><th>문자</th><th>next[she]</th><th>go[she]</th></tr></thead><tbody>{['e','h','i','r','s','u'].map(c => <tr><td>{c}</td><td>없음</td><td>{name(ac.nodes[5].go[c] ?? 0)}</td></tr>)}</tbody></table></div>
   <h3>본문 한 글자마다 검산하기</h3>
   <div class="t-overflow" tabindex="0" aria-label="ushers 전체 탐색표"><table class="t-table"><caption>ushers의 모든 전이 · 실패 이동 행은 문자를 소비하지 않음</caption><thead><tr><th>위치 / 문자</th><th>종류</th><th>이동</th><th>새 매칭</th></tr></thead><tbody>{trace.slice(1).map(s => <tr><td>{s.kind==='fail' ? s.pos+1 : s.pos} / {s.c}</td><td>{s.kind==='fail'?'실패 · 미소비':'소비'}</td><td>{name(s.from)} → {name(s.v)}</td><td>{s.kind==='read' ? s.matches.filter(m=>m.end===s.pos).map(m=>`${m.pattern} [${m.start},${m.end}]`).join(', ') || '없음' : '출력 안 함'}</td></tr>)}</tbody></table></div>
-</> : <>
+</> : part === 'output' ? <>
   <h3>세 종류의 링크를 구별한다</h3>
   <div class="t-overflow" tabindex="0" aria-label="부모와 실패 링크와 출력 링크 비교"><table class="t-table"><thead><tr><th>관계</th><th>의미</th><th>she 예제</th><th>his 예제</th></tr></thead><tbody><tr><td>Trie 부모</td><td>마지막 문자 제거</td><td>sh</td><td>hi</td></tr><tr><td>fail</td><td>최장 proper suffix 상태</td><td>he</td><td>s</td></tr><tr><td>out</td><td>가장 가까운 terminal 실패 조상</td><td>he</td><td>없음</td></tr></tbody></table></div>
   <p><code>his</code>의 fail은 s이지만 s는 terminal이 아니다. s의 실패 조상 ε도 terminal이 아니므로 out은 없다. out은 실제 상태 전이에 쓰는 링크가 아니라, <strong>이미 결정된 종료 위치에서 추가 정답을 열거하는 링크</strong>이다.</p>
   <p class="t-formula">out[v] = fail[v]가 terminal이면 fail[v], 아니면 out[fail[v]]<br />out[root] = −1</p>
   <p>위치 3의 상태 she에서는 자기 terminal의 she를 출력하고, out을 따라 he를 출력한다. ID별 구간은 각각 <code>[3−3+1,3]=[1,3]</code>, <code>[3−2+1,3]=[2,3]</code>이다. 종료 위치 순서로 출력되며, 같은 종료 위치에서는 긴 패턴부터 짧은 패턴 순서이다.</p>
+</> : <>
   <h3>횟수만 필요하다면 출력 자체를 만들지 않는다</h3>
   <p>패턴 <code>a, aa, aaa</code>, 본문 <code>aaaa</code>를 보자. 네 문자를 읽은 상태는 차례로 <code>a, aa, aaa, aaa</code>. 직접 도착 횟수는 <code>1, 1, 2</code>이지만 정답 횟수는 아니다. aaa 상태에 도착한 순간 aa와 a도 동시에 끝나기 때문이다.</p>
   <figure class="ac-figure"><figcaption>그림 4. Failure Tree · 자식의 값을 실패 부모에게 더한다</figcaption><div class="ac-count-chain"><span><b>aaa</b><small>직접 2 → 누적 2</small></span><i>+2 →</i><span><b>aa</b><small>직접 1 → 누적 3</small></span><i>+3 →</i><span><b>a</b><small>직접 1 → 누적 4</small></span></div><p>그림의 화살표는 failure link 방향이다. 트리의 root는 ε이며 a의 실패 부모 ε는 생략했다. 이 예제에서는 Trie와 failure tree가 모두 사슬이지만 일반적으로 둘의 모양은 다르다.</p></figure>
