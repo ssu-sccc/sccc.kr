@@ -1,0 +1,10 @@
+---
+import { renderMath } from '../../lib/tutorial/math.mjs';
+import 'katex/dist/katex.min.css';
+interface Props { tex: string; display?: boolean }
+const { tex, display = false } = Astro.props;
+const html = renderMath(tex, display);
+---
+{display
+  ? <div class="t-math-display" tabindex="0" role="region" aria-label="수식 · 가로로 스크롤 가능" set:html={html} />
+  : <span class="t-math-inline" set:html={html} />}

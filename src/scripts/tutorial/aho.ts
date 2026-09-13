@@ -1,3 +1,4 @@
+import { inlineMath as m } from '../../lib/tutorial/math.mjs';
 import { buildAC, traceAC, countAC } from '../../lib/tutorial/algorithms.mjs';
 import { acScanExplanation } from '../../lib/tutorial/explanations.mjs';
 import { player } from './player';
@@ -9,19 +10,20 @@ if (root) {
   let ac = buildAC(presets.classic), text = 'ushers', trace = traceAC(ac, text), counts = countAC(ac, trace.at(-1).visits);
   let mode = 'scan', selected = 0, stepNow = 0;
   const label = (v: number) => ac.nodes[v].prefix || 'ε';
+  const mathLabel = (v: number) => v === 0 ? String.raw`\varepsilon` : String.raw`\mathtt{${label(v)}}`;
   const length = () => mode === 'trie' ? ac.nodes.length : mode === 'failure' ? ac.bfs.length : mode === 'count' ? counts.length : trace.length;
   function reason(step: number, active: number) {
     const panel = get('[data-reason]');
     if (mode === 'scan') {
       const s=trace[step], e=acScanExplanation(ac,text,s);
       panel.innerHTML=`<h4>${e.isFailure ? '실패 이동: 입력 포인터는 그대로' : s.kind==='start' ? '탐색 전: 빈 본문, root' : '문자 소비 완료: 최장 후보를 상태로 유지'}</h4>
-        <div class="t-reason-grid"><div><small>소비한 본문 · ${e.consumed}글자</small><strong>${e.processed||'ε'}</strong></div><div><small>아직 소비하지 않은 문자</small><strong>${e.pending??'없음 · 탐색 완료'}</strong></div><div><small>${e.isFailure?'현재 시험 중인 후보':'완료 상태 Q(X)'}</small><strong>${label(e.active)}</strong></div></div>
-        <p>${e.isFailure ? `완료된 본문 X는 바뀌지 않는다. 원래 최장 후보 ${label(e.stable)}에서 다음 문자 ${s.c}를 붙일 수 없어 ${label(s.from)} → ${label(s.v)}로 후보만 줄인다. 중간 후보에 Q(X) 불변식을 적용하거나 여기서 출력하지 않는다.` : '아래는 읽은 본문의 접미사 중 Trie에 존재하는 모든 후보이다. 가장 긴 후보가 현재 상태이며, 짧은 후보는 실패 사슬에 남는다.'}</p>
+        <div class="t-reason-grid"><div><small>소비한 본문 · ${e.consumed}글자</small><strong>${e.processed||'ε'}</strong></div><div><small>아직 소비하지 않은 문자</small><strong>${e.pending??'없음 · 탐색 완료'}</strong></div><div><small>${e.isFailure?'현재 시험 중인 후보':'완료 상태 '+m('Q(X)')}</small><strong>${label(e.active)}</strong></div></div>
+        <p>${e.isFailure ? `완료된 본문 X는 바뀌지 않는다. 원래 최장 후보 ${label(e.stable)}에서 다음 문자 ${s.c}를 붙일 수 없어 ${label(s.from)} → ${label(s.v)}로 후보만 줄인다. 중간 후보에 ${m(String.raw`Q(X)`)} 불변식을 적용하거나 여기서 출력하지 않는다.` : '아래는 읽은 본문의 접미사 중 Trie에 존재하는 모든 후보이다. 가장 긴 후보가 현재 상태이며, 짧은 후보는 실패 사슬에 남는다.'}</p>
         <div class="t-candidate-list">${e.candidates.map((n:any)=>`<div class="t-candidate-row ${n.v===e.active?'is-active':''}"><code><span class="discarded">${e.processed.slice(0,e.processed.length-n.prefix.length)}</span><mark>${n.prefix||'ε'}</mark></code><small>후보 ${n.prefix||'ε'} · 길이 ${n.prefix.length}${n.v===e.active?' · 현재':''}</small></div>`).join('')}</div>
         <p>이번 단계의 새 출력: ${e.newMatches.map((m:any)=>`${m.pattern} [${m.start},${m.end}]`).join(', ')||'없음'}</p><a href="#aho-theorem-3">상태 불변식의 증명으로 이동 →</a>`;
     } else if (mode==='failure') {
       const n=ac.nodes[active], p=n.parent;
-      panel.innerHTML=`<h4>실패 링크를 계산하는 근거</h4><div class="t-reason-grid"><div><small>계산할 상태</small><strong>${label(active)}</strong></div><div><small>더 짧은 실패 상태</small><strong>${label(n.fail)}</strong></div><div><small>길이 감소</small><strong>${n.prefix.length} → ${ac.nodes[n.fail].prefix.length}</strong></div></div><p>${active===0?'root는 예외로 fail[root]=root. 사슬은 root에서 멈춘다.':p===0?'깊이 1의 proper suffix는 ε뿐이다. 일반 점화식 대신 root로 초기화한다.':`부모 ${label(p)}의 실패 상태 ${label(ac.nodes[p].fail)}에서 문자 ${n.prefix.at(-1)}를 소비한다: go[${label(ac.nodes[p].fail)}][${n.prefix.at(-1)}]=${label(n.fail)}. 필요한 더 얕은 전이는 먼저 완성되어 있다.`}</p><a href="#aho-theorem-4">BFS 점화식의 증명으로 이동 →</a>`;
+      panel.innerHTML=`<h4>실패 링크를 계산하는 근거</h4><div class="t-reason-grid"><div><small>계산할 상태</small><strong>${label(active)}</strong></div><div><small>더 짧은 실패 상태</small><strong>${label(n.fail)}</strong></div><div><small>길이 감소</small><strong>${n.prefix.length} → ${ac.nodes[n.fail].prefix.length}</strong></div></div><p>${active===0?`root는 예외로 ${m(String.raw`\operatorname{fail}[0]=0`)}. 사슬은 root에서 멈춘다.`:p===0?'깊이 1의 proper suffix는 ε뿐이다. 일반 점화식 대신 root로 초기화한다.':`부모 ${label(p)}의 실패 상태 ${label(ac.nodes[p].fail)}에서 문자 ${n.prefix.at(-1)}를 소비한다: ${m(String.raw`\operatorname{go}[${mathLabel(ac.nodes[p].fail)}][\mathtt{${n.prefix.at(-1)}}]=${mathLabel(n.fail)}`)}. 필요한 더 얕은 전이는 먼저 완성되어 있다.`}</p><a href="#aho-theorem-4">BFS 점화식의 증명으로 이동 →</a>`;
     } else if(mode==='count') {
       const s=counts[step], previous=counts[Math.max(0,step-1)];
       panel.innerHTML=`<h4>${step?'자식의 누적값을 실패 부모에게 전달':'초기값: 직접 도착한 횟수만 기록'}</h4>${step?`<div class="t-reason-grid"><div><small>부모 ${label(s.to)} · 이전 값</small><strong>${previous.counts[s.to]}</strong></div><div><small>자식 ${label(s.v)}에서 전달</small><strong>+ ${previous.counts[s.v]}</strong></div><div><small>부모 · 갱신 후</small><strong>${s.counts[s.to]}</strong></div></div>`:''}<p>화살표 방향은 자식 → 실패 부모이다. 역순 처리로 자손의 합이 먼저 완성된다. 현재 값과 최종 등장 횟수는 누적 완료 전에는 다를 수 있다.</p><a href="#aho-theorem-6">서브트리 합의 증명으로 이동 →</a>`;
@@ -36,7 +38,7 @@ if (root) {
     const known = mode !== 'trie' && (mode !== 'failure' || ac.bfs.indexOf(selected) <= stepNow);
     get('[data-details]').innerHTML = `<div><dt>선택 상태</dt><dd>${label(selected)} · #${selected}</dd></div><div><dt>fail / 가장 긴 유효 접미사</dt><dd>${known ? label(n.fail) : '아직 구성 전'}</dd></div><div><dt>${known ? 'terminal + output link' : '현재 terminal'}</dt><dd>${known ? output.join(', ') || '없음' : n.terminal.map((id: number) => ac.patterns[id]).join(', ') || '없음'}</dd></div>`;
     const c = get<HTMLSelectElement>('[data-transition]').value;
-    get('[data-transition-info]').textContent = `next[${label(selected)}][${c}] = ${n.next[c] === undefined ? '없음' : label(n.next[c])} · go = ${known && mode !== 'failure' ? label(n.go[c] ?? 0) : '구성 완료 후 확인'}`;
+    get('[data-transition-info]').innerHTML = `${m(String.raw`\operatorname{next}[${mathLabel(selected)}][\mathtt{${c}}]`)} = ${n.next[c] === undefined ? '없음' : m(mathLabel(n.next[c]))} · ${m(String.raw`\operatorname{go}[${mathLabel(selected)}][\mathtt{${c}}]`)} = ${known && mode !== 'failure' ? m(mathLabel(n.go[c] ?? 0)) : '구성 완료 후 확인'}`;
   }
   function graph(active: number, from: number, visible: number, countValues?: number[]) {
     const nodes = ac.nodes;
@@ -80,7 +82,7 @@ if (root) {
     if (mode === 'trie') note = step === 0 ? 'root는 빈 문자열 ε이다. 다음을 눌러 패턴의 접두사 노드를 삽입.' : `새 접두사 ${label(step)} 삽입. 부모 ${label(ac.nodes[step].parent)}와 실제 Trie 간선으로 연결된다.${ac.nodes[step].terminal.length ? ' 패턴이 끝나므로 terminal이다.' : ''}`;
     else if (mode === 'failure') note = active === 0 ? 'fail[root] = root. BFS는 얕은 노드부터 진행한다.' : `BFS ${step}: fail[${label(active)}] = ${label(ac.nodes[active].fail)}. 처리 순서: ${ac.bfs.slice(0, step + 1).map(label).join(' → ')}`;
     else note = mode === 'count' ? counts[step].note : snapshot.note;
-    get('[data-status]').textContent = note;
+    get('[data-status]').innerHTML = mode === 'failure' ? `${m(String.raw`\operatorname{fail}[${mathLabel(active)}]=${mathLabel(ac.nodes[active].fail)}`)}. BFS는 얕은 노드부터 진행한다.` : mode==='count' && step>0 ? `${m(String.raw`\operatorname{cnt}[${mathLabel(counts[step].to)}]\gets ${counts[step-1].counts[counts[step].to]}+${counts[step-1].counts[counts[step].v]}=${counts[step].counts[counts[step].to]}`)}` : note;
     reason(step,active);
     get('.t-legend').innerHTML = mode === 'count' ? '<span>실선: fail[v]를 부모로 둔 트리</span><b>초록 숫자: 현재 누적 횟수</b><span>파랑: 선택 상태</span>' : '<span>실선: Trie 간선</span><em>점선: 선택 상태의 failure link</em><b>초록 테두리: terminal</b><span>파랑: 선택 상태</span>';
     get('[data-text]').innerHTML = [...text].map((c, i) => `<span class="t-char ${snapshot && i <= snapshot.pos ? 'is-read' : ''} ${snapshot && i === snapshot.pos ? 'is-current' : ''} ${snapshot && i===snapshot.pos+1?'is-pending':''}"><small>${i}</small>${c}</span>`).join('');

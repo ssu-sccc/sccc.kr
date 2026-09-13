@@ -51,7 +51,17 @@
 .t-number { font:500 14px ui-monospace,monospace; color:#6b7685; }
 .t-lead { max-width:780px; font-size:18px; color:#536070; }
 .t-columns { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px; }
-.t-formula { padding:20px 24px; background:var(--soft); border-left:3px solid var(--accent); border-radius:0 12px 12px 0; overflow-wrap:anywhere; font:500 17px/1.8 ui-monospace,monospace; }
+.t-formula { margin:20px 0; padding:16px 24px; background:var(--soft); border-left:3px solid var(--accent); border-radius:0 12px 12px 0; font-size:1rem; }
+/* Keep KaTeX's internal glyph geometry intact; scroll complete long equations. */
+.t-math-inline { font-weight:400; letter-spacing:normal; overflow-wrap:normal; }
+.t-math-inline>.katex { font-size:1.08em; }
+.t-math-display { max-width:100%; overflow-x:auto; overscroll-behavior-x:contain; padding:10px 2px; font-size:1rem; }
+.t-math-display:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.t-math-display>.katex-display { margin:0; text-align:left; }
+.t-math-display>.katex-display>.katex { text-align:left; white-space:nowrap; }
+.tutorial .katex { letter-spacing:normal; text-indent:0; overflow-wrap:normal; }
+.tutorial code:has(.t-math-inline) { font:inherit; background:none; padding:0; }
+@media(max-width:600px) { .t-formula { padding:12px; }.t-math-display { font-size:1rem; } }
 .t-note { padding:20px 24px; background:#fff; border:1px solid var(--tline); border-radius:12px; color:#536070; }
 .t-lab { margin:30px 0 0; border:1px solid var(--tline); border-radius:22px; background:#fff; overflow:hidden; }
 .t-lab-head { padding:24px; border-bottom:1px solid var(--tline); display:flex; align-items:end; justify-content:space-between; gap:20px; flex-wrap:wrap; }
@@ -180,10 +190,10 @@
 .sa-blocks { display:grid; gap:12px; max-width:680px; margin:20px auto; }
 .sa-blocks>div { display:grid; grid-template-columns:minmax(110px,1.3fr) repeat(3,minmax(0,1fr)); align-items:center; gap:10px; }
 .sa-blocks b { text-align:center; background:#edf4ff; border:1px solid #b9d4f5; border-radius:6px; padding:12px 6px; color:#0758b3; font:20px ui-monospace,monospace; }
-.sa-blocks span,.sa-blocks code { font-size:14px; overflow-wrap:anywhere; }
-.sa-shift>div { display:flex; align-items:center; flex-wrap:wrap; gap:20px; margin:18px 0; }.sa-shift span { min-width:140px; font-size:14px; }.sa-shift code { font:22px ui-monospace,monospace; letter-spacing:.12em; }.sa-shift del { color:#8c4c5e; }.sa-shift b { font-size:16px; font-weight:500; }
+.sa-blocks>div>span,.sa-blocks>div>code { font-size:14px; overflow-wrap:anywhere; }
+.sa-shift>div { display:flex; align-items:center; flex-wrap:wrap; gap:20px; margin:18px 0; }.sa-shift>div>span { min-width:140px; font-size:14px; }.sa-shift code { font:22px ui-monospace,monospace; letter-spacing:.12em; }.sa-shift del { color:#8c4c5e; }.sa-shift b { font-size:16px; font-weight:500; }
 .sa-rmq-chain { display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; }.sa-rmq-chain code { border:1px solid #b9d4f5; background:#edf4ff; padding:20px; border-radius:10px; font-size:22px; }.sa-rmq-chain small { display:block; font-size:14px; margin-top:8px; }.sa-rmq-chain>span { font-size:14px; color:#0758b3; }
-@media(max-width:540px) { .sa-blocks>div { grid-template-columns:minmax(70px,1.4fr) repeat(3,minmax(0,1fr)); gap:5px; }.sa-blocks b { font-size:16px; }.sa-shift>div { gap:12px; }.sa-shift span { flex-basis:100%; }.sa-rmq-chain { flex-direction:column; }.sa-rmq-chain code { text-align:center; width:100%; } }
+@media(max-width:540px) { .sa-blocks>div { grid-template-columns:minmax(70px,1.4fr) repeat(3,minmax(0,1fr)); gap:5px; }.sa-blocks b { font-size:16px; }.sa-shift>div { gap:12px; }.sa-shift>div>span { flex-basis:100%; }.sa-rmq-chain { flex-direction:column; }.sa-rmq-chain code { text-align:center; width:100%; } }
 .tutorial .t-table caption { text-align:left; padding:16px 0; font-size:14px; line-height:1.6; font-family:inherit; color:#516278; }
 @media(max-width:540px) { .ac-figure { padding:16px; }.ac-candidates { grid-template-columns:1fr; padding:18px; }.ac-string-row { font-size:15px; gap:3px; }.ac-count-chain { flex-direction:column; }.ac-count-chain i { transform:rotate(90deg); margin:6px; }.ac-count-chain span { width:100%; } }
 @keyframes t-flow { to { stroke-dashoffset:-26; } }
