@@ -1,13 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { categories, categoryUrl, tutorialsFor } from '../../lib/tutorial/catalog.mjs';
 import '../../styles/tutorial.css';
 ---
-<BaseLayout title="Tutorial" description="직접 움직여 이해하는 SCCC 알고리즘 튜토리얼. 아호-코라식과 Suffix Array · LCP를 단계별 시각화로 배웁니다.">
+<BaseLayout title="Tutorial" description="수학, 그래프, DP, 자료구조, 문자열, 기하학, 그리디. 카테고리별 SCCC 알고리즘 튜토리얼.">
   <div class="tutorial"><div class="t-shell">
-    <header class="t-hero"><p class="t-kicker">SCCC / TUTORIAL</p><h1>문자열 알고리즘</h1><p>문자열 알고리즘의 정의, 구현, 정당성 증명과 복잡도 분석.<br />단계별 시각화로 상태와 배열의 변화를 확인한다.</p><div class="t-meta"><span>문자열 알고리즘</span><span>단계별 재생 · 입력 실험 · 엄밀한 정의</span></div></header>
-    <div class="t-catalog">
-      <a class="t-card" href="/tutorial/aho-corasick/"><small>01 / MULTIPLE PATTERN MATCHING</small><div class="t-cover" aria-label="she의 접미사 he도 함께 매칭"><span>she</span><span>fail → he</span></div><h2>아호-코라식</h2><p>다중 패턴 매칭 알고리즘.<br />Trie, failure link, output link와 failure tree의 구성 및 활용.</p><small>Trie · Failure Link · Output · 등장 횟수 ↗</small></a>
-      <a class="t-card" href="/tutorial/suffix-array-lcp/"><small>02 / SUFFIX ORDER & COMMON PREFIX</small><div class="t-cover" aria-label="banana의 접미사 정렬 예시"><span>a</span><span>ana</span><span>anana</span></div><h2>Suffix Array · LCP</h2><p>접미사 배열과 공통 접두사 배열.<br />Doubling, Kasai 알고리즘과 RMQ 질의의 원리 및 구현.</p><small>SA · Rank · LCP · RMQ ↗</small></a>
-    </div>
+    <header class="t-directory-header"><p class="t-kicker">SCCC / TUTORIAL</p><h1>알고리즘 튜토리얼</h1><p>학습할 카테고리 선택.</p></header>
+    <nav aria-label="튜토리얼 카테고리" class="t-category-grid">
+      {categories.map((category, i) => {
+        const count = tutorialsFor(category.slug).length;
+        return <a class="t-category-card" href={categoryUrl(category.slug)}>
+          <div class="t-category-meta"><span>{String(i + 1).padStart(2, '0')}</span><span>{category.english}</span></div>
+          <h2>{category.title}</h2><p>{category.description}</p>
+          <div class="t-category-bottom"><span>{count ? `튜토리얼 ${count}편` : '등록된 튜토리얼 없음'}</span><span aria-hidden="true">→</span></div>
+        </a>;
+      })}
+    </nav>
   </div></div>
 </BaseLayout>

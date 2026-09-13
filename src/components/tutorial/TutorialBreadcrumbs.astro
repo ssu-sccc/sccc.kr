@@ -1,0 +1,12 @@
+---
+import { categories, tutorials, categoryUrl } from '../../lib/tutorial/catalog.mjs';
+interface Props { slug: string }
+const item = tutorials.find(item => item.slug === Astro.props.slug);
+const category = categories.find(category => category.slug === item?.category);
+if (!item || !category) throw new Error(`Unknown tutorial: ${Astro.props.slug}`);
+---
+<nav class="t-breadcrumbs" aria-label="현재 위치">
+  <a href="/tutorial/">Tutorial</a><span aria-hidden="true">/</span>
+  <a href={categoryUrl(category.slug)}>{category.title}</a><span aria-hidden="true">/</span>
+  <span aria-current="page">{item.title}</span>
+</nav>

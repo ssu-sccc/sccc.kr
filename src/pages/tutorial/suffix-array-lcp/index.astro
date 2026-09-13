@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TutorialBreadcrumbs from '../../../components/tutorial/TutorialBreadcrumbs.astro';
 import Playback from '../../../components/tutorial/Playback.astro';
 import '../../../styles/tutorial.css';
 import CppCode from '../../../components/tutorial/CppCode.astro';
@@ -12,7 +13,7 @@ import kasaiCode from '../../../lib/tutorial/cpp/kasai.cpp?raw';
 ---
 <BaseLayout title="Suffix Array · LCP | Tutorial" description="접미사 배열, Doubling, Kasai 알고리즘과 RMQ를 단계별 애니메이션으로 연결하는 SCCC 튜토리얼.">
 <div class="tutorial"><div class="t-shell">
-  <header class="t-hero"><a class="t-kicker" href="/tutorial/">TUTORIAL / 02</a><h1>Suffix Array · LCP</h1><p>Suffix Array와 LCP Array의 정의 및 구성.<br />접미사 비교, RMQ 질의와 부분 문자열 문제에 대한 활용.</p><div class="t-meta"><span>기초 정의부터 정당성 증명까지</span><span>0-index · sentinel 없는 예제</span></div></header>
+  <header class="t-hero"><TutorialBreadcrumbs slug="suffix-array-lcp" /><h1>Suffix Array · LCP</h1><p>Suffix Array와 LCP Array의 정의 및 구성.<br />접미사 비교, RMQ 질의와 부분 문자열 문제에 대한 활용.</p><div class="t-meta"><span>기초 정의부터 정당성 증명까지</span><span>0-index · sentinel 없는 예제</span></div></header>
   <nav class="t-contents" aria-label="이 페이지 목차"><a href="#problem">문제와 기초</a><a href="#suffix">Suffix와 SA</a><a href="#experiment">직접 실행</a><a href="#doubling">Doubling</a><a href="#kasai">Kasai</a><a href="#rmq">RMQ와 활용</a><a href="#checks">구현 체크</a><a href="#proofs">정당성 증명</a><a href="#practice">구현과 확인 문제</a></nav>
   <SuffixFoundations />
   <section id="suffix" class="t-section"><span class="t-number">01 / DEFINITIONS</span><h2>1. Suffix Array와 Rank Array</h2><div class="t-columns"><div><h3>Suffix ≠ Substring</h3><p>접미사(suffix) <code>S[i…N)</code>는 i부터 <strong>문자열 끝까지</strong>이다. 부분 문자열(substring) <code>S[l…r)</code>는 중간에서 끝나도 된다. <code>banana</code>에서 <code>ana</code>는 접미사이기도 하지만 <code>ban</code>은 부분 문자열일 뿐이다.</p><p>길이 N인 문자열의 비어 있지 않은 접미사는 N개이다. 접미사 자체를 모두 복사하면 총 길이가 이차식이 되므로, 실제 SA에는 시작 인덱스만 저장한다.</p></div><div><h3>SA와 rank는 서로 역함수</h3><p><code>SA[r]</code>는 사전순 r번째 접미사의 시작 위치이다. <code>rank[i]</code>는 i에서 시작한 접미사의 사전순 순위이다. 정렬이 끝난 이후에는 각 접미사가 서로 다른 rank를 갖는다.</p><p class="t-formula">SA[rank[i]] = i<br />rank[SA[r]] = r</p></div></div></section>
@@ -34,7 +35,7 @@ import kasaiCode from '../../../lib/tutorial/cpp/kasai.cpp?raw';
   <section id="checks" class="t-section"><span class="t-number">06 / IMPLEMENTATION CHECKLIST</span><h2>6. 구현 조건과 인덱스 규칙</h2><ul><li>이 예제는 0-index이며 빈 접미사를 포함하지 않는다.</li><li>−1은 rank 쌍에서 사용하는 범위 밖 표식이다. 문자열에 붙인 sentinel과 다르다.</li><li>Sentinel을 붙이는 구현은 입력에 없는 문자 중 모든 문자보다 작은 하나를 사용하고, 그 접미사와 결과 인덱스를 일관되게 처리한다.</li><li>여러 문자열을 합칠 때는 경계를 넘는 매칭을 막을 구분자가 필요하다.</li><li>SA와 rank의 역함수 관계, LCP의 이전/다음 이웃 정의를 섞지 않는다.</li><li>동일한 접미사끼리의 질의는 N−i로 별도 처리한다.</li></ul><ol class="t-flow"><li>문자열 입력</li><li>SA 구성</li><li>rank 구성</li><li>LCP 구성</li><li>RMQ 전처리</li><li>비교·검색·부분 문자열</li></ol></section>
   <SuffixProofs />
   <SuffixPractice />
-  <footer class="t-sources">더 읽기: <a href="https://www.ime.usp.br/~cris/aulas/19_1_6957/KasaiLAAP2001-LCP.pdf" target="_blank" rel="noreferrer">Kasai et al., Linear-Time Longest-Common-Prefix Computation (2001)</a><p><a href="/tutorial/">Tutorial 목록으로 돌아가기 →</a></p></footer>
+  <footer class="t-sources">더 읽기: <a href="https://www.ime.usp.br/~cris/aulas/19_1_6957/KasaiLAAP2001-LCP.pdf" target="_blank" rel="noreferrer">Kasai et al., Linear-Time Longest-Common-Prefix Computation (2001)</a><p><a href="/tutorial/category/string/">문자열 튜토리얼 목록으로 돌아가기 →</a></p></footer>
 </div></div>
 <script>import '../../../scripts/tutorial/suffix';</script>
 </BaseLayout>

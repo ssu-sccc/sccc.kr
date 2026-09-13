@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { categories, categoryUrl, tutorialUrl, tutorialsFor } from '../../../lib/tutorial/catalog.mjs';
+import '../../../styles/tutorial.css';
+export function getStaticPaths() {
+  return categories.map(category => ({ params: { category: category.slug }, props: { category } }));
+}
+const { category } = Astro.props;
+const items = tutorialsFor(category.slug);
+---
+<BaseLayout title={`${category.title} | Tutorial`} description={`${category.title} 알고리즘 튜토리얼. ${category.description}`}>
+  <div class="tutorial"><div class="t-shell">
+    <header class="t-directory-header">
+      <nav class="t-breadcrumbs" aria-label="현재 위치"><a href="/tutorial/">Tutorial</a><span aria-hidden="true">/</span><span aria-current="page">{category.title}</span></nav>
+      <h1>{category.title}</h1><p>{category.description}</p><div class="t-meta"><span>{items.length}편의 튜토리얼</span></div>
+    </header>
+    <nav class="t-category-switch" aria-label="카테고리 변경">
+      {categories.map(item => <a href={categoryUrl(item.slug)} aria-current={item.slug === category.slug ? 'page' : undefined}>{item.title}</a>)}
+    </nav>
+    {items.length > 0 ? <div class="t-catalog">
+      {items.map((item,i) => <a class="t-card" href={tutorialUrl(item.slug)}>
+        <small>{String(i+1).padStart(2,'0')} / {item.subtitle}</small>
+        <div class="t-cover" aria-label={item.coverLabel}>{item.cover.map(part=><span>{part}</span>)}</div>
+        <h2>{item.title}</h2><p>{item.description}</p><small>{item.topics} ↗</small>
+      </a>)}
+    </div> : <section class="t-category-empty" aria-labelledby="empty-title">
+      <h2 id="empty-title">아직 등록된 튜토리얼이 없다.</h2><p>{category.title} 카테고리에 등록된 알고리즘 설명이 없다. 다른 카테고리의 튜토리얼을 확인할 수 있다.</p><a href="/tutorial/">전체 카테고리로 돌아가기 →</a>
+    </section>}
+  </div></div>
+</BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TutorialBreadcrumbs from '../../../components/tutorial/TutorialBreadcrumbs.astro';
 import Playback from '../../../components/tutorial/Playback.astro';
 import '../../../styles/tutorial.css';
 import CppCode from '../../../components/tutorial/CppCode.astro';
@@ -12,7 +13,7 @@ import scanCode from '../../../lib/tutorial/cpp/aho-search.cpp?raw';
 ---
 <BaseLayout title="아호-코라식 | Tutorial" description="Trie, failure link, output link와 failure tree를 직접 움직이며 이해하는 아호-코라식 튜토리얼.">
 <div class="tutorial"><div class="t-shell">
-  <header class="t-hero"><a class="t-kicker" href="/tutorial/">TUTORIAL / 01</a><h1>아호-코라식</h1><p>Trie 기반의 다중 패턴 문자열 탐색.<br />실패 링크 구성, 매칭 출력, 패턴별 등장 횟수 계산.</p><div class="t-meta"><span>Aho–Corasick</span><span>기초 정의부터 정당성 증명까지</span><span>모든 위치는 0-index</span></div></header>
+  <header class="t-hero"><TutorialBreadcrumbs slug="aho-corasick" /><h1>아호-코라식</h1><p>Trie 기반의 다중 패턴 문자열 탐색.<br />실패 링크 구성, 매칭 출력, 패턴별 등장 횟수 계산.</p><div class="t-meta"><span>Aho–Corasick</span><span>기초 정의부터 정당성 증명까지</span><span>모든 위치는 0-index</span></div></header>
   <nav class="t-contents" aria-label="이 페이지 목차"><a href="#problem">문제와 기초</a><a href="#idea">핵심 아이디어</a><a href="#experiment">직접 실행</a><a href="#failure">실패 링크</a><a href="#output">출력과 횟수</a><a href="#implementation">구현 체크</a><a href="#proofs">정당성 증명</a><a href="#practice">실행과 확인 문제</a></nav>
   <AhoFoundations />
   <section id="idea" class="t-section"><span class="t-number">01 / IDEA</span><h2>1. Trie와 오토마톤의 상태</h2><div class="t-columns"><div><h3>Trie = 패턴의 접두사 집합</h3><p>패턴들을 하나의 Trie에 삽입한다. 노드 <code>v</code>는 root부터의 문자열 <code>str(v)</code>를 의미한다. 패턴이 끝나는 노드에는 해당 패턴의 ID를 저장한다. 같은 패턴을 여러 번 등록한다면 ID도 여러 개일 수 있다.</p></div><div><h3>Failure link의 역할</h3><p>KMP가 한 패턴의 접두사를 재사용하듯, 아호-코라식은 모든 패턴의 접두사를 재사용한다. 본문을 뒤로 돌리지 않고, 현재 상태만 더 짧은 접미사로 바꾼다.</p></div></div><p class="t-formula">상태의 불변식: 읽은 본문의 suffix 중 Trie에 있는 가장 긴 prefix</p></section>
@@ -29,7 +30,7 @@ import scanCode from '../../../lib/tutorial/cpp/aho-search.cpp?raw';
   <section id="implementation" class="t-section"><span class="t-number">05 / COMPLEXITY & CHECKLIST</span><h2>5. 복잡도와 구현 조건</h2><p><code>M</code> = 패턴 길이의 합, <code>N</code> = 본문 길이, <code>V ≤ M + 1</code> = 노드 수, <code>σ</code> = 알파벳 크기, <code>Z</code> = 출력할 매칭 수.</p><p class="t-formula">완성된 전이 배열: 구성 O(M + Vσ), 메모리 O(Vσ + 패턴 수)<br />탐색 + output link 출력: O(N + Z)<br />고정 크기 알파벳에서는 전체 O(M + N + Z)</p><p>횟수만 계산하면 출력 없이 탐색과 역순 누적을 <code>O(N + V + 패턴 수)</code>에 수행한다. 큰 알파벳에서 맵을 쓰면 공간을 줄일 수 있지만, 조회·구성 비용은 자료구조와 전이 계산 방식에 따라 달라진다. 위의 선형 시간 표기를 무조건 그대로 적용하지 않는다.</p><ul><li>실제 간선과 완성된 전이를 구별한다.</li><li>root 실패 링크와 빈 패턴의 처리 규칙을 정한다.</li><li>존재 여부, 위치, 횟수 중 목적에 맞는 output 처리를 선택한다.</li><li>실패 링크는 BFS, 횟수 누적은 BFS 역순으로 처리한다.</li><li>매칭 구간은 양 끝을 포함한 <code>[i − |p| + 1, i]</code>이다.</li></ul><ol class="t-flow"><li>패턴 삽입</li><li>Trie 생성</li><li>BFS 실패 링크</li><li>전이 완성</li><li>본문 순회</li><li>매칭 처리</li></ol></section>
   <AhoProofs />
   <AhoPractice />
-  <footer class="t-sources">더 읽기: <a href="https://doi.org/10.1145/360825.360855" target="_blank" rel="noreferrer">Aho & Corasick, Efficient String Matching (1975)</a><p><a href="/tutorial/suffix-array-lcp/">다음 튜토리얼: Suffix Array · LCP →</a></p></footer>
+  <footer class="t-sources">더 읽기: <a href="https://doi.org/10.1145/360825.360855" target="_blank" rel="noreferrer">Aho & Corasick, Efficient String Matching (1975)</a><p><a href="/tutorial/suffix-array-lcp/">다음 튜토리얼: Suffix Array · LCP →</a></p><p><a href="/tutorial/category/string/">문자열 튜토리얼 목록으로 돌아가기 →</a></p></footer>
 </div></div>
 <script>import '../../../scripts/tutorial/aho';</script>
 </BaseLayout>
