@@ -22,6 +22,17 @@ test('Each theorem appears once, expanded, at the concept it proves', () => {
     }
     const details=[...html.matchAll(/<details([^>]*data-theorem[^>]*)>/g)];
     assert.ok(details.every(m=>/\bopen(?:\s|=|$)/.test(m[1])));
+    for (const theorem of html.matchAll(/<details[^>]*data-theorem[^>]*>[\s\S]*?<\/details>/g)) {
+      assert.match(theorem[0], /data-proof-intuition/);
+      assert.ok(theorem[0].indexOf('먼저 쉬운 말로') < theorem[0].indexOf('이를 정확하게 확인하면'));
+    }
+    if (slug === 'aho-corasick') {
+      assert.equal((html.match(/data-scan-kind="read"/g) || []).length, 6);
+      assert.equal((html.match(/data-scan-kind="fail"/g) || []).length, 1);
+      assert.match(html, /data-scan-kind="fail" data-scan-position="4"/);
+      assert.ok(html.indexOf('data-text-scan') < html.indexOf('id="aho-theorem-3"'));
+      assert.match(html, /aho-scan-explicit\.cpp/);
+    }
     assert.ok(html.includes('data-reason'));
     assert.ok(html.includes('data-lab-mode'));
     // Internal proof links emitted by controllers all target real, unique anchors.
