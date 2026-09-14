@@ -1,0 +1,166 @@
+---
+import Math from './Math.astro';
+import { buildAC, traceAC, countAC } from '../../lib/tutorial/algorithms.mjs';
+
+interface Props { theorem: number }
+const { theorem } = Astro.props;
+const ac = buildAC(['he', 'she', 'his', 'hers']);
+const trace = traceAC(ac, 'ushers');
+const visits = trace.at(-1)!.visits;
+const counts = countAC(ac, visits).at(-1)!.counts;
+const positions = [[310,60],[170,180],[105,300],[480,180],[480,300],[480,420],[280,300],[280,420],[105,420],[105,540]];
+const examples = [
+  {
+    title: '문자 경로와 접두사 노드는 일대일 대응',
+    active: [0,1,2,8,9], edges: [1,2,8,9], links: [],
+    roles: {0:'root · 빈 문자열',1:'접두사 · depth 1',2:'terminal · 패턴 끝',8:'접두사 · depth 3',9:'terminal · 패턴 끝'},
+    terms: [['노드 안 문자열','root부터 읽은 간선 문자를 이어 붙인 접두사.'],['이중 원 · terminal','해당 노드에서 끝나는 패턴이 존재한다는 표시. he는 terminal이면서 자식도 갖는다.']],
+    formula: String.raw`\varepsilon\xrightarrow{h}h\xrightarrow{e}he\xrightarrow{r}her\xrightarrow{s}hers`,
+    caption: '패턴 hers를 삽입할 때 이미 있는 h, he를 공유하고 her, hers만 추가한다. 서로 다른 접두사 하나당 노드 하나이며, terminal과 리프는 서로 다른 개념이다.',
+  },
+  {
+    title: '실패 사슬은 접미사 후보를 긴 순서대로 열거',
+    active: [0,2,5], edges: [], links: ['she-he','he-root'],
+    roles: {0:'depth 0 · 종료',2:'F(v) · depth 2',5:'v · depth 3'},
+    terms: [['proper suffix · 진접미사','원래 문자열 자신을 제외한 접미사. she의 후보는 he, e, ε.'],['P · Trie의 접두사 집합','he와 ε는 노드로 존재하지만 e는 없다. 따라서 e는 실패 사슬에 포함되지 않는다.']],
+    formula: String.raw`she\xrightarrow{\mathrm{fail}}he\xrightarrow{\mathrm{fail}}\varepsilon,\qquad 3>2>0`,
+    caption: '실선은 접두사를 늘리는 Trie 간선, 점선은 접미사로 줄이는 실패 링크다. 그림에는 she에서 시작하는 실패 사슬만 표시했다. root의 자기 링크는 따라가지 않는다.',
+  },
+  {
+    title: '다음 문자를 붙일 수 있는 가장 긴 접미사를 선택',
+    active: [2,5,8], edges: [8], links: ['she-he'],
+    roles: {2:'후보 y = he',5:'현재 상태 v',8:'다음 상태 yc = her'},
+    terms: [['읽은 본문 X = ushe','Trie에 존재하는 X의 가장 긴 접미사는 she. 다음 입력 문자는 r.'],['문자 소비 시점','she에는 r 간선이 없으므로 he로 실패 이동. 이때 r은 아직 읽지 않는다. he → her에서 r을 한 번 소비한다.']],
+    formula: String.raw`Q(ushe)=she,\qquad \delta(she,r)=her=Q(usher)`,
+    caption: 'she에서 r로 나가는 실선은 없다. 실패 링크로 더 짧은 후보 he를 찾은 뒤 실제 r 간선을 따라간다. 완성된 go 배열은 이 과정을 한 번의 조회로 처리한다.',
+  },
+  {
+    title: '부모의 실패 링크로 자식의 실패 링크를 계산',
+    active: [1,2,4,5], edges: [2,5], links: ['sh-h','she-he'],
+    roles: {1:'fail[v] = h',2:'fail[u] = he',4:'부모 v = sh',5:'자식 u = she'},
+    terms: [['위쪽 점선 · 이미 계산한 fail[v]','sh의 가장 긴 진접미사 접두사는 h. BFS에서 더 얕은 h의 전이표는 먼저 완성된다.'],['아래쪽 점선 · 계산할 fail[u]','부모 쪽에서 e를 붙이면 she, 실패 부모 h 쪽에서 e를 붙이면 he. 따라서 she의 실패 링크 목적지는 he.']],
+    formula: String.raw`\mathrm{fail}[she]=\mathrm{go}[\mathrm{fail}[sh]][e]=\mathrm{go}[h][e]=he`,
+    caption: '파란 실선 두 개는 같은 문자 e를 붙이는 실제 간선이다. 이 그림은 root가 아닌 부모의 경우다. root의 자식은 별도로 fail = root로 초기화한다.',
+  },
+  {
+    title: '현재 terminal과 terminal 실패 조상이 모두 매칭',
+    active: [2,5], edges: [], links: ['she-he'],
+    roles: {2:'terminal · he',5:'현재 terminal · she'},
+    terms: [['현재 노드 검사','본문 ushe의 마지막 위치 i = 3에서 she를 출력. 시작 위치는 3 − 3 + 1 = 1.'],['out · 출력 링크','she의 가장 가까운 terminal 실패 조상 he를 출력. 시작 위치는 3 − 2 + 1 = 2. root는 terminal이 아니므로 out[he] = −1.']],
+    formula: String.raw`T[1..3]=she,\qquad T[2..3]=he,\qquad \mathrm{out}[she]=he`,
+    caption: '두 매칭의 끝 위치는 같지만 패턴과 시작 위치는 다르다. 이 예에서는 out[she]와 fail[she]의 목적지가 같다. 일반적으로 out은 terminal이 아닌 실패 조상을 건너뛴다.',
+  },
+  {
+    title: '실패 부모로 방문 횟수를 올려 보내면 서브트리 합',
+    active: [2,5], edges: [], links: ['she-he'],
+    roles: {2:`he · visit ${visits[2]} → cnt ${counts[2]}`,5:`she · visit ${visits[5]} → cnt ${counts[5]}`},
+    terms: [['visit · 본문을 읽고 도착한 횟수','ushers를 읽은 상태는 ε, s, sh, she, her, hers. he에 직접 도착한 적은 없으므로 visit[he] = 0.'],['failure tree · 실패 링크가 부모 관계','she의 실패 부모는 he. he의 failure-tree 서브트리는 이 예에서 {he, she}이므로 cnt[he] = 0 + 1 = 1.']],
+    formula: String.raw`\mathrm{cnt}[he]\gets\mathrm{visit}[he]+\mathrm{cnt}[she]=0+1=1`,
+    caption: '배경 실선은 원래 Trie이며, 주황 점선만 failure tree의 자식 → 부모 방향이다. Trie에서는 다른 가지인 she가 failure tree에서는 he의 자식이다. 누적은 Trie BFS 역순으로 진행한다.',
+  },
+  {
+    title: '노드·전이·입력·출력에 각각 비용을 대응',
+    active: [0,2,3,4,5,8], edges: [3,4,5,8], links: ['she-he'],
+    roles: {0:'depth 0',3:'depth 1',4:'depth 2',5:'depth 3',2:'depth 2',8:'depth 3'},
+    terms: [['실선 이동 · 깊이 최대 1 증가','s, h, e를 차례로 소비하면 깊이는 0 → 1 → 2 → 3. 한 문자 소비로 늘어나는 깊이는 최대 1.'],['실패 이동 · 깊이 최소 1 감소','r 처리 중 she → he는 깊이 3 → 2이며 문자를 소비하지 않는다. 깊이는 음수가 아니므로 탐색 전체의 실패 이동 수는 소비 문자 수 이하.']],
+    formula: String.raw`M=12,\quad V=10,\quad \sigma=5,\quad N=6,\quad Z=3`,
+    caption: '예제의 dense 전이표는 상태 10개 × 문자 5개 = 50칸이다. 본문 ushers의 출력은 she, he, hers로 3개. 일반적인 구성 비용은 O(M + Vσ), 탐색·출력 비용은 O(N + Z)이며 σ가 상수일 때만 Vσ를 선형 항으로 줄일 수 있다.',
+  },
+];
+const example = examples[theorem - 1];
+const prefix = `aho-diagram-${theorem}`;
+const linkPaths = {
+  'she-he': { d:'M 452 431 C 370 510, 195 494, 128 323', x:300, y:500, label:theorem === 5 ? 'out · 출력 링크' : theorem === 6 ? 'cnt[she] = 1 누적' : 'fail · 실패 링크' },
+  'he-root': { d:'M 83 279 C -10 80, 118 12, 281 52', x:105, y:69, label:'fail' },
+  'sh-h': { d:'M 452 292 C 352 230, 270 165, 201 179', x:315, y:220, label:'fail[v]' },
+};
+const linkColor = theorem === 5 ? '#6941a5' : '#ad5315';
+---
+<figure class="ac-proof-figure" data-proof-diagram={theorem}>
+  <figcaption id={`${prefix}-caption`}><span>그림 {theorem} · 패턴 he / she / his / hers</span><strong>{example.title}</strong></figcaption>
+  <div class="ac-proof-legend" aria-label="그림 범례">
+    <span><i class="line" />실선: Trie 간선 next</span>
+    {example.links.length > 0 && <span><i class:list={['line','dashed',{'output':theorem === 5}]} />점선: {theorem === 5 ? '출력 링크 out' : '실패 링크 fail'}</span>}
+    <span><i class="terminal-key" />이중 원: terminal</span>
+  </div>
+  <p class="ac-proof-scroll-hint">그림을 좌우로 밀어 전체 경로 확인</p>
+  <div class="ac-proof-scroll" tabindex="0" role="region" aria-label={`정리 ${theorem} 트라이 그림. 좁은 화면에서 좌우로 스크롤 가능`}>
+    <svg viewBox="0 0 620 605" role="img" aria-labelledby={`${prefix}-title ${prefix}-desc`}>
+      <title id={`${prefix}-title`}>{example.title}</title>
+      <desc id={`${prefix}-desc`}>{example.caption} {example.terms.map(([term, definition]) => `${term}: ${definition}`).join(' ')}</desc>
+      <defs>
+        <marker id={`${prefix}-arrow`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill={linkColor} /></marker>
+      </defs>
+      {ac.nodes.slice(1).map((node, offset) => {
+        const id = offset + 1;
+        const [x,y] = positions[id];
+        const [px,py] = positions[node.parent];
+        return <g class:list={['trie-edge',{'active-edge':example.edges.includes(id)}]}>
+          <path d={`M ${px} ${py+27} L ${x} ${y-28}`} />
+          <text x={(px+x)/2+12} y={(py+y)/2+5}>{node.prefix.at(-1)}</text>
+        </g>;
+      })}
+      {example.links.map(key => {
+        const link = linkPaths[key as keyof typeof linkPaths];
+        return <g class="failure-edge" style={`--link-color:${linkColor}`}>
+          <path d={link.d} marker-end={`url(#${prefix}-arrow)`} />
+          <text x={link.x} y={link.y}>{link.label}</text>
+        </g>;
+      })}
+      {ac.nodes.map((node, id) => {
+        const [x,y] = positions[id];
+        const role = example.roles[id as keyof typeof example.roles];
+        return <g class:list={['trie-node',{'active-node':example.active.includes(id),'terminal-node':node.terminal.length > 0}]}>
+          <circle cx={x} cy={y} r="28" />
+          {node.terminal.length > 0 && <circle class="terminal-ring" cx={x} cy={y} r="23" />}
+          <text class="node-word" x={x} y={y+5}>{node.prefix || 'ε'}</text>
+          {role && <text class="node-role" x={x} y={y+48}>{role}</text>}
+        </g>;
+      })}
+    </svg>
+  </div>
+  <div class="ac-proof-notes">
+    {example.terms.map(([term,definition]) => <div><strong>{term}</strong><p>{definition}</p></div>)}
+  </div>
+  <div class="ac-proof-equation"><Math tex={example.formula} display /></div>
+  <p class="ac-proof-caption">{example.caption}</p>
+</figure>
+
+<style>
+  .ac-proof-figure { margin:24px 0 30px; padding:24px; border:1px solid #dbe2e9; border-radius:14px; background:#f8fafc; color:#192b3c; }
+  figcaption > span { display:block; color:#586674; font-size:13px; margin-bottom:8px; }
+  figcaption > strong { display:block; font-size:19px; line-height:1.5; letter-spacing:-.025em; word-break:keep-all; }
+  .ac-proof-scroll-hint { display:none; }
+  .ac-proof-legend { display:flex; flex-wrap:wrap; gap:10px 20px; margin:18px 0 8px; font-size:14px; }
+  .ac-proof-legend > span { display:flex; align-items:center; gap:8px; }
+  .line { width:23px; border-top:2px solid #3679b3; }
+  .dashed { border-top:2px dashed #ad5315; }
+  .output { border-color:#6941a5; }
+  .terminal-key { width:15px; height:15px; border:4px double #277454; border-radius:50%; }
+  .ac-proof-scroll { overflow-x:auto; overscroll-behavior-x:contain; border-radius:8px; }
+  .ac-proof-scroll:focus-visible { outline:2px solid #3679b3; outline-offset:3px; }
+  svg { display:block; width:100%; max-width:680px; min-width:580px; height:auto; margin:auto; }
+  .trie-edge path { fill:none; stroke:#c4cdd6; stroke-width:2; }
+  .trie-edge text { fill:#576b7c; font:15px ui-monospace,monospace; paint-order:stroke; stroke:#f8fafc; stroke-width:5px; }
+  .active-edge path { stroke:#3679b3; stroke-width:3; }
+  .active-edge text { fill:#205d8f; font-weight:700; }
+  .failure-edge path { fill:none; stroke:var(--link-color); stroke-width:2.5; stroke-dasharray:7 5; }
+  .failure-edge text { fill:var(--link-color); font-size:14px; font-weight:650; text-anchor:middle; paint-order:stroke; stroke:#f8fafc; stroke-width:6px; stroke-linejoin:round; }
+  .trie-node circle { fill:#fff; stroke:#b8c4cf; stroke-width:1.5; }
+  .active-node circle { fill:#eaf3fb; stroke:#3679b3; stroke-width:2; }
+  .terminal-node circle { stroke:#277454; }
+  .terminal-ring { fill:none !important; stroke-width:1 !important; }
+  .node-word { fill:#21374b; text-anchor:middle; font:600 15px ui-monospace,monospace; }
+  .node-role { fill:#344d63; text-anchor:middle; font-size:14px; font-weight:600; paint-order:stroke; stroke:#f8fafc; stroke-width:5px; }
+  .ac-proof-notes { display:grid; grid-template-columns:1fr 1fr; gap:24px; padding-top:20px; border-top:1px solid #dbe2e9; }
+  .ac-proof-notes strong { font-size:15px; }
+  .ac-proof-notes p { margin:8px 0 0 !important; font-size:16px; line-height:1.8; color:#43566a; }
+  .ac-proof-equation { margin:18px 0; }
+  .ac-proof-caption { margin:0 !important; font-size:14px; line-height:1.85; color:#536372; }
+  @media (max-width:640px) {
+    .ac-proof-scroll-hint { display:block; margin:14px 0 0 !important; font-size:13px; color:#536372; }
+    .ac-proof-figure { padding:16px; margin:20px -10px 24px; }
+    .ac-proof-notes { grid-template-columns:1fr; gap:18px; }
+    figcaption > strong { font-size:18px; }
+  }
+</style>
