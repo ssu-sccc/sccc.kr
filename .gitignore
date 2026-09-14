@@ -7,3 +7,5 @@ _site
 node_modules
 dist
 .astro
+.pnpm-store/
+/sccc.kr/

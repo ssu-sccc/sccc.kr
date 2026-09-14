@@ -1,0 +1,141 @@
+---
+import Math from './Math.astro';
+import { suffixData } from '../../lib/tutorial/algorithms.mjs';
+const d = suffixData('banana');
+const result: (number | null)[] = Array(d.n).fill(null);
+result[0] = 0;
+type Frame = { i:number; j:number; r:number; seed:number; h:number; next:number; phase:string; note:string; result:(number|null)[] };
+const frames: Frame[] = [];
+const starts: number[] = [];
+for (const step of d.kasai) {
+  starts.push(frames.length);
+  const add = (h:number, phase:string, note:string) => frames.push({...step,h,phase,note,result:[...result]});
+  if (step.r === 0) {
+    add(0,'선두 접미사','사전순 첫 접미사 a에는 이전 이웃이 없다. 문자 비교 없이 LCP[0] = 0으로 두고 h를 0으로 초기화한다.');
+  } else {
+    add(step.seed,'이웃 선택',`원문 위치 i = ${step.i}의 순위는 ${step.r}. 바로 이전 행의 시작 위치 j = ${step.j}를 선택한다. 앞 ${step.seed}글자는 이미 일치함이 보장되므로 다시 비교하지 않는다.`);
+    for (let h=step.seed+1; h<=step.h; h++) {
+      add(h,'일치 확장',`S[${step.i+h-1}] = S[${step.j+h-1}] = ${d.text[step.i+h-1]}. 문자 하나를 새로 확인하여 h를 ${h-1}에서 ${h}로 증가시킨다.`);
+    }
+    const end = step.i+step.h === d.n || step.j+step.h === d.n;
+    add(step.h,'비교 종료',end
+      ? `한쪽 접미사가 끝에 도달했다. 더 긴 공통 접두사는 존재하지 않으므로 LCP는 ${step.h}. 끝 표시는 입력 문자나 sentinel이 아니다.`
+      : `S[${step.i+step.h}] = ${d.text[step.i+step.h]}, S[${step.j+step.h}] = ${d.text[step.j+step.h]}. 다음 문자가 다르므로 LCP는 ${step.h}.`);
+  }
+  result[step.r] = step.h;
+  add(step.h,'배열에 저장',`LCP[${step.r}]에 ${step.h} 저장. ${step.i === d.n-1 ? '모든 원문 위치를 처리했으므로 구성이 끝난다.' : `다음 원문 위치 i = ${step.i+1}에서는 h = ${step.next}부터 시작한다. 비교 상대 j는 새 순위에서 다시 찾는다.`}`);
+}
+---
+<div class="kc" id="lcp-construction" data-kasai-construction role="region" aria-labelledby="kc-title">
+  <header><span class="kc-eyebrow">LCP CONSTRUCTION · banana</span><h3 id="kc-title">한 글자씩 비교하며 LCP 배열 채우기</h3>
+    <p><Math tex={String.raw`i\ \longrightarrow\ r=\mathrm{rank}[i]\ \longrightarrow\ j=\mathrm{SA}[r-1]`} />. 원문 순서로 순회하되 결과는 사전순 순위에 저장.</p>
+  </header>
+  <div class="kc-controls" hidden data-kc-controls>
+    <button type="button" data-kc-prev disabled>이전 단계</button><button type="button" data-kc-next>다음 단계 →</button><button type="button" data-kc-reset>처음부터</button>
+    <span data-kc-progress aria-live="polite" aria-atomic="true">1 / {frames.length}</span>
+  </div>
+  <div class="kc-positions" hidden data-kc-controls aria-label="원문 위치별 계산으로 이동">
+    <span>원문 위치 i</span>{starts.map((frame,i)=><button type="button" data-kc-jump={frame} data-kc-i={i} aria-pressed={i===0}>{i}<small>{d.text[i]}</small></button>)}
+  </div>
+  <div class="kc-legend"><span><i class="reuse" />재사용 · 비교 생략</span><span><i class="fresh" />새로 확인한 일치</span><span><i class="pointer" />다음 비교 / 종료 위치</span></div>
+  {frames.map((f,index)=><div class="kc-frame" data-kc-frame={index} data-kc-position={f.i} hidden={index!==0}>
+    <div class="kc-stage"><strong>{f.phase}</strong><span><Math tex={String.raw`i=${f.i},\quad r=${f.r},\quad h=${f.h}`} /></span></div>
+    <p class="kc-note">{f.note}</p>
+    <div class="kc-grid">
+      <div class="kc-comparison">
+        <h4>접미사의 첫 문자를 나란히 맞춰 비교</h4>
+        {[f.i,f.j].filter(p=>p>=0).map((p,row)=><div class="kc-suffix">
+          <div class="kc-row-label">{row===0 ? '현재 접미사' : '사전순 이전 이웃'} <Math tex={String.raw`S[${p}\ldots N)`} /></div>
+          <div class="kc-letter-scroll" tabindex="0" role="region" aria-label={`위치 ${p}의 접미사와 문자 인덱스`}>
+            <div class="kc-letters">{[...d.text.slice(p),'끝'].map((c,k)=><div class:list={['kc-letter',{'reuse':k<f.seed,'fresh':k>=f.seed&&k<f.h,'pointer':f.r>0&&k===f.h,'kc-end':c==='끝'}]}><small>{p+k}</small><b>{c}</b></div>)}</div>
+          </div>
+        </div>)}
+        {f.j<0 && <p class="kc-empty">이전 이웃 없음 · 문자 비교 생략</p>}
+        <div class="kc-metrics"><span>재사용 <b>{f.seed}</b></span><span>추가 일치 <b>{f.h-f.seed}</b></span><span>현재 길이 <b>{f.h}</b></span></div>
+        <p class="kc-footnote">문자 위 숫자: 원문 인덱스. 두 접미사는 각각의 첫 문자부터 정렬. 밑줄은 아직 확인할 위치이며, 종료 단계에서는 불일치 또는 끝을 가리킨다.</p>
+      </div>
+      <div class="kc-array"><h4>사전순 배열 · 저장 위치 r</h4>
+        <table><thead><tr><th scope="col">r</th><th scope="col">SA[r]</th><th scope="col">접미사</th><th scope="col">LCP[r]</th></tr></thead><tbody>{d.sa.map((p,r)=><tr class:list={[{'kc-current':r===f.r,'kc-neighbor':r===f.r-1,'kc-written':r===f.r&&f.phase==='배열에 저장'}]} aria-label={r===f.r?'현재 접미사 · 저장할 행':r===f.r-1?'비교할 이전 이웃':undefined}><th scope="row">{r}{r===f.r&&<small>현재</small>}{r===f.r-1&&<small>이웃</small>}</th><td>{p}</td><td><code>{d.text.slice(p)}</code></td><td>{f.result[r]??'—'}</td></tr>)}</tbody></table>
+        <p class="kc-footnote">—: 아직 계산하지 않은 값. 첫 행은 정의상 0. 나머지 값은 해당 원문 위치의 계산이 끝날 때 기록.</p>
+      </div>
+    </div>
+    {f.phase==='배열에 저장'&&<div class="kc-store"><Math tex={String.raw`\mathrm{LCP}[${f.r}]=${f.h},\qquad h_{\mathrm{next}}=\max(${f.h}-1,0)=${f.next}`} /></div>}
+  </div>)}
+  <noscript><p>단계 조작에는 JavaScript가 필요하다. 아래의 계산 기록 표에서 모든 원문 위치의 결과를 확인할 수 있다.</p></noscript>
+</div>
+<script>
+  const root = document.querySelector<HTMLElement>('[data-kasai-construction]');
+  if(root) {
+    const frames = [...root.querySelectorAll<HTMLElement>('[data-kc-frame]')];
+    const previous = root.querySelector<HTMLButtonElement>('[data-kc-prev]')!;
+    const next = root.querySelector<HTMLButtonElement>('[data-kc-next]')!;
+    const progress = root.querySelector<HTMLElement>('[data-kc-progress]')!;
+    const jumps = [...root.querySelectorAll<HTMLButtonElement>('[data-kc-jump]')];
+    let current = 0;
+    function show(index:number) {
+      current = Math.max(0,Math.min(index,frames.length-1));
+      frames.forEach((frame,i)=>{frame.hidden=i!==current;});
+      previous.disabled=current===0; next.disabled=current===frames.length-1;
+      progress.textContent=`${current+1} / ${frames.length} · ${frames[current].querySelector('.kc-stage strong')!.textContent} · i = ${frames[current].dataset.kcPosition}`;
+      jumps.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.kcI===frames[current].dataset.kcPosition)));
+    }
+    root.querySelectorAll<HTMLElement>('[data-kc-controls]').forEach(el=>{el.hidden=false;});
+    previous.addEventListener('click',()=>show(current-1));
+    next.addEventListener('click',()=>show(current+1));
+    root.querySelector('[data-kc-reset]')!.addEventListener('click',()=>show(0));
+    jumps.forEach(button=>button.addEventListener('click',()=>show(Number(button.dataset.kcJump))));
+  }
+</script>
+<style>
+  .kc { margin:30px 0; padding:28px; border:1px solid #dbe2e9; border-radius:16px; background:#f8fafc; color:#23394c; scroll-margin-top:90px; }
+  .kc [hidden] { display:none !important; }
+  .kc-eyebrow { font-size:13px; color:#596979; letter-spacing:.08em; }
+  .kc h3 { margin:10px 0 12px; font-size:23px; word-break:keep-all; }
+  .kc h4 { margin:0 0 18px; font-size:16px; }
+  .kc header p { margin:0 0 22px; font-size:16px; }
+  .kc-controls { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+  .kc button { border:1px solid #c1ceda; border-radius:8px; background:#fff; color:#23394c; padding:10px 14px; font:inherit; font-size:14px; min-height:44px; cursor:pointer; }
+  .kc button:focus-visible { outline:3px solid #2372ac; outline-offset:3px; }
+  .kc button:disabled { opacity:.4; cursor:default; }
+  .kc [data-kc-next] { background:#226b9e; color:#fff; border-color:#226b9e; }
+  .kc-controls > span { font-size:14px; margin-left:auto; }
+  .kc-positions { display:flex; flex-wrap:wrap; align-items:center; gap:7px; margin:20px 0; }
+  .kc-positions > span { font-size:14px; margin-right:8px; }
+  .kc-positions button { display:flex; align-items:center; gap:9px; padding:8px 12px; }
+  .kc-positions button[aria-pressed=true] { border-color:#226b9e; background:#e8f2fa; }
+  .kc-positions small { font:14px ui-monospace,monospace; }
+  .kc-legend { display:flex; flex-wrap:wrap; gap:10px 18px; margin:22px 0; font-size:14px; }
+  .kc-legend > span { display:flex; align-items:center; gap:7px; }
+  .kc-legend i { width:16px; height:16px; border:1px solid #b3c2cf; border-radius:3px; }
+  .kc .reuse { background:#e1f1e7; color:#21613e; }
+  .kc .fresh { background:#e0edfc; color:#205d92; }
+  .kc .pointer { border-bottom:3px solid #b15a1c; }
+  .kc-stage { display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding-top:20px; border-top:1px solid #dbe2e9; }
+  .kc-stage > strong { font-size:18px; }
+  .kc-note { min-height:3.6em; font-size:16px; line-height:1.8; margin:12px 0 22px; }
+  .kc-grid { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:28px; }
+  .kc-suffix { margin:0 0 18px; }
+  .kc-row-label { margin:0 0 10px; font-size:14px; }
+  .kc-letter-scroll { overflow-x:auto; padding:2px 0 6px; }
+  .kc-letters { display:flex; gap:5px; width:max-content; }
+  .kc-letter { display:flex; flex-direction:column; align-items:center; min-width:34px; padding:5px 2px; border:1px solid #dbe2e9; border-radius:6px; background:white; }
+  .kc-letter small { font:12px ui-monospace,monospace; margin-bottom:8px; color:#5e6d7b; }
+  .kc-letter b { font:600 20px ui-monospace,monospace; }
+  .kc-end b { font-size:14px; font-family:inherit; }
+  .kc-metrics { display:flex; flex-wrap:wrap; gap:14px; margin:22px 0 12px; font-size:14px; }
+  .kc-metrics b { margin-left:6px; font-size:20px; }
+  .kc-footnote { margin:14px 0 0; font-size:14px; line-height:1.8; color:#566777; }
+  .kc-empty { padding:20px; border:1px dashed #bbc8d4; font-size:15px; }
+  .kc table { width:100%; border-collapse:collapse; font-size:14px; }
+  .kc th,.kc td { padding:10px 8px; text-align:left; border-bottom:1px solid #dbe2e9; }
+  .kc th small { display:block; font-size:12px; font-weight:400; }
+  .kc table code { background:transparent; padding:0; font-size:14px; }
+  .kc-current { background:#e0edfc; }
+  .kc-neighbor { background:#edf1f5; }
+  .kc-written td:last-child { background:#226b9e; color:#fff; font-weight:700; }
+  .kc-store { padding:18px 0 0; }
+  .kc-frame:not([hidden]) .fresh { animation:kc-reveal .25s ease-out; }
+  @keyframes kc-reveal { from { opacity:.3; } to { opacity:1; } }
+  @media (prefers-reduced-motion:reduce) { .kc-frame:not([hidden]) .fresh { animation:none; } }
+  @media (max-width:760px) { .kc-grid { grid-template-columns:1fr; } .kc { padding:18px; } .kc-controls > span { margin-left:0; width:100%; } .kc-positions > span { width:100%; } .kc-positions button { padding:8px; } .kc-note { min-height:0; } }
+</style>
