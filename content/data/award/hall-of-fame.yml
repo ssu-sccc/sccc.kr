@@ -1,0 +1,233 @@
+- name: 국제 대학생 프로그래밍 경시대회(ICPC)
+  type: team-hof
+  team:
+    - contest: 2024 ICPC World Finals
+      team: PS akgwi
+      member: edenooo, jhnah917, kyo20111
+      award: High Honor
+      scoreboard: https://scoreboard.icpc.global/2024/scoreboard/
+    - contest: 2023 ICPC World Finals
+      team: NLP
+      member: chansol, jhnah917, lobo_prix
+      award: Honorable Mention
+      scoreboard: https://icpc.global/worldfinals/scoreboard/2023/scoreboards/47/index.html
+    - contest: 2022 ICPC World Finals
+      team: LongestPathToWF
+      member: aeren, edenooo, kyo20111
+      award: High Honor
+      scoreboard: https://icpc.global/worldfinals/scoreboard/2023/scoreboards/46/index.html
+    - contest: 2026 ICPC Asia Pacific Championship
+      team: MWM
+      member: chleee, jms020820, m4ushold
+      award: Honorable Mention
+    - contest: 2024 ICPC Asia Pacific Championship
+      team: PS akgwi
+      member: edenooo, jhnah917, kyo20111
+      award: Silver Medal
+    - contest: 2024 ICPC Asia Pacific Championship
+      team: happihappi
+      member: chorogchip, egod1537, jhs030526
+      award: Honorable Mention
+    - contest: 2026 ICPC 타이중 리저널
+      team: MWM
+      member: chleee, jms020820, m4ushold
+      award: Silver Award
+    - contest: 2024 ICPC 타이중 리저널
+      team: wmw
+      member: jms020820, m4ushold, w8385
+      award: Bronze Award
+      scoreboard: https://hpc.asia.edu.tw/icpc2024/final-scoreboard/
+    - contest: 2023 ICPC 서울 리저널
+      team: PS akgwi
+      member: edenooo, jhnah917, kyo20111
+      award: 은상
+      scoreboard: http://static.icpckorea.net/2023/regional/scoreboard/
+    - contest: 2022 ICPC 서울 리저널
+      team: NLP
+      member: chansol, edenooo, jhnah917
+      award: 은상
+      scoreboard: http://static.icpckorea.net/20221119/scoreboard/
+    - contest: 2021 ICPC 서울 리저널
+      team: LongestPathToWF
+      member: aeren, edenooo, kyo20111
+      award: 동상
+      scoreboard: http://static.icpckorea.net/2021/scoreboard_regional/
+    - contest: 2020 ICPC 서울 리저널
+      team: 181920
+      member: aeren, edenooo, kyo20111
+      award: 동상
+      scoreboard: http://static.icpckorea.net/2020/scoreboard_terpin/
+    - contest: 2019 ICPC 서울 리저널
+      team: bonin 1st sangsang-ham
+      member: cake_monotone, edenooo, wookje
+      award: PUBG 특별상
+    - contest: 2018 ACM-ICPC 서울 리저널
+      team: Graduation Gazua!!!
+      member: hyo123bin, skdudn321, sys7961
+      award: 넥슨 특별상
+    - contest: 2017 ACM-ICPC 대전 리저널
+      team: Today_Is_YoungJeong_Birthday
+      member: hyo123bin, skdudn321, sys7961
+      award: 은상
+    - contest: 2016 ACM-ICPC 대전 리저널
+      team: BuzzerBeater
+      member: choiking10, sys7961, 황O영(12)
+      award: 동상
+      scoreboard: https://icpckorea.org/2016/REGIONAL/scoreboard.html
+    - contest: 2015 ACM-ICPC 대전 리저널
+      team: Coding_Amolang
+      member: sys7961, 박O우(11), 김O빈(14)
+      award: 동상
+      scoreboard: https://icpckorea.org/2015/REGIONAL/scoreboard.html
+    - contest: 2014 ACM-ICPC 대전 리저널
+      team: Snorlax
+      member: 조O석(08), 박O영(11), 황O영(12)
+      award: 동상
+      scoreboard: https://icpckorea.org/2014-daejeon/regional
+    - contest: 2013 ACM-ICPC 대전 리저널
+      team: 001_6 Jari_JooSeYo
+      member: 김O준(09), 박O준(11), 박O영(11)
+      award: 동상
+      scoreboard: https://icpckorea.org/2013-daejeon/regional
+    - contest: 2012 ACM-ICPC 대전 리저널
+      team: Mental_Overflow
+      member: 박O준(11), youngjeong_yu, 박O이(11)
+      award: 동상
+      scoreboard: https://icpckorea.org/2012-daejeon/regional
+    - contest: 2011 ACM-ICPC 대전 리저널
+      team: 001_6 Jari JooSeYo
+      member: 이O영(06), 박O진(10), 박O준(11)
+      award: 동상
+      scoreboard: https://soyoja.com/450
+    - contest: 2009 ACM-ICPC 서울 리저널
+      team: SCCC.BM
+      member: 박O진(07), 임O의(07), 지O섭(08)
+      award: 은상
+      scoreboard: https://soyoja.com/343
+    - contest: 2008 ACM-ICPC 서울 리저널
+      team: BM[at]SCCC
+      member: 박O진(07), 임O의(07), 지O섭(08)
+      award: 동상
+      scoreboard: https://icpc.global/regionals/finder/seoul-2009/standings
+    - contest: 2007 ACM-ICPC 서울 리저널
+      team: Inspiration
+      member: ""
+      award: 동상
+      scoreboard: https://soyoja.com/121
+    - contest: 2006 ACM-ICPC 서울 리저널
+      team: Jolly Jumpers
+      member: 김O훈(99), 송O욱(99), 문O미(04)
+      award: 은상
+      scoreboard: https://icpc.global/regionals/finder/seoul-2007/standings
+    - contest: 2005 ACM-ICPC 서울 리저널
+      team: KANG
+      member: 김O희(01), 한O람(02), 방O주(03)
+      award: 동상
+      scoreboard: https://icpc.global/regionals/finder/seoul-2006/standings
+    - contest: 2004 ACM-ICPC 서울 리저널
+      team: Dokebi bul
+      member: 성O준(99), 김O석(00), 김O희(01)
+      award: 은상
+      scoreboard: https://icpc.global/regionals/finder/seoul-2005/standings
+    - contest: 2003 ACM-ICPC 서울 리저널
+      team: MAWANG
+      member: 윤O섭(98), 김O희(01), 이O라(01)
+      award: 동상
+      scoreboard: https://icpc.global/regionals/finder/seoul-2004/standings
+    - contest: 2001 ACM-ICPC 대전 리저널
+      team: balloon
+      member: 안O원(96), 김O호(97), 김O훈(99)
+      award: 동상
+      scoreboard: https://icpc.global/regionals/finder/taejon-2002/standings
+
+- name: 삼성전자 대학생 프로그래밍 경진대회(SCPC)
+  type: personal-hof
+  team:
+    - contest: 2024 SCPC
+      name: jhnah917
+      award: 5등상
+      scoreboard: https://www.codeground.org/scpc/commons/honer/list
+    - contest: 2021 SCPC
+      name: kyo20111
+      award: 2등상
+      scoreboard: https://www.codeground.org/scpc/commons/honer/list
+    - contest: 2021 SCPC
+      name: edenooo
+      award: 5등상
+      scoreboard: https://www.codeground.org/scpc/commons/honer/list
+    - contest: 2020 SCPC
+      name: edenooo
+      award: 3등상
+      scoreboard: https://www.codeground.org/scpc/commons/honer/list
+    - contest: 2020 SCPC
+      name: aeren
+      award: 5등상
+      scoreboard: https://www.codeground.org/scpc/commons/honer/list
+    - contest: 2020 SCPC
+      name: kyo20111
+      award: 5등상
+      scoreboard: https://www.codeground.org/scpc/commons/honer/list
+    - contest: 2016 SCPC
+      name: sys7961
+      award: 5등상
+      scoreboard: https://www.codeground.org/scpc/commons/honer/list
+
+- name: 전국 대학생 프로그래밍 대회 동아리 연합 여름 대회(UCPC)
+  type: team-hof
+  team:
+    - contest: 2024 UCPC
+      team: 브론즈를풀면서300년모르는사이에레벨MAX가되었습니다
+      member: kyo20111
+      award: 4등상
+      scoreboard: https://www.acmicpc.net/contest/spotboard/1316
+    - contest: 2023 UCPC
+      team: BOJ 20000 Solve
+      member: edenooo, jhnah917, kyo20111
+      award: 4등상
+      scoreboard: https://www.acmicpc.net/contest/spotboard/1069
+    - contest: 2022 UCPC
+      team: 숭실사이버의대를다니고나의성공시대시작됐다
+      member: kyo20111
+      award: 5등상
+      scoreboard: https://www.acmicpc.net/contest/spotboard/827
+    - contest: 2021 UCPC
+      team: longest path to victory
+      member: aeren, edenooo, kyo20111
+      award: 4등상
+      scoreboard: https://www.acmicpc.net/contest/spotboard/670
+
+- name: Nexon Young Programmers Cup(NYPC)
+  type: team-hof
+  team:
+    - contest: 2026 NYPC
+      team: 따뜻한밥상
+      member: keyboardsmunji, molla12
+      award: 은상
+      scoreboard: https://new.nypc.co.kr/ko/rank/2026/master/finals?page=1
+
+- name: 현대모비스 알고리즘 경진대회
+  type: personal-hof
+  team:
+    - contest: 2023 현대모비스 알고리즘 경진대회
+      name: kyo20111
+      award: 우수상
+    - contest: 2023 현대모비스 알고리즘 경진대회
+      name: edenooo
+      award: 우수상
+    - contest: 2022 현대모비스 알고리즘 경진대회
+      name: edenooo
+      award: 우수상
+    - contest: 2022 현대모비스 알고리즘 경진대회
+      name: jhnah917
+      award: 우수상
+    - contest: 2021 현대모비스 알고리즘 경진대회
+      name: jhnah917
+      award: 5등상
+
+- name: 카카오 코드 페스티벌
+  type: personal-hof
+  team:
+    - contest: 2017 카카오 코드 페스티벌
+      name: sys7961
+      award: 6등상
+      scoreboard: https://t1.kakaocdn.net/codefestival/round-2-scoreboard/index.html
