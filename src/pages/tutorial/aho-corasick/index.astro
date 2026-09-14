@@ -15,7 +15,7 @@ import '../../../styles/tutorial.css';
 <BaseLayout title="아호-코라식 | Tutorial" description="다중 패턴 탐색의 동기, 직관, 형식적 정의와 개념별 정당성 증명. 실패 링크, 출력, 횟수 누적의 시각화와 C++ 구현.">
 <div class="tutorial"><div class="t-shell">
 <header class="t-hero"><TutorialBreadcrumbs slug="aho-corasick" /><h1>아호-코라식</h1><p>여러 패턴을 한 번의 본문 순회로 찾기.<br />후보 접미사의 압축에서 매칭의 완전성까지.</p><div class="t-meta"><span>동기 → 직관 → 정의 → 증명 → 활용</span><span>고정 사전 · 0-index · 빈 패턴 제외</span></div></header>
-<nav class="t-contents" aria-label="이 페이지 목차"><a href="#problem">동기와 직관</a><a href="#idea">Trie 정의</a><a href="#failure">실패 사슬</a><a href="#transition">상태 불변식</a><a href="#construction">BFS 구성</a><a href="#output">출력</a><a href="#count">횟수 누적</a><a href="#experiment">시각화</a><a href="#implementation">복잡도</a><a href="#practice">실행과 반례</a></nav>
+<nav class="t-contents" aria-label="이 페이지 목차"><a href="#problem">동기와 직관</a><a href="#idea">Trie 정의</a><a href="#failure">실패 사슬</a><a href="#transition">상태 불변식</a><a href="#construction">BFS 구성</a><a href="#output">출력</a><a href="#count">횟수 누적</a><a href="#experiment">시각화</a><a href="#implementation">복잡도</a><a href="#practice">실행 예제</a></nav>
 <AhoFoundations />
 <section id="idea" class="t-section"><span class="t-number">01 / DEFINITION → PROOF</span><h2>1. Trie: 후보를 저장하는 공간</h2>
 <p class="t-intuition"><strong>직관.</strong> 앞으로 패턴이 될 수 있는 문자열만 남긴다. 서로 같은 접두사는 하나의 상태를 공유하고, 패턴이 끝나는지 여부는 자식의 유무와 별도로 기록한다.</p>
@@ -46,6 +46,6 @@ import '../../../styles/tutorial.css';
 <section id="implementation" class="t-section"><span class="t-number">08 / COST MODEL → PROOF</span><h2>8. 복잡도: 어떤 연산을 세는가</h2><p>문자·정수의 비교와 배열 접근은 <Math tex={String.raw`O(1)`} />, 출력 callback 한 건은 <Math tex={String.raw`O(1)`} />인 RAM 모델을 사용한다. Z는 중복 ID와 겹치는 매칭까지 포함한 실제 결과 수이다. 결과를 저장하면 <Math tex={String.raw`O(Z)`} /> 공간이 별도로 필요하다. 빈 사전은 구현에서 허용하지만 아래 선형 표기의 <Math tex={String.raw`M\ge K`} /> 전제는 비어 있지 않은 패턴 목록을 기준으로 한다.</p>
 <AhoProofs ids={[7]} /><p class="t-note">큰 알파벳에서 맵을 쓰면 lookup과 전처리 비용을 다시 분석해야 한다. 화면은 학습을 위해 문자열·방문값·출력을 복사하므로, 애니메이션 프로그램 전체가 이 시간·공간 상계로 동작한다고 주장하지 않는다.</p></section>
 <AhoPractice />
-<footer class="t-sources"><p>원전: <a href="https://doi.org/10.1145/360825.360855" target="_blank" rel="noreferrer">Aho & Corasick (1975), Efficient String Matching, CACM 18(6), 333–340</a>. 이 강의는 정의·정리·증명을 교육용 표기와 구현에 맞춰 서술한다. 예제 검산은 일반 입력에 대한 증명을 대신하지 않는다.</p><p><a href="/tutorial/suffix-array-lcp/">다음: Suffix Array · LCP →</a></p><p><a href="/tutorial/category/string/">문자열 튜토리얼 목록으로 돌아가기 →</a></p></footer>
+<footer class="t-sources"><p>원전: <a href="https://doi.org/10.1145/360825.360855" target="_blank" rel="noreferrer">Aho & Corasick (1975), Efficient String Matching, CACM 18(6), 333–340</a></p><p><a href="/tutorial/suffix-array-lcp/">다음: Suffix Array · LCP →</a></p><p><a href="/tutorial/category/string/">문자열 튜토리얼 목록으로 돌아가기 →</a></p></footer>
 </div></div><script>import '../../../scripts/tutorial/aho';</script>
 </BaseLayout>
