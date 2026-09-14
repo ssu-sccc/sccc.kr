@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { categories, categoryUrl, tutorialsFor } from '../../lib/tutorial/catalog.mjs';
+import '../../styles/tutorial.css';
+---
+<BaseLayout title="Tutorial" description="수학, 그래프, DP, 자료구조, 문자열, 기하학, 그리디. 카테고리별 SCCC 알고리즘 튜토리얼.">
+  <div class="tutorial"><div class="t-shell">
+    <header class="t-directory-header"><p class="t-kicker">SCCC / TUTORIAL</p><h1>알고리즘 튜토리얼</h1><p>학습할 카테고리 선택.</p></header>
+    <nav aria-label="튜토리얼 카테고리" class="t-category-grid">
+      {categories.map((category, i) => {
+        const count = tutorialsFor(category.slug).length;
+        return <a class="t-category-card" href={categoryUrl(category.slug)}>
+          <div class="t-category-meta"><span>{String(i + 1).padStart(2, '0')}</span><span>{category.english}</span></div>
+          <h2>{category.title}</h2><p>{category.description}</p>
+          <div class="t-category-bottom"><span>{count ? `튜토리얼 ${count}편` : '등록된 튜토리얼 없음'}</span><span aria-hidden="true">→</span></div>
+        </a>;
+      })}
+    </nav>
+  </div></div>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import Math from './Math.astro';
+import CppCode from './CppCode.astro';
+import queries from '../../lib/tutorial/cpp/suffix-query.cpp?raw';
+import example from '../../lib/tutorial/cpp/suffix-example.cpp?raw';
+---
+<section id="practice" class="t-section t-proofs">
+  <span class="t-number">09 / IMPLEMENTATION</span><h2>9. 질의 구현과 실행 예제</h2>
+  <h3>SA와 LCP를 실제 질의 함수로 연결하기</h3>
+  <p>아래 코드는 앞의 suffix_array와 lcp_array를 사용한다. SparseMin은 반열린 구간의 최솟값을 구하고, SuffixIndex는 문자열과 SA·rank·LCP·RMQ를 함께 보관한다. RMQ의 빈 구간과 범위를 벗어난 위치는 예외로 거절한다.</p>
+  <CppCode code={queries} filename="suffix-query.cpp" />
+  <div class="t-overflow" tabindex="0" aria-label="질의 API와 복잡도"><table class="t-table"><thead><tr><th>연산</th><th>반환값 / 조건</th><th>비용</th></tr></thead><tbody><tr><td>lcp_suffix(i,j)</td><td>두 비어 있지 않은 접미사의 LCP</td><td><Math tex={String.raw`O(1)`} /></td></tr><tr><td>compare_substrings(l1,r1,l2,r2)</td><td>반열린 두 구간 비교 −1 / 0 / 1, 빈 구간 허용</td><td><Math tex={String.raw`O(1)`} /></td></tr><tr><td>pattern_range(p)</td><td>일치하는 SA 순위 구간 <Math tex={String.raw`[\mathrm{left},\mathrm{right})`} />, 빈 패턴 제외</td><td><Math tex={String.raw`O(|p| \log (N+1))`} /></td></tr></tbody></table></div>
+  <p>이 구현 전체의 전처리는 비교 정렬 Doubling 때문에 <Math tex={String.raw`O(N \log ^{2}N)`} />, 저장 공간은 Sparse Table 때문에 <Math tex={String.raw`O(N \log  N)`} />이다<Math tex={String.raw`(N\ge 2)`} />. SA·LCP만 만들 때의 <Math tex={String.raw`O(N)`} /> 공간과 구별한다. 패턴의 등장 위치 K개를 나열하면 추가 <Math tex={String.raw`O(K)`} />, 그 위치들을 원문순으로 정렬하면 추가 <Math tex={String.raw`O(K \log  K)`} />이다.</p>
+  <h3>네 파일을 연결한 실행 예제</h3>
+  <p>앞의 <code>suffix-array.cpp</code>, <code>kasai.cpp</code>, <code>suffix-query.cpp</code>와 아래 파일을 같은 폴더에 둔다. <code>c++ -std=c++17 -O2 suffix-example.cpp -o suffix</code>로 컴파일한다. 다른 세 파일은 예제 파일에 포함되므로 별도 번역 단위로 함께 컴파일하지 않는다.</p>
+  <CppCode code={example} filename="suffix-example.cpp" />
+  <figure class="ac-figure"><figcaption>표준 출력 · <Math tex={String.raw`[1,4)`} />와 <Math tex={String.raw`[3,6)`} />은 둘 다 ana</figcaption><pre class="ac-stdout">SA: 5 3 1 0 4 2
+rank: 3 2 5 1 4 0
+LCP: 0 1 3 0 0 2
+lcp(1,3): 3
+compare [1,4), [3,6): 0
+ana positions (SA order): 3 1
+distinct: 15
+longest repeated: 3</pre></figure>
+</section>

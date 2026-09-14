@@ -1,135 +1,110 @@
 ---
 layout: contest
-title: ICPC 참가 신청 안내
+title: 2026 ICPC 참가 신청 안내
+description: 2026 ICPC 서울 지역 대회 신청 일정, 참가 자격, 코치 등록, 서약서와 숭실대학교 슈패스 신청 안내.
 permalink: /icpc-guide/
 ---
 
-# 2025 ICPC 참가 신청 안내
+2026 ICPC 서울 지역 대회에 참가하는 숭실대학교 학생을 위한 가이드입니다. **확인 기준: 2026년 9월 14일 · 모든 시간은 한국 표준시(KST).** 일정과 요건이 변경되면 아래 공식 공지를 우선 확인하세요.
 
-<!-- 주석으로 @TODO가 붙어있는 부분은 매년 수정해야 합니다. -->
+> **마감 시간이 다릅니다.** ICPC 등록·서약서는 **9월 22일(화) 17:00**, 교내 슈패스 신청은 **같은 날 20:00**까지입니다. 슈패스 신청만으로 ICPC 등록이 완료되지는 않습니다. [ICPC 등록 공지](https://icpckorea.org/archives/3467) · [숭실대 공지](https://cse.ssu.ac.kr/bbs/board.php?bo_table=notice&wr_id=4971)
 
-<!-- @TODO 연도/일정/장소 수정하기 -->
-2025 ICPC 서울 지역 대회 일정은 다음과 같습니다.
-* 참가 신청: 9/8(월) 09:00 ~ 9/23(화) 17:00
-* 예선 예비소집: 10/10(금), 시간은 추후 공지 예정
-* 예선 대회: 10/11(토) 14:00 ~ 17:00 (3시간)
-* 본선 예비소집: 11/21(금), 시간은 추후 공지 예정
-* 본선 대회: 11/22(토) 09:00 ~ 19:00 (대회 5시간)
+## 대회 일정
 
-예선은 숭실대학교 정보과학관 205호, 본선은 TBA에서 진행합니다.
+| 구분 | 2026년 일정 | 진행 내용 |
+| --- | --- | --- |
+| 참가 접수 | 9. 7.(월) 09:00 ~ 9. 22.(화) 17:00 | 본부 등록 및 서류 제출 |
+| 예선 사전 안내 | 10. 16.(금) 18:00 ~ 19:00 | 시스템·유의사항 안내 |
+| 온라인 예선 | 10. 17.(토) 14:00 ~ 17:00 | 3시간 경시 |
+| 본선 사전 등록·연습 | 11. 13.(금) 13:30 ~ 17:00 | 현장 등록·안내·연습 |
+| 본선 | 11. 14.(토) 08:00 ~ 19:30 | 경시 10:00 ~ 15:00 예정, 이후 심사·시상 |
 
-<!-- @TODO 매년 공지 링크 수정하기 -->
-대회 참가 신청 안내 페이지(ICPC): [https://icpckorea.org/archives/3262](https://icpckorea.org/archives/3262)
+본선 장소는 **일산 킨텍스 제2전시장 4층**입니다. 숭실대 예선 고사실은 교내 후속 안내를 확인하세요. 과거 가이드의 고사실을 올해 장소로 확정하지 않습니다. 상세 일정은 [2026 공식 대회개요](https://seoul2026.icpckorea.org/22), 날짜·장소는 [ICPC Korea](https://icpckorea.org/)에서 확인할 수 있습니다.
 
-추가로, 숭실대학교 IT대학 소속 학생으로만 구성된 팀은 **2025년도 숭실대학교 IT대학생 프로그래밍 경진대회**에 따른 장학금을 받을 수 있습니다. 9월 10일 17시 부터 아래 링크(슈패스)에서 신청할 수 있습니다.
+접수 시작은 09:00이지만, ICPC Global의 팀 생성 페이지 개방 시각은 9월 7일 **12:00**으로 별도 안내되어 있습니다. [등록 공지](https://icpckorea.org/archives/3467)
 
-슈패스: [신청하기](https://path.ssu.ac.kr/ptfol/imng/icmpNsbjtPgm/findIcmpNsbjtPgmInfo.do?encSddpbSeq=28bc2032b4cd04082284ead106c6c88d&paginationInfo.currentPageNo=1)
+## 1. 팀 구성과 참가 자격 확인
 
-등록 과정이 여러 단계로 구성되어 있습니다. 각 단계마다 필요한 정보를 입력하지 않았거나 사이트 오류 등의 이유로 입력한 정보가 저장되지 않아 accept되지 않고 pending으로 남아있는 경우가 자주 발생하니, 여유를 두고 미리 신청을 시작해 주시길 바랍니다.
+### ICPC Global의 2026/27 시즌 기준
 
-<!-- @TODO 회장 이름 수정 -->
-등록 과정 중 어려움이 있으면 회장(22 조문성)에게 디스코드 DM 등으로 연락 바랍니다.
+서울 2026 대회에 적용할 규정은 **2026/27 Regional Rules**입니다. 2026 World Finals 규정과 혼동하지 마세요.
 
-## 1. (팀원 모두) icpc.global 사이트 회원 가입
+- 같은 대학의 학생 **3명**과 코치 **1명**으로 구성합니다. 코치는 참가자를 겸할 수 없습니다.
+- 학생은 해당 대학의 학위과정에 최소 half-time 학업량으로 등록해야 합니다. 교환·인턴 등에는 별도 해석이 적용됩니다.
+- World Finals에 출전할 의사와 능력이 필요하며, 해당자는 개최국 입국과 소속 대학 소재지 복귀에 필요한 비자도 확보할 수 있어야 합니다.
+- 기본 요건을 충족하면서 **고등교육기관 최초 입학이 2022년 이후 또는 출생연도가 2003년 이후**이면 일반적인 자격 기간 조건을 충족합니다. 두 조건을 모두 요구하는 것은 아닙니다.
+- 같은 시즌에는 하나의 대학 소속으로만 출전할 수 있습니다.
+- World Finals 2회 참가자는 제한됩니다. 첫 qualifying contest가 2026 Dubai World Finals보다 앞서면, 그 Finals 진출이 확정된 학생도 참가한 것으로 계산합니다.
+- 서로 다른 시즌의 qualifying regional contest에 이미 5년 참가했다면 원칙적으로 제한됩니다. 단, **2026/27에는 기존 참가가 정확히 5년이고 STEM 전일제 학업 이수가 8학기 상당 이하**인 경우의 예외가 있습니다.
+- 자격 판정일은 첫 qualifying contest 날짜입니다. 그 날짜가 2026년 10월 1일 이후이고 학생에게 유리하면 10월 1일을 적용합니다.
+- 자격 기간 연장이 필요하면 코치가 대회 최소 3주 전까지 [eligibility@icpc.global](mailto:eligibility@icpc.global)에 신청합니다. 휴학·군 복무가 자동 승인을 뜻하지는 않습니다.
 
-ICPC 대회 참가를 희망하는 모든 학생은 [icpc.global](https://icpc.global)에 가입해야 합니다. 가입하신 분들은 개인정보를 갱신해야 하니 (2)로 이동해서 안내를 따라주시면 됩니다.
+위 내용은 요약이며, 최종 판단은 [ICPC Global Regional Rules](https://icpc.global/regionals/rules)를 따릅니다.
 
-먼저 사이트 우측 상단에 있는 **SIGN UP** 버튼을 클릭한 다음, 이메일과 비밀번호를 입력해 회원가입을 진행합니다.
-<img src="/assets/images/icpc-guide/01-1.PNG" width="60%" style="display: block; margin: 0 auto;">
+### 한국 예선과 본선의 구분
 
-입력하신 이메일로 발송된 코드를 입력하시면
-<img src="/assets/images/icpc-guide/01-2.PNG" width="60%" style="display: block; margin: 0 auto;">
+**본선 자격이 부족해도 예선 참가는 가능**하지만, 본선 진출에는 자격 충족과 서약서의 해당 확인 항목이 필요합니다. [ICPC Korea 등록 공지](https://icpckorea.org/archives/3467)
 
-회원 가입이 정상적으로 진행되어서 로그인을 할 수 있습니다.
-<img src="/assets/images/icpc-guide/01-3.PNG" width="60%" style="display: block; margin: 0 auto;">
+한국 운영본부의 [2026 FAQ](https://seoul2026.icpckorea.org/15)도 함께 확인하세요.
 
-로그인을 한 다음 이름, 거주지, 소속 학교 등을 입력하면 회원 가입 과정을 완료할 수 있습니다. 학교 이름은 Soongsil을 입력하면 학교를 선택할 수 있는 버튼이 나옵니다.
-<img src="/assets/images/icpc-guide/01-4.PNG" width="60%" style="display: block; margin: 0 auto;">
+- 본선 예비소집일에 휴학 중이면 본선 진출이 불가능합니다. 승인 후 휴학이 확정되어도 사전에 본부에 알려야 합니다.
+- 편입생의 최초 입학일은 편입 전 고등교육기관 입학일부터 계산합니다. 전문대학 입학도 포함됩니다.
+- 군 복무 유예는 현역 4학기·보충역 6학기까지 안내되어 있으며, 군휴학 증명서와 병적증명서 제출이 필요합니다.
+- 6년차 참가 예외에는 이수 학기를 확인할 성적증명서 등이 필요합니다.
+- 예선에 참가한 뒤에는 팀원을 바꿀 수 없습니다. 등록된 예비 참가자도 첫 qualifying contest 이전에만 교체할 수 있습니다.
 
-## 2. (팀원 모두) 개인 정보 입력
+**자료 간 표현이 다른 경우:** 한국 FAQ의 대학원생 문항에는 출생연도가 “2003년 이전”으로 적혀 있어 Global의 “2003년 이후” 조건과 차이가 있습니다. 대학원생 등 이 문항에 해당하는 경우 임의로 자격을 판단하지 말고 [한국 운영본부](mailto:acmicpc@icpckorea.org)에 확인하세요.
 
-회원 가입을 완료한 후에 로그인하면 다음과 같은 화면을 볼 수 있습니다. 우측 상단에 있는 이메일(or 이름)을 클릭한 다음 Profile을 클릭합니다.
-<img src="/assets/images/icpc-guide/02-1.PNG" width="60%" style="display: block; margin: 0 auto;">
+## 2. 팀원 모두 — 계정과 Profile 준비
 
-*이 붙어있는 모든 항목을 채운 다음 **SAVE** 버튼을 클릭하면 됩니다. 가끔씩 저장이 제대로 되지 않는 경우가 있으니, 저장한 다음 새로고침을 해서 정상적으로 저장되었는지 확인해 주시길 바랍니다.
-<img src="/assets/images/icpc-guide/02-2.PNG" width="60%" style="display: block; margin: 0 auto;">
+각자 [ICPC Global](https://icpc.global/)에 가입·로그인하고, Profile의 필수 항목을 실제 정보로 작성하세요. 이름·명찰 이름, 소속, 학위, 연락처를 확인하고 저장합니다. 기존 참가자도 다시 점검해야 합니다. 모두 준비되면 코치에게 등록을 요청합니다. [공식 등록 절차](https://icpckorea.org/archives/3467)
 
-이런 식으로 채우면 됩니다. School/Institution은 *이 붙어있진 않지만 입력해야 합니다. Company와 Special Needs는 .만 입력해도 됩니다.
-<img src="/assets/images/icpc-guide/02-3.PNG" width="60%" style="display: block; margin: 0 auto;">
+입력 후 화면을 다시 열어 저장 여부를 확인하세요. 필수 항목을 마침표 등 임의의 값으로 채우거나, 다른 사람의 비밀번호를 전달받아 대신 로그인하지 마세요.
 
-## 3. (팀장) 대회 신청
+## 3. 코치 교수 — 팀 등록
 
-<!-- @TODO 일괄 신청 규칙 바뀌면 수정하기 -->
-2025년에는 아래 세 가지 조건을 모두 만족하는 팀은 SCCC 회장이 지도 교수를 구해서 한 번에 신청합니다. 단, icpc.global 에서의 신청만 대신 하는 것이므로, 슈패스에서는 팀장이 직접 신청해야 합니다.
+**학생이 아니라 코치 교수가 직접** [서울 예선 등록 페이지](https://icpc.global/regionals/finder/Seoul-First-Round)에서 팀을 생성합니다. Create Team을 이용한다면 Asia Pacific에서 **2027 Championship → 2026 Seoul Regional → 2026 Korea National First Round**에 해당하는 예선을 선택하세요. 소속과 참가자 3명을 확인합니다.
 
-1. 컴퓨터학부 학생이면서 SCCC 소속인 학생 1명 이상
-2. 컴퓨터학부 학생 2명 이상
-3. SCCC 소속 2명 이상
+팀명은 **인쇄 가능한 ASCII 3~24자**, 앞뒤 공백 없이 정합니다. 학교명·약칭 및 부적절한 표현은 피하세요. [등록·팀명 규정](https://icpckorea.org/archives/3467)
 
-<!-- @TODO 구글폼 링크 수정하기 -->
-위 조건을 모두 만족하는 팀은 구글 설문([링크](https://forms.gle/gJNpKkiyB4DrZtX89))을 제출하시고, 회장이 팀장에게 참가 신청이 완료되었다고 연락을 할 때까지 회장을 괴롭힙니다. 회장이 수시로 확인해서 팀 등록을 합니다.
+## 4. 팀 대표 — 서약서 제출
 
-그렇지 않은 경우, 지도 교수를 구해서 직접 참가 신청을 하셔야 합니다. 지도 교수님께 icpc.global 계정을 받아서 로그인한 다음, 아래 안내에 따라 팀을 생성하셔야 합니다.
+팀이 생성된 것을 확인한 뒤, 대표 학생 1명이 [2026 대회 홈페이지](https://seoul2026.icpckorea.org/)에서 서약서와 필요한 증빙을 **팀당 1회** 제출합니다. **Accepted를 기다린 뒤 제출하는 순서가 아닙니다.** [공식 등록 절차](https://icpckorea.org/archives/3467)
 
-### 3-1. (팀장) 직접 참가 신청
+자격 판단 흐름은 공지에 연결된 [2026 Eligibility Decision Tree](https://drive.google.com/file/d/1En2UuD8I466pwgFOQ8yswGT2rGlKBf6i/view)도 참고하세요. 개별 예외는 한국 운영본부의 안내와 승인 여부를 확인한 뒤 답변하세요.
 
-**참가자 계정이 아닌 지도 교수 계정으로 진행해야 합니다!!!**
+## 5. 등록 상태 확인
 
-<!-- @TODO select year 수정하기 -->
-로그인하면 나오는 Dashboard 화면에서 대회 연도가 2025-2026인지 확인하고 **CREATE TEAM** 버튼을 누릅니다.
-<img src="/assets/images/icpc-guide/03-1.PNG" width="60%" style="display: block; margin: 0 auto;">
+팀 등록과 서약서 제출이 확인되면 본부가 순차적으로 승인하고, 상태가 **Pending → Accepted**로 바뀝니다. Pending이 이어져도 별도 연락이 없다면 심사를 기다리면 됩니다. [등록 공지](https://icpckorea.org/archives/3467)
 
-<!-- @TODO 혹시 리전 색깔 바뀌면 수정하기 -->
-보라색으로 표시되어 있는 아시아 태평양 지역을 클릭합니다.
-<img src="/assets/images/icpc-guide/03-2.PNG" width="60%" style="display: block; margin: 0 auto;">
+한국 FAQ는 마감 이후까지 Pending일 수 있다고 설명합니다. 먼저 **서약서 제출 여부, 소속 대학명, 최초 입학연월**을 점검하고 코치·대표 이메일의 보완 요청을 확인하세요. [Pending 관련 FAQ](https://seoul2026.icpckorea.org/15)
 
-The 2025 ICPC Asia Seoul Regional Contest > The 2025 ICPC Asia Korea National First Round Programming Contest > Asia Seoul National First Round Programming Contest를 선택합니다.
-<img src="/assets/images/icpc-guide/03-3.PNG" width="60%" style="display: block; margin: 0 auto;">
+## 6. 숭실대학교 — 슈패스 별도 신청
 
-소속이 Soongsil University로 되어 있는지 확인한 다음 팀 이름과 팀원을 작성합니다. 팀원은 이름을 입력하고 잠시 기다리면 선택할 수 있는 버튼이 나옵니다. 마지막으로 **REGISTER TEAM(S)** 버튼을 클릭하면 됩니다.
-<img src="/assets/images/icpc-guide/03-4.PNG" width="60%" style="display: block; margin: 0 auto;">
+교내대회 참가자는 ICPC 등록과 별도로 [슈패스](https://path.ssu.ac.kr/)에서 **숭실대학교 IT대학생 프로그래밍 경진대회**를 검색하세요.
 
-## 4. 추가 개인정보 업데이트
+- 신청 기간: **9월 9일(수) 10:00 ~ 9월 22일(화) 20:00**.
+- **팀장을 포함한 3명 전원**이 모든 항목을 작성해야 합니다. 선착순 40팀이며, 한 명이라도 미등록이면 참가할 수 없습니다.
+- 대상은 IT대학·AI대학 소속 3인 팀입니다. 혼합팀은 공식 예시상 **2명 이상이 속한 대학의 대회**에 신청합니다. 공지의 “3/2” 표기는 예시에 맞춰 설명한 것입니다.
+- 컴퓨터학부 학생의 지도교수 섭외는 **조은상 교수님([escho@ssu.ac.kr](mailto:escho@ssu.ac.kr))**께 연락하도록 안내되어 있습니다.
+- 슈패스 미신청자는 교내 장학금을 받을 수 없습니다. 교내대회에 신청하지 않고 개인 참가하는 경우, 교내 대회장을 이용할 수 없고 코치도 별도로 섭외해야 합니다.
+- 1~3등은 전원 재학 요건이 있습니다. 휴학생이 포함되면 4등으로 조정되며, 전원이 휴학생이면 장학금 지급이 불가능합니다. 세부 금액은 원문을 확인하세요.
 
-**작년에 참가하셨던 분들도 추가 항목이 생겼을 수 있으니 다시 한번 확인해 주시길 바랍니다.**
+근거: [2026년도 숭실대학교 IT대학생 프로그래밍대회 참가 안내](https://cse.ssu.ac.kr/bbs/board.php?bo_table=notice&wr_id=4971).
 
-팀 등록이 완료되어서 PENDING 상태가 된 이후에 다시 프로필에 들어가면 다음과 같은 새로운 탭 3개를 볼 수 있습니다. (PASSPORT & VISA는 무시하세요.)
-<img src="/assets/images/icpc-guide/04-1.PNG" width="60%" style="display: block; margin: 0 auto;"><br>
-<img src="/assets/images/icpc-guide/04-2.PNG" width="60%" style="display: block; margin: 0 auto;"><br>
-<img src="/assets/images/icpc-guide/04-3.PNG" width="60%" style="display: block; margin: 0 auto;">
+이전 가이드의 SCCC 일괄 신청 조건·2025 구글폼·과거 슈패스 직접 링크는 올해 신청에 사용하지 않습니다. SCCC 내부 지원 절차는 [official.sccc@gmail.com](mailto:official.sccc@gmail.com)으로 문의하세요.
 
-DEGREE INFO, CONTACT INFO, EXTRA FIELDS를 위 사진과 비슷한 형식으로 모두 채워주시면 됩니다. EXTRA FIELDS가 없는 경우에는 채우지 않아도 됩니다. 전화번호는 본인의 휴대폰 번호가 010-1234-5678이면 +82-10-1234-5678 형태로 적어야 합니다. Home airport code는 ICN(인천공항)을 입력하면 됩니다.
+## 대회 준비와 문의
 
-## 5. Accept 될 때까지 기다리기
-PENDING이 ACCEPTED로 바뀔 때까지 기다리면 됩니다. 입력하지 않은 필드가 있는 경우에는 icpc.global 에 가입한 메일로 연락이 올 수 있으니 메일을 자주 확인해 주시길 바랍니다.
+팀노트 분량, 반입 장비, 허용 언어·IDE·AI 기능은 **2026년 해당 라운드의 경시 규칙**을 확인하세요. 과거의 “A4 단면 25페이지” 안내를 올해 규칙으로 단정하지 않습니다.
 
-PENDING이 ACCEPTED로 바뀌면 등록이 완료된 것입니다.
+기존 학습용 팀노트 링크는 유지합니다. 아래 자료가 그대로 대회장 반입 가능한 분량·형식이라는 뜻은 아닙니다.
 
-## 6. 서약서 작성
+- [justiceHui — 입문용 팀노트](https://github.com/justiceHui/icpc-teamnote-for-newbie)
+- [justiceHui — 팀노트](https://github.com/justiceHui/icpc-teamnote)
+- [green5555 — Teamnote archive](https://github.com/green5555/Teamnote-archive)
+- [ntopia — 팀노트](https://github.com/ntopia/icpc-teamnote)
+- [zigui — 팀노트](https://zigui.tistory.com/5)
+- [KACTL](https://github.com/kth-competitive-programming/kactl/blob/main/kactl.pdf)
 
-**SCCC에서 일괄 참가 신청을 했더라도, 서약서는 팀장이 직접 제출해야 합니다.**
-
-<!-- @TODO 매년 공지 링크 수정하기 -->
-대회 참가 신청 안내 페이지([https://icpckorea.org/archives/3262](https://icpckorea.org/archives/3262))의 안내에 따라 서약서를 작성해서 제출해야 합니다.
-
-## 7. 슈패스(ssupath) 신청
-
-**SCCC에서 일괄 참가 신청을 했더라도, 슈패스(ssupath)에서는 팀장이 직접 신청해야 합니다.**
-숭실대학교 IT대학 프로그래밍대회는 ICPC 온라인 예선을 겸하여 개최됩니다. 
-ICPC 성적으로 교내 장학금을 받기 위해서는 슈패스에서 신청해야 합니다.
-
-슈패스: [신청하기](https://path.ssu.ac.kr/ptfol/imng/icmpNsbjtPgm/findIcmpNsbjtPgmInfo.do?encSddpbSeq=28bc2032b4cd04082284ead106c6c88d&paginationInfo.currentPageNo=1)
-
-
-## 대회 팁
-
-ICPC는 미리 인쇄된 A4 단면 25페이지 이하의 문서(팀노트)를 대회 중에 사용할 수 있습니다. 주로 외우기 어렵거나 실수하기 쉬운 알고리즘 구현이나 수학 공식을 적어 갑니다. 아래 링크를 참고하시길 바랍니다. ☆ 개수는 난이도를 의미합니다.
-
-* ☆ [https://github.com/justiceHui/icpc-teamnote-for-newbie](https://github.com/justiceHui/icpc-teamnote-for-newbie)
-* ☆☆☆ [https://github.com/justiceHui/icpc-teamnote](https://github.com/justiceHui/icpc-teamnote)
-* ☆☆ [https://github.com/green5555/Teamnote-archive](https://github.com/green5555/Teamnote-archive)
-* ☆☆ [https://github.com/ntopia/icpc-teamnote](https://github.com/ntopia/icpc-teamnote)
-* ☆☆☆ [https://zigui.tistory.com/5](https://zigui.tistory.com/5)
-* ☆☆☆ [https://github.com/kth-competitive-programming/kactl/blob/main/kactl.pdf](https://github.com/kth-competitive-programming/kactl/blob/main/kactl.pdf)
-
-일반적으로 ICPC 본선 등 대회장에서 오프라인으로 진행하는 대회의 경우, 팀노트와 개인 키보드 같은 대회장에 들고 갈 물품은 예비소집 때 제출해야 합니다. 까먹지 말고 꼭 예비소집에 가져가시길 바랍니다. 종이로 된 영어사전을 지참할 수 있는 대회도 있습니다. 영어사전 사용 가능 여부가 대회 안내 페이지에 나와있지 않은 경우에는 대회 본부에 메일로 문의한 뒤 가져가는 것을 권장합니다.
+대회 등록·자격 문의는 [공식 FAQ](https://seoul2026.icpckorea.org/15), 대회 홈페이지의 1:1 문의 또는 [acmicpc@icpckorea.org](mailto:acmicpc@icpckorea.org)를 이용하세요. 코치 계정 정보나 개인 증빙은 공개 게시판에 올리지 마세요.

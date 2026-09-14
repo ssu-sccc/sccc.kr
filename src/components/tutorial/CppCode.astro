@@ -1,0 +1,11 @@
+---
+import { Code } from 'astro:components';
+interface Props { code: string; filename: string; }
+const { code, filename } = Astro.props;
+---
+<figure class="t-editor">
+  <figcaption><span>{filename}</span><span>C++17</span></figcaption>
+  <div class="t-editor-body" tabindex="0" aria-label={`${filename} C++ 코드. 가로 스크롤 가능`}>
+    <Code code={code.trim()} lang="cpp" theme="github-dark" />
+  </div>
+</figure>

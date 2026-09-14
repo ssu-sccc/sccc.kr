@@ -1,0 +1,22 @@
+---
+import Math from './Math.astro';
+import CppCode from './CppCode.astro';
+import exampleCode from '../../lib/tutorial/cpp/aho-example.cpp?raw';
+---
+<section id="practice" class="t-section t-proofs">
+  <span class="t-number">09 / IMPLEMENTATION</span><h2>9. 코드 연결과 실행 예제</h2>
+  <h3>자료구조의 필드와 의미</h3>
+  <div class="t-overflow" tabindex="0" aria-label="C++ 필드 설명"><table class="t-table"><thead><tr><th>필드</th><th>보관하는 정보</th></tr></thead><tbody><tr><td>t[v].next[c]</td><td>Trie의 자식 번호. 없으면 −1.</td></tr><tr><td>t[v].go[c]</td><td>문자 c를 소비한 뒤의 상태 번호. 항상 존재.</td></tr><tr><td>t[v].fail / out</td><td>최장 proper suffix / 가장 가까운 terminal 실패 조상.</td></tr><tr><td>t[v].terminal</td><td>이 노드에서 정확히 끝나는 패턴 ID들. 조상 ID는 복사하지 않음.</td></tr><tr><td>end[id], length[id]</td><td>패턴 끝 노드와 패턴 길이.</td></tr><tr><td>bfs</td><td>Trie의 BFS 순서. root는 첫 원소.</td></tr></tbody></table></div>
+  <p>생성자는 Trie 삽입 → root 초기화 → BFS 순서로 동작한다. 노드 추가 시 vector가 재할당될 수 있으므로 노드의 참조를 오래 붙들지 않고 정수 인덱스로 다시 접근한다. <code>bfs</code>는 앞의 원소를 지우지 않고 head만 증가시키는 큐이다.</p>
+  <h3>실행 가능한 예제</h3>
+  <p>위의 두 코드를 각각 <code>aho-build.cpp</code>, <code>aho-search.cpp</code>로 저장하고 아래 파일을 같은 폴더에 둔다. <code>c++ -std=c++17 -O2 aho-example.cpp -o aho</code>로 컴파일한다. 예제 파일이 나머지 두 파일을 포함하므로 별도로 함께 컴파일하지 않는다.</p>
+  <CppCode code={exampleCode} filename="aho-example.cpp" />
+  <figure class="ac-figure"><figcaption>표준 출력 · 첫 세 줄은 위치, 나머지는 ID별 횟수</figcaption><pre class="ac-stdout">she [1, 3]
+he [2, 3]
+hers [2, 5]
+he: 1
+she: 1
+his: 0
+hers: 1</pre></figure>
+  <p>예제는 두 API를 보여 주려고 본문을 두 번 순회한다. 실제 문제에서는 필요한 함수만 호출하면 된다. <code>find_matches</code>는 결과를 callback으로 즉시 전달하므로 결과 전체를 저장하지 않는다. callback이 결과를 모으면 별도로 <Math tex={String.raw`O(Z)`} /> 공간이 필요하다. callback 자체가 비싼 작업을 하면 그 비용도 더해야 한다.</p>
+</section>
