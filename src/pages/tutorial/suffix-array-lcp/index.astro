@@ -7,6 +7,7 @@ import SuffixWorkedExamples from '../../../components/tutorial/SuffixWorkedExamp
 import SuffixPractice from '../../../components/tutorial/SuffixPractice.astro';
 import SuffixProofs from '../../../components/tutorial/SuffixProofs.astro';
 import SuffixLab from '../../../components/tutorial/SuffixLab.astro';
+import KasaiConstruction from '../../../components/tutorial/KasaiConstruction.astro';
 import CppCode from '../../../components/tutorial/CppCode.astro';
 import doubling from '../../../lib/tutorial/cpp/suffix-array.cpp?raw';
 import kasaiCode from '../../../lib/tutorial/cpp/kasai.cpp?raw';
@@ -32,6 +33,7 @@ import '../../../styles/tutorial.css';
 <div class="t-definition"><h3>정의 3 · 공통 접두사와 LCP 배열</h3><p><Math tex={String.raw`\operatorname{lcp}(A,B)=\max\{\ell\mid 0\le\ell\le\min(|A|,|B|),\ A[0\ldots\ell)=B[0\ldots\ell)\}`} />. 최댓값은 유한하고 0이 후보이므로 존재한다. <Math tex={String.raw`\mathrm{LCP}[0]=0, r>0`} />에서 <Math tex={String.raw`\mathrm{LCP}[r]=\operatorname{lcp}(S[\mathrm{SA}[r-1]\ldots ],S[\mathrm{SA}[r]\ldots ])`} />이다. 이 페이지는 이전 이웃 기준이며 다음 이웃 기준 정의와 인덱스를 섞지 않는다.</p></div>
 <SuffixProofs ids={[3]} />
 <div class="t-definition"><h3>Kasai의 반복 규칙</h3><p>원문 순서 <Math tex={String.raw`i=0,\ldots ,N-1`} />로 순회한다. <Math tex={String.raw`r=\operatorname{rank}[i]>0`} />이면 <Math tex={String.raw`j=\mathrm{SA}[r-1]`} />과 비교한다. 이전 반복에서 가져온 하한 h에서 시작하여 일치하는 동안 증가시키고 <Math tex={String.raw`\mathrm{LCP}[r]`} />에 저장한다. 다음 반복을 위해 <Math tex={String.raw`h=\max (h-1,0)`} />으로 둔다. <Math tex={String.raw`r=0`} />이면 <Math tex={String.raw`\mathrm{LCP}[0]=0, h=0`} />이다.</p></div>
+<KasaiConstruction />
 <SuffixProofs ids={[4]} /><a class="t-lab-jump" data-lab-mode="kasai" href="#experiment">재사용 구간 직접 확인 →</a><p class="t-consequence"><strong>구현상의 결론.</strong> j는 매번 SA에서 다시 찾는다. 재사용하는 것은 비교 상대의 번호가 아니라 일치 길이의 하한이다.</p>
 <SuffixProofs ids={[5]} /><SuffixWorkedExamples part="kasai" /><CppCode code={kasaiCode} filename="kasai.cpp" /></section>
 <section id="rmq" class="t-section"><span class="t-number">04 / INTUITION → DEFINITION → PROOF</span><h2>4. 두 접미사의 LCP를 구간 최솟값으로</h2>
