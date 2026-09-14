@@ -6,6 +6,7 @@ import AhoFoundations from '../../../components/tutorial/AhoFoundations.astro';
 import AhoWorkedExamples from '../../../components/tutorial/AhoWorkedExamples.astro';
 import AhoPractice from '../../../components/tutorial/AhoPractice.astro';
 import AhoProofs from '../../../components/tutorial/AhoProofs.astro';
+import AhoTextScan from '../../../components/tutorial/AhoTextScan.astro';
 import AhoLab from '../../../components/tutorial/AhoLab.astro';
 import CppCode from '../../../components/tutorial/CppCode.astro';
 import buildCode from '../../../lib/tutorial/cpp/aho-build.cpp?raw';
@@ -15,7 +16,7 @@ import '../../../styles/tutorial.css';
 <BaseLayout title="아호-코라식 | Tutorial" description="다중 패턴 탐색의 동기, 직관, 형식적 정의와 개념별 정당성 증명. 실패 링크, 출력, 횟수 누적의 시각화와 C++ 구현.">
 <div class="tutorial"><div class="t-shell">
 <header class="t-hero"><TutorialBreadcrumbs slug="aho-corasick" /><h1>아호-코라식</h1><p>여러 패턴을 한 번의 본문 순회로 찾기.<br />후보 접미사의 압축에서 매칭의 완전성까지.</p><div class="t-meta"><span>동기 → 직관 → 정의 → 증명 → 활용</span><span>고정 사전 · 0-index · 빈 패턴 제외</span></div></header>
-<nav class="t-contents" aria-label="이 페이지 목차"><a href="#problem">동기와 직관</a><a href="#idea">Trie 정의</a><a href="#failure">실패 사슬</a><a href="#transition">상태 불변식</a><a href="#construction">BFS 구성</a><a href="#output">출력</a><a href="#count">횟수 누적</a><a href="#experiment">시각화</a><a href="#implementation">복잡도</a><a href="#practice">실행 예제</a></nav>
+<nav class="t-contents" aria-label="이 페이지 목차"><a href="#problem">동기와 직관</a><a href="#idea">Trie 정의</a><a href="#failure">실패 사슬</a><a href="#transition">본문 탐색</a><a href="#construction">BFS 구성</a><a href="#output">출력</a><a href="#count">횟수 누적</a><a href="#experiment">시각화</a><a href="#implementation">복잡도</a><a href="#practice">실행 예제</a></nav>
 <AhoFoundations />
 <section id="idea" class="t-section"><span class="t-number">01 / DEFINITION → PROOF</span><h2>1. Trie: 후보를 저장하는 공간</h2>
 <p class="t-intuition"><strong>직관.</strong> 앞으로 패턴이 될 수 있는 문자열만 남긴다. 서로 같은 접두사는 하나의 상태를 공유하고, 패턴이 끝나는지 여부는 자식의 유무와 별도로 기록한다.</p>
@@ -25,9 +26,10 @@ import '../../../styles/tutorial.css';
 <p class="t-intuition"><strong>직관.</strong> she 다음 r을 읽으려 할 때 she 전체로는 진행할 수 없지만, 끝의 he는 hers로 이어질 가능성이 있다. 버릴 것은 앞의 s이지, 이미 읽은 본문 전체가 아니다.</p>
 <div class="t-definition"><h3>정의 2 · 수학적 실패 함수 F</h3><p><Math tex={String.raw`v\ne 0`} />에 대해 <Math tex={String.raw`F(v)`} />는 <Math tex={String.raw`L(v)`} />의 proper suffix 중 P에 속하는 가장 긴 문자열의 노드이다. proper는 자기 자신보다 짧다는 뜻이며 <Math tex={String.raw`\varepsilon`} />를 포함한다. <Math tex={String.raw`F(0)=0`} />으로 약속한다. 각 길이의 접미사는 유일하고 <Math tex={String.raw`\varepsilon`} />가 항상 후보이므로 <Math tex={String.raw`F(v)`} />는 유일하게 존재한다.</p><div class="t-formula"><Math display tex={String.raw`F(\mathtt{she})=\mathtt{he},\quad F(\mathtt{hers})=\mathtt{s}`} /><Math display tex={String.raw`v\ne0\implies\operatorname{depth}(F(v))<\operatorname{depth}(v)`} /></div></div>
 <AhoProofs ids={[2]} /><p class="t-consequence"><strong>활용.</strong> 현재 상태 하나와 그 실패 사슬이 모든 유효한 접미사 후보를 표현한다. 사슬에 없는 후보를 별도로 찾을 필요가 없다.</p></section>
-<section id="transition" class="t-section"><span class="t-number">03 / DEFINITION → INVARIANT → PROOF</span><h2>3. 본문을 뒤로 돌리지 않는 이유</h2>
+<section id="transition" class="t-section"><span class="t-number">03 / TEXT SCAN → INTUITION → PROOF</span><h2>3. 본문 탐색: 한 글자를 처리하는 순서</h2>
 <p class="t-intuition"><strong>직관.</strong> 읽은 본문의 끝과 일치하는 가장 긴 접두사만 기억한다. 다음 문자 c가 붙을 수 없으면 실패 사슬을 짧아지는 순서로 시험한다. 실패 이동은 후보만 줄이고 c는 아직 소비하지 않는다.</p>
-<div class="t-definition"><h3>정의 3 · 상태와 전이</h3><p><Math tex={String.raw`Q(X)`} />는 X의 접미사 중 P에 속하는 최장 문자열의 노드이다. <Math tex={String.raw`\delta (v,c)=Q(L(v)c)`} />로 정의한다. 구하고 싶은 성질은 단순히 “문자 하나를 따라간다”가 아니라 아래 등식이다.</p><div class="t-formula"><Math display tex={String.raw`Q(\varepsilon)=0,\quad Q(Xc)=\delta(Q(X),c)`} /><Math display tex={String.raw`\delta(v,c)=\begin{cases}\operatorname{next}[v][c]&\text{if a child exists},\\\delta(F(v),c)&\text{if no child exists and }v\ne0,\\0&\text{otherwise}.\end{cases}`} /></div><p>여기서 <Math tex={String.raw`\delta`} />와 F는 수학적으로 정의된 함수이다. 아직 구현 배열 go와 fail이 정확하다고 가정하지 않는다.</p></div>
+<AhoTextScan />
+<div class="t-definition"><h3>정의 3 · 위 탐색을 수식으로 표현하기</h3><p><Math tex={String.raw`Q(X)`} />는 X의 접미사 중 P에 속하는 최장 문자열의 노드이다. <Math tex={String.raw`\delta (v,c)=Q(L(v)c)`} />로 정의한다. 첫 등식은 “아직 아무것도 읽지 않았으면 root”, 둘째 등식은 “읽은 본문 전체 대신 현재 상태와 다음 문자만 알면 된다”는 뜻이다.</p><div class="t-formula"><Math display tex={String.raw`Q(\varepsilon)=0,\quad Q(Xc)=\delta(Q(X),c)`} /><Math display tex={String.raw`\delta(v,c)=\begin{cases}\operatorname{next}[v][c]&\text{if a child exists},\\\delta(F(v),c)&\text{if no child exists and }v\ne0,\\0&\text{otherwise}.\end{cases}`} /></div><p>여기서 <Math tex={String.raw`\delta`} />와 F는 수학적으로 정의된 함수이다. 다음 증명으로 탐색 규칙이 이 정의와 일치하는지 확인하고, 4절에서 go와 fail 배열을 구성한다.</p></div>
 <AhoProofs ids={[3]} /><a class="t-lab-jump" data-lab-mode="scan" href="#experiment">문자 소비와 실패 이동을 직접 확인 →</a><p class="t-consequence"><strong>구현상의 결론.</strong> 실패 단계를 풀어 보여 주는 화면에서도 출력 시점은 문자 소비 직후 한 번이다. 실패 중간 상태에서 출력하면 같은 종료 위치를 중복 보고할 수 있다.</p></section>
 <section id="construction" class="t-section"><span class="t-number">04 / CONSTRUCTION → PROOF → CODE</span><h2>4. BFS로 수학적 함수를 실제 배열로 계산</h2>
 <p class="t-intuition"><strong>직관.</strong> 긴 접두사의 실패 후보는 짧은 접두사에서 이미 계산한 전이를 재사용한다. 그래서 깊이가 작은 노드부터 처리하는 BFS가 필요하다.</p>

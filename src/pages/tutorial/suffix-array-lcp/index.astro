@@ -6,6 +6,7 @@ import SuffixFoundations from '../../../components/tutorial/SuffixFoundations.as
 import SuffixWorkedExamples from '../../../components/tutorial/SuffixWorkedExamples.astro';
 import SuffixPractice from '../../../components/tutorial/SuffixPractice.astro';
 import SuffixProofs from '../../../components/tutorial/SuffixProofs.astro';
+import ProofIntuition from '../../../components/tutorial/ProofIntuition.astro';
 import SuffixLab from '../../../components/tutorial/SuffixLab.astro';
 import KasaiConstruction from '../../../components/tutorial/KasaiConstruction.astro';
 import CppCode from '../../../components/tutorial/CppCode.astro';
@@ -26,7 +27,7 @@ import '../../../styles/tutorial.css';
 <p class="t-intuition"><strong>직관.</strong> 앞 k글자의 순서를 이미 알면 앞 2k글자는 길이 k인 블록 두 개로 비교할 수 있다. 첫 블록이 같을 때만 둘째 블록을 비교한다.</p>
 <div class="t-definition"><h3>정의 2 · 중간 동치류 <Math tex={String.raw`R_{k}`} /></h3><p><Math tex={String.raw`W_{k}(i)=S[i\ldots \min (i+k,N))`} />. <Math tex={String.raw`R_{k}`} />는 <Math tex={String.raw`W_{k}`} />의 동치와 순서를 보존하는 정수 번호이다. <Math tex={String.raw`R_{k}(i)=R_{k}(j) \iff  W_{k}(i)=W_{k}(j), R_{k}(i)<R_{k}(j) \iff  W_{k}(i)<W_{k}(j)`} />. 아직 동률이 가능한 <Math tex={String.raw`R_{k}`} />와 최종 역배열 rank는 다르다.</p><div class="t-formula"><Math display tex={String.raw`\operatorname{key}_k(i)=(R_k(i),\widehat R_k(i+k))`} /><Math display tex={String.raw`\widehat R_k(t)=\begin{cases}R_k(t)&t<N,\\-1&t\ge N.\end{cases}`} /></div></div>
 <SuffixProofs ids={[2]} /><a class="t-lab-jump" data-lab-mode="sort" href="#experiment">두 블록 정렬 직접 확인 →</a>
-<aside class="t-local-proof"><h3>따름정리 2.1 · 구성 비용</h3><p>비교 길이는 두 배씩 증가하여 <Math tex={String.raw`O(\log  N)`} />단계 후 N 이상이다. 각 키 비교는 <Math tex={String.raw`O(1)`} />이므로 비교 정렬은 단계당 <Math tex={String.raw`O(N \log  N)`} />, 전체 <Math tex={String.raw`O(N \log ^{2}N)`} />이다. SA와 두 rank 배열은 <Math tex={String.raw`O(N)`} /> 공간을 사용한다<Math tex={String.raw`(N\ge 2)`} />. 키 범위를 <Math tex={String.raw`O(N)`} />으로 압축하고 두 번의 안정 counting sort를 쓰면 단계당 <Math tex={String.raw`O(N)`} />, 전체 <Math tex={String.raw`O(N \log  N)`} />이다. 이는 아래 비교 정렬 코드와 다른 구현 선택이다. ∎</p></aside>
+<aside class="t-local-proof"><h3>따름정리 2.1 · 구성 비용</h3><ProofIntuition><p>비용은 ‘몇 번 정렬하는가 × 한 번 정렬하는 비용’이다. 길이 8까지 확인하려면 1 → 2 → 4 → 8처럼 비교 길이를 두 배로 늘린다. 매 단계에서 긴 문자열을 직접 비교하지 않고 두 정수만 비교하기 때문에, 한 번 정렬하는 비용이 보통의 정수 정렬과 같다.</p></ProofIntuition><p>비교 길이는 두 배씩 증가하여 <Math tex={String.raw`O(\log N)`} />단계 후 N 이상이다. 각 키 비교는 <Math tex={String.raw`O(1)`} />이므로 비교 정렬은 단계당 <Math tex={String.raw`O(N\log N)`} />, 전체 <Math tex={String.raw`O(N\log^2N)`} />이다. SA와 두 rank 배열은 <Math tex={String.raw`O(N)`} /> 공간을 사용한다<Math tex={String.raw`(N\ge2)`} />. 키 범위를 <Math tex={String.raw`O(N)`} />으로 압축하고 두 번의 안정 counting sort를 쓰면 단계당 <Math tex={String.raw`O(N)`} />, 전체 <Math tex={String.raw`O(N\log N)`} />이다. 이는 아래 비교 정렬 코드와 다른 구현 선택이다. ∎</p></aside>
 <SuffixWorkedExamples part="doubling" /><CppCode code={doubling} filename="suffix-array.cpp" /></section>
 <section id="kasai" class="t-section"><span class="t-number">03 / DEFINITION → LEMMA → ALGORITHM</span><h2>3. LCP: 재사용 가능한 일치 정보</h2>
 <p class="t-intuition"><strong>직관.</strong> 긴 문자열 두 개가 h글자 일치하면 첫 글자를 지워도 <Math tex={String.raw`h-1`} />글자는 남는다. 어려운 점은 다음 접미사의 비교 상대가 바뀔 수 있다는 것이다. 그 사이의 문자열도 같은 접두사를 공유한다는 보조정리가 이 간극을 메운다.</p>
