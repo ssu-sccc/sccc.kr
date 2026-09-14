@@ -1,0 +1,13 @@
+<div class="t-proof-intuition" data-proof-intuition>
+  <p class="t-proof-intuition-label">먼저 쉬운 말로</p>
+  <slot />
+</div>
+<p class="t-proof-formal-label">이를 정확하게 확인하면</p>
+
+<style>
+  .t-proof-intuition { margin:20px 0; padding:20px 24px; background:#f3f7fc; border-left:3px solid #4b84c5; border-radius:0 10px 10px 0; }
+  .t-proof-intuition :global(p) { margin:10px 0; font-size:1rem; }
+  .t-proof-intuition .t-proof-intuition-label { margin:0 0 12px; font-size:.875rem; font-weight:700; color:#225b9a; }
+  .t-proof-formal-label { margin:26px 0 12px; font-size:.875rem; font-weight:700; color:#536070; }
+  @media(max-width:600px) { .t-proof-intuition { padding:16px; } }
+</style>
