@@ -24,7 +24,8 @@ const failures = [];
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
-  if (html.includes('{{') || html.includes('{%')) {
+  // Vendored Spotboard intentionally uses a client-side Handlebars template.
+  if (path.relative(root, file) !== 'spotboard/index.html' && (html.includes('{{') || html.includes('{%'))) {
     failures.push(`${path.relative(root, file)}: unresolved template syntax`);
   }
 
