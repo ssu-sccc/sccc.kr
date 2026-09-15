@@ -101,9 +101,6 @@ sup {
     font-size: 3.4em; /* fuck you, chrome - it forces font size >= 10px*/
 }
 
-.award-mode #header {
-    display: none;
-}
 
 #header > * {
     float: right;
@@ -160,49 +157,6 @@ sup {
     margin-left: 0.5em !important;
 }
 
-#notify-icon {
-    background-image: url(../img/eye_close.png);
-}
-#notify-icon.enabled {
-    background-image: url(../img/eye.png);
-}
-
-@-webkit-keyframes update-icon-animation {
-    from {
-        -webkit-transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(360deg);
-    }
-}
-
-#update-icon {
-    background-image: url(../img/update.png);
-}
-
-#update-icon.updating {
-    -webkit-animation: update-icon-animation 1s infinite;
-}
-
-#feed-auto-icon, #feed-auto-icon.playing {
-    background-image: url(../img/control_pause_blue.png);
-}
-#feed-auto-icon.paused {
-    background-image: url(../img/control_play_blue.png);
-}
-
-#feed-one-icon {
-    background-image: url(../img/control_fastforward_blue.png);
-}
-
-#feed-all-icon {
-    background-image: url(../img/control_end_blue.png);
-}
-
-#events-icon {
-    background-image: url(../img/events.png);
-}
-
 #time-elapsed, #time-left {
     font-size: 0.5em;
     height: 2.5em;
@@ -212,11 +166,6 @@ sup {
 
 .hidden {
     display: none !important;
-}
-
-.no-animation #feed-one-icon,
-.no-animation #feed-auto-icon {
-    display: none;
 }
 
 #search-input {
@@ -247,87 +196,12 @@ sup {
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 
-#page-nav {
-    display: none;
-    font-size: 0.25em;
-    text-align: center;
-    margin: 0 1em 0 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-}
-.pagination #page-nav {
-    display: block;
-}
-
-#page-left, #page-right {
-    cursor: pointer;
-    color: #0325C8;
-    margin: 0 0.5em;
-}
-
-#page-left.disabled, #page-right.disabled {
-    cursor: default;
-    color: #ccc;
-}
-
-#page-left:hover, #page-right:hover {
-    background-color: #0325C8;
-    color: #fff;
-}
-
-#page-left.disabled:hover, #page-right.disabled:hover {
-    background-color: transparent;
-    color: #ccc;
-}
-
-#prev-page {
-    background-image: url(../img/arrow_left.png);
-}
-
-#next-page {
-    background-image: url(../img/arrow_right.png);
-}
-
 /* scoreboard */
 
-#team-list, #dashboard {
+#team-list {
     position: relative;
     font-size: 0.95em;
     margin: 2.75em 0 1em 0;
-}
-
-.award-mode #team-list {
-    margin-top: 0em;
-}
-
-@media all and (min-width: 1300px) {
-    .dashboard #team-list {
-        width: calc(100% - 256px - 10px);
-        float: left;
-    }
-
-    .dashboard #credits {
-        width: calc(100% - 256px - 10px);
-        float: left;
-    }
-}
-
-#dashboard {
-    display: none;
-}
-
-@media all and (min-width: 1300px) {
-    .dashboard #dashboard {
-        display: block;
-
-        position: fixed;
-        right: 0;
-        width: 256px;
-
-        top: 0;
-        bottom: 6px;
-    }
 }
 
 .team.target {
@@ -370,10 +244,6 @@ sup {
 .team.followed.sticky-bottom {
     bottom : 0em;
 }
-.dashboard .team.followed.sticky-top,
-.dashboard .team.followed.sticky-bottom {
-    width: inherit;
-}
 
 .team.followed.sticky-top + .team {
     /* sticky 된 다음 team의 위치를 제대로 보여주기 위해
@@ -399,7 +269,7 @@ div.team {
     position: relative;
 }
 
-#wrapper:not(.award-mode) .team:hover {
+#wrapper .team:hover {
     background-color: #E2F08B;
 }
 
@@ -472,7 +342,7 @@ div.team {
 }
 
 .team.target .solved-count,
-#wrapper:not(.award-mode) .team:hover .solved-count {
+#wrapper .team:hover .solved-count {
     background-color: transparent !important;
     color: black;
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.5), 0 0 2px rgba(0, 0, 0, 0.2);
@@ -508,217 +378,6 @@ div.team {
 
 .show-group .team-title {
     top: 0.1em;
-}
-
-/* dashboard events */
-
-#dashboard > h2 {
-    text-align: center;
-    font-size: 1.0em;
-    margin: 0;
-}
-
-#dashboard > h2 #events-filter {
-    padding: 0 0.4em;
-}
-#dashboard > h2 #events-filter:hover {
-    background-color: #E2F08B;
-    cursor: pointer;
-}
-#dashboard[data-filter="yes"] > h2 #events-filter:after {
-    content: 'Y';
-}
-#dashboard > h2 #events-filter:after {
-    content: 'A';
-}
-
-#dashboard ul.runs {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-#dashboard[data-filter="yes"] .run:not(.accepted) {
-    display: none;
-}
-
-#dashboard .run {
-    border-radius: 10px;
-    padding: 10px 10px 10px 10px;
-    margin: 5px;
-}
-#dashboard .run.accepted {
-    background: #e9ffd9 no-repeat 10px 50%;
-    border: 1px solid #a6ca8a;
-}
-#dashboard .run.pending {
-    background: #fff8c4 no-repeat 10px 50%;
-    border: 1px solid #f2c779;
-}
-#dashboard .run.failed {
-    background: #ffecec no-repeat 10px 50%;
-    border: 1px solid #f5aca6;
-}
-
-#dashboard .run .balloon {
-    width: 2em;
-    height: 2.4em;
-    float: left;
-    margin: 0 2px;
-}
-#dashboard .run > span {
-    /* team, status, problem */
-    font-size: inherit;
-    font-weight: 600;
-}
-#dashboard .run.accepted .status {
-    color: #20660E;
-}
-#dashboard .run.failed .status {
-    color: #A60A0A;
-}
-
-/* award mode */
-
-.award-hidden {
-    color: #aaa;
-    text-shadow: 0 0 1px rgba(160, 160, 160, 0.2);
-}
-
-.award-revealing {
-    -webkit-animation: team-name-show-anim 1s;
-}
-
-@-webkit-keyframes team-name-show-anim {
-    0% {
-        color: transparent;
-        opacity: 0;
-        text-shadow: 0;
-    }
-
-    20% {
-        color: transparent;
-        opacity: 1;
-        text-shadow: 0;
-    }
-
-    20% {
-        color: #BA0D0D;
-        text-shadow: 0 0 1em #BA0D0D;
-    }
-
-    40% {
-        text-shadow: 0 0 1em #BA0D0D;
-    }
-
-    80% {
-        color: black;
-        text-shadow: 0 0 0.1em #BA0D0D;
-    }
-
-    100% {
-        color: black;
-        text-shadow: 0;
-    }
-}
-
-.award-run-focus {
-            animation: blink-animation 1s linear infinite;
-            animation-fill-mode: forwards !important;
-    -webkit-animation: blink-animation 1s linear infinite;
-    -webkit-animation-fill-mode: forwards !important;
-}
-@keyframes blink-animation {
-    50%  { background-color: #e67700; }
-}
-@-webkit-keyframes blink-animation {
-    50%  { background-color: #e67700; }
-}
-
-.award-slide {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    text-align: center;
-}
-
-.award-slide sup {
-    top: 0;
-}
-
-.award-slide > .award-rank,
-.award-slide > .award-represents,
-.award-slide > .award-teamname,
-.award-slide > .award-others {
-    position: absolute;
-    width: 100%;
-}
-
-.award-slide > .award-rank {
-    top: 10%;
-    font-size: 3em;
-    font-weight: 600;
-    word-spacing: 0.3em;
-}
-
-.award-slide > .award-rank span {
-    font-weight: 600;
-}
-
-.award-slide > .award-represents {
-    top: 25%;
-    font-size: 2.5em;
-    font-weight: 400;
-}
-
-.award-slide > .award-teamname {
-    top: 35%;
-    font-size: 4.5em;
-    font-weight: 400;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.award-slide > .award-others {
-    top: 60%;
-    font-size: 2em;
-}
-
-.award-slide > .award-others ul {
-    display: inline-block;
-    list-style-type: disc;
-    text-align: left;
-}
-
-.award-slide > .award-others li span:not(.rank) {
-    margin-right: 0.2em;
-}
-
-.award-slide > .award-others .award-teamname {
-    font-weight: 400;
-}
-
-.award-medalist .team-name {
-    cursor: pointer;
-}
-
-.award-medalist .team-name:after {
-    content: "";
-    display: inline-block;
-    width:  32px;
-    height: 32px;
-
-    position: relative;
-    top: 5px;
-
-    background-repeat: no-repeat;
-    background-size: 80% 80%;
-    background-position: center center;
 }
 
 .team-represents {
@@ -819,7 +478,7 @@ div.results:after {
     font-weight: 600;
 }
 
-#wrapper:not(.award-mode) .team:hover .problem-result {
+#wrapper .team:hover .problem-result {
     border-color: #E2F08B;
 }
 

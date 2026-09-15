@@ -7,7 +7,6 @@
     <link href="sccc-bridge.css" rel="stylesheet" />
     <link href="css/normalize.css" rel="stylesheet" type="text/css">
     <link href="css/scoreboard.css" rel="stylesheet" type="text/css">
-    <link href="css/jquery.badger.css" rel="stylesheet" type="text/css">
     <link href="css/balloon.min.css" rel="stylesheet" type="text/css">
 
     <meta http-equiv="Content-Language" content="ko, en">
@@ -23,20 +22,7 @@
     <div id="header">
       <span id="time-elapsed">xx:xx</span>
       <span id="clock-icon" class="icon"></span>
-      <span id="events-icon"    class="icon hoverable" data-balloon="Show/Hide Events Timeline" data-balloon-pos="down"></span>
-      <span id="feed-all-icon"  class="icon hoverable" data-balloon="Update All Runs" data-balloon-pos="down"></span>
-      <span id="feed-one-icon"  class="icon hoverable" data-balloon="Update Single Run" data-balloon-pos="down"></span>
-      <span id="feed-auto-icon" class="icon hoverable playing" data-balloon="Automatically Update" data-balloon-pos="down"></span>
-      <span id="update-icon"    class="icon hoverable" data-balloon="Feed New Run" data-balloon-pos="down"></span>
-      <span id="notify-icon"    class="icon hoverable" data-balloon="Toggle Desktop Notification" data-balloon-pos="down"></span>
-      <input type="text" id="search-input"></input>
-      <div id="page-nav">
-        <div id="page-label">Page <span class="current-page">1</span> of <span class="max-page">?</span></div>
-        <div>
-          <span id="page-left"  class="disabled">&lt;&lt;</span>
-          <span id="page-right" class="disabled">&gt;&gt;</span>
-        </div>
-      </div>
+      <input type="search" id="search-input" aria-label="팀 이름 또는 소속 검색" />
 
       <h1 id="contest-title">Spotboard</h1>
       <div class="clear"> </div><!-- overflow: auto trick doesn't work here-->
@@ -68,7 +54,7 @@
         </script>
 
         <div id="loading-message" class="center">
-        Loading... Please Wait
+        점수판을 불러오는 중입니다.
         </div>
       </div>
 
@@ -86,15 +72,6 @@
         <span>Icons from <a href="http://www.fatcow.com/free-icons" target="_blank">FatCow</a></span>
       </div>
 
-      <!-- Dashboard -->
-      <div id="dashboard">
-        <h2>
-          Recent events ::
-          <a id="events-filter"></a>
-        </h2>
-        <ul class="runs">
-        </ul>
-      </div>
       <div class="clear"></div>
     </div>
   </div></body>

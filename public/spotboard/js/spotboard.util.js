@@ -60,33 +60,6 @@ function($, Spotboard) {
         return (hr + ':' + mt);
     };
 
-    /**
-     * jQuery.deferred 를 리턴하는 함수 f에 대해
-     * critical section mutex 락을 걸도록 decorate한 함수를 리턴한다.
-     */
-    Spotboard.Util.withDeferredLock = function(f) {
-        var locked = false;
-        var mutex = {
-            tryLock : function() {
-                if(locked) return false;
-                locked = true;
-                return true;
-            },
-            release: function() {
-                locked = false;
-            }
-        };
-
-        // try acquire lock
-        return function decoratedLock() {
-            if(!mutex.tryLock()) return 'locked';
-
-            var $df = f.apply(this, arguments);
-            if($df) $df.always(mutex.release);
-            return $df;
-        }
-    };
-
     Spotboard.Util.ordinalSuffix = function ordinalSuffix(v)
     {
         if(11 <= v % 100 && v % 100 <= 13) return 'th';

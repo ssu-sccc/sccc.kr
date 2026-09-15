@@ -20,9 +20,10 @@ SCCC changes:
 - Compile contest.coffee using coffee-script 1.12.7; retain CoffeeScript source.
 - Honor the contest's configurable penalty instead of hard-coded 20 minutes.
 - Fix Team constructor's group check so parentheses in a team name survive.
-- Escape problem labels used in dynamic CSS and fix award icon relative paths.
+- Escape problem labels used in dynamic CSS.
 - Use authoritative public ranking and rebuild live snapshots for rejudging.
-- No original sample data or external feed server is used.
+- Remove the original feed server client, WebSocket client, award mode, event dashboard, playback controls and their unused dependencies/assets.
+- Only static public-snapshot rendering and team search remain.
 
 To recompile after changing contest.coffee:
   pnpm dlx --package coffee-script@1.12.7 coffee -c public/spotboard/js/contest.coffee
