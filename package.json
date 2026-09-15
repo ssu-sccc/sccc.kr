@@ -8,8 +8,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "verify": "node scripts/verify-build.mjs",
-    "test:spotboard": "node --test scripts/test-spotboard.mjs"
+    "verify": "node scripts/verify-build.mjs"
   },
   "dependencies": {
     "astro": "^5.13.5",
