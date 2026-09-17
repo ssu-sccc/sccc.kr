@@ -1,0 +1,16 @@
+---
+import {experimentFrames,experimentOptions} from '../../lib/tutorial/dp.mjs';
+interface Props { kind: string; title: string }
+const {kind,title}=Astro.props;
+const options=experimentOptions[kind];
+const frames=experimentFrames(kind);
+---
+<div class="t-lab dp-lab" data-dp-lab={kind}>
+  <div class="t-lab-head"><div><h3>{title}</h3><p>한 단계씩 진행하며 상태와 전이를 확인한다.</p></div>
+    {options.length>1 && <label>계산 방식<select data-dp-option>{options.map(([value,label])=><option value={value}>{label}</option>)}</select></label>}
+    {kind==='tsp' && <label>살펴볼 상태<select data-dp-state>{frames.map((f,i)=><option value={i}>{f.label}</option>)}</select></label>}
+  </div>
+  <div class="dp-scene"><div data-dp-view set:html={frames[0].html}/><p class="t-status" data-dp-status role="status" aria-live="polite">{frames[0].status}</p></div>
+  <div class="t-controls"><button type="button" data-reset>처음</button><button type="button" data-prev disabled>이전</button><button type="button" data-play>재생</button><button type="button" data-next>다음</button><input type="range" data-progress min="0" max={frames.length-1} value="0" aria-label={`${title} 단계`}/><span class="t-step" data-step>1 / {frames.length}</span></div>
+  <noscript><p class="t-note">첫 단계는 JavaScript 없이도 읽을 수 있다. 재생 및 단계 이동은 JavaScript가 필요하다.</p></noscript>
+</div>

@@ -1,0 +1,49 @@
+---
+import DPLesson from '../../../components/tutorial/DPLesson.astro';
+import Math from '../../../components/tutorial/Math.astro';
+import DPExperiment from '../../../components/tutorial/DPExperiment.astro';
+import CppCode from '../../../components/tutorial/CppCode.astro';
+import code from '../../../lib/tutorial/cpp/dp-basics.cpp?raw';
+---
+<DPLesson slug="dp-basics" sections={[["state","상태와 의존 관계"],["stairs","계단"],["cost","최소 비용"],["grid","격자"],["order","계산 순서"],["complexity","복잡도"]]}>
+<section class="t-section" id="state"><span class="t-number">01 / PROBLEM → STATE → TRANSITION</span><h2>정점은 무엇이고, 간선은 무엇인가?</h2>
+<p>5칸짜리 계단에서 한 번에 1칸 또는 2칸을 오른다. 모든 이동 순서를 직접 나열하면, 같은 높이에 도착한 뒤의 문제를 반복해서 푼다. 하지만 “어떤 순서로 여기까지 왔는가”는 다음 이동의 가능성을 바꾸지 않는다. 도착한 높이만 같으면 이후에 고를 수 있는 이동도 같다.</p>
+<p>서로 다른 과거를 같은 <strong>상태</strong>로 묶고, 그 상태의 답을 다음 상태에서 재사용한다. DP는 큰 문제를 상태로 나누고, 상태 사이의 의존 관계를 전이로 표현한 뒤, 이미 계산된 답으로 새로운 답을 만드는 방법이다. 메모이제이션은 이 값을 계산하는 구현 방식 중 하나이다.</p>
+<div class="t-definition"><h3>의존 간선의 방향</h3><p><Math tex={String.raw`dp[u]`} />가 <Math tex={String.raw`dp[v]`} /> 계산에 필요하면 <Math tex={String.raw`u\to v`} />라는 간선을 둔다. 선행 상태에서 그 값을 사용하는 상태로 향한다.</p><Math display tex={String.raw`dp[v]=\operatorname{combine}\bigl(dp[u_1],dp[u_2],\ldots,dp[u_k]\bigr)`}/></div>
+<ol class="t-flow"><li>상태의 의미</li><li>필요한 이전 상태</li><li>정점과 간선</li><li>계산 가능한 순서</li><li>정답 상태</li></ol>
+<p>상태는 정점, 전이는 간선, 주어진 기저값은 출발점이다. 선행 상태가 모두 준비된 뒤 현재 상태를 계산하는 순서를 <strong>위상 순서</strong>라 한다. 목표 정점의 값이 원하는 답이다. 의존 관계가 순환하면 이 방식 그대로는 값을 확정할 수 없다. 여기서는 인덱스, 집합 크기, 처리한 칸 수처럼 전이마다 증가하는 기준을 찾아 DAG임을 확인한다.</p></section>
+<section class="t-section" id="stairs"><span class="t-number">02 / COUNT PATHS</span><h2>계단: 마지막 이동으로 나눈다</h2><p><Math tex={String.raw`dp[i]`} />를 0에서 i까지 올라가는 이동 순서의 개수로 정의한다. i에 도착하기 직전 위치는 i−1 또는 i−2이다. 마지막 이동을 지우면 각각 그 위치까지의 경로가 하나 남는다.</p>
+<DPExperiment kind="basics" title="하나의 상태 DAG · 세 가지 계산 보기"/>
+<div class="t-formula"><Math display tex={String.raw`dp[0]=1,\quad dp[1]=1,\quad dp[i]=dp[i-1]+dp[i-2]\quad(i\ge2)`}/></div>
+<div class="dp-proof"><h3>왜 더해도 빠짐과 중복이 없는가?</h3><p>i−1까지의 모든 경로 뒤에 1칸 이동을 붙이고, i−2까지의 모든 경로 뒤에 2칸 이동을 붙인다. 두 묶음은 마지막 이동이 달라 겹치지 않는다. 모든 유효 경로의 마지막 이동은 둘 중 하나이므로 빠지는 경로도 없다. 작은 높이의 값이 정확하다고 가정하면 i의 값도 정확하다. 0의 빈 경로 하나에서 시작하는 귀납으로 모든 값이 정확하다.</p></div>
+<p>간선은 작은 인덱스에서 큰 인덱스로만 향한다. 따라서 0, 1, …, N 순서가 위상 순서이고 정답은 <Math tex={String.raw`dp[N]`} />이다. 배열에서 숫자가 커지는 이유가 아니라, <em>의존 간선이 그 방향이기 때문</em>에 이 순서로 계산한다.</p></section>
+<section class="t-section" id="cost"><span class="t-number">03 / MINIMIZE PATH COST</span><h2>최소 비용: 같은 그래프, 다른 결합</h2>
+<p>0부터 5까지 앞으로만 이동한다. 한 번에 1칸 또는 2칸 갈 수 있고, 각 간선에 이동 비용이 붙는다. 위 실험에서 ‘최소 비용’을 선택한다. 상태 <Math tex={String.raw`dp[v]`} />는 0에서 v에 도착하는 경로의 최소 비용이다. 도착 위치가 같으면 이후 사용할 간선도 같으므로, 더 비싼 과거 경로는 버려도 된다.</p>
+<p>정점 3으로는 1 또는 2에서 들어온다. 1까지의 비용 3에 간선 비용 4를 더하면 7, 2까지의 비용 1에 간선 비용 1을 더하면 2이다. 둘 중 작은 2를 남긴다. 여기서는 경로의 <em>개수</em>를 세는 것이 아니므로 더하지 않는다.</p>
+<div class="t-formula"><Math display tex={String.raw`dp[0]=0,\qquad dp[v]=\min_{(u,v)\in E}\{dp[u]+w(u,v)\}`}/></div>
+<p>도달할 수 없는 상태는 <Math tex={String.raw`+\infty`} />로 둔다. 기저값 0은 “출발하기 전 비용 없음”이다. 계단의 기저값 1은 “빈 경로 하나”였다. 초기값도 배열의 관습이 아니라 상태의 의미에서 나온다.</p>
+<div class="dp-proof"><h3>왜 각 이전 상태의 최솟값만 남겨도 되는가?</h3><p>v까지의 최적 경로에서 마지막 간선을 지우면 어떤 u까지의 경로가 남는다. 그 앞부분보다 싼 u 경로가 있다면 같은 마지막 간선을 붙여 v까지도 더 싸게 갈 수 있으므로 모순이다. 반대로 각 u의 최적 경로에 실제 간선 u→v를 붙인 후보는 모두 유효하다. 따라서 후보 중 최솟값은 실제 최적값과 정확히 같다. 위상 순서로 앞선 값들이 정확하다는 귀납 가정이 이 논증을 완성한다.</p></div>
+<p>모든 간선이 큰 인덱스로 향하므로 음수 비용이 있어도 DAG 계산 자체는 유효하다. 단, 일반 그래프를 인덱스 순으로 훑는 것만으로 최단 경로가 구해지는 것은 아니다. 정답은 <Math tex={String.raw`dp[5]=3`} />, 실제 경로는 마지막 역추적 강의에서 복원한다.</p></section>
+<section class="t-section" id="grid"><span class="t-number">04 / TWO-DIMENSIONAL STATES</span><h2>격자: 칸 하나가 상태 정점</h2>
+<p>장애물이 없는 N×M 격자의 왼쪽 위에서 출발해 오른쪽 또는 아래로만 이동한다. <Math tex={String.raw`dp[r][c]`} />는 (r,c)에 도착하는 경로 수이다. 위 칸에서 내려오거나 왼쪽 칸에서 오른쪽으로 오는 두 경우만 가능하다. 격자의 물리적인 인접 관계 중, <em>실제로 허용된 이동 방향</em>만 의존 간선으로 그린다.</p>
+<DPExperiment kind="grid" title="위 + 왼쪽 → 현재 칸"/>
+<div class="t-formula"><Math display tex={String.raw`dp[0][0]=1,\qquad dp[r][c]=[r>0]dp[r-1][c]+[c>0]dp[r][c-1]\quad((r,c)\ne(0,0))`}/></div>
+<p>대괄호는 조건이 참이면 1, 거짓이면 0이라는 뜻이다. 범위 밖 배열을 실제로 읽는다는 뜻은 아니다. 첫 행에는 왼쪽 간선만, 첫 열에는 위쪽 간선만 있다. 답은 <Math tex={String.raw`dp[N-1][M-1]`} />이다.</p>
+<div class="dp-proof"><h3>정확성과 순서</h3><p>마지막 이동이 아래인지 오른쪽인지로 모든 경로가 서로 겹치지 않는 두 묶음으로 나뉜다. 각 묶음은 해당 선행 칸의 경로와 일대일 대응한다. 따라서 두 값을 더한 것이 정확하다. 모든 간선에서 r+c가 1 증가하므로 사이클은 없다. 행 우선 순서는 위 칸이 이전 행, 왼쪽 칸이 현재 행의 이전 열이므로 둘 다 먼저 계산한다. 출발점의 빈 경로에서 시작하는 귀납으로 모든 칸의 값이 성립한다.</p></div>
+<p>상태가 2차원이라고 별개의 원리가 필요한 것은 아니다. 지금 칸에서 필요한 과거가 바로 위와 왼쪽이라는 사실을 정확하게 찾는 것이 핵심이다.</p></section>
+<section class="t-section" id="order"><span class="t-number">05 / SAME DAG, TWO EVALUATIONS</span><h2>Top-down과 Bottom-up은 계산하는 방식의 차이</h2>
+<p>위 계단 실험에서 Top-down을 선택한다. 먼저 목표 5를 요청하고, 5가 필요로 하는 4와 3의 값을 요청한다. 아직 답이 없는 동안 호출 스택이 쌓이고, 기저값에 닿으면 반환하면서 값을 확정한다. <strong>요청 방향은 의존 간선의 역방향, 값이 준비되는 방향은 선행 상태에서 현재 상태</strong>이다.</p>
+<div class="t-columns"><div><h3>Top-down · 필요한 상태를 찾아간다</h3><p>목표부터 선행 상태를 재귀적으로 요청한다. 이미 계산한 상태는 저장한 값을 반환한다. 메모이제이션은 이 중복 전개를 막는 장치이다. 목표에 필요하지 않은 상태는 방문하지 않을 수 있다.</p></div><div><h3>Bottom-up · 준비되는 순서를 정한다</h3><p>전체 상태의 위상 순서를 먼저 정하고 반복문으로 값을 채운다. 선행 상태가 모두 준비되어 있으므로 즉시 결합한다. 연속 배열에 저장하기 쉽고 재귀 스택을 사용하지 않는다.</p></div></div>
+<div class="dp-proof"><h3>두 방식이 같은 답을 주는 이유</h3><p>같은 상태 정의·기저값·전이를 사용한다고 하자. DAG의 위상 순서에서 기저 상태는 두 구현 모두 같은 값을 갖는다. 앞선 상태들의 값이 같으면 현재 상태에 같은 결합 함수를 적용하므로 결과도 같다. Top-down도 현재 상태를 확정하기 전에 모든 필요한 선행 호출이 반환되므로 이 귀납을 만족한다. 계산하지 않은 불필요한 상태가 있을 수는 있어도 목표 값은 동일하다.</p></div>
+<p>재귀에 캐시만 붙였다고 사이클이 사라지지는 않는다. 값이 확정되기 전에 자기 자신을 다시 요청하는 점화식이라면 상태 설계를 바꾸거나 별도의 순환 처리 방법이 필요하다.</p>
+<CppCode code={code} filename="dp-basics.cpp"/>
+<p><code>dp[i] += dp[i-2]</code>는 i−2→i 간선의 기여를 더하는 동작, <code>min(dp[v], dp[u]+c)</code>는 u→v 간선의 후보를 기존 답과 비교하는 동작이다. 격자 코드는 경로 수를 1,000,000,007로 나눈 나머지를 계산하며, 계단 코드는 64비트 정수에 들어가는 N≤91 범위의 정확한 개수를 계산한다.</p></section>
+<section class="t-section" id="complexity"><span class="t-number">06 / COUNT STATES AND TRANSITIONS</span><h2>배열 크기가 아니라 계산한 상태와 전이를 센다</h2>
+<div class="t-formula"><Math display tex={String.raw`T=O\!\left(|V|+|E|\right)\quad\text{(각 상태·간선의 처리 비용이 상수일 때)}`}/></div>
+<p>각 정점을 초기화·확정하는 비용과 각 간선을 결합하는 비용을 합친 것이다. Top-down은 실제로 도달한 상태·간선에 대해 센다. 입력을 모두 저장하거나 전체 배열을 초기화하면 그 비용은 따로 포함한다. 큰 정수, 집합 병합, 벡터 복사처럼 한 번의 전이가 상수 시간이 아니면 그 비용도 곱해야 한다.</p>
+<div class="t-overflow"><table class="t-table"><thead><tr><th>문제</th><th>상태</th><th>전이</th><th>시간 / 코드의 공간</th></tr></thead><tbody><tr><td>계단</td><td>N+1개</td><td>상태당 최대 2개</td><td>O(N) / O(N)</td></tr><tr><td>최소 비용 DAG</td><td>V개</td><td>E개</td><td>O(V+E) / O(V+E)</td></tr><tr><td>격자</td><td>NM개</td><td>칸당 최대 2개</td><td>O(NM) / O(NM)</td></tr></tbody></table></div>
+<p>실전에서는 “상태 수 × 상태당 최대 전이 수”로 상한을 추산한다. 다만 간선이 없는 상태도 초기화해야 하므로 무조건 O(E)라고 쓰지 않는다. 계단·격자는 이전 줄만 남겨 공간을 줄일 수 있지만, 역추적에 필요한 선택 기록까지 버려도 되는지는 별개의 문제이다.</p>
+<h3>이 형태를 의심할 때</h3><p>서로 다른 과거가 같은 상태에 모이고, 그 뒤의 가능한 선택이 상태만으로 결정될 때 DP를 생각한다. 그 상태로 오는 모든 경우를 마지막 선택으로 분류하고, 더하기·최소·최대 중 문제 의미에 맞는 결합을 선택한다. 다음 강의에서는 현재 위치만으로는 미래를 결정할 수 없는 문제에 <strong>방문 집합</strong>을 상태로 추가한다.</p>
+<footer class="t-sources"><p>참고: <a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/mit6_006s20_lec16/" target="_blank" rel="noreferrer">MIT 6.006 — Dynamic Programming Subproblems</a></p></footer>
+</section>
+</DPLesson>
