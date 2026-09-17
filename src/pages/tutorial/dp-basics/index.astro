@@ -4,8 +4,11 @@ import Math from '../../../components/tutorial/Math.astro';
 import DPExperiment from '../../../components/tutorial/DPExperiment.astro';
 import CppCode from '../../../components/tutorial/CppCode.astro';
 import code from '../../../lib/tutorial/cpp/dp-basics.cpp?raw';
+import DPReconstruction from '../../../components/tutorial/DPReconstruction.astro';
+import DPWorkedExamples from '../../../components/tutorial/DPWorkedExamples.astro';
+import DPPractice from '../../../components/tutorial/DPPractice.astro';
 ---
-<DPLesson slug="dp-basics" sections={[["state","상태와 의존 관계"],["stairs","계단"],["cost","최소 비용"],["grid","격자"],["order","계산 순서"],["complexity","복잡도"]]}>
+<DPLesson slug="dp-basics" sections={[["state","상태와 DAG"],["stairs","기본 예제"],["order","계산 순서"],["reconstruction","역추적"],["worked","예제 풀이"],["practice","연습문제"]]}>
 <section class="t-section" id="state"><span class="t-number">01 / PROBLEM → STATE → TRANSITION</span><h2>정점은 무엇이고, 간선은 무엇인가?</h2>
 <p>5칸짜리 계단에서 한 번에 1칸 또는 2칸을 오른다. 모든 이동 순서를 직접 나열하면, 같은 높이에 도착한 뒤의 문제를 반복해서 푼다. 하지만 “어떤 순서로 여기까지 왔는가”는 다음 이동의 가능성을 바꾸지 않는다. 도착한 높이만 같으면 이후에 고를 수 있는 이동도 같다.</p>
 <p>서로 다른 과거를 같은 <strong>상태</strong>로 묶고, 그 상태의 답을 다음 상태에서 재사용한다. DP는 큰 문제를 상태로 나누고, 상태 사이의 의존 관계를 전이로 표현한 뒤, 이미 계산된 답으로 새로운 답을 만드는 방법이다. 메모이제이션은 이 값을 계산하는 구현 방식 중 하나이다.</p>
@@ -23,7 +26,7 @@ import code from '../../../lib/tutorial/cpp/dp-basics.cpp?raw';
 <div class="t-formula"><Math display tex={String.raw`dp[0]=0,\qquad dp[v]=\min_{(u,v)\in E}\{dp[u]+w(u,v)\}`}/></div>
 <p>도달할 수 없는 상태는 <Math tex={String.raw`+\infty`} />로 둔다. 기저값 0은 “출발하기 전 비용 없음”이다. 계단의 기저값 1은 “빈 경로 하나”였다. 초기값도 배열의 관습이 아니라 상태의 의미에서 나온다.</p>
 <div class="dp-proof"><h3>왜 각 이전 상태의 최솟값만 남겨도 되는가?</h3><p>v까지의 최적 경로에서 마지막 간선을 지우면 어떤 u까지의 경로가 남는다. 그 앞부분보다 싼 u 경로가 있다면 같은 마지막 간선을 붙여 v까지도 더 싸게 갈 수 있으므로 모순이다. 반대로 각 u의 최적 경로에 실제 간선 u→v를 붙인 후보는 모두 유효하다. 따라서 후보 중 최솟값은 실제 최적값과 정확히 같다. 위상 순서로 앞선 값들이 정확하다는 귀납 가정이 이 논증을 완성한다.</p></div>
-<p>모든 간선이 큰 인덱스로 향하므로 음수 비용이 있어도 DAG 계산 자체는 유효하다. 단, 일반 그래프를 인덱스 순으로 훑는 것만으로 최단 경로가 구해지는 것은 아니다. 정답은 <Math tex={String.raw`dp[5]=3`} />, 실제 경로는 마지막 역추적 강의에서 복원한다.</p></section>
+<p>모든 간선이 큰 인덱스로 향하므로 음수 비용이 있어도 DAG 계산 자체는 유효하다. 단, 일반 그래프를 인덱스 순으로 훑는 것만으로 최단 경로가 구해지는 것은 아니다. 정답은 <Math tex={String.raw`dp[5]=3`} />, 실제 경로는 이 페이지의 <a href="#reconstruction">역추적 절</a>에서 복원한다.</p></section>
 <section class="t-section" id="grid"><span class="t-number">04 / TWO-DIMENSIONAL STATES</span><h2>격자: 칸 하나가 상태 정점</h2>
 <p>장애물이 없는 N×M 격자의 왼쪽 위에서 출발해 오른쪽 또는 아래로만 이동한다. <Math tex={String.raw`dp[r][c]`} />는 (r,c)에 도착하는 경로 수이다. 위 칸에서 내려오거나 왼쪽 칸에서 오른쪽으로 오는 두 경우만 가능하다. 격자의 물리적인 인접 관계 중, <em>실제로 허용된 이동 방향</em>만 의존 간선으로 그린다.</p>
 <DPExperiment kind="grid" title="위 + 왼쪽 → 현재 칸"/>
@@ -46,4 +49,8 @@ import code from '../../../lib/tutorial/cpp/dp-basics.cpp?raw';
 <h3>이 형태를 의심할 때</h3><p>서로 다른 과거가 같은 상태에 모이고, 그 뒤의 가능한 선택이 상태만으로 결정될 때 DP를 생각한다. 그 상태로 오는 모든 경우를 마지막 선택으로 분류하고, 더하기·최소·최대 중 문제 의미에 맞는 결합을 선택한다. 다음 강의에서는 현재 위치만으로는 미래를 결정할 수 없는 문제에 <strong>방문 집합</strong>을 상태로 추가한다.</p>
 <footer class="t-sources"><p>참고: <a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/resources/mit6_006s20_lec16/" target="_blank" rel="noreferrer">MIT 6.006 — Dynamic Programming Subproblems</a></p></footer>
 </section>
+<div class="dp-part"><span>PART 02</span><h2>역추적</h2><p>선택한 간선을 기억하고, 그 선택을 거꾸로 따라간다.</p></div>
+<DPReconstruction />
+<DPWorkedExamples course="basics" />
+<DPPractice course="basics" />
 </DPLesson>

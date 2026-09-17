@@ -1,0 +1,21 @@
+---
+import Math from './Math.astro';
+import {dpProblems} from '../../lib/tutorial/dp-problems.mjs';
+interface Props { course: 'basics'|'bit'|'tree' }
+const items=dpProblems[Astro.props.course];
+---
+<section class="t-section dp-practice" id="practice">
+  <span class="t-number">PRACTICE / {items.length} PROBLEMS</span>
+  <h2>직접 설계해 볼 문제들</h2>
+  <p class="t-lead">상태의 의미와 들어오는 전이를 먼저 적는다. 막히면 풀이 힌트를 펼쳐 비교한다. ‘시작·확장·복원·도전’은 이 강의의 학습 순서이며 공식 난이도 표기가 아니다.</p>
+  <div class="dp-problem-list">{items.map((p,i)=><article class="dp-problem" id={`problem-${p.judge.toLowerCase()}-${p.id.replaceAll(' ','-').toLowerCase()}`}>
+    <div class="dp-problem-index">{String(i+1).padStart(2,'0')}</div>
+    <div class="dp-problem-content">
+      <div class="dp-problem-meta"><span>{p.judge} · {p.id}</span><span>{p.stage} / {p.topic}</span></div>
+      <h3><a href={p.url} target="_blank" rel="noreferrer">{p.title}<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5 15 15 5M5 5h10v10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></h3>
+      <p>{p.task}</p>
+      <details><summary>상태와 풀이 힌트</summary><div class="dp-hint"><p><strong>상태.</strong> {p.state}</p><Math display tex={p.formula}/><p>{p.hint}</p><p class="dp-problem-cost">시간 <Math tex={p.complexity}/></p></div></details>
+    </div>
+  </article>)}</div>
+  <p class="dp-caption">제목을 누르면 해당 저지의 원문이 열린다. 문제 설명은 학습용 요약이며, 입력·출력 형식과 전체 제약은 원문을 따른다.</p>
+</section>

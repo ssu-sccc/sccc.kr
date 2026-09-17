@@ -1,7 +1,7 @@
 export const categories = [
   { slug: 'math', title: '수학', english: 'Mathematics', description: '정수의 성질, 조합과 수학적 계산.' },
   { slug: 'graph', title: '그래프', english: 'Graph', description: '정점과 간선으로 표현하는 연결과 경로.' },
-  { slug: 'dp', title: 'DP', english: 'Dynamic Programming', description: '상태와 전이에서 출발해 집합·경계·트리로 확장하는 여섯 강의. 번호 순서로 읽는다.' },
+  { slug: 'dp', title: 'DP', english: 'Dynamic Programming', description: '상태와 전이, 집합과 경계, 트리와 모든 방향. 세 강의로 배우는 동적 계획법.' },
   { slug: 'data-structures', title: '자료구조', english: 'Data Structures', description: '데이터의 저장, 탐색과 효율적인 질의.' },
   { slug: 'string', title: '문자열', english: 'String', description: '문자열의 탐색, 정렬과 공통 부분.' },
   { slug: 'geometry', title: '기하학', english: 'Geometry', description: '점, 선과 도형의 위치 관계 및 계산.' },
@@ -10,12 +10,9 @@ export const categories = [
 
 // Keep existing article URLs when organizing their navigation.
 export const tutorials = [
-  { slug: 'dp-basics', category: 'dp', title: 'DP · 상태와 DAG', subtitle: '01 / STATE & DEPENDENCY', description: '계단, 최소 비용, 격자에서 상태와 간선을 찾고 계산 순서를 결정한다.', topics: '상태 · 전이 · 위상 순서 · Top-down', cover: ['state', '→', 'state'], coverLabel: '선행 상태에서 다음 상태로 향하는 의존 간선' },
-  { slug: 'bit-dp', category: 'dp', title: 'Bit DP · TSP', subtitle: '02 / SUBSET AS A STATE', description: '방문 집합과 현재 위치를 함께 기억한다. 부분집합의 크기가 만드는 DAG를 따라간다.', topics: '집합 · Bitmask · TSP', cover: ['0101, 2', '→', '0111, 1'], coverLabel: '도시 1을 추가하는 TSP 상태 전이' },
-  { slug: 'profile-dp', category: 'dp', title: 'Profile DP · 경계만 남기기', subtitle: '03 / THE MOVING FRONTIER', description: '격자의 과거와 미래를 가르는 절단선. 미래가 볼 수 있는 정보만 상태에 남긴다.', topics: 'Frontier · Broken profile · 비트 이동', cover: ['1011', '→', '011?'], coverLabel: '경계를 한 칸 옮기고 새 상태를 덧붙인다' },
-  { slug: 'tree-dp', category: 'dp', title: 'Tree DP · 부분문제의 병합', subtitle: '04 / SUBTREE & MERGE', description: '독립 집합과 Tree Knapsack으로 배우는 자식 부분트리의 결합.', topics: 'Postorder · 선택 DP · Knapsack', cover: ['child', '→ merge ←', 'child'], coverLabel: '부모에서 자식 부분문제를 병합한다' },
-  { slug: 'rerooting-dp', category: 'dp', title: 'Rerooting · 모든 방향의 답', subtitle: '05 / GATHER & DISTRIBUTE', description: '자식의 정보를 모으고 부모 방향 정보를 돌려준다. 방향별 메시지와 prefix/suffix 병합.', topics: 'Down · Up · 방향 메시지 · 제외 병합', cover: ['↑ gather', '↓ distribute'], coverLabel: '한 번 모으고 한 번 배분하는 두 방향 흐름' },
-  { slug: 'dp-reconstruction', category: 'dp', title: 'DP · 선택과 역추적', subtitle: '06 / FROM VALUE TO SOLUTION', description: '최적값을 만든 선택을 기록하고, 마지막 상태에서 실제 해를 복원한다.', topics: 'Parent · Choice · 복원 · 통합 정리', cover: ['5', '← 3 ← 2 ←', '0'], coverLabel: '선택된 이전 상태를 거꾸로 따라간다' },
+  { slug: 'dp-basics', category: 'dp', title: 'DP 베이직', subtitle: '01 / FOUNDATIONS', description: '상태 DAG에서 실제 해의 복원까지. 작은 예제를 직접 계산하며 DP의 설계 순서를 익힌다.', topics: '상태 · 전이 · 계산 순서 · 역추적', cover: ['state', 'transition', 'solution'], coverLabel: '상태에서 전이를 거쳐 해의 복원까지' },
+  { slug: 'bit-dp', category: 'dp', title: 'Bit DP', subtitle: '02 / SUBSETS & FRONTIERS', description: '집합을 담는 TSP, 경계만 남기는 Profile DP. 무엇을 기억하고 무엇을 잊을지 결정한다.', topics: '부분집합 · TSP · Profile DP', cover: ['0101', '0111', '1111'], coverLabel: '방문 집합과 경계 정보를 비트로 표현' },
+  { slug: 'tree-dp', category: 'dp', title: 'Tree DP', subtitle: '03 / MERGE & REROOT', description: '자식 부분트리의 병합에서 모든 정점의 답까지. 선택 DP, Knapsack과 Rerooting을 연결한다.', topics: '부분트리 · Knapsack · Rerooting', cover: ['subtree', 'merge', 'all'], coverLabel: '부분트리를 병합하고 모든 방향의 답 계산' },
   {
     slug: 'aho-corasick', category: 'string', title: '아호-코라식',
     subtitle: 'MULTIPLE PATTERN MATCHING',

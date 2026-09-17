@@ -7,7 +7,15 @@
 #include "../src/lib/tutorial/cpp/dp-tree.cpp"
 #include "../src/lib/tutorial/cpp/dp-reroot.cpp"
 #include "../src/lib/tutorial/cpp/dp-reconstruction.cpp"
+#include "../src/lib/tutorial/cpp/dp-practice.cpp"
 int main() {
+    assert(frog_path({8,15,6,12,9}).first==5);
+    assert((frog_path({8,15,6,12,9}).second==vector<int>{0,2,4}));
+    assert(frog_path({8}).first==0);
+    assert(knapsack01({{2,3},{3,5},{4,6}},5)==8);
+    assert(knapsack01({{2,3}},4)==3);
+    assert(lcs_string("ACBA","CABA")=="ABA");
+    assert(lcs_string("","ABC").empty());
     for(int n=0;n<=30;n++) assert(stairs_bottom_up(n)==stairs_top_down(n));
     assert(stairs_bottom_up(5)==8);
     assert(grid_paths(3,4)==10);

@@ -4,8 +4,11 @@ import Math from '../../../components/tutorial/Math.astro';
 import DPExperiment from '../../../components/tutorial/DPExperiment.astro';
 import CppCode from '../../../components/tutorial/CppCode.astro';
 import code from '../../../lib/tutorial/cpp/dp-tree.cpp?raw';
+import RerootingDP from '../../../components/tutorial/RerootingDP.astro';
+import DPWorkedExamples from '../../../components/tutorial/DPWorkedExamples.astro';
+import DPPractice from '../../../components/tutorial/DPPractice.astro';
 ---
-<DPLesson slug="tree-dp" sections={[["subtree","부분트리와 상태"],["selection","선택 DP"],["merge","두 상태 집합의 병합"],["knapsack","Tree Knapsack"],["code","구현과 복잡도"]]}>
+<DPLesson slug="tree-dp" sections={[["subtree","부분트리"],["selection","선택 DP"],["knapsack","Knapsack"],["rerooting","Rerooting"],["worked","예제 풀이"],["practice","연습문제"]]}>
 <section class="t-section" id="subtree"><span class="t-number">01 / SEPARATE AT A VERTEX</span><h2>자식의 문제를 풀고 부모에서 합친다</h2>
 <p>트리의 정점마다 가치가 있다. 인접한 두 정점을 동시에 고르지 않고 선택한 가치의 합을 최대화한다. 모든 선택 집합을 열거하는 대신 정점 0을 루트로 정한다. 어떤 정점 v의 자식 부분트리들은 서로 겹치지 않으며, 서로를 잇는 간선도 없다.</p>
 <p>단, 아무 조건 없이 독립이라고 할 수는 없다. v를 선택하면 모든 자식의 뿌리는 선택할 수 없다. <strong>v의 선택 여부를 고정하면</strong> 각 자식 방향의 선택이 서로 영향을 주지 않는다. 부모 상태가 필요한 이유와 자식 결과를 합칠 수 있는 이유가 여기서 함께 나온다.</p>
@@ -38,4 +41,8 @@ import code from '../../../lib/tutorial/cpp/dp-tree.cpp?raw';
 <CppCode code={code} filename="dp-tree.cpp"/>
 <p><code>dfs(c,v)</code>는 자식 표를 먼저 완성하고, 그 뒤의 반복문은 현재 부모 묶음과 자식 표의 모든 호환 상태 쌍을 합친다. 코드에서는 이해를 위해 재귀를 사용한다. 일자 모양의 큰 트리에서는 깊이가 N이 되므로 실행 환경의 스택 한계를 고려해 명시적 스택으로 순서를 만든 뒤 역순 처리할 수 있다.</p>
 <h3>이 형태를 의심할 때</h3><p>한 정점을 기준으로 나눈 부분트리들이 작은 경계 조건만 공유할 때 Tree DP가 자연스럽다. 선택 여부, 색, 부모와의 연결 여부 같은 조건을 먼저 정한다. 그 위에 개수·비용 한도가 붙으면 자식별 최적값 하나가 아니라 자원량별 표를 병합하는 Tree Knapsack을 생각한다.</p></section>
+<div class="dp-part"><span>PART 02</span><h2>Rerooting</h2><p>자식의 정보를 모으고, 빠졌던 부모 방향을 돌려준다.</p></div>
+<RerootingDP />
+<DPWorkedExamples course="tree" />
+<DPPractice course="tree" />
 </DPLesson>

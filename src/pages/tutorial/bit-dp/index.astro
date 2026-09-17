@@ -4,8 +4,11 @@ import Math from '../../../components/tutorial/Math.astro';
 import DPExperiment from '../../../components/tutorial/DPExperiment.astro';
 import CppCode from '../../../components/tutorial/CppCode.astro';
 import code from '../../../lib/tutorial/cpp/dp-tsp.cpp?raw';
+import ProfileDP from '../../../components/tutorial/ProfileDP.astro';
+import DPWorkedExamples from '../../../components/tutorial/DPWorkedExamples.astro';
+import DPPractice from '../../../components/tutorial/DPPractice.astro';
 ---
-<DPLesson slug="bit-dp" sections={[["subset","집합을 상태에 넣기"],["tsp","TSP 상태와 전이"],["proof","정확성과 순서"],["implementation","구현과 비용"]]}>
+<DPLesson slug="bit-dp" sections={[["subset","부분집합"],["tsp","TSP"],["profile","Profile DP"],["profile-proof","경계의 충분성"],["worked","예제 풀이"],["practice","연습문제"]]}>
 <section class="t-section" id="subset"><span class="t-number">01 / WHAT MUST THE FUTURE KNOW?</span><h2>현재 위치만 같아도, 같은 문제일까?</h2>
 <p>여러 도시를 한 번씩 방문하고 출발점으로 돌아오려 한다. 도시 2에 서 있다는 사실만으로는 다음 선택을 결정할 수 없다. 이미 도시 1을 방문했다면 다시 갈 수 없고, 아직 방문하지 않았다면 후보가 된다. 기본 DP에서 쓰던 ‘현재 위치’에 <strong>이미 방문한 집합</strong>을 추가해야 한다.</p>
 <p>집합을 배열로 매번 복사하는 대신 각 원소의 포함 여부를 한 비트로 저장한다. Bit DP의 핵심은 비트 연산이 아니라 <em>집합 하나를 상태의 축으로 삼는 것</em>이다. 원소 번호는 0부터, 오른쪽 끝 비트가 bit 0이다.</p>
@@ -34,4 +37,8 @@ import code from '../../../lib/tutorial/cpp/dp-tsp.cpp?raw';
 <CppCode code={code} filename="dp-tsp.cpp"/>
 <p><code>mask &amp; (1 &lt;&lt; u)</code>는 후보 도시가 이미 방문 집합에 들어 있는지 검사한다. <code>nmask = mask | (1 &lt;&lt; u)</code>는 집합에 도시 하나를 추가한다. 마지막 대입은 그림의 현재 상태→다음 상태 간선을 따라 비용을 완화하는 동작이다. 코드는 모든 도시 쌍에 간선이 있는 경우를 다룬다. 없는 간선을 무한대로 표현한다면 그 간선과 귀환 후보를 건너뛰어야 한다.</p>
 <h3>이 형태를 의심할 때</h3><p>대상 수는 작고, 어떤 대상을 처리했는지가 미래의 선택을 바꾸는 문제이다. 방문 순서 자체가 아니라 처리 집합과 작은 추가 정보만 있으면 충분한지 확인한다. 배정·순서 결정에도 같은 설계가 나타난다. 추가 제약이 이동 시간이나 직전 두 도시를 요구한다면 그 정보를 더 남겨야 하며, 지금 상태를 그대로 쓰면 안 된다.</p></section>
+<div class="dp-part"><span>PART 02</span><h2>Profile DP</h2><p>미래의 선택에 영향을 주는 정보만 상태에 남긴다.</p></div>
+<ProfileDP />
+<DPWorkedExamples course="bit" />
+<DPPractice course="bit" />
 </DPLesson>

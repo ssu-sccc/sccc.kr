@@ -9,7 +9,7 @@ test('Seven categories in requested order, unique slugs, and correct article mem
   assert.equal(new Set(tutorials.map(t=>t.slug)).size,tutorials.length);
   for(const item of tutorials) assert.ok(categories.some(c=>c.slug===item.category));
   assert.deepEqual(tutorialsFor('string').map(t=>t.slug), ['aho-corasick','suffix-array-lcp']);
-  assert.deepEqual(tutorialsFor('dp').map(t=>t.slug), ['dp-basics','bit-dp','profile-dp','tree-dp','rerooting-dp','dp-reconstruction']);
+  assert.deepEqual(tutorialsFor('dp').map(t=>t.slug), ['dp-basics','bit-dp','tree-dp']);
   for(const c of categories.filter(c=>!['string','dp'].includes(c.slug))) assert.deepEqual(tutorialsFor(c.slug),[]);
 });
 
