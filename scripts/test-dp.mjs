@@ -65,6 +65,10 @@ test('Integrated lessons preserve old URLs, exercises and small fixed-size arrow
   const problems=Object.values(dpProblems).flat();
   assert.equal(problems.length,26);
   assert.equal(new Set(problems.map(p=>p.url)).size,26);
+  assert.deepEqual([...new Set(problems.map(p=>p.judge))].sort(),['AtCoder','Codeforces','DOJ']);
+  for(const p of problems)assert.ok(['atcoder.jp','codeforces.com','doj.kr'].includes(new URL(p.url).hostname));
+  assert.ok(!fs.readFileSync('src/components/tutorial/DPWorkedExamples.astro','utf8').match(/BOJ|acmicpc\.net/));
+  for(const p of problems.filter(p=>p.judge==='DOJ'))assert.match(p.url,/^https:\/\/doj\.kr\/ko\/problems\/\d+$/);
   for(const p of problems)assert.ok(p.title&&p.hint&&p.state&&p.formula&&p.complexity);
 });
 
