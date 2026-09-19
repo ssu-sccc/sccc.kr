@@ -69,3 +69,47 @@
       rank: 100
       member: chleee, dkprk11, moonlit
 
+- name: 2026 숭고한 연합 알고리즘 경진대회 Div. 1
+  type: ICPC
+  team:
+    - name: 161617
+      rank: 4
+      award: 3등상
+      member: molla12, rwvrwvrwv, sonic6679
+    - name: 현재나라를지키는군인입니다
+      rank: 5
+      award: 3등상
+      member: osier_star, rlawlsdon02
+    - name: 니카이도 에마
+      rank: 6
+      award: 3등상
+      member: dkprk11, mingnei, moonlit
+
+- name: 2026 숭고한 연합 알고리즘 경진대회 Div. 2
+  type: Personal
+  team:
+    - name: line0806
+      rank: 1
+      award: 1등상
+    - name: keyboardsmunji
+      rank: 3
+      award: 2등상
+    - name: surrenderhs
+      rank: 4
+      award: 3등상
+
+- name: 2026 숭고한 연합 알고리즘 경진대회 Div. 3
+  type: Personal
+  team:
+    - name: parkjunesung0912
+      rank: 1
+      award: 1등상
+    - name: lclee0520
+      rank: 5
+      award: 3등상
+    - name: ysj9074
+      rank: 6
+      award: 3등상
+    - name: fstpgm
+      rank: 8
+      award: 4등상

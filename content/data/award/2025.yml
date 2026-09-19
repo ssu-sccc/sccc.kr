@@ -39,6 +39,21 @@
       rank: 
       award: 본선 진출
 
+- name: 2025 숭고한 연합 알고리즘 경진대회 Div. 1
+  type: ICPC
+  team:
+    - name: PS AGI
+      rank: 1
+      award: 1등상
+      member: jhnah917, kyo20111
+
+- name: 2025 숭고한 연합 알고리즘 경진대회 Div. 3
+  type: Personal
+  team:
+    - name: mingnei
+      rank: 3
+      award: 3등상
+
 - name: Hello, BOJ 2025!
   type: Personal
   scoreboard: https://www.acmicpc.net/contest/spotboard/1447
