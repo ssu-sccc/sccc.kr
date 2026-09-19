@@ -59,12 +59,14 @@
 
 - name: 2019 숭고한 연합 알고리즘 캠프 콘테스트 - 고급반
   type: Personal
+  team:
     - name: edenooo
       rank: 1
       award: 1등상
 
 - name: 2019 숭고한 연합 알고리즘 캠프 콘테스트 - 중급반
   type: Personal
+  team:
     - name: marona
       rank: 1
       award: 1등상
