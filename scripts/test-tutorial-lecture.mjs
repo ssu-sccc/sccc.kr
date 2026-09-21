@@ -4,40 +4,12 @@ import fs from 'node:fs';
 import { buildAC, traceAC, suffixData } from '../src/lib/tutorial/algorithms.mjs';
 import { acScanExplanation, suffixBlockExplanation } from '../src/lib/tutorial/explanations.mjs';
 
-test('Each theorem appears once, expanded, at the concept it proves', () => {
-  const maps = {
-    'aho-corasick': {idea:[1],failure:[2],transition:[3],construction:[4],output:[5],count:[6],implementation:[7]},
-    'suffix-array-lcp': {suffix:[1],doubling:[2],kasai:[3,4,5],rmq:[6,7],applications:[8],search:[9],generalized:[10]},
-  };
-  for(const [slug,mapping] of Object.entries(maps)) {
-    const html=fs.readFileSync(`dist/tutorial/${slug}/index.html`,'utf8');
-    assert.ok(!html.includes('id="proofs"'));
-    const prefix=slug==='aho-corasick'?'aho':'suffix';
-    const seen=[...html.matchAll(/data-theorem="(\d+)"/g)].map(m=>Number(m[1]));
-    assert.deepEqual(seen,Object.values(mapping).flat());
-    for(const [section,ids] of Object.entries(mapping)) {
-      const match=html.match(new RegExp(`<section id="${section}"[\\s\\S]*?</section>`));
-      assert.ok(match,section);
-      for(const id of ids) assert.ok(match[0].includes(`id="${prefix}-theorem-${id}"`));
-    }
-    const details=[...html.matchAll(/<details([^>]*data-theorem[^>]*)>/g)];
-    assert.ok(details.every(m=>/\bopen(?:\s|=|$)/.test(m[1])));
-    for (const theorem of html.matchAll(/<details[^>]*data-theorem[^>]*>[\s\S]*?<\/details>/g)) {
-      assert.match(theorem[0], /data-proof-intuition/);
-      assert.ok(theorem[0].indexOf('먼저 쉬운 말로') < theorem[0].indexOf('이를 정확하게 확인하면'));
-    }
-    if (slug === 'aho-corasick') {
-      assert.equal((html.match(/data-scan-kind="read"/g) || []).length, 6);
-      assert.equal((html.match(/data-scan-kind="fail"/g) || []).length, 1);
-      assert.match(html, /data-scan-kind="fail" data-scan-position="4"/);
-      assert.ok(html.indexOf('data-text-scan') < html.indexOf('id="aho-theorem-3"'));
-      assert.match(html, /aho-scan-explicit\.cpp/);
-    }
-    assert.ok(html.includes('data-reason'));
-    assert.ok(html.includes('data-lab-mode'));
-    // Internal proof links emitted by controllers all target real, unique anchors.
-    const source=fs.readFileSync(`src/scripts/tutorial/${prefix}.ts`,'utf8');
-    for(const link of source.matchAll(/href="#([a-z]+-theorem-\d+)"/g)) assert.ok(html.includes(`id="${link[1]}"`));
+test('Removed string articles are not published; the category remains', () => {
+  for (const slug of ['aho-corasick','suffix-array-lcp']) {
+    assert.equal(fs.existsSync(`dist/tutorial/${slug}/index.html`), false);
+    const category = fs.readFileSync('dist/tutorial/category/string/index.html','utf8');
+    assert.ok(!category.includes(`href="/tutorial/${slug}/"`));
+    assert.ok(category.includes('id="empty-title"'));
   }
 });
 

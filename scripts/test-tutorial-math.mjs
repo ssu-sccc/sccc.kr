@@ -10,9 +10,9 @@ test('LaTeX is prerendered with accessible MathML; invalid formulas fail closed'
   assert.match(html, /<math/);
   assert.match(html, /encoding="application\/x-tex"/);
   assert.throws(() => renderMath(String.raw`\frac{1}`));
-  for (const slug of ['aho-corasick', 'suffix-array-lcp']) {
+  for (const slug of ['dp-basics', 'bit-dp', 'tree-dp']) {
     const page = fs.readFileSync(`dist/tutorial/${slug}/index.html`, 'utf8');
-    assert.ok((page.match(/class="katex"/g) || []).length > 100, slug);
+    assert.ok((page.match(/class="katex"/g) || []).length > 0, slug);
     assert.doesNotMatch(page, /katex-error/);
     assert.match(page, /class="t-math-display"[^>]*tabindex="0"/);
     assert.match(page, /github-dark/); // C++ syntax highlighting stays separate.

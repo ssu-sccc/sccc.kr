@@ -4,26 +4,15 @@ import {readFileSync} from 'node:fs';
 import {stringProblems} from '../src/lib/tutorial/string-problems.mjs';
 import {renderMath} from '../src/lib/tutorial/math.mjs';
 
-test('each string tutorial has six verified-judge exercises with valid math and links',()=>{
-  for(const [course,slug] of [['aho','aho-corasick'],['suffix','suffix-array-lcp']]){
-    const problems=stringProblems[course];
+test('Retained string exercise source data has valid math and original judge links',()=>{
+  for(const problems of Object.values(stringProblems)) {
     assert.equal(problems.length,6);
-    const html=readFileSync(`dist/tutorial/${slug}/index.html`,'utf8');
-    const section=html.slice(html.indexOf('id="exercises"'),html.indexOf('<footer class="t-sources"'));
-    assert.equal((section.match(/<article /g)||[]).length,6);
-    assert.equal((section.match(/<details>/g)||[]).length,6);
-    assert.match(html,/href="#exercises"/);
-    const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
-    assert.equal(new Set(ids).size,ids.length);
-    for(const p of problems){
+    for(const p of problems) {
       for(const field of ['task','approach','reason','hint','complexity','costNote']) assert.ok(p[field],field);
       assert.ok(['atcoder.jp','codeforces.com','doj.kr'].includes(new URL(p.url).hostname));
-      assert.ok(ids.includes(p.anchor),p.anchor);
-      assert.ok(section.includes(p.url),p.url);
       assert.doesNotThrow(()=>renderMath(p.formula,true));
       assert.doesNotThrow(()=>renderMath(p.complexity));
     }
-    assert.doesNotMatch(section,/acmicpc|BOJ|katex-error/);
   }
 });
 

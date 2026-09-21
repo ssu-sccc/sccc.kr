@@ -13,20 +13,6 @@ export const tutorials = [
   { slug: 'dp-basics', category: 'dp', title: 'DP 베이직', subtitle: '01 / FOUNDATIONS', description: '상태 DAG에서 실제 해의 복원까지. 작은 예제를 직접 계산하며 DP의 설계 순서를 익힌다.', topics: '상태 · 전이 · 계산 순서 · 역추적', cover: ['state', 'transition', 'solution'], coverLabel: '상태에서 전이를 거쳐 해의 복원까지' },
   { slug: 'bit-dp', category: 'dp', title: 'Bit DP', subtitle: '02 / SUBSETS & FRONTIERS', description: '집합을 담는 TSP, 경계만 남기는 Profile DP. 무엇을 기억하고 무엇을 잊을지 결정한다.', topics: '부분집합 · TSP · Profile DP', cover: ['0101', '0111', '1111'], coverLabel: '방문 집합과 경계 정보를 비트로 표현' },
   { slug: 'tree-dp', category: 'dp', title: 'Tree DP', subtitle: '03 / MERGE & REROOT', description: '자식 부분트리의 병합에서 모든 정점의 답까지. 선택 DP, Knapsack과 Rerooting을 연결한다.', topics: '부분트리 · Knapsack · Rerooting', cover: ['subtree', 'merge', 'all'], coverLabel: '부분트리를 병합하고 모든 방향의 답 계산' },
-  {
-    slug: 'aho-corasick', category: 'string', title: '아호-코라식',
-    subtitle: 'MULTIPLE PATTERN MATCHING',
-    description: '다중 패턴 매칭 알고리즘. Trie, failure link, output link와 failure tree의 구성 및 활용.',
-    topics: 'Trie · Failure Link · Output · 등장 횟수',
-    cover: ['she', 'fail → he'], coverLabel: 'she의 접미사 he도 함께 매칭',
-  },
-  {
-    slug: 'suffix-array-lcp', category: 'string', title: 'Suffix Array · LCP',
-    subtitle: 'SUFFIX ORDER & COMMON PREFIX',
-    description: '접미사 배열과 공통 접두사 배열. Doubling, Kasai 알고리즘과 RMQ 질의의 원리 및 구현.',
-    topics: 'SA · Rank · LCP · RMQ',
-    cover: ['a', 'ana', 'anana'], coverLabel: 'banana의 접미사 정렬 예시',
-  },
 ];
 export const categoryUrl = (slug) => `/tutorial/category/${slug}/`;
 export const tutorialUrl = (slug) => `/tutorial/${slug}/`;
