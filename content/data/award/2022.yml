@@ -132,3 +132,23 @@
       award: 한국 38등
     - name: kyo20111
       award: R3 진출
+
+- name: 2022 숭고한 연합 알고리즘 경진대회 Div. 1
+  type: Personal
+  team:
+    - name: egod1537
+      rank: 7
+    - name: chansol
+      rank: 10
+
+- name: 2022 숭고한 연합 알고리즘 경진대회 Div. 2
+  type: Personal
+  team:
+    - name: chongin12
+      rank: 4
+
+- name: 2022 숭고한 연합 알고리즘 경진대회 Div. 3
+  type: Personal
+  team:
+    - name: ngchaneok
+      rank: 10

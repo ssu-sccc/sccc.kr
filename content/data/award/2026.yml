@@ -6,6 +6,25 @@
       award: Honorable Mention
       member: chleee, jms020820, m4ushold
 
+- name: 2026 NYPC 본선
+  type: ICPC
+  scoreboard: https://new.nypc.co.kr/ko/rank/2026/master/finals?page=1
+  team:
+    - name: 따뜻한밥상
+      rank: 4
+      award: 은상
+      member: keyboardsmunji, molla12
+
+- name: 2026 NYPC 예선
+  type: ICPC
+  scoreboard: https://new.nypc.co.kr/ko/rank/2026/master/qualification?page=1
+  advance: 2026 NYPC 본선
+  team:
+    - name: 따뜻한밥상
+      rank: 5
+      award: △
+      member: keyboardsmunji, molla12
+
 - name: 2026 SCPC
   type: Personal
   team:
@@ -21,3 +40,76 @@
     - name: jnary
       rank:
       award: 본선 진출
+
+- name: 2026 UCPC 본선
+  type: ICPC
+  scoreboard: https://static.ucpc.me/archive/ucpc/ucpc-2026/final/scoreboard/
+  team:
+    - name: 벌레캠프의 DP재판
+      rank: 56
+      award: UCPC 특별상
+      member: m4ushold
+
+- name: 2026 UCPC 예선
+  type: ICPC
+  scoreboard: https://static.ucpc.me/archive/ucpc/ucpc-2026/qualifier/scoreboard/
+  advance: 2026 UCPC 본선
+  team:
+    - name: 벌레캠프의 DP재판
+      rank: 40
+      award: △
+      member: m4ushold
+    - name: LLM한테 따잇
+      rank: 64
+      member: jms020820
+    - name: 지하수
+      rank: 79
+      member: jnary
+    - name: 팀원에 최애 하나씩 박아
+      rank: 100
+      member: chleee, dkprk11, moonlit
+
+- name: 2026 숭고한 연합 알고리즘 경진대회 Div. 1
+  type: ICPC
+  team:
+    - name: 161617
+      rank: 4
+      award: 3등상
+      member: molla12, rwvrwvrwv, sonic6679
+    - name: 현재나라를지키는군인입니다
+      rank: 5
+      award: 3등상
+      member: osier_star, rlawlsdon02
+    - name: 니카이도 에마
+      rank: 6
+      award: 3등상
+      member: dkprk11, mingnei, moonlit
+
+- name: 2026 숭고한 연합 알고리즘 경진대회 Div. 2
+  type: Personal
+  team:
+    - name: line0806
+      rank: 1
+      award: 1등상
+    - name: keyboardsmunji
+      rank: 3
+      award: 2등상
+    - name: surrenderhs
+      rank: 4
+      award: 3등상
+
+- name: 2026 숭고한 연합 알고리즘 경진대회 Div. 3
+  type: Personal
+  team:
+    - name: parkjunesung0912
+      rank: 1
+      award: 1등상
+    - name: lclee0520
+      rank: 5
+      award: 3등상
+    - name: ysj9074
+      rank: 6
+      award: 3등상
+    - name: fstpgm
+      rank: 8
+      award: 4등상
