@@ -46,22 +46,16 @@ test('Every experiment and option has complete deterministic frames',()=>{
   for(const [kind,options] of Object.entries(experimentOptions))for(const [option] of options){const frames=experimentFrames(kind,option);assert.ok(frames.length>1);for(const f of frames){assert.ok(f.html&&f.status);assert.ok(!/undefined|NaN|TODO/.test(f.html+f.status));}}
 });
 
-test('All three built lectures have math, C++ highlighting, controls and valid section anchors',()=>{
-  const slugs=['dp-basics','bit-dp','tree-dp'];
-  for(const slug of slugs){const html=fs.readFileSync(`dist/tutorial/${slug}/index.html`,'utf8');assert.ok(html.includes('katex-mathml'));assert.ok(html.includes('astro-code'));assert.ok(html.includes('data-dp-lab'));assert.ok(html.includes('data-next'));assert.ok(html.includes('data-play'));assert.ok(!html.includes('katex-error'));for(const [,id] of html.matchAll(/href="#([^"]+)"/g))assert.ok(html.includes(`id="${id}"`),`${slug} missing #${id}`);}
+test('DP articles and their obsolete redirects are not published',()=>{
+  for (const slug of ['dp-basics','bit-dp','tree-dp','dp-reconstruction','profile-dp','rerooting-dp']) {
+    assert.equal(fs.existsSync(`dist/tutorial/${slug}/index.html`),false);
+    const category=fs.readFileSync('dist/tutorial/category/dp/index.html','utf8');
+    assert.ok(!category.includes(`href="/tutorial/${slug}/"`));
+    assert.ok(category.includes('id="empty-title"'));
+  }
 });
 
-test('Integrated lessons preserve old URLs, exercises and small fixed-size arrows',()=>{
-  for(const [old,slug,anchor] of [['dp-reconstruction','dp-basics','reconstruction'],['profile-dp','bit-dp','profile'],['rerooting-dp','tree-dp','rerooting']]) {
-    const html=fs.readFileSync(`dist/tutorial/${slug}/index.html`,'utf8');
-    assert.ok(html.includes(`id="${anchor}"`));
-    if(slug!=='bit-dp')assert.ok(html.includes('markerUnits="userSpaceOnUse"'));
-    assert.ok(html.includes('id="practice"'));
-    assert.ok(html.includes('id="worked"'));
-    assert.ok(fs.readFileSync(`dist/tutorial/${old}/index.html`,'utf8').includes(`/tutorial/${slug}/#${anchor}`));
-    const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
-    assert.equal(new Set(ids).size,ids.length,`${slug}: duplicate ids`);
-  }
+test('Retained exercise source data uses the selected judges',()=>{
   const problems=Object.values(dpProblems).flat();
   assert.equal(problems.length,26);
   assert.equal(new Set(problems.map(p=>p.url)).size,26);
