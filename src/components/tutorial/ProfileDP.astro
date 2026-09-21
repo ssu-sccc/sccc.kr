@@ -1,0 +1,32 @@
+---
+import Math from './Math.astro';
+import DPExperiment from './DPExperiment.astro';
+import CppCode from './CppCode.astro';
+import code from '../../lib/tutorial/cpp/dp-profile.cpp?raw';
+---
+<section class="t-section" id="profile"><span class="t-number">01 / COMPRESS THE PAST</span><h2>과거 전체가 아니라, 미래와 닿는 경계</h2>
+<p>N×M 격자에서 일부 칸을 선택하되, 상하좌우로 붙은 두 칸을 동시에 선택하지 않는다. 가능한 선택 집합의 수를 구한다. 빈 집합도 한 가지이다. 전체 NM칸의 선택 여부를 비트로 저장하면 상태 수가 너무 많다.</p>
+<p>왼쪽 위부터 행 우선으로 한 칸씩 처리한다. 현재 칸이 알아야 할 과거는 바로 위와 왼쪽의 선택 여부이다. 더 오래된 칸 가운데 앞으로 처리할 어떤 칸과도 인접하지 않는 것은 잊어도 된다. 이렇게 <strong>과거와 미래 사이의 절단선(frontier)</strong>에 남은 정보로 상태를 만드는 방법을 Profile DP, 특히 칸 단위로 꺾인 경계를 이동시키는 형태를 broken profile DP라 부른다.</p>
+<DPExperiment kind="profile" title="3 × 4 격자 · 움직이는 경계와 mask"/>
+<p>굵게 둘러싼 칸은 최근 M개의 처리 칸이다. 한 행이 채워지기 전에는 화면 밖의 가상 0이 부족한 칸 수를 채운다. 처리 위치가 행의 중간에 있으면 경계는 이전 행의 남은 부분과 현재 행의 처리된 부분에 걸쳐 꺾인다. 따라서 ‘직전 행 전체’만 기억하는 설명으로는 이 순간의 상태를 정확히 표현할 수 없다.</p></section>
+<section class="t-section" id="profile-state"><span class="t-number">02 / POSITION + FRONTIER</span><h2>mask의 각 비트가 어느 칸인가</h2>
+<div class="t-definition"><p>처리한 칸 수를 p라 한다. <Math tex={String.raw`dp_p[mask]`} />는 앞의 p칸을 유효하게 선택했고, 최근 M칸의 선택 여부가 mask인 배치 수이다. bit 0은 가장 최근 칸 p−1, bit M−1은 가장 오래된 칸 p−M을 뜻한다. 음수 위치는 선택하지 않은 가상 칸이다.</p><Math display tex={String.raw`\text{bit }j\quad\longleftrightarrow\quad\text{선형 위치 }p-1-j\qquad(0\le j<M)`}/></div>
+<p>현재 위치는 <Math tex={String.raw`r=\lfloor p/M\rfloor,\ c=p\bmod M`} />이다. 위 칸의 선형 위치는 p−M이므로 bit M−1, 왼쪽 칸은 p−1이므로 bit 0이다. 단, c=0에서는 왼쪽 칸이 없다. 이때 bit 0은 이전 행의 마지막 칸이지 현재 칸의 왼쪽 이웃이 아니다.</p>
+<div class="dp-panel"><strong>M=4, 처리 전 mask = 1011₂</strong>오래된 쪽 → [1][0][1][1] ← 최근 쪽<br/>다음 칸 처리: [1]을 잊고 [0][1][1][새 선택]을 남긴다.</div>
+<p>1011은 비트 방향을 설명하기 위한 일반 창의 예이다. 이 강의의 독립 집합 문제에서는 위치에 따라 인접한 1들 때문에 도달 불가능한 상태일 수 있다. 그림의 실제 재생은 항상 유효한 배치만 따라간다. 모든 비트 문자열이 언제나 가능한 배치를 뜻하는 것은 아니다.</p></section>
+<section class="t-section" id="profile-transition"><span class="t-number">03 / MOVE THE CUT ONE CELL</span><h2>새 칸을 0 또는 1로 결정한다</h2>
+<p>경계를 한 칸 옮기려면 가장 오래된 bit를 버리고, 나머지를 한 자리씩 옮긴 뒤 새 선택 x를 맨 오른쪽에 넣는다. 비트 shift는 이 경계 이동을 정수 연산으로 구현한 것이다.</p>
+<div class="t-formula"><Math display tex={String.raw`\mathrm{next}(mask,x)=\bigl((mask\ll1)\ \&\ (2^M-1)\bigr)\;|\;x`}/><Math display tex={String.raw`dp_{p+1}[\mathrm{next}(mask,x)]\mathrel{+}=dp_p[mask]`}/></div>
+<p>x=0은 항상 가능하다. x=1은 위 칸이 0이고, 왼쪽 칸이 없거나 0일 때만 가능하다. 나중에 오른쪽과 아래 칸을 처리할 때는 현재 선택이 그 칸의 과거 이웃이 되어 검사된다. 아직 선택하지 않은 미래 이웃을 미리 검사할 필요가 없다.</p>
+<p>처음에는 <Math tex={String.raw`dp_0[0]=1`} />, 나머지는 0이다. 각 전이는 처리한 칸 수 p를 1 늘린다. 동일한 mask로 돌아오더라도 위치 p가 달라 다른 정점이므로, 전체 상태 (p,mask)의 그래프는 DAG이다. 마지막 답은 <Math tex={String.raw`\sum_{mask}dp_{NM}[mask]`} />이다. 선택 문제이므로 마지막 mask를 0으로 강제하지 않는다. 타일링에서 미해결 돌출부를 없애는 조건과 혼동하지 않는다.</p></section>
+<section class="t-section" id="profile-proof"><span class="t-number">04 / WHY THE BOUNDARY IS SUFFICIENT</span><h2>사라진 과거가 다시 필요하지 않은 이유</h2>
+<p>격자를 선형 위치로 펴면 인접한 두 칸의 위치 차이는 1 또는 M이다. 다음 처리 위치 p를 기준으로 p−M보다 더 오래된 칸은 모든 미래 칸과의 차이가 M보다 크다. 따라서 미래와 제약을 공유하는 간선이 없다. 경계 밖 과거를 잊어도 다음 선택의 가능성은 달라지지 않는다.</p>
+<div class="dp-proof"><h3>상태의 충분성</h3><p>같은 p와 mask를 갖는 두 과거 배치를 고정한다. 미래 내부의 인접 제약은 어느 과거를 골라도 동일하다. 과거와 미래를 가로지르는 모든 격자 간선의 과거 끝점은 최근 M칸 안에 있고, 그 선택 여부는 mask가 모두 기록한다. 그러므로 어떤 미래 배치가 이어질 수 있는지는 두 과거에서 정확히 같다. 경계 밖의 서로 다른 과거는 개수로만 합쳐도 된다.</p></div>
+<div class="dp-proof"><h3>전이의 정확성 · 처리한 칸 수에 대한 귀납</h3><p>p=0에는 빈 배치 하나뿐이므로 초기값이 정확하다. 유효한 p칸 배치에 x=0을 붙이면 제약을 새로 위반하지 않는다. x=1을 붙일 때 새로 완성되는 간선은 위·왼쪽 간선뿐이므로 두 검사로 필요충분하게 유효성을 판정한다. 반대로 모든 유효한 p+1칸 배치는 마지막 선택을 지우면 유일한 p칸 배치와 x로 분해된다. 다른 과거 배치는 여전히 다른 선택 집합이며 같은 mask에 모일 때 개수를 더한다. 따라서 빠짐이나 중복 없이 새 dp의 의미가 유지된다.</p></div>
+<p>‘최근 M개의 0/1이면 충분하다’는 결론은 이 문제의 국소 인접 제약에 의존한다. 모든 선택 칸이 연결되어야 하는 문제라면 경계 칸들 사이의 연결 관계도 필요하다. 도미노 타일링에서는 비트가 선택 여부 대신 점유·돌출 여부를 뜻한다. <strong>경계 정보의 의미를 먼저 정의하고 비트 표현은 그다음에 정한다.</strong></p></section>
+<section class="t-section" id="profile-code"><span class="t-number">05 / SMALL WIDTH, LONG GRID</span><h2>길이보다 너비가 지수 비용을 결정한다</h2>
+<div class="t-formula"><Math display tex={String.raw`NM\text{개의 위치}\times2^M\text{개의 mask}\times2\text{개의 선택}=O(NM2^M)`}/><Math display tex={String.raw`\text{공간 }O(2^M)\quad\text{(현재·다음 위치의 두 배열)}`}/></div>
+<p>한 전이의 비트 연산·덧셈이 상수 시간일 때의 비용이다. 격자를 돌려도 문제가 같다면 작은 변을 M으로 잡는다. 예제처럼 방향 구분 없는 인접 제약에서는 가능하지만, 행·열마다 다른 의미가 있는 문제에서는 조건을 확인해야 한다.</p>
+<CppCode code={code} filename="dp-profile.cpp"/>
+<p><code>shifted</code>는 오래된 경계를 버린 창, <code>shifted | 1</code>은 새 칸을 선택한 창이다. <code>next</code> 배열을 따로 두는 것은 현재 칸을 한 번만 처리하기 위해서다. 코드의 값은 1,000,000,007로 나눈 나머지이며 작은 시각화의 정확한 개수와 일치한다. <code>fill</code>을 위해 표준 헤더 <code>&lt;algorithm&gt;</code>을 사용한다.</p>
+<h3>이 형태를 의심할 때</h3><p>격자는 길어도 한쪽 너비가 작고, 과거가 미래에 주는 영향이 좁은 경계에 모이는 문제이다. 절단선을 그려 경계를 가로지르는 제약이 무엇인지 찾는다. 선택 여부만으로 부족하면 점유, 색, 연결 성분 등 충분한 경계 정보를 설계한다.</p></section>

@@ -8,8 +8,9 @@ test('Seven categories in requested order, unique slugs, and correct article mem
   assert.equal(new Set(categories.map(c=>c.slug)).size,7);
   assert.equal(new Set(tutorials.map(t=>t.slug)).size,tutorials.length);
   for(const item of tutorials) assert.ok(categories.some(c=>c.slug===item.category));
-  assert.deepEqual(tutorialsFor('string').map(t=>t.slug), ['aho-corasick','suffix-array-lcp']);
-  for(const c of categories.filter(c=>c.slug!=='string')) assert.deepEqual(tutorialsFor(c.slug),[]);
+  assert.deepEqual(tutorialsFor('string'), []);
+  assert.deepEqual(tutorials, []);
+  for(const c of categories.filter(c=>!['string','dp'].includes(c.slug))) assert.deepEqual(tutorialsFor(c.slug),[]);
 });
 
 test('Built category routes, counts, empty states, and stable article back-links', () => {

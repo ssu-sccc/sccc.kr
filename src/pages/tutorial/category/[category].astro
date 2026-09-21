@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { categories, categoryUrl, tutorialUrl, tutorialsFor } from '../../../lib/tutorial/catalog.mjs';
 import '../../../styles/tutorial.css';
+import '../../../styles/dp-tutorial.css';
 export function getStaticPaths() {
   return categories.map(category => ({ params: { category: category.slug }, props: { category } }));
 }
@@ -9,7 +10,7 @@ const { category } = Astro.props;
 const items = tutorialsFor(category.slug);
 ---
 <BaseLayout title={`${category.title} | Tutorial`} description={`${category.title} 알고리즘 튜토리얼. ${category.description}`}>
-  <div class="tutorial"><div class="t-shell">
+  <div class:list={['tutorial',{'dp-directory':category.slug==='dp'}]}><div class="t-shell">
     <header class="t-directory-header">
       <nav class="t-breadcrumbs" aria-label="현재 위치"><a href="/tutorial/">Tutorial</a><span aria-hidden="true">/</span><span aria-current="page">{category.title}</span></nav>
       <h1>{category.title}</h1><p>{category.description}</p><div class="t-meta"><span>{items.length}편의 튜토리얼</span></div>
@@ -19,7 +20,7 @@ const items = tutorialsFor(category.slug);
     </nav>
     {items.length > 0 ? <div class="t-catalog">
       {items.map((item,i) => <a class="t-card" href={tutorialUrl(item.slug)}>
-        <small>{String(i+1).padStart(2,'0')} / {item.subtitle}</small>
+        <small>{category.slug==='dp'?item.subtitle:`${String(i+1).padStart(2,'0')} / ${item.subtitle}`}</small>
         <div class="t-cover" aria-label={item.coverLabel}>{item.cover.map(part=><span>{part}</span>)}</div>
         <h2>{item.title}</h2><p>{item.description}</p><small>{item.topics} ↗</small>
       </a>)}

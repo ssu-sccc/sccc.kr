@@ -1,0 +1,58 @@
+---
+import Math from './Math.astro';
+import CppCode from './CppCode.astro';
+import practiceCode from '../../lib/tutorial/cpp/dp-practice.cpp?raw';
+import {frogHeights,frogExample,vacationPoints,vacationExample,knapsackItems,knapsackExample,lcsExample,matchingMatrix,matchingExample} from '../../lib/tutorial/dp-worked.mjs';
+interface Props { course: 'basics'|'bit'|'tree' }
+const {course}=Astro.props;
+---
+<section class="t-section dp-worked-section" id="worked">
+<span class="t-number">WORKED EXAMPLES</span><h2>문제에서 상태를 꺼내는 과정</h2>
+<p class="t-lead">원문 문제의 구조를 작은 강의용 입력으로 계산한다. 아래 수치 예제는 원문 예제와 별개이며, 인덱스는 0부터 센다.</p>
+{course==='basics' && <>
+<article class="dp-worked"><a class="dp-source" href="https://atcoder.jp/contests/dp/tasks/dp_a" target="_blank" rel="noreferrer">AtCoder DP A · Frog 1</a><h3>1. 점프를 간선으로 바꾸기</h3>
+<p>높이가 다른 돌 위에서 1칸 또는 2칸 앞으로 뛴다. 간선 비용은 높이 차의 절댓값이다. 돌의 위치를 상태로 잡으면 기본 강의의 최소 비용 DAG와 같아진다.</p>
+<div class="t-overflow"><table class="t-table"><thead><tr><th>돌 i</th>{frogHeights.map((_,i)=><th>{i}</th>)}</tr></thead><tbody><tr><th>높이</th>{frogHeights.map(x=><td>{x}</td>)}</tr><tr><th>dp</th>{frogExample().dp.map(x=><td>{x}</td>)}</tr><tr><th>parent</th>{frogExample().parent.map(x=><td>{x}</td>)}</tr></tbody></table></div>
+<Math display tex={String.raw`dp[4]=\min(8+|9-12|,\ 2+|9-6|)=5`}/>
+<p>마지막 돌에는 3 또는 2에서 온다. 최적 선택은 2→4이므로 parent[4]=2. 그 앞 선택까지 따라가면 0→2→4, 비용 2+3=5이다. 현재까지 더 싸게 도착한 경로를 골라도 이후 점프 가능성은 달라지지 않으므로 위치 하나만 남겨도 충분하다.</p><p class="dp-checkpoint"><strong>확장 질문.</strong> 최대 K칸을 뛴다면 상태를 바꿔야 할까? 상태는 유지하고 이전 K개 돌로 들어오는 간선만 추가한다. 이것이 Frog 2이다.</p></article>
+<article class="dp-worked"><a class="dp-source" href="https://atcoder.jp/contests/dp/tasks/dp_c" target="_blank" rel="noreferrer">AtCoder DP C · Vacation</a><h3>2. 같은 날짜라도 미래가 다르다면</h3>
+<p>연속으로 같은 활동을 선택하지 못한다. 오늘까지의 최대 점수만 남기면 내일 금지되는 활동을 모른다. 날짜와 마지막 활동을 함께 상태로 삼는다.</p>
+<div class="t-columns"><div><h4>하루의 점수</h4><table class="dp-matrix"><thead><tr><th>날</th><th>A</th><th>B</th><th>C</th></tr></thead><tbody>{vacationPoints.map((row,i)=><tr><th>{i}</th>{row.map(x=><td>{x}</td>)}</tr>)}</tbody></table></div><div><h4>그 활동으로 끝나는 최대 합</h4><table class="dp-matrix"><thead><tr><th>날</th><th>A</th><th>B</th><th>C</th></tr></thead><tbody>{vacationExample().map((row,i)=><tr><th>{i}</th>{row.map(x=><td>{x}</td>)}</tr>)}</tbody></table></div></div>
+<Math display tex={String.raw`dp[2][B]=9+\max(dp[1][A],dp[1][C])=9+15=24`}/>
+<p>마지막 활동을 고정하면 전날의 서로 다른 두 활동만 후보이다. 각 후보에 오늘 활동을 붙이면 유효하고, 모든 유효 일정은 이 방식으로 분해된다. 따라서 최댓값을 취하면 정확하다. 최종 답은 마지막 행의 최댓값 24, 한 최적 일정은 B→C→B이다.</p><p class="dp-checkpoint"><strong>비교 문제.</strong> Codeforces 698A는 활동의 날짜별 허용 여부와 ‘휴식 횟수 최소화’가 추가된다. 마지막 행동을 기억하는 이유는 동일하다.</p></article>
+<article class="dp-worked"><a class="dp-source" href="https://atcoder.jp/contests/dp/tasks/dp_d" target="_blank" rel="noreferrer">AtCoder DP D · Knapsack 1</a><h3>3. 자원 한도를 상태의 축으로 남기기</h3>
+<p>물건 (무게,가치)는 {knapsackItems.map(x=>`(${x.join(',')})`).join(', ')}, 무게 한도는 5이다. 앞 i개 물건을 본 상태에서 허용 무게 w를 남긴다. 표의 각 칸은 ‘정확히 w’가 아니라 ‘w 이하’의 최대 가치이다.</p>
+<div class="t-overflow"><table class="t-table"><thead><tr><th>처리한 물건 수 ＼ 한도</th>{[0,1,2,3,4,5].map(w=><th>{w}</th>)}</tr></thead><tbody>{knapsackExample().map((row,i)=><tr><th>{i}</th>{row.map(x=><td>{x}</td>)}</tr>)}</tbody></table></div>
+<Math display tex={String.raw`dp[3][5]=\max(\underbrace{dp[2][5]}_{\text{안 고름}}\,,\underbrace{dp[2][1]+6}_{\text{고름}})=\max(8,6)=8`}/>
+<p>마지막 물건을 안 고르면 이전 행의 같은 한도, 고르면 무게를 뺀 이전 행을 읽는다. 두 경우가 모든 부분집합을 나누므로 전이가 정확하다. 답 8은 무게 2와 3의 물건을 고른 결과이다. 1차원 배열로 압축할 때 한도를 거꾸로 순회하는 이유는 항상 이전 행의 값을 읽기 위해서다.</p></article>
+<article class="dp-worked"><a class="dp-source" href="https://atcoder.jp/contests/dp/tasks/dp_f" target="_blank" rel="noreferrer">AtCoder DP F · LCS</a><h3>4. 격자에서 길이와 실제 문자열을 함께 읽기</h3>
+<p>두 문자열 ACBA, CABA의 접두사 길이 (i,j)를 상태로 잡는다. 위·왼쪽 이동은 한쪽 마지막 문자를 버리고, 두 문자가 같을 때 대각 이동은 그 문자를 공통 부분 수열에 넣는다.</p>
+<div class="t-overflow"><table class="t-table"><thead><tr><th>s ＼ t</th>{['∅','C','A','B','A'].map(c=><th>{c}</th>)}</tr></thead><tbody>{lcsExample().map((row,i)=><tr><th>{['∅','A','C','B','A'][i]}</th>{row.map(x=><td>{x}</td>)}</tr>)}</tbody></table></div>
+<p>오른쪽 아래의 3은 길이일 뿐이다. 대각선 (4,4)→(3,3)에서 A, (3,3)→(2,2)에서 B를 기록한다. (2,2)→(1,2)에서는 문자를 넣지 않고, (1,2)→(0,1)에서 A를 기록한다. 역순으로 모인 ABA를 뒤집어 한 최적해 ABA를 얻는다.</p>
+<p>두 마지막 문자를 모두 사용하는 공통 부분 수열은 두 문자가 같아야 하며 대각선의 답에 1을 더한 후보이다. 둘을 모두 사용하지 않으면 적어도 한쪽을 버린 위·왼쪽 후보에 포함된다. 후보가 유효하고 모든 최적해를 덮으므로 최댓값이 정확하다.</p></article>
+<details class="dp-example-code"><summary>예제 C++ 구현 · Frog, 0/1 Knapsack, LCS</summary><CppCode code={practiceCode} filename="dp-practice.cpp"/></details>
+</>}
+{course==='bit' && <>
+<article class="dp-worked"><a class="dp-source" href="https://atcoder.jp/contests/dp/tasks/dp_o" target="_blank" rel="noreferrer">AtCoder DP O · Matching</a><h3>1. 끝점이 필요 없는 집합 DP</h3><p>앞의 사람부터 차례로 상대를 배정한다. 행이 사람, 열이 상대이며 1인 쌍만 허용한다.</p>
+<table class="dp-matrix"><thead><tr><th>사람 ＼ 상대</th><th>0</th><th>1</th><th>2</th></tr></thead><tbody>{matchingMatrix.map((row,i)=><tr><th>{i}</th>{row.map(x=><td>{x}</td>)}</tr>)}</tbody></table>
+<div class="dp-chips">{matchingExample().map((x,i)=><span class="dp-chip">{i.toString(2).padStart(3,'0')} : {x}</span>)}</div>
+<p>001이면 한 사람을 배정했으므로 다음은 사람 1이다. 다음 사람 번호는 집합 크기로 결정되므로 별도의 끝점 축이 없다. 가능한 완전 배정은 상대 순서 (0,1,2), (1,2,0)의 두 가지이다.</p>
+<Math display tex={String.raw`dp[S\cup\{j\}]\mathrel{+}=dp[S]\qquad(j\notin S,\ a_{|S|,j}=1)`}/>
+<p>각 매칭은 고정된 사람 순서로 정확히 한 번 만들어진다. 같은 상대를 다시 고르지 않고 허용 쌍만 추가하므로 전이의 결과도 모두 유효하다. TSP에서는 다음 비용이 끝점에 의존하지만 여기서는 그렇지 않다는 차이를 확인한다.</p></article>
+<article class="dp-worked"><a class="dp-source" href="https://atcoder.jp/contests/abc196/tasks/abc196_d" target="_blank" rel="noreferrer">AtCoder ABC196 D · Hanjo</a><h3>2. 선택 경계를 점유 경계로 바꾸기</h3><p>원문은 도미노 A개와 1×1 타일 B개를 모두 사용해 직사각형을 덮는 문제이다. 먼저 H=2, W=3, A=3, B=0인 경우를 보자. 다음 세 가지 배치가 가능하며, 같은 글자가 적힌 이웃한 두 칸이 타일 하나를 이룬다.</p>
+<div class="dp-tilings">{[['A','B','C','A','B','C'],['A','A','B','C','C','B'],['A','B','B','A','C','C']].map((cells,i)=><figure><div class="dp-tiling">{cells.map(c=><span class={`tile-${c}`}>{c}</span>)}</div><figcaption>배치 {i+1}</figcaption></figure>)}</div>
+<p>경계를 넘는 타일은 미래 칸을 이미 차지하고 있다. 따라서 mask에 ‘선택했는가’ 대신 ‘이전 타일에 의해 점유되어 있는가’를 남긴다. 이미 찬 현재 칸은 넘기고, 비었으면 경계를 넘지 않는 가로·세로 타일을 놓는다. 여기서는 수식 방향을 외워 옮기지 말고 새 비트의 의미부터 정해야 한다.</p>
+<p>처리한 영역의 빈칸이 없다는 불변식을 유지하면, 현재 첫 빈칸을 덮는 타일 방향에 따라 각 타일링이 유일하게 분기한다. 마지막에는 미래 칸이 없으므로 남은 점유가 없는 mask=0만 답이다. 앞의 독립 집합 예제는 모든 최종 mask를 합쳤다는 차이가 중요하다.</p>
+<p>일반 입력에서는 빈칸에 1×1 타일을 놓는 전이도 추가하고, 사용한 도미노 수 a를 상태에 함께 남긴다. 시작은 dp[0][0][0]=1, 답은 dp[HW][0][A]이다. 전체 칸을 채웠고 2A+B=HW이므로 이때 1×1 타일 수도 정확히 B가 된다. H=2, W=2, A=1, B=2라면 도미노를 둘 수 있는 위치가 네 곳이므로 답은 4이다.</p></article>
+</>}
+{course==='tree' && <>
+<article class="dp-worked"><a class="dp-source" href="https://atcoder.jp/contests/dp/tasks/dp_p" target="_blank" rel="noreferrer">AtCoder DP P · Independent Set</a><h3>1. 최댓값 대신 경우의 수를 병합한다면</h3><p>트리가 0—1—2인 경로이고, 검은 이웃 두 개를 허용하지 않는다. 0을 루트로 두고 아래에서 올라오면 다음과 같다.</p>
+<table class="dp-matrix"><thead><tr><th>정점</th><th>흰색 고정</th><th>검은색 고정</th></tr></thead><tbody><tr><th>2</th><td>1</td><td>1</td></tr><tr><th>1</th><td>2</td><td>1</td></tr><tr><th>0</th><td>3</td><td>2</td></tr></tbody></table>
+<Math display tex={String.raw`white[v]=\prod_c(white[c]+black[c]),\qquad black[v]=\prod_c white[c]`}/>
+<p>자식 하나의 흰색·검은색은 서로 다른 대안이라 더한다. 서로 다른 자식들의 선택은 동시에 조합하므로 곱한다. 루트 색의 두 경우를 더하면 5이다. 검은 정점 집합은 <Math tex={String.raw`\varnothing,\{0\},\{1\},\{2\},\{0,2\}`}/>이다. 원문의 나머지 연산은 각 덧셈·곱셈에 적용한다.</p></article>
+<article class="dp-worked"><a class="dp-source" href="https://codeforces.com/problemset/problem/1092/F" target="_blank" rel="noreferrer">Codeforces 1092F · Tree with Maximum Cost</a><h3>2. 루트를 옮길 때 가까워지는 쪽과 멀어지는 쪽</h3><p>0—1—2 경로의 가중치를 (2,1,3)이라 하자. 전체 가중치 W=6, 0 기준 거리 비용은 0·2+1·1+2·3=7이다. 루트를 0에서 1로 옮기면 1 쪽의 가중치 4는 한 칸 가까워지고 나머지 가중치 2는 멀어진다.</p>
+<Math display tex={String.raw`F[c]=F[v]-sub[c]+(W-sub[c])=F[v]+W-2sub[c]`}/>
+<table class="dp-matrix"><thead><tr><th>루트</th><th>계산</th><th>전체 비용</th></tr></thead><tbody><tr><th>0</th><td>0·2 + 1·1 + 2·3</td><td>7</td></tr><tr><th>1</th><td>7 + 6 − 2·4</td><td>5</td></tr><tr><th>2</th><td>5 + 6 − 2·3</td><td>5</td></tr></tbody></table>
+<p>따라서 최댓값은 7이다. 간선을 자르면 두 성분으로 정확히 나뉘고, 각 성분의 모든 거리가 똑같이 ±1 변한다는 것이 식의 근거다. 이 문제는 덧셈이라 차이식이 가능하다. AtCoder DP V처럼 나머지 곱셈을 병합하는 문제에서는 나눗셈이 보장되지 않아 본문의 prefix/suffix 방식이 필요하다.</p></article>
+</>}
+</section>

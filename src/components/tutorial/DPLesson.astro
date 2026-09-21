@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TutorialBreadcrumbs from './TutorialBreadcrumbs.astro';
+import { tutorials, tutorialUrl } from '../../lib/tutorial/catalog.mjs';
+import '../../styles/tutorial.css';
+import '../../styles/dp-tutorial.css';
+interface Props { slug: string; sections: [string,string][] }
+const {slug, sections} = Astro.props;
+const lessons = tutorials.filter(t => t.category === 'dp');
+const index = lessons.findIndex(t=>t.slug===slug);
+const lesson = lessons[index];
+---
+<BaseLayout title={`${lesson.title} | Tutorial`} description={lesson.description}>
+  <div class="tutorial dp-lecture"><div class="t-shell">
+    <header class="t-directory-header"><TutorialBreadcrumbs slug={slug}/><p class="t-kicker">{lesson.subtitle}</p><h1>{lesson.title}</h1><p>{lesson.description}</p></header>
+    <nav class="dp-course-index" aria-label="DP 세 강의">{lessons.map((item,i)=><a href={tutorialUrl(item.slug)} aria-current={item.slug===slug?'page':undefined}><span>{String(i+1).padStart(2,'0')}</span>{item.title}</a>)}</nav>
+    <nav class="t-contents" aria-label="이 강의의 목차">{sections.map(([id,title])=><a href={`#${id}`}>{title}</a>)}</nav>
+    <slot />
+    <nav class="dp-course-nav" aria-label="DP 강의 순서">
+      {index>0 && <a href={tutorialUrl(lessons[index-1].slug)}>← 이전: {lessons[index-1].title}</a>}
+      <a href="/tutorial/category/dp/">DP 강의 목록</a>
+      {index < lessons.length - 1 && <a href={tutorialUrl(lessons[index+1].slug)}>다음: {lessons[index+1].title} →</a>}
+    </nav>
+  </div></div>
+  <script>import '../../scripts/tutorial/dp';</script>
+</BaseLayout>
