@@ -1,0 +1,21 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+export function getStaticPaths() {
+  return [1, 2, 3].map(id => ({ params: { division: `div${id}` }, props: { id } }));
+}
+const { id } = Astro.props;
+// Keep upstream markup, templates, styles and engine; only wire static data.
+const original = fs.readFileSync(path.resolve('third-party/spotboard/index.html'), 'utf8');
+const html = original
+  .replace('<head>', `<head><meta charset="utf-8"><meta name="viewport" content="width=1200"><base href="/vendor/spotboard/">`)
+  .replace('<title>Spotboard</title>', `<title>2026 숭고한 Div. ${id} — Spotboard</title>`)
+  .replace('<script type="text/javascript" src="js/require-config.js"></script>', `<script>config.apiBase = '/contest/2026-skh/data/div${id}/'; config.auto_play = false; config.exclude_teams = []; config.foreign_teams = []; config.auto_refresh_interval = 86400000;</script><script type="text/javascript" src="js/require-config.js"></script>`)
+  .replace("require(['app']);", `require(['app'], function() {
+    require(['spotboard', 'spotboard.manager'], function(Spotboard) {
+      // An archived contest has no live WebSocket server.
+      Spotboard.Manager.initWebsocketEventListener = function() {};
+    });
+  });`);
+---
+<Fragment set:html={html} />

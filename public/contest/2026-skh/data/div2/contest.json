@@ -1,0 +1,172 @@
+{
+  "title": "2026 숭고한 알고리즘 경진대회 Div. 2",
+  "systemName": "DOMjudge",
+  "systemVersion": "",
+  "problems": [
+    {
+      "id": 0,
+      "name": "A",
+      "title": "MOBIS 프로젝트 신청하기",
+      "color": "red"
+    },
+    {
+      "id": 1,
+      "name": "B",
+      "title": "돌려돌려 돌림판",
+      "color": "darkorange"
+    },
+    {
+      "id": 2,
+      "name": "C",
+      "title": "실버 문제 만들기",
+      "color": "gold"
+    },
+    {
+      "id": 3,
+      "name": "D",
+      "title": "대회 문제 구성하기",
+      "color": "lime"
+    },
+    {
+      "id": 4,
+      "name": "E",
+      "title": "자유시간권",
+      "color": "turquoise"
+    },
+    {
+      "id": 5,
+      "name": "F",
+      "title": "미로 탈출하기",
+      "color": "blue"
+    },
+    {
+      "id": 6,
+      "name": "G",
+      "title": "별 배열",
+      "color": "violet"
+    },
+    {
+      "id": 7,
+      "name": "H",
+      "title": "먼지 필터",
+      "color": "purple"
+    }
+  ],
+  "teams": [
+    {
+      "id": 24,
+      "name": "50",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 25,
+      "name": "kwh0207c",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 26,
+      "name": "OSJ",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 27,
+      "name": "Surrender",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 28,
+      "name": "방도리",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 29,
+      "name": "비비디바보디부",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 30,
+      "name": "사랑한다하나코나나",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 31,
+      "name": "스코어보드에 표시될 이름",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 32,
+      "name": "jtw7913",
+      "group": "고려대학교"
+    },
+    {
+      "id": 33,
+      "name": "nousouvenir",
+      "group": "고려대학교"
+    },
+    {
+      "id": 34,
+      "name": "래시와두루미",
+      "group": "고려대학교"
+    },
+    {
+      "id": 35,
+      "name": "머스탱",
+      "group": "고려대학교"
+    },
+    {
+      "id": 36,
+      "name": "Team Aloha",
+      "group": "한양대학교"
+    },
+    {
+      "id": 37,
+      "name": "FourthRun",
+      "group": "외부팀"
+    },
+    {
+      "id": 38,
+      "name": "lwtr",
+      "group": "외부팀"
+    },
+    {
+      "id": 39,
+      "name": "Minseok03",
+      "group": "외부팀"
+    },
+    {
+      "id": 40,
+      "name": "mnawao",
+      "group": "외부팀"
+    },
+    {
+      "id": 41,
+      "name": "YuriLove_/",
+      "group": "외부팀"
+    },
+    {
+      "id": 42,
+      "name": "마곤",
+      "group": "외부팀"
+    },
+    {
+      "id": 43,
+      "name": "숭고한전부떨어진사람",
+      "group": "외부팀"
+    },
+    {
+      "id": 44,
+      "name": "실험마치고뭐해요?안암에서만나요",
+      "group": "외부팀"
+    },
+    {
+      "id": 45,
+      "name": "이규민",
+      "group": "외부팀"
+    },
+    {
+      "id": 46,
+      "name": "팀노트로 아내만 25장 뽑아오는 행복한 상상",
+      "group": "외부팀"
+    }
+  ]
+}

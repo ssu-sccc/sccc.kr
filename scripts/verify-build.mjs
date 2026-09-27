@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = path.resolve('dist');
+const root = path.resolve(process.argv[2] || 'dist');
 
 function walk(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -24,11 +24,15 @@ const failures = [];
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
-  if (html.includes('{{') || html.includes('{%')) {
+  // Upstream Spotboard renders these Handlebars templates in the browser.
+  const serverHtml = html.replace(/<script\b[^>]*type=["']text\/x-handlebar-template["'][^>]*>[\s\S]*?<\/script>/gi, '');
+  if (serverHtml.includes('{{') || serverHtml.includes('{%')) {
     failures.push(`${path.relative(root, file)}: unresolved template syntax`);
   }
 
-  for (const match of html.matchAll(/(?:href|src)=["']([^"']+)["']/gi)) {
+  // A base href names an asset directory, not a navigable page.
+  const linkedHtml = html.replace(/<base\b[^>]*>/gi, '');
+  for (const match of linkedHtml.matchAll(/(?:href|src)=["']([^"']+)["']/gi)) {
     const url = match[1];
     if (!url.startsWith('/') || url.startsWith('//')) continue;
     if (!existsForUrl(url)) failures.push(`${path.relative(root, file)}: missing ${url}`);
