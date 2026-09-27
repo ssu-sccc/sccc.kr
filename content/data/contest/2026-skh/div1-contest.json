@@ -1,0 +1,196 @@
+{
+  "title": "2026 숭고한 알고리즘 경진대회 Div. 1",
+  "systemName": "DOMjudge",
+  "systemVersion": "",
+  "problems": [
+    {
+      "id": 0,
+      "name": "A",
+      "title": "윈드 쉴드 미러 디스플레이",
+      "color": "red"
+    },
+    {
+      "id": 1,
+      "name": "B",
+      "title": "직사각형 고리 줍기",
+      "color": "darkorange"
+    },
+    {
+      "id": 2,
+      "name": "C",
+      "title": "Sumptuous K-th Highway",
+      "color": "deeppink"
+    },
+    {
+      "id": 3,
+      "name": "D",
+      "title": "고양이 빚기",
+      "color": "white"
+    },
+    {
+      "id": 4,
+      "name": "E",
+      "title": "구 구조 구하기",
+      "color": "ivory"
+    },
+    {
+      "id": 5,
+      "name": "F",
+      "title": "숭고한 만들기",
+      "color": "lime"
+    },
+    {
+      "id": 6,
+      "name": "G",
+      "title": "마석 나누어가지기",
+      "color": "darkgreen"
+    },
+    {
+      "id": 7,
+      "name": "H",
+      "title": "가장 긴 증가하는 모든 부분 수열",
+      "color": "turquoise"
+    },
+    {
+      "id": 8,
+      "name": "I",
+      "title": "Simple Permutation Problem",
+      "color": "skyblue"
+    },
+    {
+      "id": 9,
+      "name": "J",
+      "title": "Do You Love Geometry?",
+      "color": "blue"
+    },
+    {
+      "id": 10,
+      "name": "K",
+      "title": "주식 거래",
+      "color": "#violet"
+    },
+    {
+      "id": 11,
+      "name": "L",
+      "title": "트리 만들기",
+      "color": "gray"
+    }
+  ],
+  "teams": [
+    {
+      "id": 1,
+      "name": "161617",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 2,
+      "name": "니카이도 에마",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 3,
+      "name": "현재나라를지키는군인입니다",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 4,
+      "name": "retired 퇴물 Old Korea",
+      "group": "고려대학교"
+    },
+    {
+      "id": 5,
+      "name": "나도디비전2로가고싶었는데..",
+      "group": "고려대학교"
+    },
+    {
+      "id": 6,
+      "name": "TyrantsWorkshop",
+      "group": "한양대학교"
+    },
+    {
+      "id": 7,
+      "name": "팀명구성중입니다",
+      "group": "한양대학교"
+    },
+    {
+      "id": 8,
+      "name": "현우진",
+      "group": "한양대학교"
+    },
+    {
+      "id": 9,
+      "name": "pair<D3, D5>",
+      "group": "숭고한 연합"
+    },
+    {
+      "id": 10,
+      "name": "0x00",
+      "group": "외부팀"
+    },
+    {
+      "id": 11,
+      "name": "1 MiB",
+      "group": "외부팀"
+    },
+    {
+      "id": 12,
+      "name": "IlllIllIllIIlIlIIllllIIl",
+      "group": "외부팀"
+    },
+    {
+      "id": 13,
+      "name": "intiger",
+      "group": "외부팀"
+    },
+    {
+      "id": 14,
+      "name": "kokiri is cute",
+      "group": "외부팀"
+    },
+    {
+      "id": 15,
+      "name": "Reboot Ssal Game",
+      "group": "외부팀"
+    },
+    {
+      "id": 16,
+      "name": "temporary_teamname",
+      "group": "외부팀"
+    },
+    {
+      "id": 17,
+      "name": "ThatOnePythonUser",
+      "group": "외부팀"
+    },
+    {
+      "id": 18,
+      "name": "∴",
+      "group": "외부팀"
+    },
+    {
+      "id": 19,
+      "name": "垫底的人请客",
+      "group": "외부팀"
+    },
+    {
+      "id": 20,
+      "name": "디장",
+      "group": "외부팀"
+    },
+    {
+      "id": 21,
+      "name": "루루는 왓는데 테라가 안왓어요 ㅠㅠ",
+      "group": "외부팀"
+    },
+    {
+      "id": 22,
+      "name": "왜이렇게빨리푸나요~",
+      "group": "외부팀"
+    },
+    {
+      "id": 23,
+      "name": "전국 짱크 연합",
+      "group": "외부팀"
+    }
+  ]
+}

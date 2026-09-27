@@ -1477,6 +1477,18 @@ img {
   text-underline-offset: 3px;
 }
 
+.contest-pending {
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: #f0f0f2;
+  color: #74747b;
+  font: inherit;
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: not-allowed;
+}
+
 .solution-list-modern {
   border-top: 1px solid var(--ink);
 }

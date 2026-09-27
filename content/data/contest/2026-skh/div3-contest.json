@@ -1,0 +1,167 @@
+{
+  "title": "2026 숭고한 알고리즘 경진대회 Div. 3",
+  "systemName": "DOMjudge",
+  "systemVersion": "",
+  "problems": [
+    {
+      "id": 0,
+      "name": "A",
+      "title": "정12각형",
+      "color": "red"
+    },
+    {
+      "id": 1,
+      "name": "B",
+      "title": "MOBIS 프로젝트 신청하기",
+      "color": "darkorange"
+    },
+    {
+      "id": 2,
+      "name": "C",
+      "title": "std.IO",
+      "color": "gold"
+    },
+    {
+      "id": 3,
+      "name": "D",
+      "title": "퍼리와 쿼리",
+      "color": "lime"
+    },
+    {
+      "id": 4,
+      "name": "E",
+      "title": "돌려돌려 돌림판",
+      "color": "skyblue"
+    },
+    {
+      "id": 5,
+      "name": "F",
+      "title": "색종이 자르기",
+      "color": "blue"
+    },
+    {
+      "id": 6,
+      "name": "G",
+      "title": "마검의 조율",
+      "color": "#violet"
+    },
+    {
+      "id": 7,
+      "name": "H",
+      "title": "제트팩",
+      "color": "#purple"
+    }
+  ],
+  "teams": [
+    {
+      "id": 47,
+      "name": "IamTeapot",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 48,
+      "name": "levoyage",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 49,
+      "name": "minseongid",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 50,
+      "name": "sjieys",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 51,
+      "name": "드가자",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 52,
+      "name": "미그니온",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 53,
+      "name": "숭실대 구마유시",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 54,
+      "name": "이형주의원맨쇼(진)",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 55,
+      "name": "컴맹",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 56,
+      "name": "해피토니",
+      "group": "숭실대학교"
+    },
+    {
+      "id": 57,
+      "name": "cys046",
+      "group": "고려대학교"
+    },
+    {
+      "id": 58,
+      "name": "고스트노트",
+      "group": "고려대학교"
+    },
+    {
+      "id": 59,
+      "name": "밥약 걸고 싶어서 엉엉 울었어",
+      "group": "고려대학교"
+    },
+    {
+      "id": 60,
+      "name": "유키",
+      "group": "고려대학교"
+    },
+    {
+      "id": 61,
+      "name": "iamzing",
+      "group": "한양대학교"
+    },
+    {
+      "id": 62,
+      "name": "데일리 코딩",
+      "group": "한양대학교"
+    },
+    {
+      "id": 63,
+      "name": "민트못감청년",
+      "group": "한양대학교"
+    },
+    {
+      "id": 64,
+      "name": "수탉",
+      "group": "한양대학교"
+    },
+    {
+      "id": 65,
+      "name": "우냐냐우르르야하",
+      "group": "한양대학교"
+    },
+    {
+      "id": 66,
+      "name": "Hippopus",
+      "group": "외부팀"
+    },
+    {
+      "id": 67,
+      "name": "WA",
+      "group": "외부팀"
+    },
+    {
+      "id": 68,
+      "name": "와플",
+      "group": "외부팀"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "contest_key": "div3",
+  "contest_id": "Div3",
+  "mode": "award",
+  "duration_seconds": 14400,
+  "freeze_duration_seconds": 3600,
+  "freeze_start_seconds": 10800,
+  "freeze_start_minutes": 180,
+  "start_time": "2026-09-19T14:00:00+09:00",
+  "end_time": "2026-09-19T18:00:00+09:00",
+  "scoreboard_thaw_time": "2026-09-19T20:00:00+09:00",
+  "live_frozen": false,
+  "generated_at": "2026-09-19T18:01:09.777289+09:00"
+}
